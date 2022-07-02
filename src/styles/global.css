@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nuosu+SIL&display=swap');
+
+@font-face {
+  /* font-family: "Myriad Pro regular";
+  src: url("./fonts/MYRIADPRO-REGULAR.woff"); */
+}
+
+html {
+  background-color: #F9F2F2;
+}
+
+body {
+  margin: 0;
+}

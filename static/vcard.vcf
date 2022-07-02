@@ -1,0 +1,16 @@
+BEGIN:VCARD
+VERSION:3.0
+FN;CHARSET=UTF-8:Ana Elisa Cardoso Beleza Facial
+N;CHARSET=UTF-8:Beleza Facial;Ana Elisa Cardoso;;;
+GENDER:F
+EMAIL;CHARSET=UTF-8;type=WORK,INTERNET:anaelisa.belezafacial@gmail.com
+TEL;TYPE=CELL:+5516999645562
+TEL;TYPE=WORK,VOICE:+5516999645562
+LABEL;CHARSET=UTF-8;TYPE=WORK:Local
+ADR;CHARSET=UTF-8;TYPE=WORK:;;Rua João Penteado 953 - Jardim Sumaré;Ribeirão Preto;;14025-010;Ribeirão Preto
+TITLE;CHARSET=UTF-8:Principal
+ORG;CHARSET=UTF-8:Ana Elisa Cardoso - Beleza Facial
+URL;type=WORK;CHARSET=UTF-8:http://anaelisabelezafacial.com.br/
+X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/anaelisa.belezafacial/
+REV:2022-06-07T00:53:30.691Z
+END:VCARD
