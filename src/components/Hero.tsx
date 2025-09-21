@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
+import { motion } from "framer-motion"
 import { colors, commonStyles } from "../styles/theme"
 
 // Styled Components para Hero
@@ -38,7 +39,7 @@ const HeroContent = styled.div`
   }
 `
 
-const ImageContainer = styled.div`
+const ImageContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,24 +89,23 @@ const PlaceholderImage = styled.div`
   }
 `
 
-const TextContent = styled.div`
+const TextContent = styled(motion.div)`
   text-align: center;
 `
 
-const Logo = styled.h1`
+const Logo = styled(motion.h1)`
   font-size: 3.5rem;
   font-weight: 300;
   color: ${colors.goldMain};
   margin-bottom: 20px;
   letter-spacing: 2px;
-  animation: fadeInUp 1s ease-out both;
   
   @media (max-width: 768px) {
     font-size: 3rem;
   }
 `
 
-const Tagline = styled.h2`
+const Tagline = styled(motion.h2)`
   font-size: 1.5rem;
   font-weight: 300;
   color: ${colors.blackMain};
@@ -115,17 +115,17 @@ const Tagline = styled.h2`
   margin-right: auto;
   line-height: 1.6;
   position: relative;
-  animation: fadeInUp 1s ease-out 0.3s both;
   
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, ${colors.goldMain}, transparent);
+    opacity: 0.7;
   }
   
   @media (max-width: 768px) {
@@ -133,10 +133,32 @@ const Tagline = styled.h2`
   }
 `
 
-const CTAButton = styled.a`
+const CTAButton = styled(motion.a)`
   ${commonStyles.button}
-  animation: fadeInUp 1s ease-out 0.6s both;
 `
+
+// Variantes de animação
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 30 
+  },
+  visible: {
+    opacity: 1,
+    y: 0
+  }
+}
 
 // Interfaces
 interface HeroProps {
@@ -158,12 +180,45 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <HeroContainer id={id}>
       <HeroContent>
-        <TextContent>
-          <Logo>{title}</Logo>
-          <Tagline>{tagline}</Tagline>
-          <CTAButton href={ctaLink}>{ctaText}</CTAButton>
+        <TextContent
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <Logo 
+            variants={itemVariants}
+            transition={{ duration: 0.8 }}
+          >
+            {title}
+          </Logo>
+          <Tagline 
+            variants={itemVariants}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {tagline}
+          </Tagline>
+          <CTAButton 
+            href={ctaLink}
+            variants={itemVariants}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            whileHover={{ 
+              scale: 1.05,
+              transition: { duration: 0.2 }
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {ctaText}
+          </CTAButton>
         </TextContent>
-        <ImageContainer>
+        <ImageContainer
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          whileHover={{ 
+            scale: 1.02,
+            transition: { duration: 0.3 }
+          }}
+        >
           <StaticImage
             src="../images/home/IMG_1455-Aprimorado-NR.jpg"
             alt="Ana Elisa - Profissional de Beleza Facial"
