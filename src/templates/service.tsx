@@ -7,12 +7,6 @@ import { MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { WhatsAppButton } from "../components/ui/WhatsAppButton";
 import { Navbar } from "../components";
 
-// Tipos TypeScript
-interface ServiceDetail {
-  key: string;
-  value: string;
-}
-
 interface ServiceVariation {
   id: string;
   name: string;
@@ -35,7 +29,6 @@ interface ServicePageData {
     images: string[];
     category: string;
     featured: boolean;
-    details: ServiceDetail[];
     variations?: ServiceVariation[];
     complements?: ServiceComplement[];
   };
@@ -666,7 +659,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
             category: service.category,
             offers: {
               "@type": "Offer",
-              description: `${service.title} - ${service.details}`,
+              description: `${service.title} - ${service.shortDescription}`,
             },
           })}
         </script>
@@ -859,6 +852,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
   );
 };
 
+// Add details no GraphQL como opcional
 export const query = graphql`
   query ServicePageQuery($id: String!) {
     servicesJson(id: { eq: $id }) {
@@ -870,10 +864,6 @@ export const query = graphql`
       images
       category
       featured
-      details {
-        key
-        value
-      }
       variations {
         id
         name

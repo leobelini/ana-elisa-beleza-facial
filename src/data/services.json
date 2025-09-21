@@ -35,17 +35,15 @@
     "id": "design-sobrancelhas",
     "title": "Design de Sobrancelhas",
     "shortDescription": "Modelagem perfeita que realça seu olhar",
-    "longDescription": "O design de sobrancelhas é uma arte que requer técnica e conhecimento das proporções faciais. Analisamos o formato do seu rosto e criamos o design perfeito que realça seus traços naturais. Utilizamos técnicas de medição e mapeamento para garantir simetria e harmonia, respeitando o crescimento natural dos pelos.",
+    "longDescription": "O design de sobrancelhas é uma arte que requer técnica e conhecimento das proporções faciais. Analisamos o formato do seu rosto e criamos o design perfeito que realça seus traços naturais.",
     "benefits": [
       "Realça o olhar naturalmente",
       "Harmoniza os traços faciais",
-      "Resultado duradouro",
       "Técnica personalizada",
       "Simetria perfeita"
     ],
     "images": [
-      "/images/services/design-sobrancelhas-1.jpg",
-      "/images/services/design-sobrancelhas-2.jpg"
+      "/images/services/design-sobrancelhas-1.jpeg"
     ],
     "category": "sobrancelhas",
     "featured": false,
