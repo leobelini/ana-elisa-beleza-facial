@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { graphql, PageProps } from "gatsby"
 import styled from "styled-components"
 import { colors, commonStyles } from "../styles/theme"
 import { Helmet } from "react-helmet"
-import { MessageCircle } from "lucide-react"
+import { MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react"
 import { WhatsAppButton } from "../components/ui/WhatsAppButton"
 import { Navbar } from "../components"
 
@@ -107,10 +107,110 @@ const GalleryImage = styled.img`
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  cursor: pointer;
   
   &:hover {
     transform: translateY(-5px);
   }
+`
+
+// Modal Components
+const ModalOverlay = styled.div<{ isOpen: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: ${props => props.isOpen ? 'flex' : 'none'};
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 40px 20px;
+  
+  @media (max-width: 768px) {
+    padding: 20px 10px;
+  }
+`
+
+const ModalContent = styled.div`
+  position: relative;
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const ModalImage = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+`
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+`
+
+const NavigationButton = styled.button<{ direction: 'left' | 'right' }>`
+  position: absolute;
+  top: 50%;
+  ${props => props.direction}: -80px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    ${props => props.direction}: -50px;
+    padding: 12px;
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 480px) {
+    ${props => props.direction}: -40px;
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+`
+
+const ImageCounter = styled.div`
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 16px;
+  border-radius: 20px;
 `
 
 const DetailItem = styled.div`
@@ -219,9 +319,58 @@ const BackButton = styled.a`
 const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
   const service = data.servicesJson
   
+  // Estado para controle do modal de imagem
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  
   // Gerar URL do WhatsApp
   const whatsappMessage = `Olá! Gostaria de agendar o serviço: ${service.title}`
   const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(whatsappMessage)}`
+  
+  // Funções do modal
+  const openModal = (index: number) => {
+    setCurrentImageIndex(index)
+    setIsModalOpen(true)
+  }
+  
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+  
+  const goToNextImage = () => {
+    if (service.images && currentImageIndex < service.images.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1)
+    }
+  }
+  
+  const goToPreviousImage = () => {
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex(currentImageIndex - 1)
+    }
+  }
+  
+  // Fechar modal com ESC
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeModal()
+      } else if (event.key === 'ArrowRight') {
+        goToNextImage()
+      } else if (event.key === 'ArrowLeft') {
+        goToPreviousImage()
+      }
+    }
+    
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = 'hidden' // Previne scroll do body
+    }
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = 'unset'
+    }
+  }, [isModalOpen, currentImageIndex, service.images])
   
   return (
     <>
@@ -281,6 +430,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                 key={index}
                 src={image} 
                 alt={`${service.title} - Imagem ${index + 1}`}
+                onClick={() => openModal(index)}
                 onError={(e) => {
                   // Fallback: ocultar imagem se não carregar
                   e.currentTarget.style.display = 'none';
@@ -329,6 +479,44 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
             Agendar pelo WhatsApp
           </WhatsAppButton>
         </CTASection>
+        
+        {/* Modal de Imagem */}
+        <ModalOverlay isOpen={isModalOpen} onClick={closeModal}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            {service.images && service.images[currentImageIndex] && (
+              <>
+                <ModalImage 
+                  src={service.images[currentImageIndex]} 
+                  alt={`${service.title} - Imagem ${currentImageIndex + 1}`}
+                />
+                
+                <CloseButton onClick={closeModal}>
+                  <X size={24} />
+                </CloseButton>
+                
+                {service.images.length > 1 && (
+                  <>
+                    {currentImageIndex > 0 && (
+                      <NavigationButton direction="left" onClick={goToPreviousImage}>
+                        <ChevronLeft size={24} />
+                      </NavigationButton>
+                    )}
+                    
+                    {currentImageIndex < service.images.length - 1 && (
+                      <NavigationButton direction="right" onClick={goToNextImage}>
+                        <ChevronRight size={24} />
+                      </NavigationButton>
+                    )}
+                    
+                    <ImageCounter>
+                      {currentImageIndex + 1} de {service.images.length}
+                    </ImageCounter>
+                  </>
+                )}
+              </>
+            )}
+          </ModalContent>
+        </ModalOverlay>
       </ServicePageContainer>
     </>
   )
