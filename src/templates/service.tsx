@@ -5,6 +5,7 @@ import { colors, commonStyles } from "../styles/theme"
 import { Helmet } from "react-helmet"
 import { MessageCircle } from "lucide-react"
 import { WhatsAppButton } from "../components/ui/WhatsAppButton"
+import { Navbar } from "../components"
 
 // Tipos TypeScript
 interface ServicePageData {
@@ -26,7 +27,7 @@ interface ServicePageData {
 const ServicePageContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 120px 20px 80px;
+  padding: 80px 20px 60px;
   min-height: 100vh;
 `
 
@@ -264,6 +265,8 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
       </Helmet>
       
       <ServicePageContainer>
+        <Navbar />
+
         <BackButton href="/#servicos">Voltar aos Serviços</BackButton>
         
         <ServiceHeader>

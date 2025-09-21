@@ -84,24 +84,87 @@
     "featured": false
   },
   {
-    "id": "dermaplaning",
-    "title": "Dermaplaning",
-    "shortDescription": "Esfoliação profunda para pele sedosa",
-    "longDescription": "O dermaplaning é uma técnica de esfoliação física que remove suavemente as células mortas da pele e os pelos faciais finos (penugem). Utilizando uma lâmina estéril especial, realizamos movimentos precisos que deixam a pele incrivelmente lisa e radiante. O procedimento é indolor e proporciona uma pele mais receptiva aos produtos de cuidados.",
-    "price": "R$ 90,00",
-    "duration": "40 minutos",
-    "benefits": [
-      "Remove células mortas e penugem",
-      "Pele instantaneamente mais lisa",
-      "Melhora absorção de produtos",
-      "Procedimento indolor",
-      "Resultado imediato"
+    "id":"nano-blading",
+    "title":"Nanoblading",
+    "shortDescription":"Sobrancelhas perfeitas com técnica avançada de micropigmentação",
+    "longDescription":"O Nano Blading é uma técnica avançada de micropigmentação que utiliza uma ferramenta manual com microagulhas para desenhar fios de sobrancelha de forma extremamente natural. Cada fio é desenhado individualmente, respeitando o formato do rosto e a direção do crescimento dos pelos. O resultado é uma sobrancelha mais cheia, definida e harmoniosa, com aparência natural.",
+    "price":"R$ 350,00",
+    "duration":"2 horas",
+    "benefits":[
+      "Sobrancelhas mais cheias e definidas",
+      "Aparência extremamente natural",
+      "Técnica personalizada para cada cliente",
+      "Duração de até 1 ano com retoques",
+      "Resistente à água e suor"
     ],
-    "images": [
-      "/images/services/dermaplaning-1.jpg",
-      "/images/services/dermaplaning-2.jpg"
+    "images":[
+      "/images/services/nano-blading-1.jpg",
+      "/images/services/nano-blading-2.jpg"
     ],
-    "category": "facial",
+    "category":"sobrancelhas",
+    "featured": false
+  },
+  {
+    "id":"lash-lift",
+    "title":"Lash Lift",
+    "shortDescription":"Cílios curvados e realçados sem a necessidade de extensão",
+    "longDescription":"O Lash Lift é um tratamento que levanta e curva os cílios naturais, proporcionando um efeito de cílios mais longos e volumosos sem a necessidade de extensão. Utilizamos uma solução especial que molda os cílios na direção desejada, seguida de uma hidratação profunda para fortalecer os fios. O resultado dura de 6 a 8 semanas, realçando o olhar de forma natural.",
+    "price":"R$ 150,00",
+    "duration":"1 hora",
+    "benefits":[
+      "Cílios naturalmente curvados e realçados",
+      "Duração de 6 a 8 semanas",
+      "Procedimento rápido e indolor",
+      "Fortalece e hidrata os cílios",
+      "Dispensa o uso de curvex"
+    ],
+    "images":[
+      "/images/services/lash-lift-1.jpg",
+      "/images/services/lash-lift-2.jpg"
+    ],
+    "category":"cilios",
+    "featured": false
+  },
+  {
+    "id":"hidra-gloss",
+    "title":"Hidra Gloss",
+    "shortDescription":"Hidratação profunda com efeito glossy para uma pele radiante",
+    "longDescription":"O Hidra Gloss é um tratamento facial que combina hidratação profunda com um efeito glossy, proporcionando uma pele radiante e revitalizada. Utilizamos produtos ricos em ativos hidratantes e antioxidantes que penetram profundamente na pele, restaurando a barreira de proteção e promovendo um brilho saudável. O tratamento é ideal para todos os tipos de pele, especialmente as desidratadas e opacas.",
+    "price":"R$ 120,00",
+    "duration":"1 hora",
+    "benefits":[
+      "Hidratação profunda e duradoura",
+      "Efeito glossy e radiante",
+      "Revitaliza peles opacas e desidratadas",
+      "Restaura a barreira de proteção da pele",
+      "Adequado para todos os tipos de pele"
+    ],
+    "images":[
+      "/images/services/hidra-gloss-1.jpg",
+      "/images/services/hidra-gloss-2.jpg"
+    ],
+    "category":"facial",
+    "featured": false
+  },
+  {
+    "id":"nanolips",
+    "title":"NanoLips",
+    "shortDescription":"Lábios volumosos e definidos com técnica minimamente invasiva",
+    "longDescription":"O NanoLips é um procedimento de preenchimento labial que utiliza uma técnica minimamente invasiva para proporcionar lábios mais volumosos, definidos e hidratados. Utilizamos ácido hialurônico de alta qualidade, aplicado com agulhas ultrafinas para garantir conforto e precisão. O resultado é natural e duradouro, realçando a beleza dos seus lábios.",
+    "price":"R$ 400,00",
+    "duration":"1 hora",
+    "benefits":[
+      "Lábios mais volumosos e definidos",
+      "Técnica minimamente invasiva",
+      "Hidratação profunda dos lábios",
+      "Resultado natural e duradouro",
+      "Procedimento rápido e seguro"
+    ],
+    "images":[
+      "/images/services/nanolips-1.jpg",
+      "/images/services/nanolips-2.jpg"
+    ],
+    "category":"facial",
     "featured": false
   }
 ]
