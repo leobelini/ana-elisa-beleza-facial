@@ -23,7 +23,7 @@ export const commonStyles = {
     background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
     color: white;
     padding: 15px 35px;
-    border-radius: 30px;
+    border-radius: 10px;
     text-decoration: none;
     font-weight: 500;
     font-size: 1.1rem;

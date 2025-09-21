@@ -60,7 +60,6 @@ const ImageContainer = styled.div`
   }
   
   @media (max-width: 768px) {
-    order: -1;
     min-height: 300px;
   }
 `
@@ -90,22 +89,18 @@ const PlaceholderImage = styled.div`
 `
 
 const TextContent = styled.div`
-  text-align: left;
-  
-  @media (max-width: 768px) {
-    text-align: center;
-  }
+  text-align: center;
 `
 
 const Logo = styled.h1`
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 300;
   color: ${colors.goldMain};
   margin-bottom: 20px;
   letter-spacing: 2px;
   
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 `
 
@@ -137,7 +132,7 @@ interface HeroProps {
 // Componente Hero
 const Hero: React.FC<HeroProps> = ({
   title = "Ana Elisa Beleza Facial",
-  tagline = "Beleza e cuidado que realçam sua essência",
+  tagline = "🦋 Beleza autêntica, a arte de realçar sua essência.",
   ctaText = "Agende seu horário",
   ctaLink = "#agendamento",
   id = "home"
@@ -145,6 +140,11 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <HeroContainer id={id}>
       <HeroContent>
+        <TextContent>
+          <Logo>{title}</Logo>
+          <Tagline>{tagline}</Tagline>
+          <CTAButton href={ctaLink}>{ctaText}</CTAButton>
+        </TextContent>
         <ImageContainer>
           <StaticImage
             src="../images/home/IMG_1455-Aprimorado-NR.jpg"
@@ -157,11 +157,6 @@ const Hero: React.FC<HeroProps> = ({
             loading="eager"
           />
         </ImageContainer>
-        <TextContent>
-          <Logo>{title}</Logo>
-          <Tagline>{tagline}</Tagline>
-          <CTAButton href={ctaLink}>{ctaText}</CTAButton>
-        </TextContent>
       </HeroContent>
     </HeroContainer>
   )
