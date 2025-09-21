@@ -2,13 +2,6 @@ import * as React from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import styled from "styled-components"
 import { colors, commonStyles } from "../styles/theme"
-import { 
-  Sparkles, 
-  Eye, 
-  Zap, 
-  RefreshCw, 
-  Scissors 
-} from "lucide-react"
 
 // Tipo para dados dos serviços
 interface ServiceData {
@@ -45,7 +38,6 @@ const ServicesGrid = styled.div`
 
 const ServiceCard = styled(Link)`
   background: white;
-  padding: 40px 30px;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -54,6 +46,7 @@ const ServiceCard = styled(Link)`
   text-decoration: none;
   color: inherit;
   display: block;
+  overflow: hidden;
   
   &:hover {
     transform: translateY(-5px);
@@ -61,6 +54,28 @@ const ServiceCard = styled(Link)`
     text-decoration: none;
     color: inherit;
   }
+`
+
+const ServiceImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+`
+
+const ServiceImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  
+  ${ServiceCard}:hover & {
+    transform: scale(1.05);
+  }
+`
+
+const ServiceContent = styled.div`
+  padding: 40px 30px;
 `
 
 const ServiceIcon = styled.div`
@@ -124,17 +139,6 @@ interface ServicesProps {
   id?: string
 }
 
-// Mapeamento de ícones por categoria/título
-const getServiceIcon = (title: string): React.ReactElement => {
-  const iconMap: { [key: string]: React.ReactElement } = {
-    'Limpeza de Pele': <Sparkles size={36} />,
-    'Design de Sobrancelhas': <Eye size={36} />,
-    'Extensão de Cílios': <Zap size={36} />,
-    'Peeling Facial': <RefreshCw size={36} />,
-    'Dermaplaning': <Scissors size={36} />
-  }
-  return iconMap[title] || <Sparkles size={36} />
-}
 
 // Query GraphQL
 const SERVICES_QUERY = graphql`
@@ -173,13 +177,24 @@ const Services: React.FC<ServicesProps> = ({
       <ServicesGrid>
         {services.map((service) => (
           <ServiceCard key={service.id} to={`/servicos/${service.fields.slug}`}>
-            <ServiceIcon>{getServiceIcon(service.title)}</ServiceIcon>
-            <ServiceTitle>{service.title}</ServiceTitle>
-            <ServiceDescription>{service.shortDescription}</ServiceDescription>
-            <ServicePrice>{service.price}</ServicePrice>
-            <ServiceButton>
-              Saiba mais
-            </ServiceButton>
+            <ServiceImageContainer>
+              <ServiceImage 
+                src={service.images[0]} 
+                alt={service.title}
+                onError={(e) => {
+                  // Fallback para uma imagem padrão ou placeholder
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </ServiceImageContainer>
+            <ServiceContent>
+              <ServiceTitle>{service.title}</ServiceTitle>
+              <ServiceDescription>{service.shortDescription}</ServiceDescription>
+              <ServicePrice>{service.price}</ServicePrice>
+              <ServiceButton>
+                Saiba mais
+              </ServiceButton>
+            </ServiceContent>
           </ServiceCard>
         ))}
       </ServicesGrid>

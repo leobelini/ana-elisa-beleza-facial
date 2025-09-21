@@ -3,6 +3,8 @@ import { graphql, PageProps } from "gatsby"
 import styled from "styled-components"
 import { colors, commonStyles } from "../styles/theme"
 import { Helmet } from "react-helmet"
+import { MessageCircle } from "lucide-react"
+import { WhatsAppButton } from "../components/ui/WhatsAppButton"
 
 // Tipos TypeScript
 interface ServicePageData {
@@ -90,6 +92,26 @@ const ServiceDetails = styled.div`
   border-left: 5px solid ${colors.goldMain};
 `
 
+const ServiceGallery = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+`
+
+const GalleryImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+`
+
 const DetailItem = styled.div`
   display: flex;
   justify-content: space-between;
@@ -171,31 +193,6 @@ const CTASection = styled.div`
   }
 `
 
-const WhatsAppButton = styled.a`
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: #25D366;
-  color: white;
-  padding: 15px 30px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: #20ba5a;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-  }
-  
-  &::before {
-    content: "💬";
-    font-size: 1.2rem;
-  }
-`
-
 const BackButton = styled.a`
   display: inline-flex;
   align-items: center;
@@ -274,6 +271,22 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
           <ServiceSubtitle>{service.shortDescription}</ServiceSubtitle>
         </ServiceHeader>
         
+        {service.images && service.images.length > 0 && (
+          <ServiceGallery>
+            {service.images.map((image, index) => (
+              <GalleryImage 
+                key={index}
+                src={image} 
+                alt={`${service.title} - Imagem ${index + 1}`}
+                onError={(e) => {
+                  // Fallback: ocultar imagem se não carregar
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            ))}
+          </ServiceGallery>
+        )}
+        
         <ServiceContent>
           <ServiceInfo>
             <h2>Sobre o Tratamento</h2>
@@ -309,6 +322,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
           <h3>Pronta para transformar sua beleza?</h3>
           <p>Agende seu horário agora mesmo e descubra o que nosso tratamento pode fazer por você.</p>
           <WhatsAppButton href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+          <MessageCircle size={20} />
             Agendar pelo WhatsApp
           </WhatsAppButton>
         </CTASection>

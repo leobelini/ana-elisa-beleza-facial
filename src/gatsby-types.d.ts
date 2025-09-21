@@ -1535,6 +1535,7 @@ type Query_servicesJsonArgs = {
   children: InputMaybe<NodeFilterListInput>;
   duration: InputMaybe<StringQueryOperatorInput>;
   featured: InputMaybe<BooleanQueryOperatorInput>;
+  fields: InputMaybe<ServicesJsonFieldsFilterInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   images: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
@@ -1639,6 +1640,7 @@ type ServicesJson = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly duration: Maybe<Scalars['String']>;
   readonly featured: Maybe<Scalars['Boolean']>;
+  readonly fields: Maybe<ServicesJsonFields>;
   readonly id: Scalars['ID'];
   readonly images: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly internal: Internal;
@@ -1701,6 +1703,7 @@ type ServicesJsonFieldSelector = {
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly duration: InputMaybe<FieldSelectorEnum>;
   readonly featured: InputMaybe<FieldSelectorEnum>;
+  readonly fields: InputMaybe<ServicesJsonFieldsFieldSelector>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly images: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
@@ -1712,12 +1715,29 @@ type ServicesJsonFieldSelector = {
   readonly title: InputMaybe<FieldSelectorEnum>;
 };
 
+type ServicesJsonFields = {
+  readonly slug: Maybe<Scalars['String']>;
+};
+
+type ServicesJsonFieldsFieldSelector = {
+  readonly slug: InputMaybe<FieldSelectorEnum>;
+};
+
+type ServicesJsonFieldsFilterInput = {
+  readonly slug: InputMaybe<StringQueryOperatorInput>;
+};
+
+type ServicesJsonFieldsSortInput = {
+  readonly slug: InputMaybe<SortOrderEnum>;
+};
+
 type ServicesJsonFilterInput = {
   readonly benefits: InputMaybe<StringQueryOperatorInput>;
   readonly category: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly duration: InputMaybe<StringQueryOperatorInput>;
   readonly featured: InputMaybe<BooleanQueryOperatorInput>;
+  readonly fields: InputMaybe<ServicesJsonFieldsFilterInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly images: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
@@ -1780,6 +1800,7 @@ type ServicesJsonSortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly duration: InputMaybe<SortOrderEnum>;
   readonly featured: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ServicesJsonFieldsSortInput>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly images: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
@@ -2518,27 +2539,111 @@ type SitePluginSortInput = {
 };
 
 type SiteSiteMetadata = {
+  readonly address: Maybe<SiteSiteMetadataAddress>;
+  readonly author: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly image: Maybe<Scalars['String']>;
+  readonly keywords: Maybe<Scalars['String']>;
+  readonly openingHours: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly phone: Maybe<Scalars['String']>;
   readonly siteUrl: Maybe<Scalars['String']>;
+  readonly social: Maybe<SiteSiteMetadataSocial>;
   readonly title: Maybe<Scalars['String']>;
+  readonly twitterUsername: Maybe<Scalars['String']>;
+};
+
+type SiteSiteMetadataAddress = {
+  readonly city: Maybe<Scalars['String']>;
+  readonly country: Maybe<Scalars['String']>;
+  readonly state: Maybe<Scalars['String']>;
+  readonly street: Maybe<Scalars['String']>;
+  readonly zipCode: Maybe<Scalars['String']>;
+};
+
+type SiteSiteMetadataAddressFieldSelector = {
+  readonly city: InputMaybe<FieldSelectorEnum>;
+  readonly country: InputMaybe<FieldSelectorEnum>;
+  readonly state: InputMaybe<FieldSelectorEnum>;
+  readonly street: InputMaybe<FieldSelectorEnum>;
+  readonly zipCode: InputMaybe<FieldSelectorEnum>;
+};
+
+type SiteSiteMetadataAddressFilterInput = {
+  readonly city: InputMaybe<StringQueryOperatorInput>;
+  readonly country: InputMaybe<StringQueryOperatorInput>;
+  readonly state: InputMaybe<StringQueryOperatorInput>;
+  readonly street: InputMaybe<StringQueryOperatorInput>;
+  readonly zipCode: InputMaybe<StringQueryOperatorInput>;
+};
+
+type SiteSiteMetadataAddressSortInput = {
+  readonly city: InputMaybe<SortOrderEnum>;
+  readonly country: InputMaybe<SortOrderEnum>;
+  readonly state: InputMaybe<SortOrderEnum>;
+  readonly street: InputMaybe<SortOrderEnum>;
+  readonly zipCode: InputMaybe<SortOrderEnum>;
 };
 
 type SiteSiteMetadataFieldSelector = {
+  readonly address: InputMaybe<SiteSiteMetadataAddressFieldSelector>;
+  readonly author: InputMaybe<FieldSelectorEnum>;
   readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly image: InputMaybe<FieldSelectorEnum>;
+  readonly keywords: InputMaybe<FieldSelectorEnum>;
+  readonly openingHours: InputMaybe<FieldSelectorEnum>;
+  readonly phone: InputMaybe<FieldSelectorEnum>;
   readonly siteUrl: InputMaybe<FieldSelectorEnum>;
+  readonly social: InputMaybe<SiteSiteMetadataSocialFieldSelector>;
   readonly title: InputMaybe<FieldSelectorEnum>;
+  readonly twitterUsername: InputMaybe<FieldSelectorEnum>;
 };
 
 type SiteSiteMetadataFilterInput = {
+  readonly address: InputMaybe<SiteSiteMetadataAddressFilterInput>;
+  readonly author: InputMaybe<StringQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly image: InputMaybe<StringQueryOperatorInput>;
+  readonly keywords: InputMaybe<StringQueryOperatorInput>;
+  readonly openingHours: InputMaybe<StringQueryOperatorInput>;
+  readonly phone: InputMaybe<StringQueryOperatorInput>;
   readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
+  readonly social: InputMaybe<SiteSiteMetadataSocialFilterInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly twitterUsername: InputMaybe<StringQueryOperatorInput>;
+};
+
+type SiteSiteMetadataSocial = {
+  readonly instagram: Maybe<Scalars['String']>;
+  readonly whatsapp: Maybe<Scalars['String']>;
+};
+
+type SiteSiteMetadataSocialFieldSelector = {
+  readonly instagram: InputMaybe<FieldSelectorEnum>;
+  readonly whatsapp: InputMaybe<FieldSelectorEnum>;
+};
+
+type SiteSiteMetadataSocialFilterInput = {
+  readonly instagram: InputMaybe<StringQueryOperatorInput>;
+  readonly whatsapp: InputMaybe<StringQueryOperatorInput>;
+};
+
+type SiteSiteMetadataSocialSortInput = {
+  readonly instagram: InputMaybe<SortOrderEnum>;
+  readonly whatsapp: InputMaybe<SortOrderEnum>;
 };
 
 type SiteSiteMetadataSortInput = {
+  readonly address: InputMaybe<SiteSiteMetadataAddressSortInput>;
+  readonly author: InputMaybe<SortOrderEnum>;
   readonly description: InputMaybe<SortOrderEnum>;
+  readonly image: InputMaybe<SortOrderEnum>;
+  readonly keywords: InputMaybe<SortOrderEnum>;
+  readonly openingHours: InputMaybe<SortOrderEnum>;
+  readonly phone: InputMaybe<SortOrderEnum>;
   readonly siteUrl: InputMaybe<SortOrderEnum>;
+  readonly social: InputMaybe<SiteSiteMetadataSocialSortInput>;
   readonly title: InputMaybe<SortOrderEnum>;
+  readonly twitterUsername: InputMaybe<SortOrderEnum>;
 };
 
 type SiteSortInput = {
@@ -2759,6 +2864,11 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
+type SEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SEOQueryQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly description: string | null, readonly siteUrl: string | null, readonly keywords: string | null, readonly image: string | null, readonly author: string | null, readonly twitterUsername: string | null, readonly social: { readonly instagram: string | null, readonly whatsapp: string | null } | null } | null } | null };
+
 type ServicePageQueryQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
@@ -2769,7 +2879,7 @@ type ServicePageQueryQuery = { readonly servicesJson: { readonly id: string, rea
 type ServicesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ServicesQueryQuery = { readonly allServicesJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly price: string | null, readonly duration: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null }> } };
+type ServicesQueryQuery = { readonly allServicesJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly price: string | null, readonly duration: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null, readonly fields: { readonly slug: string | null } | null }> } };
 
 type TestimonialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2779,7 +2889,7 @@ type TestimonialsQueryQuery = { readonly allTestimonialsJson: { readonly nodes: 
 type CreatePagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type CreatePagesQueryQuery = { readonly allServicesJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null }> } };
+type CreatePagesQueryQuery = { readonly allServicesJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly fields: { readonly slug: string | null } | null }> } };
 
 
 }
