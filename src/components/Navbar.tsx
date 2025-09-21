@@ -1,5 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
+import { Link, navigate } from "gatsby"
 import { colors } from "../styles/theme"
 import { Menu, X } from "lucide-react"
 
@@ -31,7 +32,7 @@ const NavContainer = styled.div`
   align-items: center;
 `
 
-const NavLogo = styled.a`
+const NavLogo = styled(Link)`
   font-size: 1.5rem;
   font-weight: 300;
   color: ${colors.goldMain};
@@ -59,12 +60,17 @@ const NavItem = styled.li`
   position: relative;
 `
 
-const NavLink = styled.a`
+const NavLink = styled.button`
   color: ${colors.blackMain};
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
   
   &:hover {
     color: ${colors.goldMain};
@@ -126,13 +132,20 @@ const MobileMenuList = styled.ul`
   gap: 15px;
 `
 
-const MobileNavLink = styled.a`
+const MobileNavLink = styled.button`
   color: ${colors.blackMain};
   text-decoration: none;
   font-weight: 500;
   padding: 10px 0;
   border-bottom: 1px solid rgba(200, 169, 104, 0.1);
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
   
   &:hover {
     color: ${colors.goldMain};
@@ -179,14 +192,29 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
     setIsMobileMenuOpen(false)
   }
 
+  // Função para navegar para seções
+  const handleSectionNavigation = (href: string) => {
+    // Se estamos na página inicial, usa scroll smooth
+    if (typeof window !== 'undefined' && window.location.pathname === '/') {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      // Se estamos em outra página, navega para a home com a âncora
+      navigate(`/${href}`)
+    }
+    closeMobileMenu()
+  }
+
   return (
     <NavbarContainer className={`${className || ''} ${isScrolled ? 'scrolled' : ''}`}>
       <NavContainer>
-        <NavLogo href="#home">Ana Elisa</NavLogo>
+        <NavLogo to="/">Ana Elisa</NavLogo>
         <NavMenu>
           {menuItems.map((item) => (
             <NavItem key={item.href}>
-              <NavLink href={item.href}>{item.label}</NavLink>
+              <NavLink onClick={() => handleSectionNavigation(item.href)}>{item.label}</NavLink>
             </NavItem>
           ))}
         </NavMenu>
@@ -198,7 +226,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         <MobileMenuList>
           {menuItems.map((item) => (
             <li key={item.href}>
-              <MobileNavLink href={item.href} onClick={closeMobileMenu}>
+              <MobileNavLink onClick={() => handleSectionNavigation(item.href)}>
                 {item.label}
               </MobileNavLink>
             </li>
