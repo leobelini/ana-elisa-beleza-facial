@@ -127,9 +127,9 @@ const defaultSections: FooterSection[] = [
   {
     title: "Contato",
     content: [
-      "📱 (11) 99999-9999",
+      "📱 (14) 99713-9783",
       "📧 contato@anaelisabeleza.com",
-      "📍 São Paulo, SP"
+      "📍 Pongaí, SP"
     ]
   },
   {
@@ -146,12 +146,12 @@ const defaultSocialLinks: SocialLink[] = [
   {
     platform: "Instagram",
     icon: "📷",
-    url: "https://instagram.com/anaelisabeleza"
+    url: "https://www.instagram.com/anaelisa.belezafacial/"
   },
   {
     platform: "WhatsApp",
     icon: "📱",
-    url: "https://wa.me/5511999999999"
+    url: "https://wa.me/5514997139783"
   }
 ]
 

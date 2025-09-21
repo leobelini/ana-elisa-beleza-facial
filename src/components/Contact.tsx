@@ -189,17 +189,6 @@ const Contact: React.FC<ContactProps> = ({
           Enviar E-mail
         </EmailButton>
       </ContactButtonsContainer>
-
-      <ContactInfo>
-        {contactInfo.map((info, index) => (
-          <InfoCard key={index}>
-            <h3>{info.title}</h3>
-            {info.items.map((item, itemIndex) => (
-              <p key={itemIndex}>{item}</p>
-            ))}
-          </InfoCard>
-        ))}
-      </ContactInfo>
     </ContactContainer>
   )
 }
