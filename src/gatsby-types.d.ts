@@ -1543,8 +1543,8 @@ type Query_servicesJsonArgs = {
   benefits: InputMaybe<StringQueryOperatorInput>;
   category: InputMaybe<StringQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
+  complements: InputMaybe<ServicesJsonComplementsFilterListInput>;
   details: InputMaybe<ServicesJsonDetailsFilterListInput>;
-  duration: InputMaybe<StringQueryOperatorInput>;
   featured: InputMaybe<BooleanQueryOperatorInput>;
   fields: InputMaybe<ServicesJsonFieldsFilterInput>;
   id: InputMaybe<StringQueryOperatorInput>;
@@ -1553,9 +1553,9 @@ type Query_servicesJsonArgs = {
   jsonId: InputMaybe<StringQueryOperatorInput>;
   longDescription: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
-  price: InputMaybe<StringQueryOperatorInput>;
   shortDescription: InputMaybe<StringQueryOperatorInput>;
   title: InputMaybe<StringQueryOperatorInput>;
+  variations: InputMaybe<ServicesJsonVariationsFilterListInput>;
 };
 
 
@@ -1689,8 +1689,8 @@ type ServicesJson = Node & {
   readonly benefits: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly category: Maybe<Scalars['String']>;
   readonly children: ReadonlyArray<Node>;
+  readonly complements: Maybe<ReadonlyArray<Maybe<ServicesJsonComplements>>>;
   readonly details: Maybe<ReadonlyArray<Maybe<ServicesJsonDetails>>>;
-  readonly duration: Maybe<Scalars['String']>;
   readonly featured: Maybe<Scalars['Boolean']>;
   readonly fields: Maybe<ServicesJsonFields>;
   readonly id: Scalars['ID'];
@@ -1699,9 +1699,37 @@ type ServicesJson = Node & {
   readonly jsonId: Maybe<Scalars['String']>;
   readonly longDescription: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
-  readonly price: Maybe<Scalars['String']>;
   readonly shortDescription: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
+  readonly variations: Maybe<ReadonlyArray<Maybe<ServicesJsonVariations>>>;
+};
+
+type ServicesJsonComplements = {
+  readonly description: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+};
+
+type ServicesJsonComplementsFieldSelector = {
+  readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly name: InputMaybe<FieldSelectorEnum>;
+};
+
+type ServicesJsonComplementsFilterInput = {
+  readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+};
+
+type ServicesJsonComplementsFilterListInput = {
+  readonly elemMatch: InputMaybe<ServicesJsonComplementsFilterInput>;
+};
+
+type ServicesJsonComplementsSortInput = {
+  readonly description: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly name: InputMaybe<SortOrderEnum>;
 };
 
 type ServicesJsonConnection = {
@@ -1777,8 +1805,8 @@ type ServicesJsonFieldSelector = {
   readonly benefits: InputMaybe<FieldSelectorEnum>;
   readonly category: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
+  readonly complements: InputMaybe<ServicesJsonComplementsFieldSelector>;
   readonly details: InputMaybe<ServicesJsonDetailsFieldSelector>;
-  readonly duration: InputMaybe<FieldSelectorEnum>;
   readonly featured: InputMaybe<FieldSelectorEnum>;
   readonly fields: InputMaybe<ServicesJsonFieldsFieldSelector>;
   readonly id: InputMaybe<FieldSelectorEnum>;
@@ -1787,9 +1815,9 @@ type ServicesJsonFieldSelector = {
   readonly jsonId: InputMaybe<FieldSelectorEnum>;
   readonly longDescription: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly price: InputMaybe<FieldSelectorEnum>;
   readonly shortDescription: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
+  readonly variations: InputMaybe<ServicesJsonVariationsFieldSelector>;
 };
 
 type ServicesJsonFields = {
@@ -1812,8 +1840,8 @@ type ServicesJsonFilterInput = {
   readonly benefits: InputMaybe<StringQueryOperatorInput>;
   readonly category: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
+  readonly complements: InputMaybe<ServicesJsonComplementsFilterListInput>;
   readonly details: InputMaybe<ServicesJsonDetailsFilterListInput>;
-  readonly duration: InputMaybe<StringQueryOperatorInput>;
   readonly featured: InputMaybe<BooleanQueryOperatorInput>;
   readonly fields: InputMaybe<ServicesJsonFieldsFilterInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
@@ -1822,9 +1850,9 @@ type ServicesJsonFilterInput = {
   readonly jsonId: InputMaybe<StringQueryOperatorInput>;
   readonly longDescription: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
-  readonly price: InputMaybe<StringQueryOperatorInput>;
   readonly shortDescription: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly variations: InputMaybe<ServicesJsonVariationsFilterListInput>;
 };
 
 type ServicesJsonFilterListInput = {
@@ -1876,8 +1904,8 @@ type ServicesJsonSortInput = {
   readonly benefits: InputMaybe<SortOrderEnum>;
   readonly category: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
+  readonly complements: InputMaybe<ServicesJsonComplementsSortInput>;
   readonly details: InputMaybe<ServicesJsonDetailsSortInput>;
-  readonly duration: InputMaybe<SortOrderEnum>;
   readonly featured: InputMaybe<SortOrderEnum>;
   readonly fields: InputMaybe<ServicesJsonFieldsSortInput>;
   readonly id: InputMaybe<SortOrderEnum>;
@@ -1886,9 +1914,37 @@ type ServicesJsonSortInput = {
   readonly jsonId: InputMaybe<SortOrderEnum>;
   readonly longDescription: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
-  readonly price: InputMaybe<SortOrderEnum>;
   readonly shortDescription: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
+  readonly variations: InputMaybe<ServicesJsonVariationsSortInput>;
+};
+
+type ServicesJsonVariations = {
+  readonly description: Maybe<Scalars['String']>;
+  readonly id: Maybe<Scalars['String']>;
+  readonly name: Maybe<Scalars['String']>;
+};
+
+type ServicesJsonVariationsFieldSelector = {
+  readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly name: InputMaybe<FieldSelectorEnum>;
+};
+
+type ServicesJsonVariationsFilterInput = {
+  readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+};
+
+type ServicesJsonVariationsFilterListInput = {
+  readonly elemMatch: InputMaybe<ServicesJsonVariationsFilterInput>;
+};
+
+type ServicesJsonVariationsSortInput = {
+  readonly description: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly name: InputMaybe<SortOrderEnum>;
 };
 
 type Site = Node & {
@@ -3259,12 +3315,12 @@ type ServicePageQueryQueryVariables = Exact<{
 }>;
 
 
-type ServicePageQueryQuery = { readonly servicesJson: { readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly price: string | null, readonly duration: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null, readonly details: ReadonlyArray<{ readonly key: string | null, readonly value: string | null } | null> | null } | null };
+type ServicePageQueryQuery = { readonly servicesJson: { readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null, readonly details: ReadonlyArray<{ readonly key: string | null, readonly value: string | null } | null> | null, readonly variations: ReadonlyArray<{ readonly id: string | null, readonly name: string | null, readonly description: string | null } | null> | null, readonly complements: ReadonlyArray<{ readonly id: string | null, readonly name: string | null, readonly description: string | null } | null> | null } | null };
 
 type ServicesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ServicesQueryQuery = { readonly allServicesJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly price: string | null, readonly duration: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null, readonly fields: { readonly slug: string | null } | null }> } };
+type ServicesQueryQuery = { readonly allServicesJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null, readonly fields: { readonly slug: string | null } | null }> } };
 
 type TestimonialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

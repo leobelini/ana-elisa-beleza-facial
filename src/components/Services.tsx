@@ -9,8 +9,6 @@ interface ServiceData {
   title: string
   shortDescription: string
   longDescription: string
-  price: string
-  duration: string
   benefits: string[]
   images: string[]
   category: string
@@ -149,8 +147,6 @@ const SERVICES_QUERY = graphql`
         title
         shortDescription
         longDescription
-        price
-        duration
         benefits
         images
         category
@@ -190,7 +186,6 @@ const Services: React.FC<ServicesProps> = ({
             <ServiceContent>
               <ServiceTitle>{service.title}</ServiceTitle>
               <ServiceDescription>{service.shortDescription}</ServiceDescription>
-              <ServicePrice>{service.price}</ServicePrice>
               <ServiceButton>
                 Saiba mais
               </ServiceButton>

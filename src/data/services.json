@@ -3,9 +3,7 @@
     "id": "limpeza-de-pele",
     "title": "Limpeza de Pele",
     "shortDescription": "Limpeza profunda para renovar e revitalizar sua pele",
-    "longDescription": "A limpeza de pele é um procedimento essencial para manter a saúde e beleza da sua pele. Realizamos uma análise detalhada do seu tipo de pele e aplicamos técnicas específicas para extrair impurezas, remover células mortas e promover a renovação celular. O tratamento inclui esfoliação, extração de cravos e espinhas, aplicação de máscaras específicas e hidratação profunda.",
-    "price": "R$ 80,00",
-    "duration": "60 minutos",
+
     "benefits": [
       "Remove impurezas e células mortas",
       "Desobstrui os poros",
@@ -35,6 +33,23 @@
         "key": "Ideal para",
         "value": "Todos os tipos de pele"
       }
+    ],
+    "complements": [
+      {
+        "id": "peeling-suave",
+        "name": "Peeling Suave",
+        "description": "Peeling químico leve que potencializa os resultados da limpeza, proporcionando maior renovação celular e brilho à pele."
+      },
+      {
+        "id": "mascara-hidratante",
+        "name": "Máscara Hidratante Premium",
+        "description": "Máscara com ácido hialurônico e vitaminas que promove hidratação profunda e nutrição da pele."
+      },
+      {
+        "id": "drenagem-facial",
+        "name": "Drenagem Facial",
+        "description": "Massagem drenante que reduz inchaços, melhora a circulação e promove relaxamento facial."
+      }
     ]
   },
   {
@@ -42,8 +57,6 @@
     "title": "Design de Sobrancelhas",
     "shortDescription": "Modelagem perfeita que realça seu olhar",
     "longDescription": "O design de sobrancelhas é uma arte que requer técnica e conhecimento das proporções faciais. Analisamos o formato do seu rosto e criamos o design perfeito que realça seus traços naturais. Utilizamos técnicas de medição e mapeamento para garantir simetria e harmonia, respeitando o crescimento natural dos pelos.",
-    "price": "R$ 45,00",
-    "duration": "45 minutos",
     "benefits": [
       "Realça o olhar naturalmente",
       "Harmoniza os traços faciais",
@@ -74,6 +87,18 @@
         "key": "Manutenção",
         "value": "A cada 15-20 dias"
       }
+    ],
+    "complements": [
+      {
+        "id": "tintura-sobrancelha",
+        "name": "Tintura de Sobrancelha",
+        "description": "Coloração dos pelos para realçar o design e dar mais definição às sobrancelhas, especialmente para pelos claros."
+      },
+      {
+        "id": "henna-sobrancelha",
+        "name": "Henna para Sobrancelhas",
+        "description": "Tingimento natural que colore tanto os pelos quanto a pele, preenchendo falhas e criando um efeito mais denso."
+      }
     ]
   },
   {
@@ -81,8 +106,6 @@
     "title": "Extensão de Cílios",
     "shortDescription": "Cílios longos e volumosos para um olhar marcante",
     "longDescription": "A extensão de cílios é um procedimento que proporciona cílios mais longos, volumosos e curvados de forma natural. Aplicamos fio a fio cílios sintéticos de alta qualidade, criando um efeito natural ou mais dramático conforme sua preferência. O resultado dura de 3 a 4 semanas e dispensa o uso de máscara de cílios no dia a dia.",
-    "price": "R$ 120,00",
-    "duration": "2 horas",
     "benefits": [
       "Olhar mais marcante e expressivo",
       "Dispensa máscara de cílios",
@@ -99,7 +122,7 @@
     "details": [
       {
         "key": "Preço",
-        "value": "R$ 120,00"
+        "value": "A partir de R$ 120,00"
       },
       {
         "key": "Duração",
@@ -117,6 +140,38 @@
         "key": "Manutenção",
         "value": "Retoque a cada 2-3 semanas"
       }
+    ],
+    "variations": [
+      {
+        "id": "classica",
+        "name": "Clássica",
+        "description": "Um fio sintético para cada fio natural. Resultado mais sutil e natural, ideal para quem deseja um olhar marcante mas discreto."
+      },
+      {
+        "id": "volume-russo",
+        "name": "Volume Russo (2D-3D)",
+        "description": "Técnica que aplica 2-3 fios ultrafinos em cada fio natural. Proporciona volume e densidade sem peso excessivo."
+      },
+      {
+        "id": "mega-volume",
+        "name": "Mega Volume (4D-6D)",
+        "description": "Aplicação de 4-6 fios ultrafinos por fio natural. Resultado mais dramático e volumoso, ideal para ocasiões especiais."
+      },
+      {
+        "id": "efeito-boneca",
+        "name": "Efeito Boneca",
+        "description": "Cílios mais concentrados no centro dos olhos, criando um efeito de olhos grandes e expressivos como uma boneca."
+      },
+      {
+        "id": "efeito-fox",
+        "name": "Efeito Fox",
+        "description": "Cílios mais longos nas extremidades externas, criando um efeito alongado e sensual, lembrando o olhar felino."
+      },
+      {
+        "id": "efeito-gato",
+        "name": "Efeito Gato",
+        "description": "Formato que realça o canto externo dos olhos, criando um olhar mais sedutor e marcante."
+      }
     ]
   },
   {
@@ -124,8 +179,6 @@
     "title": "Peeling Facial",
     "shortDescription": "Renovação celular para uma pele radiante",
     "longDescription": "O peeling facial é um tratamento que promove a renovação celular através da remoção das camadas superficiais da pele. Utilizamos diferentes tipos de peeling (químico ou físico) de acordo com as necessidades da sua pele. O procedimento estimula a produção de colágeno, melhora a textura, reduz manchas e linhas finas, proporcionando uma pele mais lisa, uniforme e radiante.",
-    "price": "R$ 100,00",
-    "duration": "50 minutos",
     "benefits": [
       "Renovação celular profunda",
       "Reduz manchas e melasma",
@@ -142,7 +195,7 @@
     "details": [
       {
         "key": "Preço",
-        "value": "R$ 100,00"
+        "value": "A partir de R$ 100,00"
       },
       {
         "key": "Duração",
@@ -160,6 +213,28 @@
         "key": "Intervalo recomendado",
         "value": "A cada 3-4 semanas"
       }
+    ],
+    "variations": [
+      {
+        "id": "peeling-superficial",
+        "name": "Peeling Superficial",
+        "description": "Peeling suave com ácidos de baixa concentração. Ideal para peles sensíveis e primeiro contato com peelings."
+      },
+      {
+        "id": "peeling-medio",
+        "name": "Peeling Médio",
+        "description": "Peeling com ácidos de média concentração. Trata manchas, linhas finas e melhora significativamente a textura da pele."
+      },
+      {
+        "id": "peeling-diamante",
+        "name": "Peeling de Diamante",
+        "description": "Peeling físico com micropartículas de diamante. Renovação celular intensa com resultado imediato."
+      },
+      {
+        "id": "peeling-glycolic",
+        "name": "Peeling de Ácido Glicólico",
+        "description": "Peeling específico para renovação celular e tratamento de manchas. Excelente para melasma e fotoenvelhecimento."
+      }
     ]
   },
   {
@@ -167,8 +242,6 @@
     "title":"Nanoblading",
     "shortDescription":"Sobrancelhas perfeitas com técnica avançada de micropigmentação",
     "longDescription":"O Nano Blading é uma técnica avançada de micropigmentação que utiliza uma ferramenta manual com microagulhas para desenhar fios de sobrancelha de forma extremamente natural. Cada fio é desenhado individualmente, respeitando o formato do rosto e a direção do crescimento dos pelos. O resultado é uma sobrancelha mais cheia, definida e harmoniosa, com aparência natural.",
-    "price":"R$ 350,00",
-    "duration":"2 horas",
     "benefits":[
       "Sobrancelhas mais cheias e definidas",
       "Aparência extremamente natural",
@@ -214,8 +287,6 @@
     "title":"Lash Lift",
     "shortDescription":"Cílios curvados e realçados sem a necessidade de extensão",
     "longDescription":"O Lash Lift é um tratamento que levanta e curva os cílios naturais, proporcionando um efeito de cílios mais longos e volumosos sem a necessidade de extensão. Utilizamos uma solução especial que molda os cílios na direção desejada, seguida de uma hidratação profunda para fortalecer os fios. O resultado dura de 6 a 8 semanas, realçando o olhar de forma natural.",
-    "price":"R$ 150,00",
-    "duration":"1 hora",
     "benefits":[
       "Cílios naturalmente curvados e realçados",
       "Duração de 6 a 8 semanas",
@@ -257,8 +328,6 @@
     "title":"Hidra Gloss",
     "shortDescription":"Hidratação profunda com efeito glossy para uma pele radiante",
     "longDescription":"O Hidra Gloss é um tratamento facial que combina hidratação profunda com um efeito glossy, proporcionando uma pele radiante e revitalizada. Utilizamos produtos ricos em ativos hidratantes e antioxidantes que penetram profundamente na pele, restaurando a barreira de proteção e promovendo um brilho saudável. O tratamento é ideal para todos os tipos de pele, especialmente as desidratadas e opacas.",
-    "price":"R$ 120,00",
-    "duration":"1 hora",
     "benefits":[
       "Hidratação profunda e duradoura",
       "Efeito glossy e radiante",
@@ -300,8 +369,6 @@
     "title":"NanoLips",
     "shortDescription":"Lábios volumosos e definidos com técnica minimamente invasiva",
     "longDescription":"O NanoLips é um procedimento de preenchimento labial que utiliza uma técnica minimamente invasiva para proporcionar lábios mais volumosos, definidos e hidratados. Utilizamos ácido hialurônico de alta qualidade, aplicado com agulhas ultrafinas para garantir conforto e precisão. O resultado é natural e duradouro, realçando a beleza dos seus lábios.",
-    "price":"R$ 400,00",
-    "duration":"1 hora",
     "benefits":[
       "Lábios mais volumosos e definidos",
       "Técnica minimamente invasiva",
