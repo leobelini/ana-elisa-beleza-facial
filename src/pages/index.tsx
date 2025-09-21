@@ -11,10 +11,7 @@ import {
   Testimonials,
   Contact,
   Footer,
-  AnimatedSection,
-  ServiceModal,
-  type Service,
-  type ServiceData
+  AnimatedSection
 } from "../components"
 
 // Container principal
@@ -28,22 +25,6 @@ const Container = styled.div`
 
 // Componente principal da página
 const IndexPage: React.FC<PageProps> = () => {
-  // Estado do modal
-  const [selectedService, setSelectedService] = React.useState<ServiceData | null>(null)
-  const [isModalOpen, setIsModalOpen] = React.useState(false)
-
-  // Handler para cliques nos serviços
-  const handleServiceClick = (service: ServiceData) => {
-    setSelectedService(service)
-    setIsModalOpen(true)
-  }
-
-  // Handler para fechar o modal
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setSelectedService(null)
-  }
-
   return (
     <>
       <GlobalStyle />
@@ -63,7 +44,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
         {/* Seção Serviços */}
         <AnimatedSection direction="up" delay={0.1}>
-          <Services onServiceClick={handleServiceClick} />
+          <Services />
         </AnimatedSection>
 
         {/* Seção Depoimentos */}
@@ -80,13 +61,6 @@ const IndexPage: React.FC<PageProps> = () => {
         <AnimatedSection direction="fade" delay={0.2}>
           <Footer />
         </AnimatedSection>
-
-        {/* Modal de serviços */}
-        <ServiceModal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          service={selectedService}
-        />
       </Container>
     </>
   )

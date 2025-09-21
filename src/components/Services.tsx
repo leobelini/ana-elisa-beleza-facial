@@ -1,8 +1,7 @@
 import * as React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import styled from "styled-components"
 import { colors, commonStyles } from "../styles/theme"
-import { ServiceData } from "./ServiceModal"
 import { 
   Sparkles, 
   Eye, 
@@ -10,6 +9,23 @@ import {
   RefreshCw, 
   Scissors 
 } from "lucide-react"
+
+// Tipo para dados dos serviços
+interface ServiceData {
+  id: string
+  title: string
+  shortDescription: string
+  longDescription: string
+  price: string
+  duration: string
+  benefits: string[]
+  images: string[]
+  category: string
+  featured: boolean
+  fields: {
+    slug: string
+  }
+}
 
 // Styled Components para Services
 const ServicesContainer = styled.section`
@@ -27,7 +43,7 @@ const ServicesGrid = styled.div`
   margin-top: 60px;
 `
 
-const ServiceCard = styled.div`
+const ServiceCard = styled(Link)`
   background: white;
   padding: 40px 30px;
   border-radius: 20px;
@@ -35,11 +51,15 @@ const ServiceCard = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border: 1px solid rgba(200, 169, 104, 0.1);
-  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
   
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(200, 169, 104, 0.2);
+    text-decoration: none;
+    color: inherit;
   }
 `
 
@@ -102,7 +122,6 @@ export interface Service {
 interface ServicesProps {
   title?: string
   id?: string
-  onServiceClick?: (service: ServiceData) => void
 }
 
 // Mapeamento de ícones por categoria/título
@@ -132,6 +151,9 @@ const SERVICES_QUERY = graphql`
         images
         category
         featured
+        fields {
+          slug
+        }
       }
     }
   }
@@ -140,24 +162,17 @@ const SERVICES_QUERY = graphql`
 // Componente Services
 const Services: React.FC<ServicesProps> = ({
   title = "Serviços",
-  id = "servicos",
-  onServiceClick
+  id = "servicos"
 }) => {
   const data = useStaticQuery(SERVICES_QUERY)
   const services: ServiceData[] = data.allServicesJson.nodes
-
-  const handleServiceClick = (service: ServiceData) => {
-    if (onServiceClick) {
-      onServiceClick(service)
-    }
-  }
 
   return (
     <ServicesContainer id={id}>
       <SectionTitle>{title}</SectionTitle>
       <ServicesGrid>
         {services.map((service) => (
-          <ServiceCard key={service.id} onClick={() => handleServiceClick(service)}>
+          <ServiceCard key={service.id} to={`/servicos/${service.fields.slug}`}>
             <ServiceIcon>{getServiceIcon(service.title)}</ServiceIcon>
             <ServiceTitle>{service.title}</ServiceTitle>
             <ServiceDescription>{service.shortDescription}</ServiceDescription>

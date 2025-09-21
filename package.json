@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@types/react-helmet": "^6.1.11",
     "babel-plugin-styled-components": "^2.1.4",
     "framer-motion": "^12.23.16",
     "gatsby": "^5.14.6",
@@ -30,6 +31,7 @@
     "lucide-react": "^0.544.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "styled-components": "^6.1.19"
   },
   "devDependencies": {

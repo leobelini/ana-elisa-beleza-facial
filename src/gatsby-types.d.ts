@@ -2759,6 +2759,13 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
+type ServicePageQueryQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+type ServicePageQueryQuery = { readonly servicesJson: { readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly price: string | null, readonly duration: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null } | null };
+
 type ServicesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2768,6 +2775,11 @@ type TestimonialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type TestimonialsQueryQuery = { readonly allTestimonialsJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly text: string | null, readonly author: string | null, readonly rating: number | null, readonly service: string | null, readonly date: string | null }> } };
+
+type CreatePagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type CreatePagesQueryQuery = { readonly allServicesJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null }> } };
 
 
 }
