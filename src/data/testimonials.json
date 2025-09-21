@@ -1,0 +1,42 @@
+[
+  {
+    "id": "maria-silva",
+    "text": "Fiquei impressionada com o profissionalismo da Ana Elisa. O design de sobrancelhas ficou perfeito e realmente valorizou meu olhar. Além disso, o ambiente é super acolhedor e relaxante. Já sou cliente fiel!",
+    "author": "Maria Silva",
+    "rating": 5,
+    "service": "Design de Sobrancelhas",
+    "date": "2024-08-15"
+  },
+  {
+    "id": "carla-santos",
+    "text": "A limpeza de pele foi incrível! Minha pele ficou muito mais limpa e radiante. A Ana Elisa é muito cuidadosa e atenciosa durante todo o procedimento. Recomendo muito!",
+    "author": "Carla Santos",
+    "rating": 5,
+    "service": "Limpeza de Pele",
+    "date": "2024-08-20"
+  },
+  {
+    "id": "juliana-costa",
+    "text": "Excelente profissional! O dermaplaning deixou minha pele sedosa como nunca. O atendimento é personalizado e ela realmente se preocupa com o resultado. Voltarei sempre!",
+    "author": "Juliana Costa",
+    "rating": 5,
+    "service": "Dermaplaning",
+    "date": "2024-08-25"
+  },
+  {
+    "id": "fernanda-oliveira",
+    "text": "A extensão de cílios ficou perfeita! Muito natural e duradoura. A Ana Elisa tem uma técnica impecável e sempre me deixa muito satisfeita com o resultado.",
+    "author": "Fernanda Oliveira",
+    "rating": 5,
+    "service": "Extensão de Cílios",
+    "date": "2024-09-01"
+  },
+  {
+    "id": "patricia-lima",
+    "text": "Amo fazer meus tratamentos faciais com a Ana Elisa! Ela sempre indica o melhor procedimento para minha pele e os resultados são sempre incríveis. Super recomendo!",
+    "author": "Patrícia Lima",
+    "rating": 5,
+    "service": "Peeling Facial",
+    "date": "2024-09-10"
+  }
+]
