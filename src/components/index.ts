@@ -6,6 +6,7 @@ export { default as Services } from './Services'
 export { default as Testimonials } from './Testimonials'
 export { default as Contact } from './Contact'
 export { default as Footer } from './Footer'
+export { AnimatedSection } from './AnimatedSection'
 
 // Re-exportar tipos úteis
 export type { Service } from './Services'

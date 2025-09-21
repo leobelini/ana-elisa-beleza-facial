@@ -11,6 +11,7 @@ import {
   Testimonials,
   Contact,
   Footer,
+  AnimatedSection,
   type Service
 } from "../components"
 
@@ -39,22 +40,34 @@ const IndexPage: React.FC<PageProps> = () => {
         <Navbar />
 
         {/* Seção Hero/Banner */}
-        <Hero />
+        <AnimatedSection direction="fade" duration={0.8}>
+          <Hero />
+        </AnimatedSection>
 
         {/* Seção Sobre */}
-        <About />
+        <AnimatedSection direction="up" delay={0.2}>
+          <About />
+        </AnimatedSection>
 
         {/* Seção Serviços */}
-        <Services onServiceClick={handleServiceClick} />
+        <AnimatedSection direction="up" delay={0.1}>
+          <Services onServiceClick={handleServiceClick} />
+        </AnimatedSection>
 
         {/* Seção Depoimentos */}
-        <Testimonials />
+        <AnimatedSection direction="left" delay={0.1}>
+          <Testimonials />
+        </AnimatedSection>
 
         {/* Seção Contato/Agendamento */}
-        <Contact />
+        <AnimatedSection direction="up" delay={0.1}>
+          <Contact />
+        </AnimatedSection>
 
         {/* Rodapé */}
-        <Footer />
+        <AnimatedSection direction="fade" delay={0.2}>
+          <Footer />
+        </AnimatedSection>
       </Container>
     </>
   )
