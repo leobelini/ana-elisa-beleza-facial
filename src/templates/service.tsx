@@ -99,29 +99,121 @@ const ServiceDetails = styled.div`
 `
 
 const ServiceGallery = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  background: ${colors.iceWhite};
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   
   @media (max-width: 968px) {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
     margin-top: 30px;
+    height: 400px;
   }
+`
+
+const CarouselContainer = styled.div`
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+`
+
+const CarouselSlide = styled.div<{ isActive: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: ${props => props.isActive ? 1 : 0};
+  transition: opacity 0.5s ease-in-out;
 `
 
 const GalleryImage = styled.img`
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
   cursor: pointer;
+  transition: transform 0.3s ease;
   
   &:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
   }
+`
+
+const CarouselControls = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  pointer-events: none;
+`
+
+const CarouselButton = styled.button`
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: all;
+  color: ${colors.goldMain};
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    background: white;
+    transform: scale(1.1);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+`
+
+const CarouselIndicators = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
+`
+
+const Indicator = styled.button<{ isActive: boolean }>`
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: ${props => props.isActive ? colors.goldMain : colors.graySecondary};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: ${colors.goldMain};
+    transform: scale(1.2);
+  }
+`
+
+const ImageCounter = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
 `
 
 // Modal Components
@@ -211,7 +303,7 @@ const NavigationButton = styled.button<{ direction: 'left' | 'right' }>`
   }
 `
 
-const ImageCounter = styled.div`
+const ModalImageCounter = styled.div`
   position: absolute;
   bottom: -50px;
   left: 50%;
@@ -333,6 +425,9 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
+  // Estado para controle do carousel
+  const [currentSlide, setCurrentSlide] = useState(0)
+  
   // Gerar URL do WhatsApp
   const whatsappMessage = `Olá! Gostaria de agendar o serviço: ${service.title}`
   const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(whatsappMessage)}`
@@ -357,6 +452,23 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
     if (currentImageIndex > 0) {
       setCurrentImageIndex(currentImageIndex - 1)
     }
+  }
+  
+  // Funções do carousel
+  const nextSlide = () => {
+    if (service.images && currentSlide < service.images.length - 1) {
+      setCurrentSlide(currentSlide + 1)
+    }
+  }
+  
+  const prevSlide = () => {
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1)
+    }
+  }
+  
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
   }
   
   // Fechar modal com ESC
@@ -450,18 +562,57 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
           
           {service.images && service.images.length > 0 && (
             <ServiceGallery>
-              {service.images.map((image, index) => (
-                <GalleryImage 
-                  key={index}
-                  src={image} 
-                  alt={`${service.title} - Imagem ${index + 1}`}
-                  onClick={() => openModal(index)}
-                  onError={(e) => {
-                    // Fallback: ocultar imagem se não carregar
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-              ))}
+              <CarouselContainer>
+                {service.images.map((image, index) => (
+                  <CarouselSlide key={index} isActive={index === currentSlide}>
+                    <GalleryImage 
+                      src={image} 
+                      alt={`${service.title} - Imagem ${index + 1}`}
+                      onClick={() => openModal(index)}
+                      onError={(e) => {
+                        // Fallback: ocultar imagem se não carregar
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  </CarouselSlide>
+                ))}
+                
+                {service.images.length > 1 && (
+                  <>
+                    <ImageCounter>
+                      {currentSlide + 1} / {service.images.length}
+                    </ImageCounter>
+                    
+                    <CarouselControls>
+                      <CarouselButton 
+                        onClick={prevSlide}
+                        disabled={currentSlide === 0}
+                      >
+                        <ChevronLeft size={20} />
+                      </CarouselButton>
+                      
+                      <CarouselButton 
+                        onClick={nextSlide}
+                        disabled={currentSlide === service.images.length - 1}
+                      >
+                        <ChevronRight size={20} />
+                      </CarouselButton>
+                    </CarouselControls>
+                  </>
+                )}
+              </CarouselContainer>
+              
+              {service.images.length > 1 && (
+                <CarouselIndicators>
+                  {service.images.map((_, index) => (
+                    <Indicator 
+                      key={index}
+                      isActive={index === currentSlide}
+                      onClick={() => goToSlide(index)}
+                    />
+                  ))}
+                </CarouselIndicators>
+              )}
             </ServiceGallery>
           )}
         </ServiceContent>
@@ -518,9 +669,9 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                       </NavigationButton>
                     )}
                     
-                    <ImageCounter>
+                    <ModalImageCounter>
                       {currentImageIndex + 1} de {service.images.length}
-                    </ImageCounter>
+                    </ModalImageCounter>
                   </>
                 )}
               </>
