@@ -1,0 +1,107 @@
+[
+  {
+    "id": "limpeza-de-pele",
+    "title": "Limpeza de Pele",
+    "shortDescription": "Limpeza profunda para renovar e revitalizar sua pele",
+    "longDescription": "A limpeza de pele é um procedimento essencial para manter a saúde e beleza da sua pele. Realizamos uma análise detalhada do seu tipo de pele e aplicamos técnicas específicas para extrair impurezas, remover células mortas e promover a renovação celular. O tratamento inclui esfoliação, extração de cravos e espinhas, aplicação de máscaras específicas e hidratação profunda.",
+    "price": "R$ 80,00",
+    "duration": "60 minutos",
+    "benefits": [
+      "Remove impurezas e células mortas",
+      "Desobstrui os poros",
+      "Melhora a textura da pele",
+      "Promove renovação celular",
+      "Prepara a pele para outros tratamentos"
+    ],
+    "images": [
+      "/images/services/limpeza-pele-1.jpg",
+      "/images/services/limpeza-pele-2.jpg"
+    ],
+    "category": "facial",
+    "featured": true
+  },
+  {
+    "id": "design-sobrancelhas",
+    "title": "Design de Sobrancelhas",
+    "shortDescription": "Modelagem perfeita que realça seu olhar",
+    "longDescription": "O design de sobrancelhas é uma arte que requer técnica e conhecimento das proporções faciais. Analisamos o formato do seu rosto e criamos o design perfeito que realça seus traços naturais. Utilizamos técnicas de medição e mapeamento para garantir simetria e harmonia, respeitando o crescimento natural dos pelos.",
+    "price": "R$ 45,00",
+    "duration": "45 minutos",
+    "benefits": [
+      "Realça o olhar naturalmente",
+      "Harmoniza os traços faciais",
+      "Resultado duradouro",
+      "Técnica personalizada",
+      "Simetria perfeita"
+    ],
+    "images": [
+      "/images/services/design-sobrancelhas-1.jpg",
+      "/images/services/design-sobrancelhas-2.jpg"
+    ],
+    "category": "sobrancelhas",
+    "featured": true
+  },
+  {
+    "id": "extensao-cilios",
+    "title": "Extensão de Cílios",
+    "shortDescription": "Cílios longos e volumosos para um olhar marcante",
+    "longDescription": "A extensão de cílios é um procedimento que proporciona cílios mais longos, volumosos e curvados de forma natural. Aplicamos fio a fio cílios sintéticos de alta qualidade, criando um efeito natural ou mais dramático conforme sua preferência. O resultado dura de 3 a 4 semanas e dispensa o uso de máscara de cílios no dia a dia.",
+    "price": "R$ 120,00",
+    "duration": "2 horas",
+    "benefits": [
+      "Olhar mais marcante e expressivo",
+      "Dispensa máscara de cílios",
+      "Resultado natural ou dramático",
+      "Longa duração (3-4 semanas)",
+      "Resistente à água"
+    ],
+    "images": [
+      "/images/services/extensao-cilios-1.jpg",
+      "/images/services/extensao-cilios-2.jpg"
+    ],
+    "category": "cilios",
+    "featured": true
+  },
+  {
+    "id": "peeling-facial",
+    "title": "Peeling Facial",
+    "shortDescription": "Renovação celular para uma pele radiante",
+    "longDescription": "O peeling facial é um tratamento que promove a renovação celular através da remoção das camadas superficiais da pele. Utilizamos diferentes tipos de peeling (químico ou físico) de acordo com as necessidades da sua pele. O procedimento estimula a produção de colágeno, melhora a textura, reduz manchas e linhas finas, proporcionando uma pele mais lisa, uniforme e radiante.",
+    "price": "R$ 100,00",
+    "duration": "50 minutos",
+    "benefits": [
+      "Renovação celular profunda",
+      "Reduz manchas e melasma",
+      "Melhora a textura da pele",
+      "Estimula produção de colágeno",
+      "Pele mais lisa e uniforme"
+    ],
+    "images": [
+      "/images/services/peeling-facial-1.jpg",
+      "/images/services/peeling-facial-2.jpg"
+    ],
+    "category": "facial",
+    "featured": false
+  },
+  {
+    "id": "dermaplaning",
+    "title": "Dermaplaning",
+    "shortDescription": "Esfoliação profunda para pele sedosa",
+    "longDescription": "O dermaplaning é uma técnica de esfoliação física que remove suavemente as células mortas da pele e os pelos faciais finos (penugem). Utilizando uma lâmina estéril especial, realizamos movimentos precisos que deixam a pele incrivelmente lisa e radiante. O procedimento é indolor e proporciona uma pele mais receptiva aos produtos de cuidados.",
+    "price": "R$ 90,00",
+    "duration": "40 minutos",
+    "benefits": [
+      "Remove células mortas e penugem",
+      "Pele instantaneamente mais lisa",
+      "Melhora absorção de produtos",
+      "Procedimento indolor",
+      "Resultado imediato"
+    ],
+    "images": [
+      "/images/services/dermaplaning-1.jpg",
+      "/images/services/dermaplaning-2.jpg"
+    ],
+    "category": "facial",
+    "featured": false
+  }
+]

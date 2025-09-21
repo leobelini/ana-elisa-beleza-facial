@@ -1,6 +1,8 @@
 import * as React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import { colors, commonStyles } from "../styles/theme"
+import { ServiceData } from "./ServiceModal"
 
 // Styled Components para Services
 const ServicesContainer = styled.section`
@@ -26,6 +28,7 @@ const ServiceCard = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border: 1px solid rgba(200, 169, 104, 0.1);
+  cursor: pointer;
   
   &:hover {
     transform: translateY(-5px);
@@ -56,6 +59,13 @@ const ServiceTitle = styled.h3`
 const ServiceDescription = styled.p`
   color: ${colors.graySecondary};
   line-height: 1.6;
+  margin-bottom: 20px;
+`
+
+const ServicePrice = styled.div`
+  font-size: 1.1rem;
+  color: ${colors.goldDark};
+  font-weight: 600;
   margin-bottom: 25px;
 `
 
@@ -84,48 +94,52 @@ export interface Service {
 
 interface ServicesProps {
   title?: string
-  services?: Service[]
   id?: string
-  onServiceClick?: (service: Service) => void
+  onServiceClick?: (service: ServiceData) => void
 }
 
-// Dados padrão dos serviços
-const defaultServices: Service[] = [
-  {
-    title: "Limpeza de Pele",
-    description: "Tratamento profundo para remoção de impurezas e renovação celular, deixando sua pele limpa e radiante.",
-    icon: "✨"
-  },
-  {
-    title: "Design de Sobrancelhas",
-    description: "Modelagem personalizada que valoriza o formato do seu rosto e realça o olhar de forma natural.",
-    icon: "👁️"
-  },
-  {
-    title: "Extensão de Cílios",
-    description: "Técnica especializada para alongar e dar volume aos cílios, criando um olhar marcante e sedutor.",
-    icon: "💫"
-  },
-  {
-    title: "Peeling Facial",
-    description: "Renovação celular através de técnicas avançadas para uma pele mais lisa, uniforme e rejuvenescida.",
-    icon: "🌟"
-  },
-  {
-    title: "Dermaplaning",
-    description: "Esfoliação suave que remove células mortas e pelos faciais, proporcionando uma pele sedosa.",
-    icon: "💎"
+// Mapeamento de ícones por categoria/título
+const getServiceIcon = (title: string): string => {
+  const iconMap: { [key: string]: string } = {
+    'Limpeza de Pele': '✨',
+    'Design de Sobrancelhas': '👁️',
+    'Extensão de Cílios': '💫',
+    'Peeling Facial': '🌟',
+    'Dermaplaning': '�'
   }
-]
+  return iconMap[title] || '💅'
+}
+
+// Query GraphQL
+const SERVICES_QUERY = graphql`
+  query ServicesQuery {
+    allServicesJson {
+      nodes {
+        id
+        title
+        shortDescription
+        longDescription
+        price
+        duration
+        benefits
+        images
+        category
+        featured
+      }
+    }
+  }
+`
 
 // Componente Services
 const Services: React.FC<ServicesProps> = ({
   title = "Serviços",
-  services = defaultServices,
   id = "servicos",
   onServiceClick
 }) => {
-  const handleServiceClick = (service: Service) => {
+  const data = useStaticQuery(SERVICES_QUERY)
+  const services: ServiceData[] = data.allServicesJson.nodes
+
+  const handleServiceClick = (service: ServiceData) => {
     if (onServiceClick) {
       onServiceClick(service)
     }
@@ -135,12 +149,13 @@ const Services: React.FC<ServicesProps> = ({
     <ServicesContainer id={id}>
       <SectionTitle>{title}</SectionTitle>
       <ServicesGrid>
-        {services.map((service, index) => (
-          <ServiceCard key={index}>
-            <ServiceIcon>{service.icon}</ServiceIcon>
+        {services.map((service) => (
+          <ServiceCard key={service.id} onClick={() => handleServiceClick(service)}>
+            <ServiceIcon>{getServiceIcon(service.title)}</ServiceIcon>
             <ServiceTitle>{service.title}</ServiceTitle>
-            <ServiceDescription>{service.description}</ServiceDescription>
-            <ServiceButton onClick={() => handleServiceClick(service)}>
+            <ServiceDescription>{service.shortDescription}</ServiceDescription>
+            <ServicePrice>{service.price}</ServicePrice>
+            <ServiceButton>
               Saiba mais
             </ServiceButton>
           </ServiceCard>
