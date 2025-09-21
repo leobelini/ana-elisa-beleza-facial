@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import { colors } from "../styles/theme"
-import { Instagram, MessageCircle } from "lucide-react"
+import { Instagram, MessageCircle, MapPin, Navigation } from "lucide-react"
 
 // Styled Components para Footer
 const FooterContainer = styled.footer`
@@ -14,13 +14,19 @@ const FooterContainer = styled.footer`
 const FooterContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   gap: 40px;
   margin-bottom: 40px;
 `
 
 const FooterSection = styled.div`
+  flex: 1 1 250px;
+  min-width: 300px;
+  text-align: center;
+  
   h3 {
     color: ${colors.goldMain};
     margin-bottom: 20px;
@@ -90,6 +96,60 @@ const Copyright = styled.div`
   font-size: 0.9rem;
 `
 
+const AddressSection = styled.div`
+  text-align: center;
+  
+  h4 {
+    color: ${colors.goldMain};
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  .address-text {
+    color: ${colors.graySecondary};
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+`
+
+const NavigationButtons = styled.div`
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: ${colors.goldMain};
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: ${colors.goldDark};
+      transform: translateY(-2px);
+    }
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+`
+
 // Interfaces
 interface FooterLink {
   label: string
@@ -131,7 +191,6 @@ const defaultSections: FooterSection[] = [
     content: [
       "(14) 99713-9783",
       // "contato@anaelisabeleza.com",
-      "Pongaí, SP"
     ]
   },
   {
@@ -143,6 +202,11 @@ const defaultSections: FooterSection[] = [
     ]
   }
 ]
+
+// Dados do endereço
+const address = {
+  full: "R. Jose Zini, 101, Pongaí - SP, 16660-000",
+}
 
 const defaultSocialLinks: SocialLink[] = [
   {
@@ -163,6 +227,9 @@ const Footer: React.FC<FooterProps> = ({
   socialLinks = defaultSocialLinks,
   copyright = "© 2025 Ana Elisa Beleza Facial. Todos os direitos reservados."
 }) => {
+  // URLs para navegação
+  const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address.full)}`
+
   return (
     <FooterContainer>
       <FooterContent>
@@ -193,6 +260,30 @@ const Footer: React.FC<FooterProps> = ({
             )}
           </FooterSection>
         ))}
+        
+        {/* Seção do Endereço */}
+        <FooterSection>
+          <AddressSection>
+            <h4>
+              <MapPin size={20} />
+              Nosso Endereço
+            </h4>
+            <div className="address-text">
+              {address.full}
+            </div>
+            <NavigationButtons>
+              <a 
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Abrir no Google Maps"
+              >
+                <Navigation size={16} />
+                Google Maps
+              </a>
+            </NavigationButtons>
+          </AddressSection>
+        </FooterSection>
       </FooterContent>
       
       <SocialIcons>
