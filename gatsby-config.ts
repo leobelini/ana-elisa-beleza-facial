@@ -9,7 +9,7 @@ const config: GatsbyConfig = {
     keywords: `estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial, dermaplaning, beleza`,
     image: `/logo.png`,
     twitterUsername: `@anaelisabeleza`,
-    phone: `+55-11-99999-9999`,
+    phone: `+55-14-99713-9783`,
     address: {
       street: `Rua das Flores, 123`,
       city: `São Paulo`,
@@ -24,7 +24,7 @@ const config: GatsbyConfig = {
     ],
     social: {
       instagram: `https://instagram.com/anaelisabelezafacial`,
-      whatsapp: `https://wa.me/5511999999999`
+      whatsapp: `https://wa.me/5514997139783`
     }
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.

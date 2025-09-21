@@ -68,7 +68,7 @@ interface ContactProps {
 const Contact: React.FC<ContactProps> = ({
   title = "Pronta para realçar sua beleza?",
   description = "Agende seu horário e descubra como podemos realçar sua beleza natural",
-  whatsappNumber = "5511999999999",
+  whatsappNumber = "5514997139783",
   whatsappMessage = "Olá! Gostaria de agendar um horário para um tratamento estético.",
   id = "agendamento"
 }) => {

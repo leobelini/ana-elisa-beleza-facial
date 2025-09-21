@@ -104,7 +104,7 @@ export const Head: HeadFC = () => (
         "logo": "https://anaelisabelezafacial.com.br/logo.png",
         "sameAs": [
           "https://instagram.com/anaelisabelezafacial",
-          "https://wa.me/5511999999999"
+          "https://wa.me/5514997139783"
         ],
         "address": {
           "@type": "PostalAddress",
@@ -112,7 +112,7 @@ export const Head: HeadFC = () => (
           "addressLocality": "São Paulo",
           "addressRegion": "SP"
         },
-        "telephone": "+55-11-99999-9999",
+        "telephone": "+55-14-99713-9783",
         "priceRange": "$$",
         "openingHours": [
           "Mo-Fr 09:00-18:00",

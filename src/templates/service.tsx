@@ -546,7 +546,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
 
   // Gerar URL do WhatsApp
   const whatsappMessage = `Olá! Gostaria de agendar o serviço: ${service.title}`;
-  const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/5514997139783?text=${encodeURIComponent(
     whatsappMessage
   )}`;
 
