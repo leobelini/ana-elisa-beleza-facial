@@ -1,5 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
+import { StaticImage } from "gatsby-plugin-image"
 import { colors, commonStyles } from "../styles/theme"
 
 // Styled Components para About
@@ -28,14 +29,27 @@ const ProfileImage = styled.div`
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(200, 169, 104, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 6rem;
-  color: white;
-  margin: 0 auto;
-  box-shadow: 0 10px 30px rgba(200, 169, 104, 0.3);
+  
+  .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 `
 
 const AboutText = styled.div`
@@ -80,7 +94,21 @@ const About: React.FC<AboutProps> = ({
     <AboutContainer id={id}>
       <SectionTitle>{title}</SectionTitle>
       <AboutContent>
-        <ProfileImage>{profileIcon}</ProfileImage>
+        <ProfileImage>
+          <StaticImage
+            src="../images/home/IMG_5396-Enhanced-NR.jpg"
+            alt="Ana Elisa - Esteticista Profissional"
+            placeholder="blurred"
+            layout="constrained"
+            width={300}
+            height={300}
+            objectFit="cover"
+            objectPosition="center"
+            style={{
+              borderRadius: "50%",
+            }}
+          />
+        </ProfileImage>
         <AboutText>
           <h3>{name}</h3>
           {description.map((paragraph, index) => (
