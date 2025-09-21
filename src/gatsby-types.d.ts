@@ -1545,6 +1545,7 @@ type Query_servicesJsonArgs = {
   children: InputMaybe<NodeFilterListInput>;
   complements: InputMaybe<ServicesJsonComplementsFilterListInput>;
   details: InputMaybe<ServicesJsonDetailsFilterListInput>;
+  duration: InputMaybe<StringQueryOperatorInput>;
   featured: InputMaybe<BooleanQueryOperatorInput>;
   fields: InputMaybe<ServicesJsonFieldsFilterInput>;
   id: InputMaybe<StringQueryOperatorInput>;
@@ -1691,6 +1692,7 @@ type ServicesJson = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly complements: Maybe<ReadonlyArray<Maybe<ServicesJsonComplements>>>;
   readonly details: Maybe<ReadonlyArray<Maybe<ServicesJsonDetails>>>;
+  readonly duration: Maybe<Scalars['String']>;
   readonly featured: Maybe<Scalars['Boolean']>;
   readonly fields: Maybe<ServicesJsonFields>;
   readonly id: Scalars['ID'];
@@ -1807,6 +1809,7 @@ type ServicesJsonFieldSelector = {
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly complements: InputMaybe<ServicesJsonComplementsFieldSelector>;
   readonly details: InputMaybe<ServicesJsonDetailsFieldSelector>;
+  readonly duration: InputMaybe<FieldSelectorEnum>;
   readonly featured: InputMaybe<FieldSelectorEnum>;
   readonly fields: InputMaybe<ServicesJsonFieldsFieldSelector>;
   readonly id: InputMaybe<FieldSelectorEnum>;
@@ -1842,6 +1845,7 @@ type ServicesJsonFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly complements: InputMaybe<ServicesJsonComplementsFilterListInput>;
   readonly details: InputMaybe<ServicesJsonDetailsFilterListInput>;
+  readonly duration: InputMaybe<StringQueryOperatorInput>;
   readonly featured: InputMaybe<BooleanQueryOperatorInput>;
   readonly fields: InputMaybe<ServicesJsonFieldsFilterInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
@@ -1906,6 +1910,7 @@ type ServicesJsonSortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly complements: InputMaybe<ServicesJsonComplementsSortInput>;
   readonly details: InputMaybe<ServicesJsonDetailsSortInput>;
+  readonly duration: InputMaybe<SortOrderEnum>;
   readonly featured: InputMaybe<SortOrderEnum>;
   readonly fields: InputMaybe<ServicesJsonFieldsSortInput>;
   readonly id: InputMaybe<SortOrderEnum>;

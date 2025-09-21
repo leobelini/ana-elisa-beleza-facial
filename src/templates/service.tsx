@@ -104,11 +104,7 @@ const ServiceInfo = styled.div`
 `;
 
 const ServiceDetails = styled.div`
-  background: ${colors.iceWhite};
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border-left: 5px solid ${colors.goldMain};
   margin-bottom: 60px;
 
   @media (max-width: 968px) {
@@ -118,9 +114,9 @@ const ServiceDetails = styled.div`
 
 const ServiceGallery = styled.div`
   display: flex;
-  max-height: 90vh;
   flex-direction: column;
   height: 100%;
+  max-height: 600px;
   position: relative;
   background: ${colors.iceWhite};
   border-radius: 20px;
@@ -130,6 +126,7 @@ const ServiceGallery = styled.div`
   @media (max-width: 968px) {
     margin-top: 30px;
     height: 400px;
+    min-height: 400px;
   }
 `;
 
@@ -462,7 +459,6 @@ const VariationsSection = styled.div`
 `;
 
 const ComplementsSection = styled.div`
-  margin-top: 60px;
 
   h3 {
     font-size: 1.8rem;
@@ -699,45 +695,6 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                 </BenefitItem>
               ))}
             </BenefitsList>
-
-            {/* Seção de Variações */}
-            {service.variations && service.variations.length > 0 && (
-              <VariationsSection>
-                <h3>Variações Disponíveis</h3>
-                <OptionsGrid>
-                  {service.variations.map((variation) => (
-                    <OptionCard key={variation.id}>
-                      <OptionHeader>
-                        <OptionName>{variation.name}</OptionName>
-                      </OptionHeader>
-                      <OptionDescription>
-                        {variation.description}
-                      </OptionDescription>
-                    </OptionCard>
-                  ))}
-                </OptionsGrid>
-              </VariationsSection>
-            )}
-
-            {/* Seção de Complementos */}
-            {service.complements && service.complements.length > 0 && (
-              <ComplementsSection>
-                <h3>Complementos Recomendados</h3>
-                <OptionsGrid>
-                  {service.complements.map((complement) => (
-                    <OptionCard key={complement.id}>
-                      <OptionHeader>
-                        <OptionName>{complement.name}</OptionName>
-                      </OptionHeader>
-                      <OptionDescription>
-                        {complement.description}
-                      </OptionDescription>
-                      
-                    </OptionCard>
-                  ))}
-                </OptionsGrid>
-              </ComplementsSection>
-            )}
           </ServiceInfo>
 
           {service.images && service.images.length > 0 && (
@@ -798,12 +755,44 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
         </ServiceContent>
 
         <ServiceDetails>
-          {service.details.map((detail, index) => (
-            <DetailItem key={index}>
-              <span>{detail.key}</span>
-              <span>{detail.value}</span>
-            </DetailItem>
-          ))}
+           {/* Seção de Variações */}
+            {service.variations && service.variations.length > 0 && (
+              <VariationsSection>
+                <h3>Variações Disponíveis</h3>
+                <OptionsGrid>
+                  {service.variations.map((variation) => (
+                    <OptionCard key={variation.id}>
+                      <OptionHeader>
+                        <OptionName>{variation.name}</OptionName>
+                      </OptionHeader>
+                      <OptionDescription>
+                        {variation.description}
+                      </OptionDescription>
+                    </OptionCard>
+                  ))}
+                </OptionsGrid>
+              </VariationsSection>
+            )}
+
+            {/* Seção de Complementos */}
+            {service.complements && service.complements.length > 0 && (
+              <ComplementsSection>
+                <h3>Serviços similares</h3>
+                <OptionsGrid>
+                  {service.complements.map((complement) => (
+                    <OptionCard key={complement.id}>
+                      <OptionHeader>
+                        <OptionName>{complement.name}</OptionName>
+                      </OptionHeader>
+                      <OptionDescription>
+                        {complement.description}
+                      </OptionDescription>
+                      
+                    </OptionCard>
+                  ))}
+                </OptionsGrid>
+              </ComplementsSection>
+            )}
         </ServiceDetails>
 
         <CTASection>
