@@ -91,13 +91,23 @@ const ServiceDetails = styled.div`
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border-left: 5px solid ${colors.goldMain};
+  margin-bottom: 60px;
+  
+  @media (max-width: 968px) {
+    max-width: 100%;
+  }
 `
 
 const ServiceGallery = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  
+  @media (max-width: 968px) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
 `
 
 const GalleryImage = styled.img`
@@ -423,23 +433,6 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
           <ServiceSubtitle>{service.shortDescription}</ServiceSubtitle>
         </ServiceHeader>
         
-        {service.images && service.images.length > 0 && (
-          <ServiceGallery>
-            {service.images.map((image, index) => (
-              <GalleryImage 
-                key={index}
-                src={image} 
-                alt={`${service.title} - Imagem ${index + 1}`}
-                onClick={() => openModal(index)}
-                onError={(e) => {
-                  // Fallback: ocultar imagem se não carregar
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-            ))}
-          </ServiceGallery>
-        )}
-        
         <ServiceContent>
           <ServiceInfo>
             <h2>Sobre o Tratamento</h2>
@@ -455,21 +448,38 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
             </BenefitsList>
           </ServiceInfo>
           
-          <ServiceDetails>
-            <DetailItem>
-              <span>Preço</span>
-              <span>{service.price}</span>
-            </DetailItem>
-            <DetailItem>
-              <span>Duração</span>
-              <span>{service.duration}</span>
-            </DetailItem>
-            <DetailItem>
-              <span>Categoria</span>
-              <span style={{ textTransform: 'capitalize' }}>{service.category}</span>
-            </DetailItem>
-          </ServiceDetails>
+          {service.images && service.images.length > 0 && (
+            <ServiceGallery>
+              {service.images.map((image, index) => (
+                <GalleryImage 
+                  key={index}
+                  src={image} 
+                  alt={`${service.title} - Imagem ${index + 1}`}
+                  onClick={() => openModal(index)}
+                  onError={(e) => {
+                    // Fallback: ocultar imagem se não carregar
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              ))}
+            </ServiceGallery>
+          )}
         </ServiceContent>
+        
+        <ServiceDetails>
+          <DetailItem>
+            <span>Preço</span>
+            <span>{service.price}</span>
+          </DetailItem>
+          <DetailItem>
+            <span>Duração</span>
+            <span>{service.duration}</span>
+          </DetailItem>
+          <DetailItem>
+            <span>Categoria</span>
+            <span style={{ textTransform: 'capitalize' }}>{service.category}</span>
+          </DetailItem>
+        </ServiceDetails>
         
         <CTASection>
           <h3>Pronta para transformar sua beleza?</h3>
