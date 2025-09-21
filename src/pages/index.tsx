@@ -74,5 +74,97 @@ export const Head: HeadFC = () => (
     <meta name="description" content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning." />
     <meta name="keywords" content="estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial, dermaplaning, beleza" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Ana Elisa Cardoso" />
+    
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ana Elisa Beleza Facial - Estética e Cuidados Faciais" />
+    <meta property="og:description" content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning." />
+    <meta property="og:url" content="https://anaelisabelezafacial.com.br" />
+    <meta property="og:site_name" content="Ana Elisa Beleza Facial" />
+    <meta property="og:locale" content="pt_BR" />
+    
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ana Elisa Beleza Facial - Estética e Cuidados Faciais" />
+    <meta name="twitter:description" content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning." />
+    
+    {/* Additional meta tags */}
+    <meta name="theme-color" content="#C8A968" />
+    <meta name="msapplication-TileColor" content="#C8A968" />
+    
+    {/* Schema.org structured data */}
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BeautySalon",
+        "name": "Ana Elisa Beleza Facial",
+        "description": "Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning.",
+        "url": "https://anaelisabelezafacial.com.br",
+        "logo": "https://anaelisabelezafacial.com.br/logo.png",
+        "sameAs": [
+          "https://instagram.com/anaelisabelezafacial",
+          "https://wa.me/5511999999999"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "BR",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP"
+        },
+        "telephone": "+55-11-99999-9999",
+        "priceRange": "$$",
+        "openingHours": [
+          "Mo-Fr 09:00-18:00",
+          "Sa 09:00-16:00"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Serviços de Estética Facial",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Limpeza de Pele",
+                "description": "Limpeza profunda e hidratação facial"
+              }
+            },
+            {
+              "@type": "Offer", 
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Design de Sobrancelhas",
+                "description": "Modelagem e design personalizado de sobrancelhas"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service", 
+                "name": "Extensão de Cílios",
+                "description": "Alongamento e volume para cílios naturais"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Peeling Facial", 
+                "description": "Renovação e rejuvenescimento da pele"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Dermaplaning",
+                "description": "Esfoliação profunda com remoção de pelos faciais"
+              }
+            }
+          ]
+        }
+      })}
+    </script>
   </>
 )

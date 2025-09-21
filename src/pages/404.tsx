@@ -171,5 +171,22 @@ export const Head: HeadFC = () => (
   <>
     <title>Página não encontrada - Ana Elisa Beleza Facial</title>
     <meta name="description" content="Página não encontrada. Volte ao início para descobrir nossos serviços de estética facial." />
+    <meta name="keywords" content="erro 404, página não encontrada, Ana Elisa Beleza Facial, estética facial" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Página não encontrada - Ana Elisa Beleza Facial" />
+    <meta property="og:description" content="Página não encontrada. Volte ao início para descobrir nossos serviços de estética facial." />
+    <meta property="og:url" content="https://anaelisabelezafacial.com.br/404" />
+    <meta property="og:site_name" content="Ana Elisa Beleza Facial" />
+    
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Página não encontrada - Ana Elisa Beleza Facial" />
+    <meta name="twitter:description" content="Página não encontrada. Volte ao início para descobrir nossos serviços de estética facial." />
+    
+    {/* Robots */}
+    <meta name="robots" content="noindex, nofollow" />
   </>
 )
