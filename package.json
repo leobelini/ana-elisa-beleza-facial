@@ -27,6 +27,7 @@
     "gatsby-source-filesystem": "^5.15.0",
     "gatsby-transformer-json": "^5.15.0",
     "gatsby-transformer-sharp": "^5.15.0",
+    "lucide-react": "^0.544.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.19"

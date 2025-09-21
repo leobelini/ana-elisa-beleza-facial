@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import { colors } from "../styles/theme"
+import { Menu, X } from "lucide-react"
 
 // Styled Components para Navbar
 const NavbarContainer = styled.nav`
@@ -190,7 +191,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           ))}
         </NavMenu>
         <MobileMenuButton onClick={toggleMobileMenu}>
-          {isMobileMenuOpen ? '✕' : '☰'}
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </MobileMenuButton>
       </NavContainer>
       <MobileMenu isOpen={isMobileMenuOpen}>

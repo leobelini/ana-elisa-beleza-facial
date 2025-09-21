@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import { colors } from "../styles/theme"
+import { Instagram, MessageCircle } from "lucide-react"
 
 // Styled Components para Footer
 const FooterContainer = styled.footer`
@@ -60,6 +61,7 @@ const SocialIcons = styled.div`
   justify-content: center;
   gap: 20px;
   margin-top: 30px;
+  margin-bottom: 20px;
   
   a {
     display: flex;
@@ -103,7 +105,7 @@ interface FooterSection {
 
 interface SocialLink {
   platform: string
-  icon: string
+  icon: React.ReactElement
   url: string
 }
 
@@ -127,9 +129,9 @@ const defaultSections: FooterSection[] = [
   {
     title: "Contato",
     content: [
-      "📱 (14) 99713-9783",
-      "📧 contato@anaelisabeleza.com",
-      "📍 Pongaí, SP"
+      "(14) 99713-9783",
+      // "contato@anaelisabeleza.com",
+      "Pongaí, SP"
     ]
   },
   {
@@ -145,12 +147,12 @@ const defaultSections: FooterSection[] = [
 const defaultSocialLinks: SocialLink[] = [
   {
     platform: "Instagram",
-    icon: "📷",
+    icon: <Instagram size={24} />,
     url: "https://www.instagram.com/anaelisa.belezafacial/"
   },
   {
     platform: "WhatsApp",
-    icon: "📱",
+    icon: <MessageCircle size={24} />,
     url: "https://wa.me/5514997139783"
   }
 ]
@@ -159,7 +161,7 @@ const defaultSocialLinks: SocialLink[] = [
 const Footer: React.FC<FooterProps> = ({
   sections = defaultSections,
   socialLinks = defaultSocialLinks,
-  copyright = "© 2024 Ana Elisa Beleza Facial. Todos os direitos reservados."
+  copyright = "© 2025 Ana Elisa Beleza Facial. Todos os direitos reservados."
 }) => {
   return (
     <FooterContainer>

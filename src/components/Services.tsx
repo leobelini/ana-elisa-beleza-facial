@@ -3,6 +3,13 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import { colors, commonStyles } from "../styles/theme"
 import { ServiceData } from "./ServiceModal"
+import { 
+  Sparkles, 
+  Eye, 
+  Zap, 
+  RefreshCw, 
+  Scissors 
+} from "lucide-react"
 
 // Styled Components para Services
 const ServicesContainer = styled.section`
@@ -99,15 +106,15 @@ interface ServicesProps {
 }
 
 // Mapeamento de ícones por categoria/título
-const getServiceIcon = (title: string): string => {
-  const iconMap: { [key: string]: string } = {
-    'Limpeza de Pele': '✨',
-    'Design de Sobrancelhas': '👁️',
-    'Extensão de Cílios': '💫',
-    'Peeling Facial': '🌟',
-    'Dermaplaning': '�'
+const getServiceIcon = (title: string): React.ReactElement => {
+  const iconMap: { [key: string]: React.ReactElement } = {
+    'Limpeza de Pele': <Sparkles size={36} />,
+    'Design de Sobrancelhas': <Eye size={36} />,
+    'Extensão de Cílios': <Zap size={36} />,
+    'Peeling Facial': <RefreshCw size={36} />,
+    'Dermaplaning': <Scissors size={36} />
   }
-  return iconMap[title] || '💅'
+  return iconMap[title] || <Sparkles size={36} />
 }
 
 // Query GraphQL
