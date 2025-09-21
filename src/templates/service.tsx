@@ -8,6 +8,11 @@ import { WhatsAppButton } from "../components/ui/WhatsAppButton"
 import { Navbar } from "../components"
 
 // Tipos TypeScript
+interface ServiceDetail {
+  key: string
+  value: string
+}
+
 interface ServicePageData {
   servicesJson: {
     id: string
@@ -20,6 +25,7 @@ interface ServicePageData {
     images: string[]
     category: string
     featured: boolean
+    details: ServiceDetail[]
   }
 }
 
@@ -618,18 +624,30 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
         </ServiceContent>
         
         <ServiceDetails>
-          <DetailItem>
-            <span>Preço</span>
-            <span>{service.price}</span>
-          </DetailItem>
-          <DetailItem>
-            <span>Duração</span>
-            <span>{service.duration}</span>
-          </DetailItem>
-          <DetailItem>
-            <span>Categoria</span>
-            <span style={{ textTransform: 'capitalize' }}>{service.category}</span>
-          </DetailItem>
+          {service.details && service.details.length > 0 ? (
+            service.details.map((detail, index) => (
+              <DetailItem key={index}>
+                <span>{detail.key}</span>
+                <span>{detail.value}</span>
+              </DetailItem>
+            ))
+          ) : (
+            // Fallback para compatibilidade com a estrutura antiga
+            <>
+              <DetailItem>
+                <span>Preço</span>
+                <span>{service.price}</span>
+              </DetailItem>
+              <DetailItem>
+                <span>Duração</span>
+                <span>{service.duration}</span>
+              </DetailItem>
+              <DetailItem>
+                <span>Categoria</span>
+                <span style={{ textTransform: 'capitalize' }}>{service.category}</span>
+              </DetailItem>
+            </>
+          )}
         </ServiceDetails>
         
         <CTASection>
@@ -696,6 +714,10 @@ export const query = graphql`
       images
       category
       featured
+      details {
+        key
+        value
+      }
     }
   }
 `

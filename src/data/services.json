@@ -17,7 +17,25 @@
       "/images/services/limpeza-de-pele-1.jpg"
     ],
     "category": "facial",
-    "featured": true
+    "featured": true,
+    "details": [
+      {
+        "key": "Preço",
+        "value": "R$ 80,00"
+      },
+      {
+        "key": "Duração",
+        "value": "60 minutos"
+      },
+      {
+        "key": "Categoria",
+        "value": "Facial"
+      },
+      {
+        "key": "Ideal para",
+        "value": "Todos os tipos de pele"
+      }
+    ]
   },
   {
     "id": "design-sobrancelhas",
@@ -38,7 +56,25 @@
       "/images/services/design-sobrancelhas-2.jpg"
     ],
     "category": "sobrancelhas",
-    "featured": true
+    "featured": true,
+    "details": [
+      {
+        "key": "Preço",
+        "value": "R$ 45,00"
+      },
+      {
+        "key": "Duração",
+        "value": "45 minutos"
+      },
+      {
+        "key": "Categoria",
+        "value": "Sobrancelhas"
+      },
+      {
+        "key": "Manutenção",
+        "value": "A cada 15-20 dias"
+      }
+    ]
   },
   {
     "id": "extensao-cilios",
@@ -59,7 +95,29 @@
       "/images/services/extensao-cilios-2.jpg"
     ],
     "category": "cilios",
-    "featured": true
+    "featured": true,
+    "details": [
+      {
+        "key": "Preço",
+        "value": "R$ 120,00"
+      },
+      {
+        "key": "Duração",
+        "value": "2 horas"
+      },
+      {
+        "key": "Categoria",
+        "value": "Cílios"
+      },
+      {
+        "key": "Duração do resultado",
+        "value": "3-4 semanas"
+      },
+      {
+        "key": "Manutenção",
+        "value": "Retoque a cada 2-3 semanas"
+      }
+    ]
   },
   {
     "id": "peeling-facial",
@@ -80,7 +138,29 @@
       "/images/services/peeling-facial-2.jpg"
     ],
     "category": "facial",
-    "featured": false
+    "featured": false,
+    "details": [
+      {
+        "key": "Preço",
+        "value": "R$ 100,00"
+      },
+      {
+        "key": "Duração",
+        "value": "50 minutos"
+      },
+      {
+        "key": "Categoria",
+        "value": "Facial"
+      },
+      {
+        "key": "Tipo",
+        "value": "Químico ou Físico"
+      },
+      {
+        "key": "Intervalo recomendado",
+        "value": "A cada 3-4 semanas"
+      }
+    ]
   },
   {
     "id":"nano-blading",
@@ -101,7 +181,33 @@
       "/images/services/nano-blading-2.jpg"
     ],
     "category":"sobrancelhas",
-    "featured": false
+    "featured": false,
+    "details": [
+      {
+        "key": "Preço",
+        "value": "R$ 350,00"
+      },
+      {
+        "key": "Duração",
+        "value": "2 horas"
+      },
+      {
+        "key": "Categoria",
+        "value": "Sobrancelhas"
+      },
+      {
+        "key": "Técnica",
+        "value": "Micropigmentação manual"
+      },
+      {
+        "key": "Duração do resultado",
+        "value": "Até 1 ano"
+      },
+      {
+        "key": "Retoque",
+        "value": "Após 30-45 dias"
+      }
+    ]
   },
   {
     "id":"lash-lift",
@@ -122,7 +228,29 @@
       "/images/services/lash-lift-2.jpg"
     ],
     "category":"cilios",
-    "featured": false
+    "featured": false,
+    "details": [
+      {
+        "key": "Preço",
+        "value": "R$ 150,00"
+      },
+      {
+        "key": "Duração",
+        "value": "1 hora"
+      },
+      {
+        "key": "Categoria",
+        "value": "Cílios"
+      },
+      {
+        "key": "Duração do resultado",
+        "value": "6 a 8 semanas"
+      },
+      {
+        "key": "Tipo de procedimento",
+        "value": "Químico + Hidratação"
+      }
+    ]
   },
   {
     "id":"hidra-gloss",
@@ -143,7 +271,29 @@
       "/images/services/hidra-gloss-2.jpg"
     ],
     "category":"facial",
-    "featured": false
+    "featured": false,
+    "details": [
+      {
+        "key": "Preço",
+        "value": "R$ 120,00"
+      },
+      {
+        "key": "Duração",
+        "value": "1 hora"
+      },
+      {
+        "key": "Categoria",
+        "value": "Facial"
+      },
+      {
+        "key": "Ideal para",
+        "value": "Peles desidratadas e opacas"
+      },
+      {
+        "key": "Efeito",
+        "value": "Glossy e radiante"
+      }
+    ]
   },
   {
     "id":"nanolips",
@@ -164,6 +314,32 @@
       "/images/services/nanolips-2.jpg"
     ],
     "category":"facial",
-    "featured": false
+    "featured": false,
+    "details": [
+      {
+        "key": "Preço",
+        "value": "R$ 400,00"
+      },
+      {
+        "key": "Duração",
+        "value": "1 hora"
+      },
+      {
+        "key": "Categoria",
+        "value": "Facial"
+      },
+      {
+        "key": "Técnica",
+        "value": "Preenchimento com ácido hialurônico"
+      },
+      {
+        "key": "Duração do resultado",
+        "value": "6 a 12 meses"
+      },
+      {
+        "key": "Tipo de agulha",
+        "value": "Ultrafina (conforto máximo)"
+      }
+    ]
   }
 ]
