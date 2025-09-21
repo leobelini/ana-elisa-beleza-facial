@@ -98,6 +98,7 @@ const Logo = styled.h1`
   color: ${colors.goldMain};
   margin-bottom: 20px;
   letter-spacing: 2px;
+  animation: fadeInUp 1s ease-out both;
   
   @media (max-width: 768px) {
     font-size: 3rem;
@@ -110,6 +111,22 @@ const Tagline = styled.h2`
   color: ${colors.blackMain};
   margin-bottom: 40px;
   max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  position: relative;
+  animation: fadeInUp 1s ease-out 0.3s both;
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   
   @media (max-width: 768px) {
     font-size: 1.2rem;
@@ -118,6 +135,7 @@ const Tagline = styled.h2`
 
 const CTAButton = styled.a`
   ${commonStyles.button}
+  animation: fadeInUp 1s ease-out 0.6s both;
 `
 
 // Interfaces
@@ -131,7 +149,7 @@ interface HeroProps {
 
 // Componente Hero
 const Hero: React.FC<HeroProps> = ({
-  title = "Ana Elisa Beleza Facial",
+  title = "Ana Elisa Cardoso Beleza Facial",
   tagline = "🦋 Beleza autêntica, a arte de realçar sua essência.",
   ctaText = "Agende seu horário",
   ctaLink = "#agendamento",
