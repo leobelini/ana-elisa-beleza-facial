@@ -50,6 +50,7 @@ export const GlobalStyle = createGlobalStyle`
   /* Smooth scroll para navegação âncora */
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Compensa a navbar fixa */
   }
 
   /* Estilo para foco acessível */
