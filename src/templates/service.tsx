@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { graphql, PageProps } from "gatsby";
 import styled from "styled-components";
-import { colors, commonStyles } from "../styles/theme";
+import { colors } from "../styles/theme";
 import { Helmet } from "react-helmet";
 import { MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { WhatsAppButton } from "../components/ui/WhatsAppButton";
 import { Navbar } from "../components";
+import { 
+  COMPANY_INFO, 
+  MESSAGES, 
+  generateServiceWhatsAppUrl, 
+  generatePageTitle, 
+  generateServiceUrl} from "../constants";
 
 interface ServiceVariation {
   id: string;
@@ -545,10 +551,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Gerar URL do WhatsApp
-  const whatsappMessage = `Olá! Gostaria de agendar o serviço: ${service.title}`;
-  const whatsappUrl = `https://wa.me/5514997139783?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+  const whatsappUrl = generateServiceWhatsAppUrl(service.title);
 
   // Funções do modal
   const openModal = (index: number) => {
@@ -615,7 +618,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
   return (
     <>
       <Helmet>
-        <title>{service.title} - Ana Elisa Beleza Facial</title>
+        <title>{generatePageTitle(service.title)}</title>
         <meta name="description" content={service.shortDescription} />
         <meta
           name="keywords"
@@ -628,19 +631,19 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
-          content={`${service.title} - Ana Elisa Beleza Facial`}
+          content={generatePageTitle(service.title)}
         />
         <meta property="og:description" content={service.shortDescription} />
         <meta
           property="og:url"
-          content={`https://anaelisabelezafacial.com.br/servicos/${service.id}`}
+          content={generateServiceUrl(service.id)}
         />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content={`${service.title} - Ana Elisa Beleza Facial`}
+          content={generatePageTitle(service.title)}
         />
         <meta name="twitter:description" content={service.shortDescription} />
 
@@ -653,8 +656,8 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
             description: service.shortDescription,
             provider: {
               "@type": "Organization",
-              name: "Ana Elisa Beleza Facial",
-              url: "https://anaelisabelezafacial.com.br",
+              name: COMPANY_INFO.name,
+              url: COMPANY_INFO.siteUrl,
             },
             category: service.category,
             offers: {
@@ -800,7 +803,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
             rel="noopener noreferrer"
           >
             <MessageCircle size={20} />
-            Agendar pelo WhatsApp
+            {MESSAGES.cta.scheduleWhatsApp}
           </WhatsAppButton>
         </CTASection>
 

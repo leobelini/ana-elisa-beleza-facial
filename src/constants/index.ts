@@ -1,0 +1,120 @@
+// Constantes centralizadas da aplicação Ana Elisa Beleza Facial
+
+// Informações da empresa
+export const COMPANY_INFO = {
+  name: "Ana Elisa Beleza Facial",
+  shortName: "Ana Elisa",
+  author: "Ana Elisa Cardoso",
+  siteUrl: "https://anaelisabelezafacial.com.br",
+  description: "Estética facial especializada em cuidados personalizados e tratamentos de beleza para realçar sua essência natural",
+  tagline: "Beleza e cuidado que realçam sua essência",
+  logoUrl: "https://anaelisabelezafacial.com.br/logo.png",
+  keywords: "estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial, dermaplaning, beleza, cuidados faciais, Ana Elisa"
+} as const;
+
+// Informações de contato
+export const CONTACT_INFO = {
+  whatsappNumber: "5514997139783",
+  whatsappUrl: "https://wa.me/5514997139783",
+  instagram: "@anaelisabelezafacial",
+  instagramUrl: "https://instagram.com/anaelisabelezafacial"
+} as const;
+
+// Mensagens padrão
+export const MESSAGES = {
+  whatsapp: {
+    default: "Olá! Gostaria de agendar um horário para um tratamento estético.",
+    service: (serviceName: string) => `Olá! Gostaria de agendar o serviço: ${serviceName}`,
+    contact: "Olá! Gostaria de mais informações sobre os tratamentos."
+  },
+  cta: {
+    scheduleWhatsApp: "Agendar pelo WhatsApp",
+    schedule: "Agende seu horário",
+    learnMore: "Saiba mais",
+    backHome: "Voltar ao início",
+    viewServices: "Ver serviços"
+  },
+  errors: {
+    pageNotFound: "Ops! Parece que você se perdeu em nossa jornada de beleza.",
+    pageNotFoundSubtitle: "A página que você está procurando não existe, mas temos muitas outras opções incríveis para você descobrir!"
+  }
+} as const;
+
+// Metadados e SEO
+export const SEO_DEFAULTS = {
+  title: `${COMPANY_INFO.name} - Estética e Cuidados Faciais`,
+  description: COMPANY_INFO.description,
+  keywords: COMPANY_INFO.keywords,
+  image: `${COMPANY_INFO.siteUrl}/og-image.jpg`,
+  type: "website",
+  locale: "pt_BR",
+  copyright: `© 2025 ${COMPANY_INFO.name}. Todos os direitos reservados.`
+} as const;
+
+// Dados estruturados JSON-LD
+export const STRUCTURED_DATA = {
+  organization: {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: COMPANY_INFO.name,
+    description: COMPANY_INFO.description,
+    url: COMPANY_INFO.siteUrl,
+    logo: COMPANY_INFO.logoUrl,
+    sameAs: [
+      CONTACT_INFO.instagramUrl,
+      CONTACT_INFO.whatsappUrl
+    ]
+  },
+  localBusiness: {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    name: COMPANY_INFO.name,
+    description: COMPANY_INFO.description,
+    url: COMPANY_INFO.siteUrl,
+    logo: COMPANY_INFO.logoUrl,
+    priceRange: "$$",
+    paymentAccepted: ["cash", "credit card", "debit card", "pix"],
+    currenciesAccepted: "BRL"
+  }
+} as const;
+
+// URLs comuns
+export const URLS = {
+  home: "/",
+  services: "/servicos",
+  about: "/#sobre",
+  contact: "/#contato",
+  testimonials: "/#depoimentos",
+  notFound: "/404"
+} as const;
+
+// Redes sociais
+export const SOCIAL_MEDIA = [
+  {
+    platform: "Instagram",
+    icon: "📷",
+    url: CONTACT_INFO.instagramUrl
+  },
+  {
+    platform: "WhatsApp",
+    icon: "💬",
+    url: CONTACT_INFO.whatsappUrl
+  }
+] as const;
+
+// Funções utilitárias
+export const generateWhatsAppUrl = (message: string = MESSAGES.whatsapp.default): string => {
+  return `${CONTACT_INFO.whatsappUrl}?text=${encodeURIComponent(message)}`;
+};
+
+export const generateServiceWhatsAppUrl = (serviceName: string): string => {
+  return generateWhatsAppUrl(MESSAGES.whatsapp.service(serviceName));
+};
+
+export const generatePageTitle = (pageTitle?: string): string => {
+  return pageTitle ? `${pageTitle} - ${COMPANY_INFO.name}` : SEO_DEFAULTS.title;
+};
+
+export const generateServiceUrl = (serviceId: string): string => {
+  return `${COMPANY_INFO.siteUrl}/servicos/${serviceId}`;
+};

@@ -2,6 +2,7 @@ import * as React from "react"
 import { Link, HeadFC, PageProps } from "gatsby"
 import styled from "styled-components"
 import { colors, commonStyles } from "../styles/theme"
+import { COMPANY_INFO, MESSAGES, URLS, generatePageTitle } from "../constants"
 
 // Styled Components
 const NotFoundContainer = styled.main`
@@ -138,17 +139,16 @@ const NotFoundPage: React.FC<PageProps> = () => {
       <ErrorNumber>404</ErrorNumber>
       <ErrorTitle>Página não encontrada</ErrorTitle>
       <ErrorMessage>
-        Ops! Parece que você se perdeu em nossa jornada de beleza. 
-        A página que você está procurando não existe ou foi movida para outro local.
-        Que tal explorar nossos serviços de estética facial?
+        {MESSAGES.errors.pageNotFound}
+        {MESSAGES.errors.pageNotFoundSubtitle}
       </ErrorMessage>
       
       <ActionContainer>
-        <PrimaryButton to="/">
-          Voltar ao Início
+        <PrimaryButton to={URLS.home}>
+          {MESSAGES.cta.backHome}
         </PrimaryButton>
         <SecondaryButton to="/#servicos">
-          Ver Serviços
+          {MESSAGES.cta.viewServices}
         </SecondaryButton>
       </ActionContainer>
       
@@ -169,21 +169,21 @@ export default NotFoundPage
 
 export const Head: HeadFC = () => (
   <>
-    <title>Página não encontrada - Ana Elisa Beleza Facial</title>
+    <title>{generatePageTitle("Página não encontrada")}</title>
     <meta name="description" content="Página não encontrada. Volte ao início para descobrir nossos serviços de estética facial." />
-    <meta name="keywords" content="erro 404, página não encontrada, Ana Elisa Beleza Facial, estética facial" />
+    <meta name="keywords" content={`erro 404, página não encontrada, ${COMPANY_INFO.name}, estética facial`} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     {/* Open Graph / Facebook */}
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Página não encontrada - Ana Elisa Beleza Facial" />
+    <meta property="og:title" content={generatePageTitle("Página não encontrada")} />
     <meta property="og:description" content="Página não encontrada. Volte ao início para descobrir nossos serviços de estética facial." />
-    <meta property="og:url" content="https://anaelisabelezafacial.com.br/404" />
-    <meta property="og:site_name" content="Ana Elisa Beleza Facial" />
+    <meta property="og:url" content={`${COMPANY_INFO.siteUrl}/404`} />
+    <meta property="og:site_name" content={COMPANY_INFO.name} />
     
     {/* Twitter */}
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Página não encontrada - Ana Elisa Beleza Facial" />
+    <meta name="twitter:title" content={generatePageTitle("Página não encontrada")} />
     <meta name="twitter:description" content="Página não encontrada. Volte ao início para descobrir nossos serviços de estética facial." />
     
     {/* Robots */}

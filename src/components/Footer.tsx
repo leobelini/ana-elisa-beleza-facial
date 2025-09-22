@@ -2,6 +2,7 @@ import * as React from "react"
 import styled from "styled-components"
 import { colors } from "../styles/theme"
 import { Instagram, MessageCircle, MapPin, Navigation } from "lucide-react"
+import { SOCIAL_MEDIA, SEO_DEFAULTS, CONTACT_INFO } from "../constants"
 
 // Styled Components para Footer
 const FooterContainer = styled.footer`
@@ -212,12 +213,12 @@ const defaultSocialLinks: SocialLink[] = [
   {
     platform: "Instagram",
     icon: <Instagram size={24} />,
-    url: "https://www.instagram.com/anaelisa.belezafacial/"
+    url: CONTACT_INFO.instagramUrl
   },
   {
     platform: "WhatsApp",
     icon: <MessageCircle size={24} />,
-    url: "https://wa.me/5514997139783"
+    url: CONTACT_INFO.whatsappUrl
   }
 ]
 
@@ -225,7 +226,7 @@ const defaultSocialLinks: SocialLink[] = [
 const Footer: React.FC<FooterProps> = ({
   sections = defaultSections,
   socialLinks = defaultSocialLinks,
-  copyright = "© 2025 Ana Elisa Beleza Facial. Todos os direitos reservados."
+  copyright = SEO_DEFAULTS.copyright
 }) => {
   // URLs para navegação
   const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address.full)}`

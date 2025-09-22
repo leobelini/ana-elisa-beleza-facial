@@ -1,12 +1,13 @@
 import type { GatsbyConfig } from "gatsby";
+import { COMPANY_INFO, CONTACT_INFO, SEO_DEFAULTS } from "./src/constants";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Ana Elisa Beleza Facial`,
-    description: `Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning.`,
-    author: `Ana Elisa Cardoso`,
-    siteUrl: `https://anaelisabelezafacial.com.br`,
-    keywords: `estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial, dermaplaning, beleza`,
+    title: COMPANY_INFO.name,
+    description: COMPANY_INFO.description,
+    author: COMPANY_INFO.author,
+    siteUrl: COMPANY_INFO.siteUrl,
+    keywords: COMPANY_INFO.keywords,
     image: `/logo.png`,
     twitterUsername: `@anaelisabeleza`,
     phone: `+55-14-99713-9783`,
@@ -23,8 +24,8 @@ const config: GatsbyConfig = {
       `Domingo: Fechado`
     ],
     social: {
-      instagram: `https://instagram.com/anaelisabelezafacial`,
-      whatsapp: `https://wa.me/5514997139783`
+      instagram: CONTACT_INFO.instagramUrl,
+      whatsapp: CONTACT_INFO.whatsappUrl
     }
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -40,9 +41,9 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `Ana Elisa Beleza Facial`,
-        short_name: `Ana Elisa`,
-        description: `Beleza e cuidado que realçam sua essência`,
+        name: COMPANY_INFO.name,
+        short_name: COMPANY_INFO.shortName,
+        description: COMPANY_INFO.tagline,
         start_url: `/`,
         background_color: `#FAF8F6`,
         theme_color: `#C8A968`,
