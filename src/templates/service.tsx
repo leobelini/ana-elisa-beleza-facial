@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { colors } from "../styles/theme";
 import { Helmet } from "react-helmet";
 import { MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { WhatsAppButton } from "../components/ui/WhatsAppButton";
+import { Button } from "../components/ui/Button";
 import { Navbar } from "../components";
 import { 
   COMPANY_INFO, 
@@ -797,14 +797,15 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
             Agende seu horário agora mesmo e descubra o que nosso tratamento
             pode fazer por você.
           </p>
-          <WhatsAppButton
+          <Button
             href={whatsappUrl}
+            variant="whatsapp"
             target="_blank"
             rel="noopener noreferrer"
           >
             <MessageCircle size={20} />
             {MESSAGES.cta.scheduleWhatsApp}
-          </WhatsAppButton>
+          </Button>
         </CTASection>
 
         {/* Modal de Imagem */}

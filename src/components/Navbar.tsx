@@ -194,6 +194,8 @@ const Navbar: React.FC = () => {
       const element = document.querySelector(href)
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' })
+        // Atualiza a URL sem recarregar a página
+        window.history.pushState(null, '', href)
       }
     } else {
       // Se estamos em outra página, navega para a home com a âncora

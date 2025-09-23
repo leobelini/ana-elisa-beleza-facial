@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import { motion } from "framer-motion"
 import { colors, commonStyles } from "../styles/theme"
+import { Button } from "./ui/Button"
 
 // Styled Components para Hero
 const HeroContainer = styled.header`
@@ -133,10 +134,6 @@ const Tagline = styled(motion.h2)`
   }
 `
 
-const CTAButton = styled(motion.a)`
-  ${commonStyles.button}
-`
-
 // Variantes de animação
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -163,7 +160,7 @@ const itemVariants = {
 // Componente Hero
 const Hero: React.FC = () => {
   return (
-    <HeroContainer>
+    <HeroContainer id="home">
       <HeroContent>
         <TextContent
           variants={containerVariants}
@@ -182,18 +179,13 @@ const Hero: React.FC = () => {
           >
             🦋 Beleza autêntica, a arte de realçar sua essência.
           </Tagline>
-          <CTAButton 
+          <Button 
             href="#agendamento"
-            variants={itemVariants}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            whileHover={{ 
-              scale: 1.05,
-              transition: { duration: 0.2 }
-            }}
-            whileTap={{ scale: 0.95 }}
+            variant="primary"
+            style={{ fontSize: "1.1rem", padding: "14px 36px" }}
           >
             Agende seu horário
-          </CTAButton>
+          </Button>
         </TextContent>
         <ImageContainer
           initial={{ opacity: 0, scale: 0.8 }}

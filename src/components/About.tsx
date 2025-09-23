@@ -71,7 +71,7 @@ const AboutText = styled.div`
 
 const About = () => {
   return (
-    <AboutContainer>
+    <AboutContainer id="sobre">
       <SectionTitle>Sobre</SectionTitle>
       <AboutContent>
         <ProfileImage>

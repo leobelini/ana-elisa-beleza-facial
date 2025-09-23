@@ -1,8 +1,9 @@
 import * as React from "react"
 import { Link, HeadFC, PageProps } from "gatsby"
 import styled from "styled-components"
-import { colors, commonStyles } from "../styles/theme"
+import { colors } from "../styles/theme"
 import { COMPANY_INFO, MESSAGES, URLS, generatePageTitle } from "../constants"
+import { Button } from "../components/ui/Button"
 
 // Styled Components
 const NotFoundContainer = styled.main`
@@ -71,33 +72,6 @@ const ActionContainer = styled.div`
   }
 `
 
-const PrimaryButton = styled(Link)`
-  ${commonStyles.button}
-  background: ${colors.goldMain};
-  color: white;
-  text-decoration: none;
-  border: 2px solid ${colors.goldMain};
-  
-  &:hover {
-    background: ${colors.goldDark};
-    border-color: ${colors.goldDark};
-    transform: translateY(-2px);
-  }
-`
-
-const SecondaryButton = styled(Link)`
-  ${commonStyles.button}
-  background: transparent;
-  color: ${colors.goldMain};
-  text-decoration: none;
-  border: 2px solid ${colors.goldMain};
-  
-  &:hover {
-    background: ${colors.goldMain};
-    color: white;
-    transform: translateY(-2px);
-  }
-`
 
 const ServicesList = styled.div`
   margin-top: 40px;
@@ -144,12 +118,12 @@ const NotFoundPage: React.FC<PageProps> = () => {
       </ErrorMessage>
       
       <ActionContainer>
-        <PrimaryButton to={URLS.home}>
+        <Button asLink variant="primary" to={URLS.home}>
           {MESSAGES.cta.backHome}
-        </PrimaryButton>
-        <SecondaryButton to="/#servicos">
+        </Button>
+        <Button asLink variant="secondary" to="/#servicos">
           {MESSAGES.cta.viewServices}
-        </SecondaryButton>
+        </Button>
       </ActionContainer>
       
       <ServicesList>

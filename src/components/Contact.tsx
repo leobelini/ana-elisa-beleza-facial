@@ -2,7 +2,7 @@ import * as React from "react"
 import styled from "styled-components"
 import { colors } from "../styles/theme"
 import { MessageCircle } from "lucide-react"
-import { WhatsAppButton } from "./ui/WhatsAppButton"
+import { Button } from "./ui/Button"
 import { MESSAGES, generateWhatsAppUrl } from "../constants"
 
 // Styled Components para Contact
@@ -54,18 +54,19 @@ const Contact: React.FC = () => {
   const whatsappUrl = generateWhatsAppUrl(MESSAGES.whatsapp.default)
 
   return (
-    <ContactContainer>
+    <ContactContainer id="agendamento">
       <ContactTitle>Pronta para realçar sua beleza?</ContactTitle>
       <ContactText>Agende seu horário e descubra como podemos realçar sua beleza natural</ContactText>
       <ContactButtonsContainer>
-        <WhatsAppButton 
+        <Button 
           href={whatsappUrl}
+          variant="whatsapp"
           target="_blank"
           rel="noopener noreferrer"
         >
           <MessageCircle size={20} />
           {MESSAGES.cta.scheduleWhatsApp}
-        </WhatsAppButton>
+        </Button>
       </ContactButtonsContainer>
     </ContactContainer>
   )

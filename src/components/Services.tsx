@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import styled from "styled-components"
 import { colors, commonStyles } from "../styles/theme"
+import { Button } from "./ui/Button"
 
 // Tipo para dados dos serviços
 interface ServiceData {
@@ -96,21 +97,7 @@ const ServicePrice = styled.div`
   margin-bottom: 25px;
 `
 
-const ServiceButton = styled.button`
-  background: transparent;
-  border: 2px solid ${colors.goldMain};
-  color: ${colors.goldMain};
-  padding: 10px 25px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: ${colors.goldMain};
-    color: white;
-  }
-`
+// Removido: ServiceButton
 
 // Interfaces
 export interface Service {
@@ -147,7 +134,7 @@ const Services: React.FC = () => {
   const services: ServiceData[] = data.allServicesJson.nodes
 
   return (
-    <ServicesContainer>
+    <ServicesContainer id="servicos">
       <SectionTitle>Serviços</SectionTitle>
       <ServicesGrid>
         {services.map((service) => (
@@ -165,9 +152,9 @@ const Services: React.FC = () => {
             <ServiceContent>
               <ServiceTitle>{service.title}</ServiceTitle>
               <ServiceDescription>{service.shortDescription}</ServiceDescription>
-              <ServiceButton>
+              <Button asLink variant="secondary" to={`/servicos/${service.fields.slug}`} style={{ width: "100%", marginTop: 10 }}>
                 Saiba mais
-              </ServiceButton>
+              </Button>
             </ServiceContent>
           </ServiceCard>
         ))}

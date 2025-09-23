@@ -195,7 +195,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({
   }
 
   return (
-    <TestimonialsContainer>
+    <TestimonialsContainer id="depoimentos">
       <TestimonialsSection>
         <SectionTitle>Depoimentos</SectionTitle>
         <TestimonialsCarousel>
