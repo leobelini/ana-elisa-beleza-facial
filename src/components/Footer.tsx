@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { colors } from "../styles/theme"
 import { Instagram, MapPin, Navigation, PhoneCall } from "lucide-react"
 import { SEO_DEFAULTS, CONTACT_INFO, PHONE_NUMBER_FORMATTED } from "../constants"
+import { H3, P } from "./ui/Typography"
 
 // Styled Components para Footer
 const FooterContainer = styled.footer`
@@ -28,12 +29,7 @@ const FooterSection = styled.div`
   min-width: 300px;
   text-align: center;
   
-  h3 {
-    color: ${colors.goldMain};
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-  }
-  
+  // h3 removido, usar Title3
   ul {
     list-style: none;
     padding: 0;
@@ -53,21 +49,7 @@ const FooterSection = styled.div`
     }
   }
   
-  p {
-    color: ${colors.graySecondary};
-    margin-bottom: 10px;
-
-    a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 4px;
-    }
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+  // p removido, usar Paragraph
 `
 
 const Copyright = styled.div`
@@ -80,21 +62,9 @@ const Copyright = styled.div`
 const AddressSection = styled.div`
   text-align: center;
   
-  h4 {
-    color: ${colors.goldMain};
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: center;
-  }
-  
+  // h4 removido, usar Title3
   .address-text {
-    color: ${colors.graySecondary};
-    margin-bottom: 15px;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    // será Paragraph
     text-align: center;
   }
 `
@@ -182,7 +152,7 @@ const Footer: React.FC = () => {
       <FooterContent>
         {defaultSections.map((section, index) => (
           <FooterSection key={index}>
-            <h3>{section.title}</h3>
+            <H3 as="h3" style={{ marginBottom: 20 }}>{section.title}</H3>
             {section.links && (
               <ul>
                 {section.links.map((link, linkIndex) => (
@@ -201,7 +171,7 @@ const Footer: React.FC = () => {
             {section.content && (
               <div>
                 {section.content.map((item, itemIndex) => (
-                  <p key={itemIndex}>{item}</p>
+                  <P as="div" key={itemIndex} style={{ marginBottom: 10 }}>{item}</P>
                 ))}
               </div>
             )}
@@ -211,13 +181,13 @@ const Footer: React.FC = () => {
         {/* Seção do Endereço */}
         <FooterSection>
           <AddressSection>
-            <h4>
+            <H3 as="h4" style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center', marginBottom: 15 }}>
               <MapPin size={20} />
               Nosso Endereço
-            </h4>
-            <div className="address-text">
+            </H3>
+            <P as="div" className="address-text" style={{ color: colors.graySecondary, marginBottom: 15, fontSize: '0.95rem', lineHeight: 1.5 }}>
               {address}
-            </div>
+            </P>
             <NavigationButtons>
               <a 
                 href={googleMapsUrl}

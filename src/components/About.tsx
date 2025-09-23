@@ -2,15 +2,14 @@ import * as React from "react"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import { colors, commonStyles } from "../styles/theme"
+import { H2, H3, P } from "./ui/Typography"
 
 // Styled Components para About
 const AboutContainer = styled.section`
   ${commonStyles.section}
 `
 
-const SectionTitle = styled.h2`
-  ${commonStyles.sectionTitle}
-`
+// SectionTitle removido, usar Title2
 
 const AboutContent = styled.div`
   display: grid;
@@ -52,27 +51,12 @@ const ProfileImage = styled.div`
   }
 `
 
-const AboutText = styled.div`
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: ${colors.blackMain};
-  
-  h3 {
-    color: ${colors.goldMain};
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-  }
-  
-  p {
-    margin-bottom: 20px;
-    color: ${colors.graySecondary};
-  }
-`
+const AboutText = styled.div``
 
 const About = () => {
   return (
     <AboutContainer id="sobre">
-      <SectionTitle>Sobre</SectionTitle>
+  <H2 as="h2">Sobre</H2>
       <AboutContent>
         <ProfileImage>
           <StaticImage
@@ -90,17 +74,16 @@ const About = () => {
           />
         </ProfileImage>
         <AboutText>
-          <h3>Ana Elisa Cardoso - Esteticista Profissional</h3>
-          <p>
-              Com mais de 7 anos de experiência na área da estética, sou Bacharel em Estética (formanda em 2018) e apaixonada por cuidar e elevar a autoestima desde muito jovem. Minha missão sempre foi oferecer o que há de melhor e mais atual no universo da beleza, unindo técnica, delicadeza e resultados que encantam.
-
-          </p>
-          <p>
+          <H3 as="h3">Ana Elisa Cardoso - Esteticista Profissional</H3>
+          <P>
+            Com mais de 7 anos de experiência na área da estética, sou Bacharel em Estética (formanda em 2018) e apaixonada por cuidar e elevar a autoestima desde muito jovem. Minha missão sempre foi oferecer o que há de melhor e mais atual no universo da beleza, unindo técnica, delicadeza e resultados que encantam.
+          </P>
+          <P>
             Em 2020, encontrei na extensão de cílios minha grande especialidade. Desde então, me dedico a aperfeiçoar cada detalhe para entregar não apenas variedade de modelos, mas também uma durabilidade incrível e um acabamento que valoriza a beleza natural de cada cliente.
-          </p>
-          <p>
+          </P>
+          <P>
             Será um prazer cuidar de você, proporcionando um atendimento exclusivo e serviços que realçam sua beleza com um toque elegante e natural.
-          </p>
+          </P>
         </AboutText>
       </AboutContent>
     </AboutContainer>

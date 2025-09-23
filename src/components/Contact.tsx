@@ -4,6 +4,7 @@ import { colors } from "../styles/theme"
 import { MessageCircle } from "lucide-react"
 import { Button } from "./ui/Button"
 import { MESSAGES, generateWhatsAppUrl } from "../constants"
+import { H2, P } from "./ui/Typography"
 
 // Styled Components para Contact
 const ContactContainer = styled.section`
@@ -13,20 +14,7 @@ const ContactContainer = styled.section`
   color: white;
 `
 
-const ContactTitle = styled.h2`
-  font-size: 2.5rem;
-  font-weight: 300;
-  margin-bottom: 30px;
-`
-
-const ContactText = styled.p`
-  font-size: 1.2rem;
-  margin-bottom: 40px;
-  opacity: 0.9;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-`
+// ContactTitle e ContactText removidos, usar Typography
 
 const ContactButtonsContainer = styled.div`
   display: flex;
@@ -55,8 +43,10 @@ const Contact: React.FC = () => {
 
   return (
     <ContactContainer id="agendamento">
-      <ContactTitle>Pronta para realçar sua beleza?</ContactTitle>
-      <ContactText>Agende seu horário e descubra como podemos realçar sua beleza natural</ContactText>
+      <H2 as="h2" style={{ color: 'white', fontWeight: 300, marginBottom: 30 }}>Pronta para realçar sua beleza?</H2>
+      <P as="p" style={{ color: 'white', opacity: 0.9, marginBottom: 40, maxWidth: 600, marginLeft: 'auto', marginRight: 'auto' }}>
+        Agende seu horário e descubra como podemos realçar sua beleza natural
+      </P>
       <ContactButtonsContainer>
         <Button 
           href={whatsappUrl}

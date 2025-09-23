@@ -3,6 +3,7 @@ import { graphql, useStaticQuery, Link } from "gatsby"
 import styled from "styled-components"
 import { colors, commonStyles } from "../styles/theme"
 import { Button } from "./ui/Button"
+import { H2, H3, P } from "./ui/Typography"
 
 // Tipo para dados dos serviços
 interface ServiceData {
@@ -24,9 +25,7 @@ const ServicesContainer = styled.section`
   ${commonStyles.section}
 `
 
-const SectionTitle = styled.h2`
-  ${commonStyles.sectionTitle}
-`
+// SectionTitle removido, usar Title2
 
 const ServicesGrid = styled.div`
   display: grid;
@@ -77,18 +76,7 @@ const ServiceContent = styled.div`
   padding: 40px 30px;
 `
 
-const ServiceTitle = styled.h3`
-  font-size: 1.3rem;
-  color: ${colors.blackMain};
-  margin-bottom: 15px;
-  font-weight: 500;
-`
-
-const ServiceDescription = styled.p`
-  color: ${colors.graySecondary};
-  line-height: 1.6;
-  margin-bottom: 20px;
-`
+// ServiceTitle e ServiceDescription removidos, usar Title3 e Paragraph
 
 const ServicePrice = styled.div`
   font-size: 1.1rem;
@@ -135,7 +123,7 @@ const Services: React.FC = () => {
 
   return (
     <ServicesContainer id="servicos">
-      <SectionTitle>Serviços</SectionTitle>
+  <H2 as="h2">Serviços</H2>
       <ServicesGrid>
         {services.map((service) => (
           <ServiceCard key={service.id} to={`/servicos/${service.fields.slug}`}>
@@ -150,8 +138,8 @@ const Services: React.FC = () => {
               />
             </ServiceImageContainer>
             <ServiceContent>
-              <ServiceTitle>{service.title}</ServiceTitle>
-              <ServiceDescription>{service.shortDescription}</ServiceDescription>
+              <H3 as="h3" style={{ color: colors.blackMain, marginBottom: 15 }}>{service.title}</H3>
+              <P>{service.shortDescription}</P>
               <Button asLink variant="secondary" to={`/servicos/${service.fields.slug}`} style={{ width: "100%", marginTop: 10 }}>
                 Saiba mais
               </Button>

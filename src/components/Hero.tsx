@@ -4,6 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import { motion } from "framer-motion"
 import { colors, commonStyles } from "../styles/theme"
 import { Button } from "./ui/Button"
+import { H1, H2 } from "./ui/Typography"
 
 // Styled Components para Hero
 const HeroContainer = styled.header`
@@ -94,45 +95,7 @@ const TextContent = styled(motion.div)`
   text-align: center;
 `
 
-const Logo = styled(motion.h1)`
-  font-size: 3.5rem;
-  font-weight: 300;
-  color: ${colors.goldMain};
-  margin-bottom: 20px;
-  letter-spacing: 2px;
-  
-  @media (max-width: 768px) {
-    font-size: 3rem;
-  }
-`
-
-const Tagline = styled(motion.h2)`
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: ${colors.blackMain};
-  margin-bottom: 40px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, ${colors.goldMain}, transparent);
-    opacity: 0.7;
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-  }
-`
+// Logo e Tagline agora usam Typography
 
 // Variantes de animação
 const containerVariants = {
@@ -167,18 +130,12 @@ const Hero: React.FC = () => {
           initial="hidden"
           animate="visible"
         >
-          <Logo 
-            variants={itemVariants}
-            transition={{ duration: 0.8 }}
-          >
-           Ana Elisa Cardoso Beleza Facial
-          </Logo>
-          <Tagline 
-            variants={itemVariants}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <H1 as={motion.h1} variants={itemVariants} transition={{ duration: 0.8 }} style={{ marginBottom: 20 }}>
+            Ana Elisa Cardoso Beleza Facial
+          </H1>
+          <H2 as={motion.h2} variants={itemVariants} transition={{ duration: 0.8, delay: 0.2 }} style={{ fontWeight: 300, marginBottom: 40, maxWidth: 600, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>
             🦋 Beleza autêntica, a arte de realçar sua essência.
-          </Tagline>
+          </H2>
           <Button 
             href="#agendamento"
             variant="primary"
