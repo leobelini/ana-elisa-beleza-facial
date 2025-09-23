@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { useAnimation } from '../hooks/useAnimation'
+import { useAnimation } from '../../hooks/useAnimation'
 
 interface AnimatedSectionProps {
   children: React.ReactNode

@@ -69,30 +69,10 @@ const AboutText = styled.div`
   }
 `
 
-// Interfaces
-interface AboutProps {
-  title?: string
-  name?: string
-  description?: string[]
-  profileIcon?: string
-  id?: string
-}
-
-// Componente About
-const About: React.FC<AboutProps> = ({
-  title = "Sobre",
-  name = "Ana Elisa - Esteticista Profissional",
-  description = [
-    "Com mais de 5 anos de experiência na área da estética facial, sou especializada em realçar a beleza natural de cada cliente através de técnicas modernas e cuidado personalizado.",
-    "Formada em Estética e Cosmética, com especializações em dermaplaning, design de sobrancelhas e extensão de cílios. Minha missão é proporcionar não apenas tratamentos de qualidade, mas uma experiência única de bem-estar e autoestima.",
-    "Acredito que cada pessoa possui uma beleza única, e meu trabalho é realçar essa individualidade através de cuidados específicos e resultados naturais."
-  ],
-  profileIcon = "👩‍⚕️",
-  id = "sobre"
-}) => {
+const About = () => {
   return (
-    <AboutContainer id={id}>
-      <SectionTitle>{title}</SectionTitle>
+    <AboutContainer>
+      <SectionTitle>Sobre</SectionTitle>
       <AboutContent>
         <ProfileImage>
           <StaticImage
@@ -110,10 +90,17 @@ const About: React.FC<AboutProps> = ({
           />
         </ProfileImage>
         <AboutText>
-          <h3>{name}</h3>
-          {description.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          <h3>Ana Elisa Cardoso - Esteticista Profissional</h3>
+          <p>
+              Com mais de 7 anos de experiência na área da estética, sou Bacharel em Estética (formanda em 2018) e apaixonada por cuidar e elevar a autoestima desde muito jovem. Minha missão sempre foi oferecer o que há de melhor e mais atual no universo da beleza, unindo técnica, delicadeza e resultados que encantam.
+
+          </p>
+          <p>
+            Em 2020, encontrei na extensão de cílios minha grande especialidade. Desde então, me dedico a aperfeiçoar cada detalhe para entregar não apenas variedade de modelos, mas também uma durabilidade incrível e um acabamento que valoriza a beleza natural de cada cliente.
+          </p>
+          <p>
+            Será um prazer cuidar de você, proporcionando um atendimento exclusivo e serviços que realçam sua beleza com um toque elegante e natural.
+          </p>
         </AboutText>
       </AboutContent>
     </AboutContainer>

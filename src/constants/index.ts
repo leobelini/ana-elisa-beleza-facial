@@ -1,8 +1,7 @@
-// Constantes centralizadas da aplicação Ana Elisa Beleza Facial
 
 // Informações da empresa
 export const COMPANY_INFO = {
-  name: "Ana Elisa Beleza Facial",
+  name: "Ana Elisa Cardoso Beleza Facial",
   shortName: "Ana Elisa",
   author: "Ana Elisa Cardoso",
   siteUrl: "https://anaelisabelezafacial.com.br",
@@ -12,10 +11,13 @@ export const COMPANY_INFO = {
   keywords: "estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial, dermaplaning, beleza, cuidados faciais, Ana Elisa"
 } as const;
 
+const PHONE_NUMBER = "5514997139783"
+export const PHONE_NUMBER_FORMATTED = "(14) 99713-9783"
+
 // Informações de contato
 export const CONTACT_INFO = {
-  whatsappNumber: "5514997139783",
-  whatsappUrl: "https://wa.me/5514997139783",
+  whatsappNumber: PHONE_NUMBER,
+  whatsappUrl: `https://wa.me/${PHONE_NUMBER}`,
   instagram: "@anaelisabelezafacial",
   instagramUrl: "https://instagram.com/anaelisabelezafacial"
 } as const;

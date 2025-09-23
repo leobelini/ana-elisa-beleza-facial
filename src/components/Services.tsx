@@ -76,19 +76,6 @@ const ServiceContent = styled.div`
   padding: 40px 30px;
 `
 
-const ServiceIcon = styled.div`
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 25px;
-  font-size: 2rem;
-  color: white;
-`
-
 const ServiceTitle = styled.h3`
   font-size: 1.3rem;
   color: ${colors.blackMain};
@@ -132,11 +119,6 @@ export interface Service {
   icon: string
 }
 
-interface ServicesProps {
-  title?: string
-  id?: string
-}
-
 
 // Query GraphQL
 const SERVICES_QUERY = graphql`
@@ -160,16 +142,13 @@ const SERVICES_QUERY = graphql`
 `
 
 // Componente Services
-const Services: React.FC<ServicesProps> = ({
-  title = "Serviços",
-  id = "servicos"
-}) => {
+const Services: React.FC = () => {
   const data = useStaticQuery(SERVICES_QUERY)
   const services: ServiceData[] = data.allServicesJson.nodes
 
   return (
-    <ServicesContainer id={id}>
-      <SectionTitle>{title}</SectionTitle>
+    <ServicesContainer>
+      <SectionTitle>Serviços</SectionTitle>
       <ServicesGrid>
         {services.map((service) => (
           <ServiceCard key={service.id} to={`/servicos/${service.fields.slug}`}>

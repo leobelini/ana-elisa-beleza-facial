@@ -1,8 +1,8 @@
 import * as React from "react"
 import styled from "styled-components"
 import { colors } from "../styles/theme"
-import { Instagram, MessageCircle, MapPin, Navigation } from "lucide-react"
-import { SOCIAL_MEDIA, SEO_DEFAULTS, CONTACT_INFO } from "../constants"
+import { Instagram, MapPin, Navigation, PhoneCall } from "lucide-react"
+import { SEO_DEFAULTS, CONTACT_INFO, PHONE_NUMBER_FORMATTED } from "../constants"
 
 // Styled Components para Footer
 const FooterContainer = styled.footer`
@@ -56,36 +56,16 @@ const FooterSection = styled.div`
   p {
     color: ${colors.graySecondary};
     margin-bottom: 10px;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
     
     &:last-child {
       margin-bottom: 0;
-    }
-  }
-`
-
-const SocialIcons = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background: ${colors.goldMain};
-    border-radius: 50%;
-    color: white;
-    font-size: 1.5rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      transform: translateY(-3px);
-      background: ${colors.goldDark};
     }
   }
 `
@@ -161,20 +141,9 @@ interface FooterLink {
 interface FooterSection {
   title: string
   links?: FooterLink[]
-  content?: string[]
+  content?: React.ReactNode[]
 }
 
-interface SocialLink {
-  platform: string
-  icon: React.ReactElement
-  url: string
-}
-
-interface FooterProps {
-  sections?: FooterSection[]
-  socialLinks?: SocialLink[]
-  copyright?: string
-}
 
 // Dados padrão do footer
 const defaultSections: FooterSection[] = [
@@ -190,51 +159,28 @@ const defaultSections: FooterSection[] = [
   {
     title: "Contato",
     content: [
-      "(14) 99713-9783",
-      // "contato@anaelisabeleza.com",
+      <a href=""><PhoneCall size={24}/> {PHONE_NUMBER_FORMATTED}</a>,
+      <a href={CONTACT_INFO.instagramUrl} target="_blank"><Instagram size={24}/> {CONTACT_INFO.instagram}</a>,
     ]
   },
   {
     title: "Horário de Funcionamento",
     content: [
-      "Segunda à Sexta: 9h às 18h",
-      "Sábado: 9h às 15h",
-      "Domingo: Fechado"
+      "Terça à Sexta: 9h às 18h"
     ]
   }
 ]
 
-// Dados do endereço
-const address = {
-  full: "R. Jose Zini, 101, Pongaí - SP, 16660-000",
-}
+const address = "R. Jose Zini, 101, Pongaí - SP, 16660-077"
 
-const defaultSocialLinks: SocialLink[] = [
-  {
-    platform: "Instagram",
-    icon: <Instagram size={24} />,
-    url: CONTACT_INFO.instagramUrl
-  },
-  {
-    platform: "WhatsApp",
-    icon: <MessageCircle size={24} />,
-    url: CONTACT_INFO.whatsappUrl
-  }
-]
-
-// Componente Footer
-const Footer: React.FC<FooterProps> = ({
-  sections = defaultSections,
-  socialLinks = defaultSocialLinks,
-  copyright = SEO_DEFAULTS.copyright
-}) => {
+const Footer: React.FC = () => {
   // URLs para navegação
-  const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address.full)}`
+  const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address)}`
 
   return (
     <FooterContainer>
       <FooterContent>
-        {sections.map((section, index) => (
+        {defaultSections.map((section, index) => (
           <FooterSection key={index}>
             <h3>{section.title}</h3>
             {section.links && (
@@ -270,7 +216,7 @@ const Footer: React.FC<FooterProps> = ({
               Nosso Endereço
             </h4>
             <div className="address-text">
-              {address.full}
+              {address}
             </div>
             <NavigationButtons>
               <a 
@@ -287,22 +233,8 @@ const Footer: React.FC<FooterProps> = ({
         </FooterSection>
       </FooterContent>
       
-      <SocialIcons>
-        {socialLinks.map((social, index) => (
-          <a
-            key={index}
-            href={social.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={social.platform}
-          >
-            {social.icon}
-          </a>
-        ))}
-      </SocialIcons>
-      
       <Copyright>
-        {copyright}
+        {SEO_DEFAULTS.copyright}
       </Copyright>
     </FooterContainer>
   )

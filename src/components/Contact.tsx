@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { colors } from "../styles/theme"
 import { MessageCircle } from "lucide-react"
 import { WhatsAppButton } from "./ui/WhatsAppButton"
-import { CONTACT_INFO, MESSAGES, generateWhatsAppUrl } from "../constants"
+import { MESSAGES, generateWhatsAppUrl } from "../constants"
 
 // Styled Components para Contact
 const ContactContainer = styled.section`
@@ -50,36 +50,13 @@ const ContactInfo = styled.div`
   margin-right: auto;
 `
 
-interface ContactInfo {
-  title: string
-  items: string[]
-}
-
-interface ContactProps {
-  title?: string
-  description?: string
-  whatsappNumber?: string
-  whatsappMessage?: string
-  email?: string
-  contactInfo?: ContactInfo[]
-  id?: string
-}
-
-// Componente Contact
-const Contact: React.FC<ContactProps> = ({
-  title = "Pronta para realçar sua beleza?",
-  description = "Agende seu horário e descubra como podemos realçar sua beleza natural",
-  whatsappNumber = CONTACT_INFO.whatsappNumber,
-  whatsappMessage = MESSAGES.whatsapp.default,
-  id = "agendamento"
-}) => {
-  const whatsappUrl = generateWhatsAppUrl(whatsappMessage)
+const Contact: React.FC = () => {
+  const whatsappUrl = generateWhatsAppUrl(MESSAGES.whatsapp.default)
 
   return (
-    <ContactContainer id={id}>
-      <ContactTitle>{title}</ContactTitle>
-      <ContactText>{description}</ContactText>
-      
+    <ContactContainer>
+      <ContactTitle>Pronta para realçar sua beleza?</ContactTitle>
+      <ContactText>Agende seu horário e descubra como podemos realçar sua beleza natural</ContactText>
       <ContactButtonsContainer>
         <WhatsAppButton 
           href={whatsappUrl}

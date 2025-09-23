@@ -152,18 +152,13 @@ const MobileNavLink = styled.button`
   }
 `
 
-// Interfaces
-interface NavbarProps {
-  className?: string
-}
-
 interface MenuItem {
   label: string
   href: string
 }
 
 // Componente Navbar
-const Navbar: React.FC<NavbarProps> = ({ className }) => {
+const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
   const [isScrolled, setIsScrolled] = React.useState(false)
 
@@ -208,7 +203,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
   }
 
   return (
-    <NavbarContainer className={`${className || ''} ${isScrolled ? 'scrolled' : ''}`}>
+    <NavbarContainer className={`${isScrolled ? 'scrolled' : ''}`}>
       <NavContainer>
         <NavLogo to="/">Ana Elisa</NavLogo>
         <NavMenu>

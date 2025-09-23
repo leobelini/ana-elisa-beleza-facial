@@ -54,7 +54,7 @@ const SEO: React.FC<SEOProps> = ({
   return (
     <Helmet
       title={seo.title}
-      titleTemplate={title ? `%s - Ana Elisa Beleza Facial` : undefined}
+      titleTemplate={title ? `%s - Ana Elisa Cardoso Beleza Facial` : undefined}
     >
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={seo.keywords} />

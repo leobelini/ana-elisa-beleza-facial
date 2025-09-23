@@ -148,9 +148,6 @@ const defaultTestimonials: Testimonial[] = [
 
 // Componente Testimonials
 const Testimonials: React.FC<TestimonialsProps> = ({
-  title = "Depoimentos",
-  id = "depoimentos",
-  autoPlay = true,
   autoPlayInterval = 5000
 }) => {
   // Buscar dados via GraphQL
@@ -179,7 +176,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({
   }, [currentTestimonial])
 
   React.useEffect(() => {
-    if (autoPlay && testimonials.length > 1 && !isTransitioning) {
+    if (testimonials.length > 1 && !isTransitioning) {
       const interval = setInterval(() => {
         const nextIndex = currentTestimonial === testimonials.length - 1 ? 0 : currentTestimonial + 1
         changeTestimonial(nextIndex)
@@ -187,7 +184,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({
 
       return () => clearInterval(interval)
     }
-  }, [autoPlay, autoPlayInterval, testimonials.length, currentTestimonial, isTransitioning, changeTestimonial])
+  }, [autoPlayInterval, testimonials.length, currentTestimonial, isTransitioning, changeTestimonial])
 
   const goToTestimonial = (index: number) => {
     changeTestimonial(index)
@@ -198,9 +195,9 @@ const Testimonials: React.FC<TestimonialsProps> = ({
   }
 
   return (
-    <TestimonialsContainer id={id}>
+    <TestimonialsContainer>
       <TestimonialsSection>
-        <SectionTitle>{title}</SectionTitle>
+        <SectionTitle>Depoimentos</SectionTitle>
         <TestimonialsCarousel>
           <TestimonialCard isVisible={isVisible}>
             <TestimonialText isVisible={isVisible}>

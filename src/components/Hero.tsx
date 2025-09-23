@@ -160,25 +160,10 @@ const itemVariants = {
   }
 }
 
-// Interfaces
-interface HeroProps {
-  title?: string
-  tagline?: string
-  ctaText?: string
-  ctaLink?: string
-  id?: string
-}
-
 // Componente Hero
-const Hero: React.FC<HeroProps> = ({
-  title = "Ana Elisa Cardoso Beleza Facial",
-  tagline = "🦋 Beleza autêntica, a arte de realçar sua essência.",
-  ctaText = "Agende seu horário",
-  ctaLink = "#agendamento",
-  id = "home"
-}) => {
+const Hero: React.FC = () => {
   return (
-    <HeroContainer id={id}>
+    <HeroContainer>
       <HeroContent>
         <TextContent
           variants={containerVariants}
@@ -189,16 +174,16 @@ const Hero: React.FC<HeroProps> = ({
             variants={itemVariants}
             transition={{ duration: 0.8 }}
           >
-            {title}
+           Ana Elisa Cardoso Beleza Facial
           </Logo>
           <Tagline 
             variants={itemVariants}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {tagline}
+            🦋 Beleza autêntica, a arte de realçar sua essência.
           </Tagline>
           <CTAButton 
-            href={ctaLink}
+            href="#agendamento"
             variants={itemVariants}
             transition={{ duration: 0.8, delay: 0.4 }}
             whileHover={{ 
@@ -207,7 +192,7 @@ const Hero: React.FC<HeroProps> = ({
             }}
             whileTap={{ scale: 0.95 }}
           >
-            {ctaText}
+            Agende seu horário
           </CTAButton>
         </TextContent>
         <ImageContainer

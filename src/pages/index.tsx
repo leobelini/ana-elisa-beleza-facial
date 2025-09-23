@@ -11,8 +11,9 @@ import {
   Testimonials,
   Contact,
   Footer,
-  AnimatedSection
 } from "../components"
+import { AnimatedSection } from "../components/ui/AnimatedSection"
+import { COMPANY_INFO, CONTACT_INFO } from "../constants"
 
 // Container principal
 const Container = styled.div`
@@ -98,13 +99,13 @@ export const Head: HeadFC = () => (
       {JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BeautySalon",
-        "name": "Ana Elisa Beleza Facial",
-        "description": "Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning.",
-        "url": "https://anaelisabelezafacial.com.br",
-        "logo": "https://anaelisabelezafacial.com.br/logo.png",
+        "name": COMPANY_INFO.name,
+        "description": COMPANY_INFO.description,
+        "url": COMPANY_INFO.siteUrl,
+        "logo": COMPANY_INFO.logoUrl,
         "sameAs": [
-          "https://instagram.com/anaelisabelezafacial",
-          "https://wa.me/5514997139783"
+          CONTACT_INFO.instagramUrl,
+          CONTACT_INFO.whatsappUrl
         ],
         "address": {
           "@type": "PostalAddress",
@@ -114,10 +115,6 @@ export const Head: HeadFC = () => (
         },
         "telephone": "+55-14-99713-9783",
         "priceRange": "$$",
-        "openingHours": [
-          "Mo-Fr 09:00-18:00",
-          "Sa 09:00-16:00"
-        ],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Serviços de Estética Facial",
