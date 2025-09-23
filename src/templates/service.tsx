@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import { MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../components/ui/Button";
 import { Navbar } from "../components";
+import { H1, H2, H3, P } from "../components/ui/Typography";
 import { 
   COMPANY_INFO, 
   MESSAGES, 
@@ -53,24 +54,7 @@ const ServiceHeader = styled.div`
   margin-bottom: 60px;
 `;
 
-const ServiceTitle = styled.h1`
-  font-size: 3rem;
-  font-weight: 700;
-  color: ${colors.blackMain};
-  margin-bottom: 20px;
-
-  @media (max-width: 768px) {
-    font-size: 2.2rem;
-  }
-`;
-
-const ServiceSubtitle = styled.p`
-  font-size: 1.3rem;
-  color: ${colors.graySecondary};
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-`;
+// ServiceTitle e ServiceSubtitle removidos, usar Typography
 
 const ServiceContent = styled.div`
   display: grid;
@@ -85,21 +69,7 @@ const ServiceContent = styled.div`
 `;
 
 const ServiceInfo = styled.div`
-  h2 {
-    font-size: 2rem;
-    color: ${colors.blackMain};
-    margin-bottom: 20px;
-    border-bottom: 3px solid ${colors.goldMain};
-    padding-bottom: 10px;
-    display: inline-block;
-  }
-
-  p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: ${colors.graySecondary};
-    margin-bottom: 30px;
-  }
+  // h2 e p removidos, usar Typography
 `;
 
 const ServiceDetails = styled.div`
@@ -357,20 +327,6 @@ const DetailItem = styled.div`
 
 const BenefitsList = styled.div`
   margin-top: 40px;
-
-  h3 {
-    font-size: 1.5rem;
-    color: ${colors.blackMain};
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    &::before {
-      content: "✨";
-      font-size: 1.2rem;
-    }
-  }
 `;
 
 const BenefitItem = styled.div`
@@ -403,18 +359,6 @@ const CTASection = styled.div`
   border-radius: 25px;
   text-align: center;
   color: white;
-
-  h3 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
-
-  p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
-  }
 `;
 
 const BackButton = styled.a`
@@ -441,37 +385,9 @@ const BackButton = styled.a`
 // Componentes para Variações e Complementos
 const VariationsSection = styled.div`
   margin-top: 60px;
-
-  h3 {
-    font-size: 1.8rem;
-    color: ${colors.blackMain};
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    &::before {
-      content: "🎨";
-      font-size: 1.5rem;
-    }
-  }
 `;
 
 const ComplementsSection = styled.div`
-
-  h3 {
-    font-size: 1.8rem;
-    color: ${colors.blackMain};
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    &::before {
-      content: "➕";
-      font-size: 1.5rem;
-    }
-  }
 `;
 
 const OptionsGrid = styled.div`
@@ -674,17 +590,19 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
         <BackButton href="/#servicos">Voltar aos Serviços</BackButton>
 
         <ServiceHeader>
-          <ServiceTitle>{service.title}</ServiceTitle>
-          <ServiceSubtitle>{service.shortDescription}</ServiceSubtitle>
+          <H1 as="h1" style={{ marginBottom: 20 }}>{service.title}</H1>
+          <H2 as="p" style={{ color: colors.graySecondary, maxWidth: 600, margin: '0 auto', lineHeight: 1.6 }}>{service.shortDescription}</H2>
         </ServiceHeader>
 
         <ServiceContent>
           <ServiceInfo>
-            <h2>Sobre o Tratamento</h2>
-            <p>{service.longDescription}</p>
+            <H2 as="h2" style={{ borderBottom: `3px solid ${colors.goldMain}`, paddingBottom: 10, display: 'inline-block', marginBottom: 20 }}>Sobre o Tratamento</H2>
+            <P style={{ marginBottom: 30 }}>{service.longDescription}</P>
 
             <BenefitsList>
-              <h3>Benefícios</h3>
+              <H3 as="h3" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+                <span role="img" aria-label="benefícios">✨</span> Benefícios
+              </H3>
               {service.benefits.map((benefit, index) => (
                 <BenefitItem key={index}>
                   <span>{benefit}</span>
@@ -754,16 +672,18 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
            {/* Seção de Variações */}
             {service.variations && service.variations.length > 0 && (
               <VariationsSection>
-                <h3>Variações Disponíveis</h3>
+                <H3 as="h3" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 30 }}>
+                  <span role="img" aria-label="variações">🎨</span> Variações Disponíveis
+                </H3>
                 <OptionsGrid>
                   {service.variations.map((variation) => (
                     <OptionCard key={variation.id}>
                       <OptionHeader>
                         <OptionName>{variation.name}</OptionName>
                       </OptionHeader>
-                      <OptionDescription>
+                      <P as="div" style={{ margin: 0, fontSize: '0.95rem' }}>
                         {variation.description}
-                      </OptionDescription>
+                      </P>
                     </OptionCard>
                   ))}
                 </OptionsGrid>
@@ -773,17 +693,18 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
             {/* Seção de Complementos */}
             {service.complements && service.complements.length > 0 && (
               <ComplementsSection>
-                <h3>Serviços similares</h3>
+                <H3 as="h3" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 30 }}>
+                  <span role="img" aria-label="complementos">➕</span> Serviços similares
+                </H3>
                 <OptionsGrid>
                   {service.complements.map((complement) => (
                     <OptionCard key={complement.id}>
                       <OptionHeader>
                         <OptionName>{complement.name}</OptionName>
                       </OptionHeader>
-                      <OptionDescription>
+                      <P as="div" style={{ margin: 0, fontSize: '0.95rem' }}>
                         {complement.description}
-                      </OptionDescription>
-                      
+                      </P>
                     </OptionCard>
                   ))}
                 </OptionsGrid>
@@ -792,11 +713,12 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
         </ServiceDetails>
 
         <CTASection>
-          <h3>Pronta para transformar sua beleza?</h3>
-          <p>
-            Agende seu horário agora mesmo e descubra o que nosso tratamento
-            pode fazer por você.
-          </p>
+          <H3 as="h3" style={{ fontSize: '2rem', marginBottom: 20, fontWeight: 700, color: 'white' }}>
+            Pronta para transformar sua beleza?
+          </H3>
+          <P as="p" style={{ color: 'white', opacity: 0.9, marginBottom: 30 }}>
+            Agende seu horário agora mesmo e descubra o que nosso tratamento pode fazer por você.
+          </P>
           <Button
             href={whatsappUrl}
             variant="whatsapp"
