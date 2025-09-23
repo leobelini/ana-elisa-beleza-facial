@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { graphql, PageProps } from "gatsby";
-import styled from "styled-components";
-import { colors } from "../styles/theme";
-import { Helmet } from "react-helmet";
-import { MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "../components/ui/Button";
-import { Navbar } from "../components";
-import { H1, H2, H3, P } from "../components/ui/Typography";
+import React, { useState, useEffect } from 'react';
+import { graphql, PageProps } from 'gatsby';
+import styled from 'styled-components';
+import { colors } from '../styles/theme';
+import { Helmet } from 'react-helmet';
+import { MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '../components/ui/Button';
+import { Navbar } from '../components';
+import { H1, H2, H3, P } from '../components/ui/Typography';
 import {
   COMPANY_INFO,
   MESSAGES,
   generateServiceWhatsAppUrl,
   generatePageTitle,
   generateServiceUrl,
-} from "../constants";
+} from '../constants';
 
 interface ServiceVariation {
   id: string;
@@ -180,8 +180,7 @@ const Indicator = styled.button<{ isActive: boolean }>`
   height: 8px;
   border-radius: 50%;
   border: none;
-  background: ${(props) =>
-    props.isActive ? colors.goldMain : colors.graySecondary};
+  background: ${(props) => (props.isActive ? colors.goldMain : colors.graySecondary)};
   cursor: pointer;
   transition: all 0.3s ease;
 
@@ -211,7 +210,7 @@ const ModalOverlay = styled.div<{ isOpen: boolean }>`
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.95);
-  display: ${(props) => (props.isOpen ? "flex" : "none")};
+  display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
   z-index: 9999;
@@ -259,7 +258,7 @@ const CloseButton = styled.button`
   }
 `;
 
-const NavigationButton = styled.button<{ direction: "left" | "right" }>`
+const NavigationButton = styled.button<{ direction: 'left' | 'right' }>`
   position: absolute;
   top: 50%;
   ${(props) => props.direction}: -80px;
@@ -336,7 +335,7 @@ const BenefitItem = styled.div`
   margin-bottom: 15px;
 
   &::before {
-    content: "•";
+    content: '•';
     color: ${colors.goldMain};
     font-weight: bold;
     font-size: 1.2rem;
@@ -350,11 +349,7 @@ const BenefitItem = styled.div`
 `;
 
 const CTASection = styled.div`
-  background: linear-gradient(
-    135deg,
-    ${colors.goldMain} 0%,
-    ${colors.goldDark} 100%
-  );
+  background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
   padding: 60px 40px;
   border-radius: 25px;
   text-align: center;
@@ -377,7 +372,7 @@ const BackButton = styled.a`
   }
 
   &::before {
-    content: "←";
+    content: '←';
     font-size: 1.2rem;
   }
 `;
@@ -449,7 +444,7 @@ const OptionDuration = styled.div`
   color: ${colors.graySecondary};
 
   &::before {
-    content: "⏱️";
+    content: '⏱️';
     margin-right: 5px;
   }
 `;
@@ -510,23 +505,23 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
   // Fechar modal com ESC
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         closeModal();
-      } else if (event.key === "ArrowRight") {
+      } else if (event.key === 'ArrowRight') {
         goToNextImage();
-      } else if (event.key === "ArrowLeft") {
+      } else if (event.key === 'ArrowLeft') {
         goToPreviousImage();
       }
     };
 
     if (isModalOpen) {
-      document.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden"; // Previne scroll do body
+      document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden'; // Previne scroll do body
     }
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
     };
   }, [isModalOpen, currentImageIndex, service.images]);
 
@@ -556,18 +551,18 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
         {/* Schema.org structured data */}
         <script type="application/ld+json">
           {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
+            '@context': 'https://schema.org',
+            '@type': 'Service',
             name: service.title,
             description: service.shortDescription,
             provider: {
-              "@type": "Organization",
+              '@type': 'Organization',
               name: COMPANY_INFO.name,
               url: COMPANY_INFO.siteUrl,
             },
             category: service.category,
             offers: {
-              "@type": "Offer",
+              '@type': 'Offer',
               description: `${service.title} - ${service.shortDescription}`,
             },
           })}
@@ -588,7 +583,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
             style={{
               color: colors.graySecondary,
               maxWidth: 600,
-              margin: "0 auto",
+              margin: '0 auto',
               lineHeight: 1.6,
             }}
           >
@@ -603,7 +598,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
               style={{
                 borderBottom: `3px solid ${colors.goldMain}`,
                 paddingBottom: 10,
-                display: "inline-block",
+                display: 'inline-block',
                 marginBottom: 20,
               }}
             >
@@ -615,15 +610,15 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
               <H3
                 as="h3"
                 style={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 10,
                   marginBottom: 20,
                 }}
               >
                 <span role="img" aria-label="benefícios">
                   ✨
-                </span>{" "}
+                </span>{' '}
                 Benefícios
               </H3>
               {service.benefits.map((benefit, index) => (
@@ -645,7 +640,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                       onClick={() => openModal(index)}
                       onError={(e) => {
                         // Fallback: ocultar imagem se não carregar
-                        e.currentTarget.style.display = "none";
+                        e.currentTarget.style.display = 'none';
                       }}
                     />
                   </CarouselSlide>
@@ -658,10 +653,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                     </ImageCounter>
 
                     <CarouselControls>
-                      <CarouselButton
-                        onClick={prevSlide}
-                        disabled={currentSlide === 0}
-                      >
+                      <CarouselButton onClick={prevSlide} disabled={currentSlide === 0}>
                         <ChevronLeft size={20} />
                       </CarouselButton>
 
@@ -698,15 +690,15 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
               <H3
                 as="h3"
                 style={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 10,
                   marginBottom: 30,
                 }}
               >
                 <span role="img" aria-label="variações">
                   🎨
-                </span>{" "}
+                </span>{' '}
                 Variações Disponíveis
               </H3>
               <OptionsGrid>
@@ -715,7 +707,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                     <OptionHeader>
                       <OptionName>{variation.name}</OptionName>
                     </OptionHeader>
-                    <P as="div" style={{ margin: 0, fontSize: "0.95rem" }}>
+                    <P as="div" style={{ margin: 0, fontSize: '0.95rem' }}>
                       {variation.description}
                     </P>
                   </OptionCard>
@@ -730,15 +722,15 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
               <H3
                 as="h3"
                 style={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: 10,
                   marginBottom: 30,
                 }}
               >
                 <span role="img" aria-label="complementos">
                   ➕
-                </span>{" "}
+                </span>{' '}
                 Serviços similares
               </H3>
               <OptionsGrid>
@@ -747,7 +739,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                     <OptionHeader>
                       <OptionName>{complement.name}</OptionName>
                     </OptionHeader>
-                    <P as="div" style={{ margin: 0, fontSize: "0.95rem" }}>
+                    <P as="div" style={{ margin: 0, fontSize: '0.95rem' }}>
                       {complement.description}
                     </P>
                   </OptionCard>
@@ -761,24 +753,18 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
           <H3
             as="h3"
             style={{
-              fontSize: "2rem",
+              fontSize: '2rem',
               marginBottom: 20,
               fontWeight: 700,
-              color: "white",
+              color: 'white',
             }}
           >
             Pronta para transformar sua beleza?
           </H3>
-          <P as="p" style={{ color: "white", opacity: 0.9, marginBottom: 30 }}>
-            Agende seu horário agora mesmo e descubra o que nosso tratamento
-            pode fazer por você.
+          <P as="p" style={{ color: 'white', opacity: 0.9, marginBottom: 30 }}>
+            Agende seu horário agora mesmo e descubra o que nosso tratamento pode fazer por você.
           </P>
-          <Button
-            href={whatsappUrl}
-            variant="whatsapp"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Button href={whatsappUrl} variant="whatsapp" target="_blank" rel="noopener noreferrer">
             <MessageCircle size={20} />
             {MESSAGES.cta.scheduleWhatsApp}
           </Button>
@@ -801,19 +787,13 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                 {service.images.length > 1 && (
                   <>
                     {currentImageIndex > 0 && (
-                      <NavigationButton
-                        direction="left"
-                        onClick={goToPreviousImage}
-                      >
+                      <NavigationButton direction="left" onClick={goToPreviousImage}>
                         <ChevronLeft size={24} />
                       </NavigationButton>
                     )}
 
                     {currentImageIndex < service.images.length - 1 && (
-                      <NavigationButton
-                        direction="right"
-                        onClick={goToNextImage}
-                      >
+                      <NavigationButton direction="right" onClick={goToNextImage}>
                         <ChevronRight size={24} />
                       </NavigationButton>
                     )}

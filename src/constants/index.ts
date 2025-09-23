@@ -1,45 +1,47 @@
-
 // Informações da empresa
 export const COMPANY_INFO = {
-  name: "Ana Elisa Cardoso Beleza Facial",
-  shortName: "Ana Elisa",
-  author: "Ana Elisa Cardoso",
-  siteUrl: "https://anaelisabelezafacial.com.br",
-  description: "Estética facial especializada em cuidados personalizados e tratamentos de beleza para realçar sua essência natural",
-  tagline: "Beleza e cuidado que realçam sua essência",
-  logoUrl: "https://anaelisabelezafacial.com.br/logo.png",
-  keywords: "estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial, dermaplaning, beleza, cuidados faciais, Ana Elisa"
+  name: 'Ana Elisa Cardoso Beleza Facial',
+  shortName: 'Ana Elisa',
+  author: 'Ana Elisa Cardoso',
+  siteUrl: 'https://anaelisabelezafacial.com.br',
+  description:
+    'Estética facial especializada em cuidados personalizados e tratamentos de beleza para realçar sua essência natural',
+  tagline: 'Beleza e cuidado que realçam sua essência',
+  logoUrl: 'https://anaelisabelezafacial.com.br/logo.png',
+  keywords:
+    'estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial, dermaplaning, beleza, cuidados faciais, Ana Elisa',
 } as const;
 
-const PHONE_NUMBER = "5514997139783"
-export const PHONE_NUMBER_FORMATTED = "(14) 99713-9783"
+const PHONE_NUMBER = '5514997139783';
+export const PHONE_NUMBER_FORMATTED = '(14) 99713-9783';
 
 // Informações de contato
 export const CONTACT_INFO = {
   whatsappNumber: PHONE_NUMBER,
   whatsappUrl: `https://wa.me/${PHONE_NUMBER}`,
-  instagram: "@anaelisabelezafacial",
-  instagramUrl: "https://instagram.com/anaelisabelezafacial"
+  instagram: '@anaelisabelezafacial',
+  instagramUrl: 'https://instagram.com/anaelisabelezafacial',
 } as const;
 
 // Mensagens padrão
 export const MESSAGES = {
   whatsapp: {
-    default: "Olá! Gostaria de agendar um horário para um tratamento estético.",
+    default: 'Olá! Gostaria de agendar um horário para um tratamento estético.',
     service: (serviceName: string) => `Olá! Gostaria de agendar o serviço: ${serviceName}`,
-    contact: "Olá! Gostaria de mais informações sobre os tratamentos."
+    contact: 'Olá! Gostaria de mais informações sobre os tratamentos.',
   },
   cta: {
-    scheduleWhatsApp: "Agendar pelo WhatsApp",
-    schedule: "Agende seu horário",
-    learnMore: "Saiba mais",
-    backHome: "Voltar ao início",
-    viewServices: "Ver serviços"
+    scheduleWhatsApp: 'Agendar pelo WhatsApp',
+    schedule: 'Agende seu horário',
+    learnMore: 'Saiba mais',
+    backHome: 'Voltar ao início',
+    viewServices: 'Ver serviços',
   },
   errors: {
-    pageNotFound: "Ops! Parece que você se perdeu em nossa jornada de beleza.",
-    pageNotFoundSubtitle: "A página que você está procurando não existe, mas temos muitas outras opções incríveis para você descobrir!"
-  }
+    pageNotFound: 'Ops! Parece que você se perdeu em nossa jornada de beleza.',
+    pageNotFoundSubtitle:
+      'A página que você está procurando não existe, mas temos muitas outras opções incríveis para você descobrir!',
+  },
 } as const;
 
 // Metadados e SEO
@@ -48,60 +50,57 @@ export const SEO_DEFAULTS = {
   description: COMPANY_INFO.description,
   keywords: COMPANY_INFO.keywords,
   image: `${COMPANY_INFO.siteUrl}/og-image.jpg`,
-  type: "website",
-  locale: "pt_BR",
-  copyright: `© 2025 ${COMPANY_INFO.name}. Todos os direitos reservados.`
+  type: 'website',
+  locale: 'pt_BR',
+  copyright: `© 2025 ${COMPANY_INFO.name}. Todos os direitos reservados.`,
 } as const;
 
 // Dados estruturados JSON-LD
 export const STRUCTURED_DATA = {
   organization: {
-    "@context": "https://schema.org",
-    "@type": "Organization",
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
     name: COMPANY_INFO.name,
     description: COMPANY_INFO.description,
     url: COMPANY_INFO.siteUrl,
     logo: COMPANY_INFO.logoUrl,
-    sameAs: [
-      CONTACT_INFO.instagramUrl,
-      CONTACT_INFO.whatsappUrl
-    ]
+    sameAs: [CONTACT_INFO.instagramUrl, CONTACT_INFO.whatsappUrl],
   },
   localBusiness: {
-    "@context": "https://schema.org",
-    "@type": "BeautySalon",
+    '@context': 'https://schema.org',
+    '@type': 'BeautySalon',
     name: COMPANY_INFO.name,
     description: COMPANY_INFO.description,
     url: COMPANY_INFO.siteUrl,
     logo: COMPANY_INFO.logoUrl,
-    priceRange: "$$",
-    paymentAccepted: ["cash", "credit card", "debit card", "pix"],
-    currenciesAccepted: "BRL"
-  }
+    priceRange: '$$',
+    paymentAccepted: ['cash', 'credit card', 'debit card', 'pix'],
+    currenciesAccepted: 'BRL',
+  },
 } as const;
 
 // URLs comuns
 export const URLS = {
-  home: "/",
-  services: "/servicos",
-  about: "/#sobre",
-  contact: "/#contato",
-  testimonials: "/#depoimentos",
-  notFound: "/404"
+  home: '/',
+  services: '/servicos',
+  about: '/#sobre',
+  contact: '/#contato',
+  testimonials: '/#depoimentos',
+  notFound: '/404',
 } as const;
 
 // Redes sociais
 export const SOCIAL_MEDIA = [
   {
-    platform: "Instagram",
-    icon: "📷",
-    url: CONTACT_INFO.instagramUrl
+    platform: 'Instagram',
+    icon: '📷',
+    url: CONTACT_INFO.instagramUrl,
   },
   {
-    platform: "WhatsApp",
-    icon: "💬",
-    url: CONTACT_INFO.whatsappUrl
-  }
+    platform: 'WhatsApp',
+    icon: '💬',
+    url: CONTACT_INFO.whatsappUrl,
+  },
 ] as const;
 
 // Funções utilitárias

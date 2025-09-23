@@ -1,8 +1,8 @@
-import * as React from "react"
-import styled from "styled-components"
-import { Link, navigate } from "gatsby"
-import { colors } from "../../styles/theme"
-import { Menu, X } from "lucide-react"
+import * as React from 'react';
+import styled from 'styled-components';
+import { Link, navigate } from 'gatsby';
+import { colors } from '../../styles/theme';
+import { Menu, X } from 'lucide-react';
 
 // Styled Components para Navbar
 const NavbarContainer = styled.nav`
@@ -16,12 +16,12 @@ const NavbarContainer = styled.nav`
   padding: 15px 0;
   border-bottom: 1px solid rgba(200, 169, 104, 0.2);
   transition: all 0.3s ease;
-  
+
   &.scrolled {
     background: rgba(250, 248, 246, 0.98);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   }
-`
+`;
 
 const NavContainer = styled.div`
   max-width: 1200px;
@@ -30,7 +30,7 @@ const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 const NavLogo = styled(Link)`
   font-size: 1.5rem;
@@ -38,11 +38,11 @@ const NavLogo = styled(Link)`
   color: ${colors.goldMain};
   text-decoration: none;
   letter-spacing: 1px;
-  
+
   &:hover {
     color: ${colors.goldDark};
   }
-`
+`;
 
 const NavMenu = styled.ul`
   display: flex;
@@ -50,15 +50,15 @@ const NavMenu = styled.ul`
   gap: 30px;
   margin: 0;
   padding: 0;
-  
+
   @media (max-width: 768px) {
     display: none;
   }
-`
+`;
 
 const NavItem = styled.li`
   position: relative;
-`
+`;
 
 const NavLink = styled.button`
   color: ${colors.blackMain};
@@ -71,11 +71,11 @@ const NavLink = styled.button`
   cursor: pointer;
   font-size: inherit;
   font-family: inherit;
-  
+
   &:hover {
     color: ${colors.goldMain};
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -86,11 +86,11 @@ const NavLink = styled.button`
     background: ${colors.goldMain};
     transition: width 0.3s ease;
   }
-  
+
   &:hover::after {
     width: 100%;
   }
-`
+`;
 
 const MobileMenuButton = styled.button`
   display: none;
@@ -99,11 +99,11 @@ const MobileMenuButton = styled.button`
   font-size: 1.5rem;
   color: ${colors.goldMain};
   cursor: pointer;
-  
+
   @media (max-width: 768px) {
     display: block;
   }
-`
+`;
 
 const MobileMenu = styled.div<{ isOpen: boolean }>`
   position: absolute;
@@ -113,15 +113,15 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
   background: rgba(250, 248, 246, 0.98);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(200, 169, 104, 0.2);
-  transform: translateY(${props => props.isOpen ? '0' : '-100%'});
-  opacity: ${props => props.isOpen ? '1' : '0'};
-  visibility: ${props => props.isOpen ? 'visible' : 'hidden'};
+  transform: translateY(${(props) => (props.isOpen ? '0' : '-100%')});
+  opacity: ${(props) => (props.isOpen ? '1' : '0')};
+  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
   transition: all 0.3s ease;
-  
+
   @media (min-width: 769px) {
     display: none;
   }
-`
+`;
 
 const MobileMenuList = styled.ul`
   list-style: none;
@@ -130,7 +130,7 @@ const MobileMenuList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 15px;
-`
+`;
 
 const MobileNavLink = styled.button`
   color: ${colors.blackMain};
@@ -146,64 +146,64 @@ const MobileNavLink = styled.button`
   font-family: inherit;
   width: 100%;
   text-align: left;
-  
+
   &:hover {
     color: ${colors.goldMain};
   }
-`
+`;
 
 interface MenuItem {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }
 
 // Componente Navbar
 const Navbar: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
-  const [isScrolled, setIsScrolled] = React.useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
 
   // Menu items
   const menuItems: MenuItem[] = [
-    { label: "Início", href: "#home" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Serviços", href: "#servicos" },
-    { label: "Depoimentos", href: "#depoimentos" },
-    { label: "Contato", href: "#agendamento" }
-  ]
+    { label: 'Início', href: '#home' },
+    { label: 'Sobre', href: '#sobre' },
+    { label: 'Serviços', href: '#servicos' },
+    { label: 'Depoimentos', href: '#depoimentos' },
+    { label: 'Contato', href: '#agendamento' },
+  ];
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+      setIsScrolled(window.scrollY > 50);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false)
-  }
+    setIsMobileMenuOpen(false);
+  };
 
   // Função para navegar para seções
   const handleSectionNavigation = (href: string) => {
     // Se estamos na página inicial, usa scroll smooth
     if (typeof window !== 'undefined' && window.location.pathname === '/') {
-      const element = document.querySelector(href)
+      const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        element.scrollIntoView({ behavior: 'smooth' });
         // Atualiza a URL sem recarregar a página
-        window.history.pushState(null, '', href)
+        window.history.pushState(null, '', href);
       }
     } else {
       // Se estamos em outra página, navega para a home com a âncora
-      navigate(`/${href}`)
+      navigate(`/${href}`);
     }
-    closeMobileMenu()
-  }
+    closeMobileMenu();
+  };
 
   return (
     <NavbarContainer className={`${isScrolled ? 'scrolled' : ''}`}>
@@ -232,7 +232,7 @@ const Navbar: React.FC = () => {
         </MobileMenuList>
       </MobileMenu>
     </NavbarContainer>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

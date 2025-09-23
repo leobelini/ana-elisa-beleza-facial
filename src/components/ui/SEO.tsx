@@ -1,16 +1,16 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
 interface SEOProps {
-  title?: string
-  description?: string
-  keywords?: string
-  image?: string
-  url?: string
-  type?: "website" | "article"
-  noindex?: boolean
-  children?: React.ReactNode
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  url?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  children?: React.ReactNode;
 }
 
 const SEO: React.FC<SEOProps> = ({
@@ -19,9 +19,9 @@ const SEO: React.FC<SEOProps> = ({
   keywords,
   image,
   url,
-  type = "website",
+  type = 'website',
   noindex = false,
-  children
+  children,
 }) => {
   const { site } = useStaticQuery(graphql`
     query SEOQuery {
@@ -41,7 +41,7 @@ const SEO: React.FC<SEOProps> = ({
         }
       }
     }
-  `)
+  `);
 
   const seo = {
     title: title || site.siteMetadata.title,
@@ -49,7 +49,7 @@ const SEO: React.FC<SEOProps> = ({
     keywords: keywords || site.siteMetadata.keywords,
     image: `${site.siteMetadata.siteUrl}${image || site.siteMetadata.image}`,
     url: `${site.siteMetadata.siteUrl}${url || ``}`,
-  }
+  };
 
   return (
     <Helmet
@@ -60,7 +60,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="keywords" content={seo.keywords} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="author" content={site.siteMetadata.author} />
-      
+
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={seo.title} />
@@ -69,7 +69,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:site_name" content="Ana Elisa Beleza Facial" />
       <meta property="og:image" content={seo.image} />
       <meta property="og:locale" content="pt_BR" />
-      
+
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
@@ -78,23 +78,23 @@ const SEO: React.FC<SEOProps> = ({
       {site.siteMetadata.twitterUsername && (
         <meta name="twitter:creator" content={site.siteMetadata.twitterUsername} />
       )}
-      
+
       {/* Additional meta tags */}
       <meta name="theme-color" content="#C8A968" />
       <meta name="msapplication-TileColor" content="#C8A968" />
-      
+
       {/* Robots */}
       {noindex && <meta name="robots" content="noindex, nofollow" />}
-      
+
       {/* Canonical URL */}
       <link rel="canonical" href={seo.url} />
-      
+
       {/* Language */}
       <html lang="pt-BR" />
-      
+
       {children}
     </Helmet>
-  )
-}
+  );
+};
 
-export default SEO
+export default SEO;

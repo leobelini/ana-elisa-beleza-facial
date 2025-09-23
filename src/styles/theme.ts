@@ -1,11 +1,11 @@
 // Paleta de cores da marca
 export const colors = {
-  goldMain: "#C8A968",
-  goldDark: "#A17C3C", 
-  iceWhite: "#FAF8F6",
-  graySecondary: "#8C8C8C",
-  blackMain: "#1E1E1E",
-}
+  goldMain: '#C8A968',
+  goldDark: '#A17C3C',
+  iceWhite: '#FAF8F6',
+  graySecondary: '#8C8C8C',
+  blackMain: '#1E1E1E',
+};
 
 // Styled components comuns
 export const commonStyles = {
@@ -59,5 +59,5 @@ export const commonStyles = {
     @media (max-width: 768px) {
       font-size: 2rem;
     }
-  `
-}
+  `,
+};

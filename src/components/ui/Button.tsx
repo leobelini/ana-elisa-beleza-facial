@@ -1,10 +1,9 @@
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { colors } from '../../styles/theme';
+import { Link, GatsbyLinkProps } from 'gatsby';
 
-import React from "react";
-import styled, { css } from "styled-components";
-import { colors } from "../../styles/theme";
-import { Link, GatsbyLinkProps } from "gatsby";
-
-export type ButtonVariant = "primary" | "secondary" | "outline" | "whatsapp";
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'whatsapp';
 
 type ButtonBaseProps = {
   variant?: ButtonVariant;
@@ -12,23 +11,25 @@ type ButtonBaseProps = {
   className?: string;
 };
 
-type ButtonAsButton = ButtonBaseProps & React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  asLink?: false;
-  to?: never;
-  href?: never;
-};
+type ButtonAsButton = ButtonBaseProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    asLink?: false;
+    to?: never;
+    href?: never;
+  };
 
 type ButtonAsLink = ButtonBaseProps & {
   asLink: true;
   to: string;
   href?: never;
-} & Omit<GatsbyLinkProps<any>, "to">;
+} & Omit<GatsbyLinkProps<any>, 'to'>;
 
-type ButtonAsA = ButtonBaseProps & React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  href: string;
-  asLink?: false;
-  to?: never;
-};
+type ButtonAsA = ButtonBaseProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string;
+    asLink?: false;
+    to?: never;
+  };
 
 export type ButtonProps = ButtonAsButton | ButtonAsLink | ButtonAsA;
 
@@ -46,7 +47,7 @@ const buttonBase = css`
   transition: all 0.2s ease;
   text-decoration: none;
   outline: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   min-width: 120px;
   min-height: 44px;
   user-select: none;
@@ -112,9 +113,9 @@ const StyledA = styled.a<{ variant: ButtonVariant }>`
 `;
 
 export const Button: React.FC<ButtonProps> = (props) => {
-  const { variant = "primary", children, ...rest } = props;
+  const { variant = 'primary', children, ...rest } = props;
 
-  if ("asLink" in props && props.asLink && "to" in props && props.to) {
+  if ('asLink' in props && props.asLink && 'to' in props && props.to) {
     // Gatsby Link: repassar apenas props aceitos
     const { to, className } = rest as ButtonAsLink;
     return (
@@ -123,7 +124,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
       </StyledLink>
     );
   }
-  if ("href" in props && props.href) {
+  if ('href' in props && props.href) {
     // Anchor
     const { href, className, ...aProps } = rest as ButtonAsA;
     return (

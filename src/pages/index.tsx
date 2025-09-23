@@ -1,24 +1,16 @@
-import * as React from "react";
-import type { HeadFC, PageProps } from "gatsby";
-import styled from "styled-components";
-import { colors } from "../styles/theme";
-import {
-  Navbar,
-  Hero,
-  About,
-  Services,
-  Testimonials,
-  Contact,
-  Footer,
-} from "../components";
-import { AnimatedSection } from "../components/ui/AnimatedSection";
-import { COMPANY_INFO, CONTACT_INFO } from "../constants";
+import * as React from 'react';
+import type { HeadFC, PageProps } from 'gatsby';
+import styled from 'styled-components';
+import { colors } from '../styles/theme';
+import { Navbar, Hero, About, Services, Testimonials, Contact, Footer } from '../components';
+import { AnimatedSection } from '../components/ui/AnimatedSection';
+import { COMPANY_INFO, CONTACT_INFO } from '../constants';
 
 // Container principal
 const Container = styled.div`
   background-color: ${colors.iceWhite};
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: ${colors.blackMain};
   line-height: 1.6;
 `;
@@ -81,10 +73,7 @@ export const Head: HeadFC = () => (
 
     {/* Open Graph / Facebook */}
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Ana Elisa Beleza Facial - Estética e Cuidados Faciais"
-    />
+    <meta property="og:title" content="Ana Elisa Beleza Facial - Estética e Cuidados Faciais" />
     <meta
       property="og:description"
       content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning."
@@ -95,10 +84,7 @@ export const Head: HeadFC = () => (
 
     {/* Twitter */}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Ana Elisa Beleza Facial - Estética e Cuidados Faciais"
-    />
+    <meta name="twitter:title" content="Ana Elisa Beleza Facial - Estética e Cuidados Faciais" />
     <meta
       name="twitter:description"
       content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning."
@@ -111,63 +97,63 @@ export const Head: HeadFC = () => (
     {/* Schema.org structured data */}
     <script type="application/ld+json">
       {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BeautySalon",
+        '@context': 'https://schema.org',
+        '@type': 'BeautySalon',
         name: COMPANY_INFO.name,
         description: COMPANY_INFO.description,
         url: COMPANY_INFO.siteUrl,
         logo: COMPANY_INFO.logoUrl,
         sameAs: [CONTACT_INFO.instagramUrl, CONTACT_INFO.whatsappUrl],
         address: {
-          "@type": "PostalAddress",
-          addressCountry: "BR",
-          addressLocality: "São Paulo",
-          addressRegion: "SP",
+          '@type': 'PostalAddress',
+          addressCountry: 'BR',
+          addressLocality: 'São Paulo',
+          addressRegion: 'SP',
         },
-        telephone: "+55-14-99713-9783",
-        priceRange: "$$",
+        telephone: '+55-14-99713-9783',
+        priceRange: '$$',
         hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: "Serviços de Estética Facial",
+          '@type': 'OfferCatalog',
+          name: 'Serviços de Estética Facial',
           itemListElement: [
             {
-              "@type": "Offer",
+              '@type': 'Offer',
               itemOffered: {
-                "@type": "Service",
-                name: "Limpeza de Pele",
-                description: "Limpeza profunda e hidratação facial",
+                '@type': 'Service',
+                name: 'Limpeza de Pele',
+                description: 'Limpeza profunda e hidratação facial',
               },
             },
             {
-              "@type": "Offer",
+              '@type': 'Offer',
               itemOffered: {
-                "@type": "Service",
-                name: "Design de Sobrancelhas",
-                description: "Modelagem e design personalizado de sobrancelhas",
+                '@type': 'Service',
+                name: 'Design de Sobrancelhas',
+                description: 'Modelagem e design personalizado de sobrancelhas',
               },
             },
             {
-              "@type": "Offer",
+              '@type': 'Offer',
               itemOffered: {
-                "@type": "Service",
-                name: "Extensão de Cílios",
-                description: "Alongamento e volume para cílios naturais",
+                '@type': 'Service',
+                name: 'Extensão de Cílios',
+                description: 'Alongamento e volume para cílios naturais',
               },
             },
             {
-              "@type": "Offer",
+              '@type': 'Offer',
               itemOffered: {
-                "@type": "Service",
-                name: "Peeling Facial",
-                description: "Renovação e rejuvenescimento da pele",
+                '@type': 'Service',
+                name: 'Peeling Facial',
+                description: 'Renovação e rejuvenescimento da pele',
               },
             },
             {
-              "@type": "Offer",
+              '@type': 'Offer',
               itemOffered: {
-                "@type": "Service",
-                name: "Dermaplaning",
-                description: "Esfoliação profunda com remoção de pelos faciais",
+                '@type': 'Service',
+                name: 'Dermaplaning',
+                description: 'Esfoliação profunda com remoção de pelos faciais',
               },
             },
           ],

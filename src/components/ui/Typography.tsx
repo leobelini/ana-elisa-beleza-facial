@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components"
-import { colors } from "../../styles/theme"
+import styled, { css } from 'styled-components';
+import { colors } from '../../styles/theme';
 
 // Títulos principais
 export const H1 = styled.h1`
@@ -12,7 +12,7 @@ export const H1 = styled.h1`
   @media (max-width: 768px) {
     font-size: 2.2rem;
   }
-`
+`;
 
 export const H2 = styled.h2`
   font-size: 2rem;
@@ -24,7 +24,7 @@ export const H2 = styled.h2`
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
-`
+`;
 
 export const H3 = styled.h3`
   font-size: 1.3rem;
@@ -32,7 +32,7 @@ export const H3 = styled.h3`
   color: ${colors.goldMain};
   margin-bottom: 16px;
   line-height: 1.2;
-`
+`;
 
 // Parágrafos
 export const P = styled.p`
@@ -40,31 +40,31 @@ export const P = styled.p`
   color: ${colors.graySecondary};
   line-height: 1.8;
   margin-bottom: 18px;
-`
+`;
 
 // Texto pequeno
 export const Small = styled.small`
   font-size: 0.95rem;
   color: ${colors.graySecondary};
-`
+`;
 
 // Destaque dourado
 export const Span = styled.span`
   color: ${colors.goldMain};
   font-weight: 600;
-`
+`;
 
 // Utilitário para texto customizado
 export const CustomSpan = styled.span<{
-  size?: string
-  color?: string
-  weight?: string | number
-  align?: string
+  size?: string;
+  color?: string;
+  weight?: string | number;
+  align?: string;
 }>`
   ${({ size, color, weight, align }) => css`
-    font-size: ${size || "1rem"};
+    font-size: ${size || '1rem'};
     color: ${color || colors.blackMain};
     font-weight: ${weight || 400};
-    text-align: ${align || "left"};
+    text-align: ${align || 'left'};
   `}
-`
+`;
