@@ -7,12 +7,13 @@ import { MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../components/ui/Button";
 import { Navbar } from "../components";
 import { H1, H2, H3, P } from "../components/ui/Typography";
-import { 
-  COMPANY_INFO, 
-  MESSAGES, 
-  generateServiceWhatsAppUrl, 
-  generatePageTitle, 
-  generateServiceUrl} from "../constants";
+import {
+  COMPANY_INFO,
+  MESSAGES,
+  generateServiceWhatsAppUrl,
+  generatePageTitle,
+  generateServiceUrl,
+} from "../constants";
 
 interface ServiceVariation {
   id: string;
@@ -100,7 +101,6 @@ const ServiceGallery = styled.div`
 `;
 
 const CarouselContainer = styled.div`
-
   position: relative;
   flex: 1;
   overflow: hidden;
@@ -387,8 +387,7 @@ const VariationsSection = styled.div`
   margin-top: 60px;
 `;
 
-const ComplementsSection = styled.div`
-`;
+const ComplementsSection = styled.div``;
 
 const OptionsGrid = styled.div`
   display: grid;
@@ -545,22 +544,13 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content={generatePageTitle(service.title)}
-        />
+        <meta property="og:title" content={generatePageTitle(service.title)} />
         <meta property="og:description" content={service.shortDescription} />
-        <meta
-          property="og:url"
-          content={generateServiceUrl(service.id)}
-        />
+        <meta property="og:url" content={generateServiceUrl(service.id)} />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content={generatePageTitle(service.title)}
-        />
+        <meta name="twitter:title" content={generatePageTitle(service.title)} />
         <meta name="twitter:description" content={service.shortDescription} />
 
         {/* Schema.org structured data */}
@@ -590,18 +580,51 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
         <BackButton href="/#servicos">Voltar aos Serviços</BackButton>
 
         <ServiceHeader>
-          <H1 as="h1" style={{ marginBottom: 20 }}>{service.title}</H1>
-          <H2 as="p" style={{ color: colors.graySecondary, maxWidth: 600, margin: '0 auto', lineHeight: 1.6 }}>{service.shortDescription}</H2>
+          <H1 as="h1" style={{ marginBottom: 20 }}>
+            {service.title}
+          </H1>
+          <H2
+            as="p"
+            style={{
+              color: colors.graySecondary,
+              maxWidth: 600,
+              margin: "0 auto",
+              lineHeight: 1.6,
+            }}
+          >
+            {service.shortDescription}
+          </H2>
         </ServiceHeader>
 
         <ServiceContent>
           <ServiceInfo>
-            <H2 as="h2" style={{ borderBottom: `3px solid ${colors.goldMain}`, paddingBottom: 10, display: 'inline-block', marginBottom: 20 }}>Sobre o Tratamento</H2>
+            <H2
+              as="h2"
+              style={{
+                borderBottom: `3px solid ${colors.goldMain}`,
+                paddingBottom: 10,
+                display: "inline-block",
+                marginBottom: 20,
+              }}
+            >
+              Sobre o Tratamento
+            </H2>
             <P style={{ marginBottom: 30 }}>{service.longDescription}</P>
 
             <BenefitsList>
-              <H3 as="h3" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
-                <span role="img" aria-label="benefícios">✨</span> Benefícios
+              <H3
+                as="h3"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  marginBottom: 20,
+                }}
+              >
+                <span role="img" aria-label="benefícios">
+                  ✨
+                </span>{" "}
+                Benefícios
               </H3>
               {service.benefits.map((benefit, index) => (
                 <BenefitItem key={index}>
@@ -669,55 +692,86 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
         </ServiceContent>
 
         <ServiceDetails>
-           {/* Seção de Variações */}
-            {service.variations && service.variations.length > 0 && (
-              <VariationsSection>
-                <H3 as="h3" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 30 }}>
-                  <span role="img" aria-label="variações">🎨</span> Variações Disponíveis
-                </H3>
-                <OptionsGrid>
-                  {service.variations.map((variation) => (
-                    <OptionCard key={variation.id}>
-                      <OptionHeader>
-                        <OptionName>{variation.name}</OptionName>
-                      </OptionHeader>
-                      <P as="div" style={{ margin: 0, fontSize: '0.95rem' }}>
-                        {variation.description}
-                      </P>
-                    </OptionCard>
-                  ))}
-                </OptionsGrid>
-              </VariationsSection>
-            )}
+          {/* Seção de Variações */}
+          {service.variations && service.variations.length > 0 && (
+            <VariationsSection>
+              <H3
+                as="h3"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  marginBottom: 30,
+                }}
+              >
+                <span role="img" aria-label="variações">
+                  🎨
+                </span>{" "}
+                Variações Disponíveis
+              </H3>
+              <OptionsGrid>
+                {service.variations.map((variation) => (
+                  <OptionCard key={variation.id}>
+                    <OptionHeader>
+                      <OptionName>{variation.name}</OptionName>
+                    </OptionHeader>
+                    <P as="div" style={{ margin: 0, fontSize: "0.95rem" }}>
+                      {variation.description}
+                    </P>
+                  </OptionCard>
+                ))}
+              </OptionsGrid>
+            </VariationsSection>
+          )}
 
-            {/* Seção de Complementos */}
-            {service.complements && service.complements.length > 0 && (
-              <ComplementsSection>
-                <H3 as="h3" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 30 }}>
-                  <span role="img" aria-label="complementos">➕</span> Serviços similares
-                </H3>
-                <OptionsGrid>
-                  {service.complements.map((complement) => (
-                    <OptionCard key={complement.id}>
-                      <OptionHeader>
-                        <OptionName>{complement.name}</OptionName>
-                      </OptionHeader>
-                      <P as="div" style={{ margin: 0, fontSize: '0.95rem' }}>
-                        {complement.description}
-                      </P>
-                    </OptionCard>
-                  ))}
-                </OptionsGrid>
-              </ComplementsSection>
-            )}
+          {/* Seção de Complementos */}
+          {service.complements && service.complements.length > 0 && (
+            <ComplementsSection>
+              <H3
+                as="h3"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  marginBottom: 30,
+                }}
+              >
+                <span role="img" aria-label="complementos">
+                  ➕
+                </span>{" "}
+                Serviços similares
+              </H3>
+              <OptionsGrid>
+                {service.complements.map((complement) => (
+                  <OptionCard key={complement.id}>
+                    <OptionHeader>
+                      <OptionName>{complement.name}</OptionName>
+                    </OptionHeader>
+                    <P as="div" style={{ margin: 0, fontSize: "0.95rem" }}>
+                      {complement.description}
+                    </P>
+                  </OptionCard>
+                ))}
+              </OptionsGrid>
+            </ComplementsSection>
+          )}
         </ServiceDetails>
 
         <CTASection>
-          <H3 as="h3" style={{ fontSize: '2rem', marginBottom: 20, fontWeight: 700, color: 'white' }}>
+          <H3
+            as="h3"
+            style={{
+              fontSize: "2rem",
+              marginBottom: 20,
+              fontWeight: 700,
+              color: "white",
+            }}
+          >
             Pronta para transformar sua beleza?
           </H3>
-          <P as="p" style={{ color: 'white', opacity: 0.9, marginBottom: 30 }}>
-            Agende seu horário agora mesmo e descubra o que nosso tratamento pode fazer por você.
+          <P as="p" style={{ color: "white", opacity: 0.9, marginBottom: 30 }}>
+            Agende seu horário agora mesmo e descubra o que nosso tratamento
+            pode fazer por você.
           </P>
           <Button
             href={whatsappUrl}

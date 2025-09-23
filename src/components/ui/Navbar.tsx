@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import { Link, navigate } from "gatsby"
-import { colors } from "../styles/theme"
+import { colors } from "../../styles/theme"
 import { Menu, X } from "lucide-react"
 
 // Styled Components para Navbar
@@ -164,6 +164,7 @@ const Navbar: React.FC = () => {
 
   // Menu items
   const menuItems: MenuItem[] = [
+    { label: "Início", href: "#home" },
     { label: "Sobre", href: "#sobre" },
     { label: "Serviços", href: "#servicos" },
     { label: "Depoimentos", href: "#depoimentos" },
