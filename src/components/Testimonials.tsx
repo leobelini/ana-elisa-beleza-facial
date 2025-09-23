@@ -7,7 +7,6 @@ import { colors, commonStyles } from '../styles/theme';
 const TestimonialsContainer = styled.section`
   background: white;
   padding: 80px 20px;
-  margin: 80px 0;
 `;
 
 const TestimonialsSection = styled.div`
