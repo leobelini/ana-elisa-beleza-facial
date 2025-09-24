@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { graphql, PageProps } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { colors } from '../styles/theme';
 import { Helmet } from 'react-helmet';
@@ -39,6 +40,14 @@ interface ServicePageData {
     featured: boolean;
     variations?: ServiceVariation[];
     complements?: ServiceComplement[];
+  };
+  allFile: {
+    nodes: Array<{
+      relativePath: string;
+      childImageSharp?: {
+        gatsbyImageData: any;
+      };
+    }>;
   };
 }
 
@@ -116,10 +125,27 @@ const CarouselSlide = styled.div<{ isActive: boolean }>`
   transition: opacity 0.5s ease-in-out;
 `;
 
-const GalleryImage = styled.img`
+const GalleryGatsbyImage = styled(GatsbyImage)`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const GalleryImagePlaceholder = styled.div`
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
   cursor: pointer;
   transition: transform 0.3s ease;
 
@@ -230,14 +256,30 @@ const ModalContent = styled.div`
   justify-content: center;
 `;
 
-const ModalImage = styled.img`
+const ModalGatsbyImage = styled(GatsbyImage)`
   max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
-  object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+`;
+
+const ModalImagePlaceholder = styled.div`
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  min-height: 400px;
 `;
 
 const CloseButton = styled.button`
@@ -452,6 +494,7 @@ const OptionDuration = styled.div`
 // Componente principal
 const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
   const service = data.servicesJson;
+  const images = data.allFile.nodes;
 
   // Estado para controle do modal de imagem
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -462,6 +505,14 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
 
   // Gerar URL do WhatsApp
   const whatsappUrl = generateServiceWhatsAppUrl(service.title);
+
+  // Função para encontrar a imagem correspondente
+  const getServiceImage = (imagePath: string) => {
+    const imageNode = images.find((img: any) =>
+      img.relativePath.includes(imagePath.split('/').pop()?.split('.')[0] || ''),
+    );
+    return imageNode?.childImageSharp?.gatsbyImageData ? getImage(imageNode) : null;
+  };
 
   // Funções do modal
   const openModal = (index: number) => {
@@ -632,19 +683,24 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
           {service.images && service.images.length > 0 && (
             <ServiceGallery>
               <CarouselContainer>
-                {service.images.map((image, index) => (
-                  <CarouselSlide key={index} isActive={index === currentSlide}>
-                    <GalleryImage
-                      src={image}
-                      alt={`${service.title} - Imagem ${index + 1}`}
-                      onClick={() => openModal(index)}
-                      onError={(e) => {
-                        // Fallback: ocultar imagem se não carregar
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
-                  </CarouselSlide>
-                ))}
+                {service.images.map((imagePath, index) => {
+                  const image = getServiceImage(imagePath);
+                  return (
+                    <CarouselSlide key={index} isActive={index === currentSlide}>
+                      {image ? (
+                        <GalleryGatsbyImage
+                          image={image}
+                          alt={`${service.title} - Imagem ${index + 1}`}
+                          onClick={() => openModal(index)}
+                        />
+                      ) : (
+                        <GalleryImagePlaceholder onClick={() => openModal(index)}>
+                          {service.title}
+                        </GalleryImagePlaceholder>
+                      )}
+                    </CarouselSlide>
+                  );
+                })}
 
                 {service.images.length > 1 && (
                   <>
@@ -775,10 +831,17 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
           <ModalContent onClick={(e) => e.stopPropagation()}>
             {service.images && service.images[currentImageIndex] && (
               <>
-                <ModalImage
-                  src={service.images[currentImageIndex]}
-                  alt={`${service.title} - Imagem ${currentImageIndex + 1}`}
-                />
+                {(() => {
+                  const image = getServiceImage(service.images[currentImageIndex]);
+                  return image ? (
+                    <ModalGatsbyImage
+                      image={image}
+                      alt={`${service.title} - Imagem ${currentImageIndex + 1}`}
+                    />
+                  ) : (
+                    <ModalImagePlaceholder>{service.title}</ModalImagePlaceholder>
+                  );
+                })()}
 
                 <CloseButton onClick={closeModal}>
                   <X size={24} />
@@ -833,6 +896,25 @@ export const query = graphql`
         id
         name
         description
+      }
+    }
+    allFile(
+      filter: {
+        sourceInstanceName: { in: ["images", "static-images"] }
+        extension: { in: ["jpg", "jpeg", "png", "webp"] }
+      }
+    ) {
+      nodes {
+        relativePath
+        childImageSharp {
+          gatsbyImageData(
+            width: 800
+            height: 600
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            quality: 95
+          )
+        }
       }
     }
   }

@@ -2935,12 +2935,12 @@ type ServicePageQueryQueryVariables = Exact<{
 }>;
 
 
-type ServicePageQueryQuery = { readonly servicesJson: { readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null, readonly variations: ReadonlyArray<{ readonly id: string | null, readonly name: string | null, readonly description: string | null } | null> | null, readonly complements: ReadonlyArray<{ readonly id: string | null, readonly name: string | null, readonly description: string | null } | null> | null } | null };
+type ServicePageQueryQuery = { readonly servicesJson: { readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null, readonly variations: ReadonlyArray<{ readonly id: string | null, readonly name: string | null, readonly description: string | null } | null> | null, readonly complements: ReadonlyArray<{ readonly id: string | null, readonly name: string | null, readonly description: string | null } | null> | null } | null, readonly allFile: { readonly nodes: ReadonlyArray<{ readonly relativePath: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
 type ServicesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ServicesQueryQuery = { readonly allServicesJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null, readonly fields: { readonly slug: string | null } | null }> } };
+type ServicesQueryQuery = { readonly allServicesJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly shortDescription: string | null, readonly longDescription: string | null, readonly benefits: ReadonlyArray<string | null> | null, readonly images: ReadonlyArray<string | null> | null, readonly category: string | null, readonly featured: boolean | null, readonly fields: { readonly slug: string | null } | null }> }, readonly allFile: { readonly nodes: ReadonlyArray<{ readonly relativePath: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
 type TestimonialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

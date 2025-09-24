@@ -70,6 +70,14 @@ const config: GatsbyConfig = {
         "path": "./src/data/"
       },
       __key: "data"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "static-images",
+        "path": "./static/images/"
+      },
+      __key: "static-images"
     }
   ]
 };

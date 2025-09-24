@@ -66,6 +66,8 @@ const About = () => {
             layout="constrained"
             width={300}
             height={300}
+            quality={95}
+            formats={['auto', 'webp', 'avif']}
             objectFit="cover"
             objectPosition="center"
             style={{
