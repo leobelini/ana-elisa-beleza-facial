@@ -2,6 +2,7 @@
 const startYear = 2018; // Ano que Ana Elisa começou na profissão
 const currentYear = new Date().getFullYear();
 export const yearsOfExperience = currentYear - startYear;
+export const address = 'R. Jose Zini, 101, Pongaí - SP, 16660-077';
 
 // Informações da empresa
 export const COMPANY_INFO = {

@@ -2899,6 +2899,11 @@ type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
 
+type ContactServicesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ContactServicesQueryQuery = { readonly allServicesJson: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly shortDescription: string | null }> } };
+
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
 type GatsbyImageSharpFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };

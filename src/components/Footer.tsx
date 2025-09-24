@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { colors } from '../styles/theme';
 import { Instagram, MapPin, Navigation, PhoneCall } from 'lucide-react';
-import { SEO_DEFAULTS, CONTACT_INFO, PHONE_NUMBER_FORMATTED } from '../constants';
+import { SEO_DEFAULTS, CONTACT_INFO, PHONE_NUMBER_FORMATTED, address } from '../constants';
 import { H3, P } from './ui/Typography';
 
 // Styled Components para Footer
@@ -141,8 +141,6 @@ const defaultSections: FooterSection[] = [
     content: ['Terça à Sexta: 9h às 18h'],
   },
 ];
-
-const address = 'R. Jose Zini, 101, Pongaí - SP, 16660-077';
 
 const Footer: React.FC = () => {
   // URLs para navegação
