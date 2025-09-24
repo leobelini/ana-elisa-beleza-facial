@@ -1,49 +1,105 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
+  <img src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" alt="Logo Gatsby" />
 </p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
-</h1>
 
-## 🚀 Quick start
+<h1 align="center">✨ Ana Elisa Beleza Facial ✨</h1>
 
-1.  **Create a Gatsby site.**
+<p align="center">
+  Site institucional desenvolvido em <b>Gatsby + TypeScript</b> para apresentar serviços de estética facial, depoimentos de clientes e facilitar o agendamento de horários.
+</p>
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+<p align="center">
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-%3E%3D%2016-green" alt="Node.js"></a>
+  <a href="https://www.gatsbyjs.com/"><img src="https://img.shields.io/badge/Gatsby-5.x-purple" alt="Gatsby"></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.x-blue" alt="TypeScript"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/Licença-MIT-yellow" alt="Licença MIT"></a>
+</p>
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+---
 
-2.  **Start developing.**
+## 🎯 Objetivo
+Fornecer uma presença digital **elegante, moderna e funcional** para a profissional **Ana Elisa**, destacando:
+- Serviços de estética facial  
+- Experiência profissional  
+- Depoimentos de clientes  
+- Facilidade de contato e agendamento  
 
-    Navigate into your new site’s directory and start it up.
+---
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+## 🖼️ Demonstração
+🔗 [Acesse o site aqui](https://seu-link-deploy.com) *(adicione o link do deploy assim que estiver no ar)*
 
-3.  **Open the code and start customizing!**
+---
 
-    Your site is now running at http://localhost:8000!
+## 🗂️ Estrutura do Projeto
+```
+├── src/
+│   ├── components/   # Componentes reutilizáveis (botões, cards, etc.)
+│   ├── pages/        # Páginas principais (Home, Sobre, Serviços, etc.)
+│   └── styles/       # Estilos globais e temas
+├── static/images/    # Imagens estáticas
+├── public/           # Build final (não editar)
+├── gatsby-config.ts  # Configurações do Gatsby
+├── package.json      # Dependências e scripts
+└── tsconfig.json     # Configuração TypeScript
+```
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+---
 
-4.  **Learn more**
+## 💻 Como Rodar Localmente
+1. Clone o repositório:
+   ```bash
+   git clone git@github.com:leobelini/ana-elisa-beleza-facial.git
+   cd ana-elisa-beleza-facial
+   ```
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+2. Instale as dependências:
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
 
-## 🚀 Quick start (Netlify)
+3. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+4. Acesse o site em **http://localhost:8000**
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+---
+
+## 🚀 Build para Produção
+Gerar os arquivos otimizados:
+```bash
+npm run build
+# ou
+yarn build
+```
+Os arquivos finais estarão em `/public`.
+
+---
+
+## 🖌️ Paleta de Cores & Estilo
+- Dourado metálico → `#C8A968`  
+- Dourado escuro → `#A17C3C`  
+- Branco gelo → `#FAF8F6`  
+- Cinza suave → `#8C8C8C`  
+- Preto elegante → `#1E1E1E`  
+
+🔑 Estilo: **sofisticação, minimalismo e experiência do usuário**.
+
+---
+
+## 📦 Deploy
+Você pode hospedar facilmente este projeto em:
+- [Netlify](https://www.netlify.com/)  
+- [Vercel](https://vercel.com/)  
+- [GitHub Pages](https://pages.github.com/)  
+
+---
+
+
+<p align="center">Desenvolvido com ❤️ para Ana Elisa Beleza Facial</p>
