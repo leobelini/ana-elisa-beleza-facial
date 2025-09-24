@@ -9,10 +9,7 @@ interface SectionDividerProps {
 const DividerContainer = styled.div<{ variant: 'subtle' | 'decorative' }>`
   position: relative;
   padding: ${({ variant }) => (variant === 'decorative' ? '40px 0' : '20px 0')};
-  background: ${({ variant }) =>
-    variant === 'decorative'
-      ? `linear-gradient(135deg, ${colors.iceWhite} 0%, ${colors.paleGold} 100%)`
-      : 'transparent'};
+  background: ${({ variant }) => (variant === 'decorative' ? colors.iceWhite : 'transparent')};
 
   &::before {
     content: '';

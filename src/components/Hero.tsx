@@ -8,7 +8,7 @@ import { H1, H2 } from './ui/Typography';
 
 // Styled Components para Hero
 const HeroContainer = styled.header`
-  background: linear-gradient(135deg, ${colors.iceWhite} 0%, #ffffff 100%);
+  background: ${colors.iceWhite};
   padding: 140px 20px 80px;
   position: relative;
   overflow: hidden;
@@ -20,7 +20,7 @@ const HeroContainer = styled.header`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(200, 169, 104, 0.1) 0%, transparent 70%);
+    /* background: radial-gradient(circle at 50% 50%, rgba(200, 169, 104, 0.1) 0%, transparent 70%); */
   }
 `;
 
