@@ -12,9 +12,7 @@
       "Promove renovação celular",
       "Prepara a pele para outros tratamentos"
     ],
-    "images": [
-      "/images/services/limpeza-de-pele-1.jpg"
-    ],
+    "images": ["/images/services/limpeza-de-pele-1.jpg"],
     "category": "facial",
     "featured": true,
     "complements": [
@@ -28,7 +26,6 @@
         "name": "Peeling Químico",
         "description": "Promove a renovação da pele por meio da descamação, clareando manchas como acne, melasma e outras, além de estimular a produção de colágeno para uma pele mais firme, revitalizada, radiante e com menos rugas e linhas de expressão."
       }
-    
     ]
   },
   {
@@ -42,9 +39,7 @@
       "Técnica personalizada",
       "Simetria perfeita"
     ],
-    "images": [
-      "/images/services/design-sobrancelhas-1.jpeg"
-    ],
+    "images": ["/images/services/design-sobrancelhas-1.jpeg"],
     "category": "sobrancelhas",
     "featured": false,
     "complements": [
@@ -70,9 +65,7 @@
       "Dispensa máscara de cílios",
       "Resultado natural ou dramático"
     ],
-    "images": [
-      "/images/services/extensao-de-cilios-1.jpg"
-    ],
+    "images": ["/images/services/extensao-de-cilios-1.jpg"],
     "category": "cilios",
     "featured": true,
     "variations": [
@@ -104,74 +97,65 @@
     ]
   },
   {
-    "id":"nano-blading",
-    "title":"Nanoblading",
-    "shortDescription":"Sobrancelhas perfeitas com técnica avançada de nanopigmentação",
-    "longDescription":"O Nano Blading é uma técnica avançada de nanopigmentação que utiliza uma ferramenta manual com microagulhas para desenhar fios de sobrancelha de forma extremamente natural. Cada fio é desenhado individualmente, respeitando o formato do rosto e a direção do crescimento dos pelos. O resultado é uma sobrancelha mais cheia, definida e harmoniosa, com aparência natural.",
-    "benefits":[
+    "id": "nano-blading",
+    "title": "Nanoblading",
+    "shortDescription": "Sobrancelhas perfeitas com técnica avançada de nanopigmentação",
+    "longDescription": "O Nano Blading é uma técnica avançada de nanopigmentação que utiliza uma ferramenta manual com microagulhas para desenhar fios de sobrancelha de forma extremamente natural. Cada fio é desenhado individualmente, respeitando o formato do rosto e a direção do crescimento dos pelos. O resultado é uma sobrancelha mais cheia, definida e harmoniosa, com aparência natural.",
+    "benefits": [
       "Sobrancelhas mais cheias e definidas",
       "Aparência extremamente natural",
       "Técnica personalizada para cada cliente",
       "Duração de até 1 ano com retoques"
     ],
-    "images":[
-      "/images/services/nanoblading-2.jpeg",
-      "/images/services/nanoblading-1.jpeg"
-    ],
-    "category":"sobrancelhas",
+    "images": ["/images/services/nanoblading-2.jpeg", "/images/services/nanoblading-1.jpeg"],
+    "category": "sobrancelhas",
     "featured": false
   },
   {
-    "id":"lash-lift",
-    "title":"Lash Lift",
-    "shortDescription":"Cílios curvados e realçados sem a necessidade de extensão",
-    "longDescription":"Lash lifting é a técnica utiliza seu próprio cílios natural e tem objetivo curva-los. Um procedimento incrível e totalmente indolor vai deixar aquilo que já era lindo, simplesmente perfeito!",
-    "benefits":[
+    "id": "lash-lift",
+    "title": "Lash Lift",
+    "shortDescription": "Cílios curvados e realçados sem a necessidade de extensão",
+    "longDescription": "Lash lifting é a técnica utiliza seu próprio cílios natural e tem objetivo curva-los. Um procedimento incrível e totalmente indolor vai deixar aquilo que já era lindo, simplesmente perfeito!",
+    "benefits": [
       "Cílios naturalmente curvados e realçados",
       "Duração de 45 a 60 dias",
       "Procedimento indolor",
       "Fortalece e hidrata os cílios",
       "Dispensa o uso de curvex"
     ],
-    "images":[
-      "/images/services/lash-lift-1.jpg"
-    ],
-    "category":"cilios",
+    "images": ["/images/services/lash-lift-1.jpg"],
+    "category": "cilios",
     "featured": false
   },
   {
-    "id":"hidra-gloss",
-    "title":"Hidra Gloss",
-    "shortDescription":"Hidratação profunda com efeito glossy para um lábio radiante",
-    "longDescription":"O Hidra Gloss é um tratamento labial que combina hidratação profunda com um efeito glossy, proporcionando um lábio radiante e revitalizado. Utilizamos produtos ricos em ativos hidratantes e antioxidantes que penetram profundamente na pele, restaurando a barreira de proteção e promovendo um brilho saudável. O tratamento é ideal para todos os tipos de lábios, especialmente os desidratados e opacos.",
-    "benefits":[
+    "id": "hidra-gloss",
+    "title": "Hidra Gloss",
+    "shortDescription": "Hidratação profunda com efeito glossy para um lábio radiante",
+    "longDescription": "O Hidra Gloss é um tratamento labial que combina hidratação profunda com um efeito glossy, proporcionando um lábio radiante e revitalizado. Utilizamos produtos ricos em ativos hidratantes e antioxidantes que penetram profundamente na pele, restaurando a barreira de proteção e promovendo um brilho saudável. O tratamento é ideal para todos os tipos de lábios, especialmente os desidratados e opacos.",
+    "benefits": [
       "Hidratação profunda",
       "Efeito glossy e radiante",
       "Revitaliza lábios opacos e desidratados",
       "Restaura a barreira de proteção da pele",
       "Adequado para todos os tipos de labios"
     ],
-    "images":[
-      "/images/services/hidra-gloss-1.jpeg"
-    ],
-    "category":"facial",
+    "images": ["/images/services/hidra-gloss-1.jpeg"],
+    "category": "facial",
     "featured": false
   },
   {
-    "id":"nanolips",
-    "title":"NanoLips",
-    "shortDescription":"Lábios naturalmente realçados com técnica de micropigmentação",
-    "longDescription":"O NanoLips é um procedimento labial que promove um efeito extremamente natural, com borda esfumada e resultado lip tint. Ideal para quem deseja realçar a beleza dos lábios de forma sutil e elegante, corrigindo pequenas irregularidades ou restaurar a cor.",
-    "benefits":[
+    "id": "nanolips",
+    "title": "NanoLips",
+    "shortDescription": "Lábios naturalmente realçados com técnica de micropigmentação",
+    "longDescription": "O NanoLips é um procedimento labial que promove um efeito extremamente natural, com borda esfumada e resultado lip tint. Ideal para quem deseja realçar a beleza dos lábios de forma sutil e elegante, corrigindo pequenas irregularidades ou restaurar a cor.",
+    "benefits": [
       "Lábios mais definidos",
       "Técnica minimamente invasiva",
       "Durabilidade de até 12 meses",
       "Resultado natural e duradouro"
     ],
-    "images":[
-      "/images/services/nanolips-1.jpg"
-    ],
-    "category":"facial",
+    "images": ["/images/services/nanolips-1.jpg"],
+    "category": "facial",
     "featured": false
   }
 ]

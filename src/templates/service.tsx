@@ -123,17 +123,28 @@ const CarouselSlide = styled.div<{ $isActive: boolean }>`
   height: 100%;
   opacity: ${(props) => (props.$isActive ? 1 : 0)};
   transition: opacity 0.5s ease-in-out;
+  pointer-events: ${(props) => (props.$isActive ? 'all' : 'none')};
+  z-index: ${(props) => (props.$isActive ? 5 : 1)};
+`;
+
+const GalleryImageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const GalleryGatsbyImage = styled(GatsbyImage)`
   width: 100%;
   height: 100%;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  object-fit: cover;
 `;
 
 const GalleryImagePlaceholder = styled.div`
@@ -163,6 +174,7 @@ const CarouselControls = styled.div`
   justify-content: space-between;
   padding: 0 15px;
   pointer-events: none;
+  z-index: 10; /* Acima dos slides para que os botões funcionem */
 `;
 
 const CarouselButton = styled.button`
@@ -226,6 +238,8 @@ const ImageCounter = styled.div`
   border-radius: 15px;
   font-size: 0.9rem;
   font-weight: 500;
+  z-index: 15;
+  pointer-events: none;
 `;
 
 // Modal Components
@@ -688,11 +702,16 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                   return (
                     <CarouselSlide key={index} $isActive={index === currentSlide}>
                       {image ? (
-                        <GalleryGatsbyImage
-                          image={image}
-                          alt={`${service.title} - Imagem ${index + 1}`}
-                          onClick={() => openModal(index)}
-                        />
+                        <GalleryImageWrapper
+                          onClick={() => {
+                            openModal(index);
+                          }}
+                        >
+                          <GalleryGatsbyImage
+                            image={image}
+                            alt={`${service.title} - Imagem ${index + 1}`}
+                          />
+                        </GalleryImageWrapper>
                       ) : (
                         <GalleryImagePlaceholder onClick={() => openModal(index)}>
                           {service.title}
@@ -702,25 +721,28 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                   );
                 })}
 
+                {/* Controles do carousel - apenas se houver múltiplas imagens */}
                 {service.images.length > 1 && (
-                  <>
-                    <ImageCounter>
-                      {currentSlide + 1} / {service.images.length}
-                    </ImageCounter>
-
-                    <CarouselControls>
-                      <CarouselButton onClick={prevSlide} disabled={currentSlide === 0}>
+                  <CarouselControls>
+                    {currentSlide > 0 && (
+                      <CarouselButton onClick={prevSlide}>
                         <ChevronLeft size={20} />
                       </CarouselButton>
-
-                      <CarouselButton
-                        onClick={nextSlide}
-                        disabled={currentSlide === service.images.length - 1}
-                      >
+                    )}
+                    <div style={{ flex: 1 }} /> {/* Spacer */}
+                    {currentSlide < service.images.length - 1 && (
+                      <CarouselButton onClick={nextSlide}>
                         <ChevronRight size={20} />
                       </CarouselButton>
-                    </CarouselControls>
-                  </>
+                    )}
+                  </CarouselControls>
+                )}
+
+                {/* Contador de imagens */}
+                {service.images.length > 1 && (
+                  <ImageCounter>
+                    {currentSlide + 1} / {service.images.length}
+                  </ImageCounter>
                 )}
               </CarouselContainer>
 
@@ -825,52 +847,52 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
             {MESSAGES.cta.scheduleWhatsApp}
           </Button>
         </CTASection>
-
-        {/* Modal de Imagem */}
-        <ModalOverlay $isOpen={isModalOpen} onClick={closeModal}>
-          <ModalContent onClick={(e) => e.stopPropagation()}>
-            {service.images && service.images[currentImageIndex] && (
-              <>
-                {(() => {
-                  const image = getServiceImage(service.images[currentImageIndex]);
-                  return image ? (
-                    <ModalGatsbyImage
-                      image={image}
-                      alt={`${service.title} - Imagem ${currentImageIndex + 1}`}
-                    />
-                  ) : (
-                    <ModalImagePlaceholder>{service.title}</ModalImagePlaceholder>
-                  );
-                })()}
-
-                <CloseButton onClick={closeModal}>
-                  <X size={24} />
-                </CloseButton>
-
-                {service.images.length > 1 && (
-                  <>
-                    {currentImageIndex > 0 && (
-                      <NavigationButton direction="left" onClick={goToPreviousImage}>
-                        <ChevronLeft size={24} />
-                      </NavigationButton>
-                    )}
-
-                    {currentImageIndex < service.images.length - 1 && (
-                      <NavigationButton direction="right" onClick={goToNextImage}>
-                        <ChevronRight size={24} />
-                      </NavigationButton>
-                    )}
-
-                    <ModalImageCounter>
-                      {currentImageIndex + 1} de {service.images.length}
-                    </ModalImageCounter>
-                  </>
-                )}
-              </>
-            )}
-          </ModalContent>
-        </ModalOverlay>
       </ServicePageContainer>
+
+      {/* Modal de Imagem - Movido para fora do container */}
+      <ModalOverlay $isOpen={isModalOpen} onClick={closeModal}>
+        <ModalContent onClick={(e) => e.stopPropagation()}>
+          {service.images && service.images[currentImageIndex] && (
+            <>
+              {(() => {
+                const image = getServiceImage(service.images[currentImageIndex]);
+                return image ? (
+                  <ModalGatsbyImage
+                    image={image}
+                    alt={`${service.title} - Imagem ${currentImageIndex + 1}`}
+                  />
+                ) : (
+                  <ModalImagePlaceholder>{service.title}</ModalImagePlaceholder>
+                );
+              })()}
+
+              <CloseButton onClick={closeModal}>
+                <X size={24} />
+              </CloseButton>
+
+              {service.images.length > 1 && (
+                <>
+                  {currentImageIndex > 0 && (
+                    <NavigationButton direction="left" onClick={goToPreviousImage}>
+                      <ChevronLeft size={24} />
+                    </NavigationButton>
+                  )}
+
+                  {currentImageIndex < service.images.length - 1 && (
+                    <NavigationButton direction="right" onClick={goToNextImage}>
+                      <ChevronRight size={24} />
+                    </NavigationButton>
+                  )}
+
+                  <ModalImageCounter>
+                    {currentImageIndex + 1} de {service.images.length}
+                  </ModalImageCounter>
+                </>
+              )}
+            </>
+          )}
+        </ModalContent>
+      </ModalOverlay>
     </>
   );
 };
