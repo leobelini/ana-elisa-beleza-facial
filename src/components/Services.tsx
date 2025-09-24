@@ -102,7 +102,29 @@ const ServicePrice = styled.div`
   margin-bottom: 25px;
 `;
 
-// Removido: ServiceButton
+const ServiceButton = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 24px;
+  margin-top: 15px;
+  background: transparent;
+  color: ${colors.goldMain};
+  border: 2px solid ${colors.goldMain};
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: ${colors.goldMain};
+    color: white;
+    transform: translateY(-2px);
+  }
+`;
 
 // Interfaces
 export interface Service {
@@ -186,14 +208,7 @@ const Services: React.FC = () => {
                   {service.title}
                 </H3>
                 <P>{service.shortDescription}</P>
-                <Button
-                  asLink
-                  variant="secondary"
-                  to={`/servicos/${service.fields.slug}`}
-                  style={{ width: '100%', marginTop: 10 }}
-                >
-                  Saiba mais
-                </Button>
+                <ServiceButton>Saiba mais</ServiceButton>
               </ServiceContent>
             </ServiceCard>
           );

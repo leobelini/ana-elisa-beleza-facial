@@ -43,7 +43,7 @@ const TestimonialCard = styled.div<{ $isVisible: boolean }>`
   }
 `;
 
-const TestimonialText = styled.p<{ isVisible: boolean }>`
+const TestimonialText = styled.p<{ $isVisible: boolean }>`
   font-size: 1.2rem;
   line-height: 1.8;
   color: ${colors.blackMain};
@@ -52,16 +52,16 @@ const TestimonialText = styled.p<{ isVisible: boolean }>`
   margin-left: 15px;
   margin-right: 15px;
   font-style: italic;
-  opacity: ${(props) => (props.isVisible ? 1 : 0)};
-  transform: translateY(${(props) => (props.isVisible ? '0' : '15px')});
+  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
+  transform: translateY(${(props) => (props.$isVisible ? '0' : '15px')});
   transition: all 0.5s ease-in-out 0.1s;
 `;
 
-const TestimonialAuthor = styled.div<{ isVisible: boolean }>`
+const TestimonialAuthor = styled.div<{ $isVisible: boolean }>`
   color: ${colors.goldMain};
   font-weight: 500;
-  opacity: ${(props) => (props.isVisible ? 1 : 0)};
-  transform: translateY(${(props) => (props.isVisible ? '0' : '10px')});
+  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
+  transform: translateY(${(props) => (props.$isVisible ? '0' : '10px')});
   transition: all 0.5s ease-in-out 0.3s;
 `;
 
@@ -78,12 +78,12 @@ const CarouselDots = styled.div`
   margin-top: 30px;
 `;
 
-const Dot = styled.button<{ active: boolean }>`
+const Dot = styled.button<{ $active: boolean }>`
   width: 12px;
   height: 12px;
   border-radius: 50%;
   border: none;
-  background: ${(props) => (props.active ? colors.goldMain : colors.graySecondary)};
+  background: ${(props) => (props.$active ? colors.goldMain : colors.graySecondary)};
   cursor: pointer;
   transition: all 0.3s ease;
 
@@ -207,10 +207,10 @@ const Testimonials: React.FC<TestimonialsProps> = ({ autoPlayInterval = 5000 }) 
         <SectionTitle>Depoimentos</SectionTitle>
         <TestimonialsCarousel>
           <TestimonialCard $isVisible={isVisible}>
-            <TestimonialText isVisible={isVisible}>
+            <TestimonialText $isVisible={isVisible}>
               {testimonials[currentTestimonial].text}
             </TestimonialText>
-            <TestimonialAuthor isVisible={isVisible}>
+            <TestimonialAuthor $isVisible={isVisible}>
               — {testimonials[currentTestimonial].author}
             </TestimonialAuthor>
           </TestimonialCard>
@@ -220,7 +220,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ autoPlayInterval = 5000 }) 
               {testimonials.map((_: Testimonial, index: number) => (
                 <Dot
                   key={index}
-                  active={index === currentTestimonial}
+                  $active={index === currentTestimonial}
                   onClick={() => goToTestimonial(index)}
                 />
               ))}
