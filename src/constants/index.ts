@@ -1,3 +1,8 @@
+// Calcula anos de experiência dinamicamente
+const startYear = 2018; // Ano que Ana Elisa começou na profissão
+const currentYear = new Date().getFullYear();
+export const yearsOfExperience = currentYear - startYear;
+
 // Informações da empresa
 export const COMPANY_INFO = {
   name: 'Ana Elisa Cardoso Beleza Facial',
