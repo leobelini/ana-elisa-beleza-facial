@@ -34,13 +34,8 @@ const achievements = [
 ];
 
 // Styled Components para About
-const AboutContainer = styled.section`
-  padding: 80px 20px;
-  background: linear-gradient(135deg, ${colors.iceWhite} 0%, #ffffff 50%, ${colors.iceWhite} 100%);
-
-  @media (max-width: 768px) {
-    padding: 60px 20px;
-  }
+const AboutContainer = styled.div`
+  /* Removido padding e background - agora controlado pelo SectionWrapper */
 `;
 
 const Container = styled.div`

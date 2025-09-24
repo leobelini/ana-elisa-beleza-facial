@@ -21,9 +21,8 @@ interface ServiceData {
 }
 
 // Styled Components para Services
-const ServicesContainer = styled.section`
-  ${commonStyles.section}
-  background: ${colors.iceWhite};
+const ServicesContainer = styled.div`
+  /* Removido padding e background - agora controlado pelo SectionWrapper */
 `;
 
 const HeaderContainer = styled.div`

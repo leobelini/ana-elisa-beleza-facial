@@ -5,6 +5,11 @@ export const colors = {
   iceWhite: '#FAF8F6',
   graySecondary: '#8C8C8C',
   blackMain: '#1E1E1E',
+  // Cores adicionais para contraste entre seções
+  lightGray: '#F5F5F5',
+  paleGold: '#FDFCFA',
+  softWhite: '#FFFFFF',
+  divider: '#E8E8E8',
 };
 
 // Styled components comuns
@@ -17,6 +22,29 @@ export const commonStyles = {
     @media (max-width: 768px) {
       padding: 60px 20px;
     }
+  `,
+  sectionLight: `
+    padding: 120px 20px;
+    background: ${colors.softWhite};
+    border-bottom: 1px solid ${colors.divider};
+    
+    @media (max-width: 768px) {
+      padding: 90px 20px;
+    }
+  `,
+  sectionDark: `
+    padding: 120px 20px;
+    background: linear-gradient(135deg, ${colors.lightGray} 0%, ${colors.paleGold} 100%);
+    border-bottom: 1px solid ${colors.divider};
+    
+    @media (max-width: 768px) {
+      padding: 90px 20px;
+    }
+  `,
+  sectionContainer: `
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
   `,
   button: `
     display: inline-block;

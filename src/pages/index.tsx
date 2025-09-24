@@ -2,7 +2,17 @@ import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import styled from 'styled-components';
 import { colors } from '../styles/theme';
-import { Navbar, Hero, About, Services, Testimonials, Contact, Footer } from '../components';
+import {
+  Navbar,
+  Hero,
+  About,
+  Services,
+  Testimonials,
+  Contact,
+  Footer,
+  SectionWrapper,
+  SectionDivider,
+} from '../components';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import { COMPANY_INFO, CONTACT_INFO } from '../constants';
 
@@ -27,25 +37,36 @@ const IndexPage: React.FC<PageProps> = () => {
         <Hero />
       </AnimatedSection>
 
-      {/* Seção Sobre */}
-      <AnimatedSection direction="up" delay={0.2}>
-        <About />
-      </AnimatedSection>
+      {/* Divisor decorativo */}
+      <SectionDivider variant="decorative" />
 
-      {/* Seção Serviços */}
-      <AnimatedSection direction="up" delay={0.1}>
-        <Services />
-      </AnimatedSection>
+      {/* Seção Sobre - Background claro */}
+      <SectionWrapper variant="light">
+        <AnimatedSection direction="up" delay={0.2}>
+          <About />
+        </AnimatedSection>
+      </SectionWrapper>
 
-      {/* Seção Depoimentos */}
-      <AnimatedSection direction="left" delay={0.1}>
-        <Testimonials />
-      </AnimatedSection>
+      {/* Seção Serviços - Background escuro */}
+      <SectionWrapper variant="dark">
+        <AnimatedSection direction="up" delay={0.1}>
+          <Services />
+        </AnimatedSection>
+      </SectionWrapper>
 
-      {/* Seção Contato/Agendamento */}
-      <AnimatedSection direction="up" delay={0.1}>
-        <Contact />
-      </AnimatedSection>
+      {/* Seção Depoimentos - Background claro */}
+      <SectionWrapper variant="light">
+        <AnimatedSection direction="left" delay={0.1}>
+          <Testimonials />
+        </AnimatedSection>
+      </SectionWrapper>
+
+      {/* Seção Contato/Agendamento - Background escuro */}
+      <SectionWrapper variant="dark">
+        <AnimatedSection direction="up" delay={0.1}>
+          <Contact />
+        </AnimatedSection>
+      </SectionWrapper>
 
       {/* Rodapé */}
       <AnimatedSection direction="fade" delay={0.2}>

@@ -15,9 +15,8 @@ import {
 import { H2, P } from './ui/Typography';
 
 // Styled Components para Contact
-const ContactContainer = styled.section`
-  background: ${colors.iceWhite};
-  padding: 80px 20px;
+const ContactContainer = styled.div`
+  /* Removido padding e background - agora controlado pelo SectionWrapper */
 `;
 
 const Container = styled.div`

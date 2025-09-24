@@ -5,9 +5,8 @@ import { colors, commonStyles } from '../styles/theme';
 import { yearsOfExperience } from '../constants';
 
 // Styled Components para Testimonials
-const TestimonialsContainer = styled.section`
-  background: linear-gradient(135deg, ${colors.iceWhite} 0%, rgba(200, 169, 104, 0.05) 100%);
-  padding: 80px 20px;
+const TestimonialsContainer = styled.div`
+  /* Removido padding e background - agora controlado pelo SectionWrapper */
 `;
 
 const TestimonialsSection = styled.div`
