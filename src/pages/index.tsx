@@ -62,11 +62,11 @@ export const Head: HeadFC = () => (
     <title>Ana Elisa Beleza Facial - Estética e Cuidados Faciais</title>
     <meta
       name="description"
-      content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning."
+      content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss, nanolips."
     />
     <meta
       name="keywords"
-      content="estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial, dermaplaning, beleza"
+      content="estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss, nanolips, beleza"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Ana Elisa Cardoso" />
@@ -76,7 +76,7 @@ export const Head: HeadFC = () => (
     <meta property="og:title" content="Ana Elisa Beleza Facial - Estética e Cuidados Faciais" />
     <meta
       property="og:description"
-      content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning."
+      content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss, nanolips."
     />
     <meta property="og:url" content="https://anaelisabelezafacial.com.br" />
     <meta property="og:site_name" content="Ana Elisa Beleza Facial" />
@@ -87,7 +87,7 @@ export const Head: HeadFC = () => (
     <meta name="twitter:title" content="Ana Elisa Beleza Facial - Estética e Cuidados Faciais" />
     <meta
       name="twitter:description"
-      content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial e dermaplaning."
+      content="Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss, nanolips."
     />
 
     {/* Additional meta tags */}
@@ -121,7 +121,7 @@ export const Head: HeadFC = () => (
               itemOffered: {
                 '@type': 'Service',
                 name: 'Limpeza de Pele',
-                description: 'Limpeza profunda e hidratação facial',
+                description: 'Limpeza profunda para renovar e revitalizar sua pele',
               },
             },
             {
@@ -129,7 +129,7 @@ export const Head: HeadFC = () => (
               itemOffered: {
                 '@type': 'Service',
                 name: 'Design de Sobrancelhas',
-                description: 'Modelagem e design personalizado de sobrancelhas',
+                description: 'Modelagem perfeita que realça seu olhar',
               },
             },
             {
@@ -137,23 +137,39 @@ export const Head: HeadFC = () => (
               itemOffered: {
                 '@type': 'Service',
                 name: 'Extensão de Cílios',
-                description: 'Alongamento e volume para cílios naturais',
+                description: 'Cílios naturais',
               },
             },
             {
               '@type': 'Offer',
               itemOffered: {
                 '@type': 'Service',
-                name: 'Peeling Facial',
-                description: 'Renovação e rejuvenescimento da pele',
+                name: 'Nanoblading',
+                description: 'Sobrancelhas perfeitas com técnica avançada de nanopigmentação',
               },
             },
             {
               '@type': 'Offer',
               itemOffered: {
                 '@type': 'Service',
-                name: 'Dermaplaning',
-                description: 'Esfoliação profunda com remoção de pelos faciais',
+                name: 'Lash Lift',
+                description: 'Cílios curvados e realçados sem a necessidade de extensão',
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Hidra Gloss',
+                description: 'Hidratação profunda com efeito glossy para um lábio radiante',
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'NanoLips',
+                description: 'Lábios naturalmente realçados com técnica de micropigmentação',
               },
             },
           ],

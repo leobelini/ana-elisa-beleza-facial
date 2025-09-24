@@ -126,12 +126,14 @@ const NotFoundPage: React.FC<PageProps> = () => {
       </ActionContainer>
 
       <ServicesList>
-        <ServicesTitle>Nossos Serviços Principais</ServicesTitle>
+        <ServicesTitle>Nossos Serviços</ServicesTitle>
         <ServiceItem to="/#servicos">Limpeza de Pele</ServiceItem>
         <ServiceItem to="/#servicos">Design de Sobrancelhas</ServiceItem>
         <ServiceItem to="/#servicos">Extensão de Cílios</ServiceItem>
-        <ServiceItem to="/#servicos">Peeling Facial</ServiceItem>
-        <ServiceItem to="/#servicos">Dermaplaning</ServiceItem>
+        <ServiceItem to="/#servicos">Nanoblading</ServiceItem>
+        <ServiceItem to="/#servicos">Lash Lift</ServiceItem>
+        <ServiceItem to="/#servicos">Hidra Gloss</ServiceItem>
+        <ServiceItem to="/#servicos">NanoLips</ServiceItem>
         <ServiceItem to="/#contato">Agendar Consulta</ServiceItem>
       </ServicesList>
     </NotFoundContainer>

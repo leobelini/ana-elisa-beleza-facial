@@ -9,7 +9,7 @@ export const COMPANY_INFO = {
   tagline: 'Beleza e cuidado que realçam sua essência',
   logoUrl: 'https://anaelisabelezafacial.com.br/logo.png',
   keywords:
-    'estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, peeling facial, dermaplaning, beleza, cuidados faciais, Ana Elisa',
+    'estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss, nanolips, beleza, cuidados faciais, Ana Elisa',
 } as const;
 
 const PHONE_NUMBER = '5514997139783';
