@@ -4,13 +4,11 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { colors } from '../styles/theme';
 import { Helmet } from 'react-helmet';
-import { MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '../components/ui/Button';
-import { Navbar } from '../components';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Contact, Navbar } from '../components';
 import { H1, H2, H3, P } from '../components/ui/Typography';
 import {
   COMPANY_INFO,
-  MESSAGES,
   generateServiceWhatsAppUrl,
   generatePageTitle,
   generateServiceUrl,
@@ -357,29 +355,6 @@ const ModalImageCounter = styled.div`
   border-radius: 20px;
 `;
 
-const DetailItem = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
-  border-bottom: 1px solid rgba(200, 169, 104, 0.2);
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  span:first-child {
-    font-weight: 600;
-    color: ${colors.blackMain};
-  }
-
-  span:last-child {
-    color: ${colors.goldMain};
-    font-weight: 700;
-    font-size: 1.1rem;
-  }
-`;
-
 const BenefitsList = styled.div`
   margin-top: 40px;
 `;
@@ -402,14 +377,6 @@ const BenefitItem = styled.div`
     color: ${colors.graySecondary};
     line-height: 1.6;
   }
-`;
-
-const CTASection = styled.div`
-  background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
-  padding: 60px 40px;
-  border-radius: 25px;
-  text-align: center;
-  color: white;
 `;
 
 const BackButton = styled.a`
@@ -479,32 +446,6 @@ const OptionName = styled.h4`
   flex: 1;
 `;
 
-const OptionPrice = styled.span`
-  color: ${colors.goldMain};
-  font-weight: 700;
-  font-size: 1.1rem;
-  white-space: nowrap;
-  margin-left: 15px;
-`;
-
-const OptionDescription = styled.p`
-  color: ${colors.graySecondary};
-  line-height: 1.6;
-  margin: 0;
-  font-size: 0.95rem;
-`;
-
-const OptionDuration = styled.div`
-  margin-top: 10px;
-  font-size: 0.9rem;
-  color: ${colors.graySecondary};
-
-  &::before {
-    content: '⏱️';
-    margin-right: 5px;
-  }
-`;
-
 // Componente principal
 const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
   const service = data.servicesJson;
@@ -518,7 +459,6 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Gerar URL do WhatsApp
-  const whatsappUrl = generateServiceWhatsAppUrl(service.title);
 
   // Função para encontrar a imagem correspondente
   const getServiceImage = (imagePath: string) => {
@@ -827,26 +767,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
           )}
         </ServiceDetails>
 
-        <CTASection>
-          <H3
-            as="h3"
-            style={{
-              fontSize: '2rem',
-              marginBottom: 20,
-              fontWeight: 700,
-              color: 'white',
-            }}
-          >
-            Pronta para transformar sua beleza?
-          </H3>
-          <P as="p" style={{ color: 'white', opacity: 0.9, marginBottom: 30 }}>
-            Agende seu horário agora mesmo e descubra o que nosso tratamento pode fazer por você.
-          </P>
-          <Button href={whatsappUrl} variant="whatsapp" target="_blank" rel="noopener noreferrer">
-            <MessageCircle size={20} />
-            {MESSAGES.cta.scheduleWhatsApp}
-          </Button>
-        </CTASection>
+        <Contact />
       </ServicePageContainer>
 
       {/* Modal de Imagem - Movido para fora do container */}
