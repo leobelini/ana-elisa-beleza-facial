@@ -115,13 +115,13 @@ const CarouselContainer = styled.div`
   overflow: hidden;
 `;
 
-const CarouselSlide = styled.div<{ isActive: boolean }>`
+const CarouselSlide = styled.div<{ $isActive: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: ${(props) => (props.isActive ? 1 : 0)};
+  opacity: ${(props) => (props.$isActive ? 1 : 0)};
   transition: opacity 0.5s ease-in-out;
 `;
 
@@ -201,12 +201,12 @@ const CarouselIndicators = styled.div`
   background: rgba(255, 255, 255, 0.95);
 `;
 
-const Indicator = styled.button<{ isActive: boolean }>`
+const Indicator = styled.button<{ $isActive: boolean }>`
   width: 8px;
   height: 8px;
   border-radius: 50%;
   border: none;
-  background: ${(props) => (props.isActive ? colors.goldMain : colors.graySecondary)};
+  background: ${(props) => (props.$isActive ? colors.goldMain : colors.graySecondary)};
   cursor: pointer;
   transition: all 0.3s ease;
 
@@ -229,14 +229,14 @@ const ImageCounter = styled.div`
 `;
 
 // Modal Components
-const ModalOverlay = styled.div<{ isOpen: boolean }>`
+const ModalOverlay = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.95);
-  display: ${(props) => (props.isOpen ? 'flex' : 'none')};
+  display: ${(props) => (props.$isOpen ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
   z-index: 9999;
@@ -686,7 +686,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                 {service.images.map((imagePath, index) => {
                   const image = getServiceImage(imagePath);
                   return (
-                    <CarouselSlide key={index} isActive={index === currentSlide}>
+                    <CarouselSlide key={index} $isActive={index === currentSlide}>
                       {image ? (
                         <GalleryGatsbyImage
                           image={image}
@@ -729,7 +729,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                   {service.images.map((_, index) => (
                     <Indicator
                       key={index}
-                      isActive={index === currentSlide}
+                      $isActive={index === currentSlide}
                       onClick={() => goToSlide(index)}
                     />
                   ))}
@@ -827,7 +827,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
         </CTASection>
 
         {/* Modal de Imagem */}
-        <ModalOverlay isOpen={isModalOpen} onClick={closeModal}>
+        <ModalOverlay $isOpen={isModalOpen} onClick={closeModal}>
           <ModalContent onClick={(e) => e.stopPropagation()}>
             {service.images && service.images[currentImageIndex] && (
               <>

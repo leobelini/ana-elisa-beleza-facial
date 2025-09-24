@@ -19,7 +19,7 @@ const SectionTitle = styled.h2`
   color: ${colors.blackMain};
 `;
 
-const TestimonialCard = styled.div<{ isVisible: boolean }>`
+const TestimonialCard = styled.div<{ $isVisible: boolean }>`
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
@@ -27,8 +27,8 @@ const TestimonialCard = styled.div<{ isVisible: boolean }>`
   background: ${colors.iceWhite};
   border-radius: 20px;
   position: relative;
-  opacity: ${(props) => (props.isVisible ? 1 : 0)};
-  transform: translateY(${(props) => (props.isVisible ? '0' : '20px')});
+  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
+  transform: translateY(${(props) => (props.$isVisible ? '0' : '20px')});
   transition: all 0.6s ease-in-out;
 
   &::before {
@@ -38,7 +38,7 @@ const TestimonialCard = styled.div<{ isVisible: boolean }>`
     position: absolute;
     top: 10px;
     left: 30px;
-    opacity: ${(props) => (props.isVisible ? 1 : 0)};
+    opacity: ${(props) => (props.$isVisible ? 1 : 0)};
     transition: opacity 0.8s ease-in-out 0.2s;
   }
 `;
@@ -206,7 +206,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ autoPlayInterval = 5000 }) 
       <TestimonialsSection>
         <SectionTitle>Depoimentos</SectionTitle>
         <TestimonialsCarousel>
-          <TestimonialCard isVisible={isVisible}>
+          <TestimonialCard $isVisible={isVisible}>
             <TestimonialText isVisible={isVisible}>
               {testimonials[currentTestimonial].text}
             </TestimonialText>

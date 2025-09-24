@@ -105,7 +105,7 @@ const MobileMenuButton = styled.button`
   }
 `;
 
-const MobileMenu = styled.div<{ isOpen: boolean }>`
+const MobileMenu = styled.div<{ $isOpen: boolean }>`
   position: absolute;
   top: 100%;
   left: 0;
@@ -113,9 +113,9 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
   background: rgba(250, 248, 246, 0.98);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(200, 169, 104, 0.2);
-  transform: translateY(${(props) => (props.isOpen ? '0' : '-100%')});
-  opacity: ${(props) => (props.isOpen ? '1' : '0')};
-  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
+  transform: translateY(${(props) => (props.$isOpen ? '0' : '-100%')});
+  opacity: ${(props) => (props.$isOpen ? '1' : '0')};
+  visibility: ${(props) => (props.$isOpen ? 'visible' : 'hidden')};
   transition: all 0.3s ease;
 
   @media (min-width: 769px) {
@@ -220,7 +220,7 @@ const Navbar: React.FC = () => {
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </MobileMenuButton>
       </NavContainer>
-      <MobileMenu isOpen={isMobileMenuOpen}>
+      <MobileMenu $isOpen={isMobileMenuOpen}>
         <MobileMenuList>
           {menuItems.map((item) => (
             <li key={item.href}>

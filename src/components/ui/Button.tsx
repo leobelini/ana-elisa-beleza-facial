@@ -97,19 +97,19 @@ const variantStyles = {
   `,
 };
 
-const StyledButton = styled.button<{ variant: ButtonVariant }>`
+const StyledButton = styled.button<{ $variant: ButtonVariant }>`
   ${buttonBase}
-  ${({ variant }) => variantStyles[variant]}
+  ${({ $variant }) => variantStyles[$variant]}
 `;
 
-const StyledLink = styled(Link)<{ variant: ButtonVariant }>`
+const StyledLink = styled(Link)<{ $variant: ButtonVariant }>`
   ${buttonBase}
-  ${({ variant }) => variantStyles[variant]}
+  ${({ $variant }) => variantStyles[$variant]}
 `;
 
-const StyledA = styled.a<{ variant: ButtonVariant }>`
+const StyledA = styled.a<{ $variant: ButtonVariant }>`
   ${buttonBase}
-  ${({ variant }) => variantStyles[variant]}
+  ${({ $variant }) => variantStyles[$variant]}
 `;
 
 export const Button: React.FC<ButtonProps> = (props) => {
@@ -119,7 +119,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     // Gatsby Link: repassar apenas props aceitos
     const { to, className } = rest as ButtonAsLink;
     return (
-      <StyledLink to={to} variant={variant} className={className}>
+      <StyledLink to={to} $variant={variant} className={className}>
         {children}
       </StyledLink>
     );
@@ -128,7 +128,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     // Anchor
     const { href, className, ...aProps } = rest as ButtonAsA;
     return (
-      <StyledA href={href} variant={variant} className={className} {...aProps}>
+      <StyledA href={href} $variant={variant} className={className} {...aProps}>
         {children}
       </StyledA>
     );
@@ -136,7 +136,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
   // Button
   const { className, ...buttonProps } = rest as ButtonAsButton;
   return (
-    <StyledButton variant={variant} className={className} {...buttonProps}>
+    <StyledButton $variant={variant} className={className} {...buttonProps}>
       {children}
     </StyledButton>
   );
