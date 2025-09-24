@@ -150,7 +150,7 @@ const Hero: React.FC = () => {
             🦋 Beleza autêntica, a arte de realçar sua essência.
           </H2>
           <Button
-            href="#agendamento"
+            href="#contato"
             variant="primary"
             style={{ fontSize: '1.1rem', padding: '14px 36px' }}
           >

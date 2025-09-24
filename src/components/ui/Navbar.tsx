@@ -168,7 +168,7 @@ const Navbar: React.FC = () => {
     { label: 'Sobre', href: '#sobre' },
     { label: 'Serviços', href: '#servicos' },
     { label: 'Depoimentos', href: '#depoimentos' },
-    { label: 'Contato', href: '#agendamento' },
+    { label: 'Contato', href: '#contato' },
   ];
 
   React.useEffect(() => {

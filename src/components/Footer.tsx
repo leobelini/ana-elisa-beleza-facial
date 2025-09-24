@@ -1,230 +1,337 @@
 import * as React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { colors } from '../styles/theme';
-import { Instagram, MapPin, Navigation, PhoneCall } from 'lucide-react';
-import { SEO_DEFAULTS, CONTACT_INFO, PHONE_NUMBER_FORMATTED, address } from '../constants';
-import { H3, P } from './ui/Typography';
+import { Instagram, MapPin, PhoneCall, Heart } from 'lucide-react';
+import {
+  SEO_DEFAULTS,
+  CONTACT_INFO,
+  PHONE_NUMBER_FORMATTED,
+  address,
+  COMPANY_INFO,
+  URLS,
+  SOCIAL_MEDIA,
+  generateServiceUrl,
+} from '../constants';
 
 // Styled Components para Footer
 const FooterContainer = styled.footer`
   background: ${colors.blackMain};
-  color: white;
-  padding: 60px 20px 30px;
-  text-align: center;
+  color: ${colors.iceWhite};
+  border-top: 1px solid ${colors.goldMain};
 `;
 
 const FooterContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  margin-bottom: 40px;
+  padding: 48px 16px;
+
+  @media (min-width: 640px) {
+    padding: 48px 24px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 48px 32px;
+  }
+`;
+
+const FooterGrid = styled.div`
+  display: grid;
+  gap: 32px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const FooterSection = styled.div`
-  flex: 1 1 250px;
-  min-width: 300px;
-  text-align: center;
-
-  // h3 removido, usar Title3
-  ul {
-    list-style: none;
-    padding: 0;
-
-    li {
-      margin-bottom: 10px;
-
-      a {
-        color: ${colors.graySecondary};
-        text-decoration: none;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: ${colors.goldMain};
-        }
-      }
-    }
-  }
-
-  // p removido, usar Paragraph
-`;
-
-const Copyright = styled.div`
-  border-top: 1px solid ${colors.graySecondary};
-  padding-top: 30px;
-  color: ${colors.graySecondary};
-  font-size: 0.9rem;
-`;
-
-const AddressSection = styled.div`
-  text-align: center;
-
-  // h4 removido, usar Title3
-  .address-text {
-    // será Paragraph
-    text-align: center;
-  }
-`;
-
-const NavigationButtons = styled.div`
   display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 15px;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const SectionTitle = styled.h3`
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: ${colors.iceWhite};
+  margin: 0;
+`;
+
+const BrandTitle = styled.h3`
+  font-size: 1.5rem;
+  font-family: serif;
+  font-weight: 600;
+  color: ${colors.goldMain};
+  margin: 0;
+`;
+
+const Description = styled.p`
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: ${colors.graySecondary};
+  margin: 0;
+`;
+
+const SocialIcons = styled.div`
+  display: flex;
+  gap: 16px;
 
   a {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    background: ${colors.goldMain};
-    color: white;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: ${colors.goldMain}40;
+    border-radius: 50%;
+    color: ${colors.goldMain};
     text-decoration: none;
-    border-radius: 25px;
-    font-size: 0.85rem;
-    font-weight: 500;
     transition: all 0.3s ease;
 
     &:hover {
-      background: ${colors.goldDark};
+      background: ${colors.goldMain};
+      color: ${colors.blackMain};
       transform: translateY(-2px);
     }
 
     svg {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
     }
   }
 `;
 
-// Interfaces
-interface FooterLink {
-  label: string;
-  href: string;
-  external?: boolean;
-}
+const ServicesList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-interface FooterSection {
+  li {
+    a {
+      font-size: 0.875rem;
+      color: ${colors.graySecondary};
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: ${colors.goldMain};
+      }
+    }
+  }
+`;
+
+const ContactInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.875rem;
+`;
+
+const ContactItem = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: ${colors.goldMain};
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+`;
+
+const ContactDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  .primary {
+    color: ${colors.iceWhite};
+    font-weight: 500;
+  }
+
+  .secondary {
+    font-size: 0.75rem;
+    color: ${colors.graySecondary};
+  }
+`;
+
+const WorkingHours = styled.div`
+  font-size: 0.75rem;
+  color: ${colors.graySecondary};
+  line-height: 1.4;
+`;
+
+const FooterBottom = styled.div`
+  border-top: 1px solid ${colors.goldMain}60;
+  margin-top: 32px;
+  padding-top: 32px;
+  text-align: center;
+`;
+
+const BottomContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+const Copyright = styled.p`
+  font-size: 0.875rem;
+  color: ${colors.graySecondary};
+  margin: 0;
+`;
+
+const MadeWithLove = styled.p`
+  font-size: 0.875rem;
+  color: ${colors.graySecondary};
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  .heart {
+    color: ${colors.goldMain};
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+// Interface para dados do GraphQL
+interface ServiceNode {
+  id: string;
   title: string;
-  links?: FooterLink[];
-  content?: React.ReactNode[];
+  shortDescription: string;
+  featured: boolean;
+  fields: {
+    slug: string;
+  };
 }
 
-// Dados padrão do footer
-const defaultSections: FooterSection[] = [
-  {
-    title: 'Navegação',
-    links: [
-      { label: 'Sobre', href: '#sobre' },
-      { label: 'Serviços', href: '#servicos' },
-      { label: 'Depoimentos', href: '#depoimentos' },
-      { label: 'Contato', href: '#agendamento' },
-    ],
-  },
-  {
-    title: 'Contato',
-    content: [
-      <a href="">
-        <PhoneCall size={24} /> {PHONE_NUMBER_FORMATTED}
-      </a>,
-      <a href={CONTACT_INFO.instagramUrl} target="_blank">
-        <Instagram size={24} /> {CONTACT_INFO.instagram}
-      </a>,
-    ],
-  },
-  {
-    title: 'Horário de Funcionamento',
-    content: ['Terça à Sexta: 9h às 18h'],
-  },
-];
+interface FooterQueryData {
+  allServicesJson: {
+    nodes: ServiceNode[];
+  };
+}
 
+// Query GraphQL para buscar serviços
+const FOOTER_QUERY = graphql`
+  query FooterQuery {
+    allServicesJson {
+      nodes {
+        id
+        title
+        shortDescription
+        featured
+        fields {
+          slug
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * Footer Component
+ *
+ * Footer do site com informações da empresa, serviços em destaque,
+ * dados de contato e links para redes sociais.
+ *
+ * Utiliza dados dinâmicos do GraphQL para listar serviços e
+ * constantes do sistema para informações da empresa.
+ */
 const Footer: React.FC = () => {
-  // URLs para navegação
-  const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address)}`;
+  // Busca dados dos serviços via GraphQL
+  const data: FooterQueryData = useStaticQuery(FOOTER_QUERY);
+
+  // Filtra apenas serviços em destaque para exibir no footer (máximo 5)
+  const featuredServices = data.allServicesJson.nodes
+    .filter((service) => service.featured)
+    .slice(0, 5);
 
   return (
     <FooterContainer>
       <FooterContent>
-        {defaultSections.map((section, index) => (
-          <FooterSection key={index}>
-            <H3 as="h3" style={{ marginBottom: 20 }}>
-              {section.title}
-            </H3>
-            {section.links && (
-              <ul>
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <a
-                      href={link.href}
-                      target={link.external ? '_blank' : undefined}
-                      rel={link.external ? 'noopener noreferrer' : undefined}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-            {section.content && (
-              <div>
-                {section.content.map((item, itemIndex) => (
-                  <P as="div" key={itemIndex} style={{ marginBottom: 10 }}>
-                    {item}
-                  </P>
-                ))}
-              </div>
-            )}
+        <FooterGrid>
+          {/* Brand Section */}
+          <FooterSection>
+            <BrandTitle>{COMPANY_INFO.author}</BrandTitle>
+            <Description>{COMPANY_INFO.description}</Description>
+            <SocialIcons>
+              {SOCIAL_MEDIA.map((social) => (
+                <a
+                  key={social.platform}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.platform}
+                  title={social.platform}
+                >
+                  {social.platform === 'Instagram' ? <Instagram /> : <PhoneCall />}
+                </a>
+              ))}
+            </SocialIcons>
           </FooterSection>
-        ))}
 
-        {/* Seção do Endereço */}
-        <FooterSection>
-          <AddressSection>
-            <H3
-              as="h4"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 8,
-                justifyContent: 'center',
-                marginBottom: 15,
-              }}
-            >
-              <MapPin size={20} />
-              Nosso Endereço
-            </H3>
-            <P
-              as="div"
-              className="address-text"
-              style={{
-                color: colors.graySecondary,
-                marginBottom: 15,
-                fontSize: '0.95rem',
-                lineHeight: 1.5,
-              }}
-            >
-              {address}
-            </P>
-            <NavigationButtons>
-              <a
-                href={googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Abrir no Google Maps"
-              >
-                <Navigation size={16} />
-                Google Maps
-              </a>
-            </NavigationButtons>
-          </AddressSection>
-        </FooterSection>
+          {/* Services Section */}
+          <FooterSection>
+            <SectionTitle>Serviços</SectionTitle>
+            <ServicesList>
+              {featuredServices.map((service) => (
+                <li key={service.id}>
+                  <a href={`/servicos/${service.fields.slug}`}>{service.title}</a>
+                </li>
+              ))}
+              <li>
+                <a href={URLS.contact}>Consultoria Personalizada</a>
+              </li>
+            </ServicesList>
+          </FooterSection>
+
+          {/* Contact Section */}
+          <FooterSection>
+            <SectionTitle>Contato</SectionTitle>
+            <ContactInfo>
+              <ContactItem>
+                <PhoneCall />
+                <ContactDetails>
+                  <div className="primary">{PHONE_NUMBER_FORMATTED}</div>
+                  <div className="secondary">WhatsApp disponível</div>
+                </ContactDetails>
+              </ContactItem>
+              <ContactItem>
+                <MapPin />
+                <ContactDetails>
+                  <div className="primary">
+                    {address.split(',')[0]}, {address.split(',')[1]}
+                  </div>
+                  <div className="secondary">
+                    {address.split(',')[2]} - {address.split(',')[3]}
+                  </div>
+                </ContactDetails>
+              </ContactItem>
+              <WorkingHours>Terça-Sexta: 9h às 18h</WorkingHours>
+            </ContactInfo>
+          </FooterSection>
+        </FooterGrid>
+
+        <FooterBottom>
+          <BottomContent>
+            <Copyright>{SEO_DEFAULTS.copyright}</Copyright>
+            <MadeWithLove>
+              Feito com <Heart className="heart" /> para realçar sua beleza
+            </MadeWithLove>
+          </BottomContent>
+        </FooterBottom>
       </FooterContent>
-
-      <Copyright>{SEO_DEFAULTS.copyright}</Copyright>
     </FooterContainer>
   );
 };

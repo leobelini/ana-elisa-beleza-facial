@@ -25,8 +25,8 @@ export const PHONE_NUMBER_FORMATTED = '(14) 99713-9783';
 export const CONTACT_INFO = {
   whatsappNumber: PHONE_NUMBER,
   whatsappUrl: `https://wa.me/${PHONE_NUMBER}`,
-  instagram: '@anaelisabelezafacial',
-  instagramUrl: 'https://instagram.com/anaelisabelezafacial',
+  instagram: '@anaelisa.belezafacial',
+  instagramUrl: 'https://instagram.com/anaelisa.belezafacial',
 } as const;
 
 // Mensagens padrão
