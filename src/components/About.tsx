@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import { colors, commonStyles, fonts } from '../styles/theme';
 import type { SiteImage } from './Hero';
 import { H2, P } from './ui/Typography';
+import { CAREER_START_YEAR, getYearsOfExperience } from '../constants';
 
 const AboutContainer = styled.section`
   ${commonStyles.section}
@@ -51,6 +52,10 @@ const Lead = styled.p`
 `;
 
 const About: React.FC<{ image: SiteImage }> = ({ image }) => {
+  // Valor do build no SSR; atualizado no cliente para refletir o ano atual
+  const [years, setYears] = React.useState(getYearsOfExperience);
+  React.useEffect(() => setYears(getYearsOfExperience()), []);
+
   return (
     <AboutContainer id="sobre">
       <AboutContent>
@@ -65,12 +70,12 @@ const About: React.FC<{ image: SiteImage }> = ({ image }) => {
         </Portrait>
         <div>
           <H2 as="h2">Quem cuida de você</H2>
-          <Lead>Mais de 7 anos unindo técnica, delicadeza e resultado natural.</Lead>
+          <Lead>Mais de {years} anos unindo técnica, delicadeza e resultado natural.</Lead>
           <P>
-            Com mais de 7 anos de experiência na área da estética, sou Bacharel em Estética
-            (formanda em 2018) e apaixonada por cuidar e elevar a autoestima desde muito jovem.
-            Minha missão sempre foi oferecer o que há de melhor e mais atual no universo da beleza,
-            unindo técnica, delicadeza e resultados que encantam.
+            Com mais de {years} anos de experiência na área da estética, sou Bacharel em Estética
+            (formanda em {CAREER_START_YEAR}) e apaixonada por cuidar e elevar a autoestima desde
+            muito jovem. Minha missão sempre foi oferecer o que há de melhor e mais atual no
+            universo da beleza, unindo técnica, delicadeza e resultados que encantam.
           </P>
           <P>
             Em 2020, encontrei na extensão de cílios minha grande especialidade. Desde então, me

@@ -12,6 +12,11 @@ export const COMPANY_INFO = {
     'estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss, nanolips, beleza, cuidados faciais, Ana Elisa',
 } as const;
 
+// Ano de formatura (início da carreira); os anos de experiência são calculados a partir dele
+export const CAREER_START_YEAR = 2018;
+
+export const getYearsOfExperience = (): number => new Date().getFullYear() - CAREER_START_YEAR;
+
 const PHONE_NUMBER = '5514997139783';
 export const PHONE_NUMBER_FORMATTED = '(14) 99713-9783';
 
