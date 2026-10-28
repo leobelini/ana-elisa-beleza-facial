@@ -45,6 +45,10 @@ const ServicePageContainer = styled.div`
   margin: 0 auto;
   padding: 120px 24px 80px;
   min-height: 100vh;
+
+  @media (max-width: 768px) {
+    padding: 96px 20px 64px;
+  }
 `;
 
 const ServiceHeader = styled.div`

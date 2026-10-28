@@ -64,12 +64,27 @@ const Actions = styled(motion.div)`
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
+
+  @media (max-width: 560px) {
+    flex-direction: column;
+    align-items: stretch;
+
+    a {
+      width: 100%;
+    }
+  }
 `;
 
 const Frame = styled(motion.div)`
   position: relative;
   justify-self: end;
   width: min(100%, 400px);
+
+  @media (max-width: 900px) {
+    justify-self: start;
+    width: calc(100% - 18px);
+    max-width: 400px;
+  }
 
   &::before {
     content: '';
