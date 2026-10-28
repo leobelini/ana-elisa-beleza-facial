@@ -3,7 +3,13 @@ import { styled } from 'styled-components';
 import { MessageCircle } from 'lucide-react';
 import { colors, fonts } from '../styles/theme';
 import { Button } from './ui/Button';
-import { CONTACT_INFO, MESSAGES, PHONE_NUMBER_FORMATTED, generateWhatsAppUrl } from '../constants';
+import {
+  ADDRESS,
+  CONTACT_INFO,
+  MESSAGES,
+  PHONE_NUMBER_FORMATTED,
+  generateWhatsAppUrl,
+} from '../constants';
 
 const ContactContainer = styled.section`
   background: ${colors.blush};
@@ -104,7 +110,7 @@ const Contact: React.FC = () => {
         <Details>
           <div>
             <dt>Atendimento</dt>
-            <dd>Terça a sexta, das 9h às 18h</dd>
+            <dd>Terça a sábado, das 9h às 18h</dd>
           </div>
           <div>
             <dt>WhatsApp</dt>
@@ -124,7 +130,9 @@ const Contact: React.FC = () => {
           </div>
           <div>
             <dt>Endereço</dt>
-            <dd>R. Jose Zini, 101, Pongaí - SP</dd>
+            <dd>
+              {ADDRESS.street}, {ADDRESS.locality} - {ADDRESS.region}
+            </dd>
           </div>
         </Details>
       </ContactContent>

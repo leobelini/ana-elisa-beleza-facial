@@ -4,14 +4,14 @@ import HomePage from '../components/HomePage';
 import heroSrc from '../assets/home/IMG_1455-Aprimorado-NR.jpg';
 import aboutSrc from '../assets/home/IMG_5396-Enhanced-NR.jpg';
 import servicesJson from '../data/services.json';
-import { COMPANY_INFO, CONTACT_INFO } from '../constants';
+import { ADDRESS, COMPANY_INFO, CONTACT_INFO, } from '../constants';
 import { createSlug } from '../lib/slug';
 import { getServiceImage, optimize } from '../lib/images';
 import { collectStyles } from '../lib/ssr';
 
-const title = 'Ana Elisa Beleza Facial - Estética e Cuidados Faciais';
+const title = 'Estética Facial em Pongaí - SP | Ana Elisa Beleza Facial';
 const description =
-  'Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss, nanolips.';
+  'Estética facial em Pongaí - SP: limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss e nanolips. Agende pelo WhatsApp.';
 
 const services = await Promise.all(
   servicesJson.map(async (service) => ({
@@ -27,34 +27,57 @@ const props = {
   services,
 };
 
+const businessId = `${COMPANY_INFO.siteUrl}/#negocio`;
+
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'BeautySalon',
-  name: COMPANY_INFO.name,
-  description: COMPANY_INFO.description,
-  url: COMPANY_INFO.siteUrl,
-  logo: COMPANY_INFO.logoUrl,
-  sameAs: [CONTACT_INFO.instagramUrl, CONTACT_INFO.whatsappUrl],
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'BR',
-    addressLocality: 'São Paulo',
-    addressRegion: 'SP',
-  },
-  telephone: '+55-14-99713-9783',
-  priceRange: '$$',
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Serviços de Estética Facial',
-    itemListElement: services.map((service) => ({
-      '@type': 'Offer',
-      itemOffered: {
-        '@type': 'Service',
-        name: service.title,
-        description: service.shortDescription,
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${COMPANY_INFO.siteUrl}/#website`,
+      url: `${COMPANY_INFO.siteUrl}/`,
+      name: COMPANY_INFO.name,
+      inLanguage: 'pt-BR',
+      publisher: { '@id': businessId },
+    },
+    {
+      '@type': 'BeautySalon',
+      '@id': businessId,
+      name: COMPANY_INFO.name,
+      description: COMPANY_INFO.description,
+      url: `${COMPANY_INFO.siteUrl}/`,
+      logo: COMPANY_INFO.logoUrl,
+      image: COMPANY_INFO.logoUrl,
+      sameAs: [CONTACT_INFO.instagramUrl],
+      founder: { '@type': 'Person', name: COMPANY_INFO.author },
+      telephone: `+${CONTACT_INFO.whatsappNumber}`,
+      priceRange: '$$',
+      paymentAccepted: 'Dinheiro, Cartão de crédito, Cartão de débito, Pix',
+      currenciesAccepted: 'BRL',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: ADDRESS.street,
+        addressLocality: ADDRESS.locality,
+        addressRegion: ADDRESS.region,
+        postalCode: ADDRESS.postalCode,
+        addressCountry: ADDRESS.country,
       },
-    })),
-  },
+      areaServed: { '@type': 'City', name: ADDRESS.locality },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Serviços de Estética Facial',
+        itemListElement: services.map((service) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: service.title,
+            description: service.shortDescription,
+            url: `${COMPANY_INFO.siteUrl}/servicos/${service.slug}/`,
+          },
+        })),
+      },
+    },
+  ],
 };
 ---
 

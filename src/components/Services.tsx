@@ -139,7 +139,7 @@ const Services: React.FC<{ services: ServiceData[] }> = ({ services }) => {
       <Menu>
         {services.map((service) => (
           <li key={service.id}>
-            <Row href={`/servicos/${service.slug}`}>
+            <Row href={`/servicos/${service.slug}/`}>
               <Name>{service.title}</Name>
               <Description>{service.shortDescription}</Description>
               <Thumb aria-hidden="true">

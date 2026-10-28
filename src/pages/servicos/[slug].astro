@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ServicePage from '../../components/ServicePage';
 import servicesJson from '../../data/services.json';
-import { COMPANY_INFO, generatePageTitle } from '../../constants';
+import { ADDRESS, COMPANY_INFO, generatePageTitle } from '../../constants';
 import { createSlug } from '../../lib/slug';
 import { getServiceImage } from '../../lib/images';
 import { collectStyles } from '../../lib/ssr';
@@ -23,29 +23,42 @@ const props = {
 };
 
 const title = generatePageTitle(service.title);
+const pagePath = `/servicos/${slug}/`;
+const pageUrl = `${COMPANY_INFO.siteUrl}${pagePath}`;
+const description = `${service.title} em ${ADDRESS.locality} - ${ADDRESS.region}: ${service.shortDescription.replace(/\.$/, '')}. Agende com a Ana Elisa pelo WhatsApp.`;
+const businessId = `${COMPANY_INFO.siteUrl}/#negocio`;
+
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: service.title,
-  description: service.shortDescription,
-  provider: {
-    '@type': 'Organization',
-    name: COMPANY_INFO.name,
-    url: COMPANY_INFO.siteUrl,
-  },
-  category: service.category,
-  offers: {
-    '@type': 'Offer',
-    description: `${service.title} - ${service.shortDescription}`,
-  },
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#servico`,
+      name: service.title,
+      description: service.longDescription,
+      url: pageUrl,
+      serviceType: service.title,
+      category: service.category,
+      areaServed: { '@type': 'City', name: ADDRESS.locality },
+      provider: { '@type': 'BeautySalon', '@id': businessId, name: COMPANY_INFO.name },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Início', item: `${COMPANY_INFO.siteUrl}/` },
+        { '@type': 'ListItem', position: 2, name: 'Serviços', item: `${COMPANY_INFO.siteUrl}/#servicos` },
+        { '@type': 'ListItem', position: 3, name: service.title, item: pageUrl },
+      ],
+    },
+  ],
 };
 ---
 
 <Layout
   title={title}
-  description={service.shortDescription}
+  description={description}
   keywords={`${service.title}, ${service.category}, estética facial, beleza, ${service.title.toLowerCase()}`}
-  url={`/servicos/${slug}`}
+  url={pagePath}
   styles={collectStyles(ServicePage, props)}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(structuredData)} />

@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://anaelisabelezafacial.com.br',
+  trailingSlash: 'always',
   integrations: [react(), sitemap({ filter: (page) => !page.endsWith('/404/') })],
   vite: {
     ssr: {
