@@ -40,6 +40,20 @@ const Portrait = styled.figure`
     aspect-ratio: 1 / 1;
     object-fit: cover;
   }
+
+  @media (max-width: 900px) {
+    img {
+      aspect-ratio: 16 / 10;
+      object-position: center 20%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    img {
+      aspect-ratio: 1 / 1;
+      object-position: center;
+    }
+  }
 `;
 
 const Lead = styled.p`

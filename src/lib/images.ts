@@ -12,12 +12,15 @@ export const optimize = async (
   width: number,
   height?: number,
 ): Promise<SiteImage> => {
+  // O Astro não amplia imagens: limita ao tamanho original para que width/height sejam reais
+  width = Math.min(width, image.width);
+  height = height && Math.min(height, image.height);
   const result = await getImage({
     src: image,
     width,
     height,
     format: 'webp',
-    quality: 90,
+    quality: 80,
     fit: 'cover',
   });
   return {

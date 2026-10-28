@@ -26,20 +26,22 @@ const HomePage: React.FC<HomePageProps> = ({ heroImage, aboutImage, services }) 
       {/* Navbar de navegação */}
       <Navbar />
 
-      {/* Seção Hero/Banner */}
-      <Hero image={heroImage} />
+      <main>
+        {/* Seção Hero/Banner */}
+        <Hero image={heroImage} />
 
-      {/* Seção Sobre */}
-      <About image={aboutImage} />
+        {/* Seção Sobre */}
+        <About image={aboutImage} />
 
-      {/* Seção Serviços */}
-      <Services services={services} />
+        {/* Seção Serviços */}
+        <Services services={services} />
 
-      {/* Seção Depoimentos */}
-      <Testimonials />
+        {/* Seção Depoimentos */}
+        <Testimonials />
 
-      {/* Seção Contato/Agendamento */}
-      <Contact />
+        {/* Seção Contato/Agendamento */}
+        <Contact />
+      </main>
 
       {/* Rodapé */}
       <Footer />

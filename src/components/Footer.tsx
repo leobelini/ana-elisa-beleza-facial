@@ -24,7 +24,16 @@ const FooterContent = styled.div`
   gap: 48px;
 
   @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 700px) {
     grid-template-columns: 1fr 1fr;
+
+    > :last-child {
+      grid-column: 1 / -1;
+    }
   }
 
   @media (max-width: 560px) {

@@ -20,7 +20,7 @@ const ErrorNumber = styled.h1`
   font-family: ${fonts.display};
   font-size: 8rem;
   font-weight: 400;
-  color: ${colors.goldMain};
+  color: ${colors.goldDark};
   margin: 0;
 
   @media (max-width: 768px) {

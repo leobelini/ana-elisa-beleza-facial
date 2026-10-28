@@ -1,4 +1,7 @@
 ---
+import '@fontsource/instrument-serif/latin-400.css';
+import '@fontsource/instrument-serif/latin-400-italic.css';
+import '@fontsource-variable/hanken-grotesk/wght.css';
 import '../styles/global.css';
 import { COMPANY_INFO } from '../constants';
 
@@ -34,12 +37,6 @@ const canonical = new URL(url, COMPANY_INFO.siteUrl).href;
     <meta name="keywords" content={keywords} />
     <meta name="author" content={COMPANY_INFO.author} />
     <link rel="canonical" href={canonical} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
-    />
     <link rel="icon" type="image/png" href="/icon.png" />
     <link rel="apple-touch-icon" href="/icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />

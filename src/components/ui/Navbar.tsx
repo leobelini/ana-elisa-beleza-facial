@@ -220,7 +220,11 @@ const Navbar: React.FC = () => {
             </NavItem>
           ))}
         </NavMenu>
-        <MobileMenuButton onClick={toggleMobileMenu}>
+        <MobileMenuButton
+          onClick={toggleMobileMenu}
+          aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={isMobileMenuOpen}
+        >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </MobileMenuButton>
       </NavContainer>

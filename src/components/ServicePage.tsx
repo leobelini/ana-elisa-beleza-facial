@@ -40,7 +40,7 @@ interface ServicePageProps {
 }
 
 // Styled Components
-const ServicePageContainer = styled.div`
+const ServicePageContainer = styled.main`
   max-width: 1248px;
   margin: 0 auto;
   padding: 120px 24px 80px;
@@ -77,7 +77,7 @@ const ServiceInfo = styled.div`
 `;
 
 const ServiceDetails = styled.div`
-  padding: 40px;
+  padding: 40px 0;
   margin-bottom: 60px;
 
   @media (max-width: 968px) {

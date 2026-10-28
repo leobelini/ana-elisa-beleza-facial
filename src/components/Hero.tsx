@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { styled } from 'styled-components';
-import { motion } from 'framer-motion';
+import { styled, keyframes } from 'styled-components';
 import { colors, fonts } from '../styles/theme';
 import { Button } from './ui/Button';
 
@@ -41,7 +40,18 @@ const Name = styled.p`
   margin-bottom: 28px;
 `;
 
-const Headline = styled(motion.h1)`
+const rise = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+`;
+
+const Headline = styled.h1`
   font-family: ${fonts.display};
   font-size: clamp(3.2rem, 8.4vw, 7rem);
   font-weight: 400;
@@ -49,21 +59,24 @@ const Headline = styled(motion.h1)`
   letter-spacing: -0.015em;
   color: ${colors.blackMain};
   margin-bottom: 36px;
+  animation: ${rise} 0.9s ease-out both;
 `;
 
-const Lead = styled(motion.p)`
+const Lead = styled.p`
   font-size: 1.15rem;
   line-height: 1.7;
   color: ${colors.graySecondary};
   max-width: 44ch;
   margin-bottom: 40px;
+  animation: ${rise} 0.9s ease-out 0.15s both;
 `;
 
-const Actions = styled(motion.div)`
+const Actions = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
+  animation: ${rise} 0.9s ease-out 0.3s both;
 
   @media (max-width: 560px) {
     flex-direction: column;
@@ -75,16 +88,10 @@ const Actions = styled(motion.div)`
   }
 `;
 
-const Frame = styled(motion.div)`
+const Frame = styled.div`
   position: relative;
   justify-self: end;
   width: min(100%, 400px);
-
-  @media (max-width: 900px) {
-    justify-self: start;
-    width: calc(100% - 18px);
-    max-width: 400px;
-  }
 
   &::before {
     content: '';
@@ -103,12 +110,26 @@ const Frame = styled(motion.div)`
     object-fit: cover;
     border-radius: 999px 999px 0 0;
   }
-`;
 
-const reveal = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
-};
+  @media (max-width: 900px) {
+    justify-self: start;
+    width: calc(100% - 18px);
+
+    img {
+      aspect-ratio: 4 / 3;
+      object-position: center 25%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    max-width: 400px;
+
+    img {
+      aspect-ratio: 4 / 5;
+      object-position: center;
+    }
+  }
+`;
 
 const Hero: React.FC<{ image: SiteImage }> = ({ image }) => {
   return (
@@ -116,29 +137,12 @@ const Hero: React.FC<{ image: SiteImage }> = ({ image }) => {
       <HeroContent>
         <div>
           <Name>Ana Elisa Cardoso, estética facial</Name>
-          <Headline
-            variants={reveal}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.9, ease: 'easeOut' }}
-          >
-            Beleza autêntica é a arte de realçar a sua essência.
-          </Headline>
-          <Lead
-            variants={reveal}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
-          >
+          <Headline>Beleza autêntica é a arte de realçar a sua essência.</Headline>
+          <Lead>
             Cílios, sobrancelhas, lábios e pele tratados com técnica e delicadeza, para um resultado
             que parece ser seu desde sempre.
           </Lead>
-          <Actions
-            variants={reveal}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
-          >
+          <Actions>
             <Button href="#agendamento" variant="primary">
               Agende seu horário
             </Button>
@@ -147,17 +151,14 @@ const Hero: React.FC<{ image: SiteImage }> = ({ image }) => {
             </Button>
           </Actions>
         </div>
-        <Frame
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.1, delay: 0.2 }}
-        >
+        <Frame>
           <img
             src={image.src}
             alt="Ana Elisa - Profissional de Beleza Facial"
             width={image.width}
             height={image.height}
             loading="eager"
+            fetchPriority="high"
           />
         </Frame>
       </HeroContent>

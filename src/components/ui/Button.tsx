@@ -89,12 +89,12 @@ const variantStyles = {
     }
   `,
   whatsapp: css`
-    background: #1f8f4e;
+    background: #17703d;
     color: white;
-    border: 1px solid #1f8f4e;
+    border: 1px solid #17703d;
     &:hover {
-      background: #17703d;
-      border-color: #17703d;
+      background: #115a30;
+      border-color: #115a30;
     }
   `,
 };

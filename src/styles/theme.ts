@@ -13,7 +13,7 @@ export const colors = {
 
 export const fonts = {
   display: "'Instrument Serif', 'Times New Roman', serif",
-  body: "'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  body: "'Hanken Grotesk Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
 };
 
 // Styled components comuns
