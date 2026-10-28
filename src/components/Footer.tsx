@@ -9,8 +9,18 @@ import { H3, P } from './ui/Typography';
 const FooterContainer = styled.footer`
   background: ${colors.blackMain};
   color: white;
-  padding: 60px 20px 30px;
+  padding: 72px 20px 30px;
   text-align: center;
+
+  p,
+  div {
+    color: ${colors.onDark};
+  }
+
+  h3 {
+    color: #d8b574;
+    font-size: 1.6rem;
+  }
 `;
 
 const FooterContent = styled.div`
@@ -38,7 +48,7 @@ const FooterSection = styled.div`
       margin-bottom: 10px;
 
       a {
-        color: ${colors.graySecondary};
+        color: ${colors.onDark};
         text-decoration: none;
         transition: color 0.3s ease;
 
@@ -53,9 +63,9 @@ const FooterSection = styled.div`
 `;
 
 const Copyright = styled.div`
-  border-top: 1px solid ${colors.graySecondary};
+  border-top: 1px solid rgba(251, 247, 244, 0.2);
   padding-top: 30px;
-  color: ${colors.graySecondary};
+  color: ${colors.onDark};
   font-size: 0.9rem;
 `;
 
@@ -81,17 +91,18 @@ const NavigationButtons = styled.div`
     align-items: center;
     gap: 8px;
     padding: 10px 16px;
-    background: ${colors.goldMain};
-    color: white;
+    background: transparent;
+    border: 1px solid #d8b574;
+    color: #d8b574;
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 999px;
     font-size: 0.85rem;
     font-weight: 500;
     transition: all 0.3s ease;
 
     &:hover {
-      background: ${colors.goldDark};
-      transform: translateY(-2px);
+      background: #d8b574;
+      color: ${colors.cocoa};
     }
 
     svg {
@@ -203,7 +214,7 @@ const Footer: React.FC = () => {
               as="div"
               className="address-text"
               style={{
-                color: colors.graySecondary,
+                color: colors.onDark,
                 marginBottom: 15,
                 fontSize: '0.95rem',
                 lineHeight: 1.5,

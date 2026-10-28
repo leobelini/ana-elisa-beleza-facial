@@ -1,41 +1,41 @@
 import * as React from 'react';
 import { styled } from 'styled-components';
-import { colors } from '../styles/theme';
 import { MessageCircle } from 'lucide-react';
+import { colors, fonts } from '../styles/theme';
 import { Button } from './ui/Button';
 import { MESSAGES, generateWhatsAppUrl } from '../constants';
-import { H2, P } from './ui/Typography';
 
-// Styled Components para Contact
 const ContactContainer = styled.section`
-  background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
-  padding: 80px 20px;
-  text-align: center;
-  color: white;
-`;
+  background: ${colors.blush};
+  padding: 130px 24px;
 
-// ContactTitle e ContactText removidos, usar Typography
-
-const ContactButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: center;
+  @media (max-width: 768px) {
+    padding: 80px 20px;
   }
 `;
 
-const ContactInfo = styled.div`
-  margin-top: 60px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+const ContactContent = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const Statement = styled.h2`
+  font-family: ${fonts.display};
+  font-size: clamp(2.8rem, 7.5vw, 6rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: ${colors.blackMain};
+  max-width: 14ch;
+  margin-bottom: 36px;
+`;
+
+const Text = styled.p`
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: ${colors.graySecondary};
+  max-width: 46ch;
+  margin-bottom: 40px;
 `;
 
 const Contact: React.FC = () => {
@@ -43,28 +43,17 @@ const Contact: React.FC = () => {
 
   return (
     <ContactContainer id="agendamento">
-      <H2 as="h2" style={{ color: 'white', fontWeight: 300, marginBottom: 30 }}>
-        Pronta para realçar sua beleza?
-      </H2>
-      <P
-        as="p"
-        style={{
-          color: 'white',
-          opacity: 0.9,
-          marginBottom: 40,
-          maxWidth: 600,
-          marginLeft: 'auto',
-          marginRight: 'auto',
-        }}
-      >
-        Agende seu horário e descubra como podemos realçar sua beleza natural
-      </P>
-      <ContactButtonsContainer>
+      <ContactContent>
+        <Statement>Vamos cuidar do seu olhar?</Statement>
+        <Text>
+          Escolha o tratamento e me chame no WhatsApp. Respondo com os horários disponíveis e tiro
+          qualquer dúvida antes de você marcar.
+        </Text>
         <Button href={whatsappUrl} variant="whatsapp" target="_blank" rel="noopener noreferrer">
           <MessageCircle size={20} />
           {MESSAGES.cta.scheduleWhatsApp}
         </Button>
-      </ContactButtonsContainer>
+      </ContactContent>
     </ContactContainer>
   );
 };

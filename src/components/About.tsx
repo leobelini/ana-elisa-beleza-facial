@@ -1,65 +1,71 @@
 import * as React from 'react';
 import { styled } from 'styled-components';
+import { colors, commonStyles, fonts } from '../styles/theme';
 import type { SiteImage } from './Hero';
-import { colors, commonStyles } from '../styles/theme';
-import { H2, H3, P } from './ui/Typography';
+import { H2, P } from './ui/Typography';
 
-// Styled Components para About
 const AboutContainer = styled.section`
   ${commonStyles.section}
 `;
 
-// SectionTitle removido, usar Title2
-
 const AboutContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 60px;
-  align-items: center;
+  grid-template-columns: 5fr 7fr;
+  gap: 88px;
+  align-items: start;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
+    gap: 48px;
   }
 `;
 
-const ProfileImage = styled.div`
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto;
-  box-shadow: 0 10px 30px rgba(200, 169, 104, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const Portrait = styled.figure`
+  position: relative;
+  margin: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -14px 14px 14px -14px;
+    border: 1px solid ${colors.goldMain};
+    z-index: -1;
+  }
 
   img {
+    display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    object-position: center;
   }
 `;
 
-const AboutText = styled.div``;
+const Lead = styled.p`
+  font-family: ${fonts.display};
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.25;
+  color: ${colors.blackMain};
+  margin-bottom: 32px;
+  max-width: 28ch;
+`;
 
 const About: React.FC<{ image: SiteImage }> = ({ image }) => {
   return (
     <AboutContainer id="sobre">
-      <H2 as="h2">Sobre</H2>
       <AboutContent>
-        <ProfileImage>
+        <Portrait>
           <img
             src={image.src}
             alt="Ana Elisa - Esteticista Profissional"
             width={image.width}
             height={image.height}
+            loading="lazy"
           />
-        </ProfileImage>
-        <AboutText>
-          <H3 as="h3">Ana Elisa Cardoso - Esteticista Profissional</H3>
+        </Portrait>
+        <div>
+          <H2 as="h2">Quem cuida de você</H2>
+          <Lead>Mais de 7 anos unindo técnica, delicadeza e resultado natural.</Lead>
           <P>
             Com mais de 7 anos de experiência na área da estética, sou Bacharel em Estética
             (formanda em 2018) e apaixonada por cuidar e elevar a autoestima desde muito jovem.
@@ -76,7 +82,7 @@ const About: React.FC<{ image: SiteImage }> = ({ image }) => {
             Será um prazer cuidar de você, proporcionando um atendimento exclusivo e serviços que
             realçam sua beleza com um toque elegante e natural.
           </P>
-        </AboutText>
+        </div>
       </AboutContent>
     </AboutContainer>
   );

@@ -43,13 +43,15 @@ interface ServicePageProps {
 const ServicePageContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px 60px;
+  padding: 120px 24px 80px;
   min-height: 100vh;
 `;
 
 const ServiceHeader = styled.div`
-  text-align: center;
-  margin-bottom: 60px;
+  text-align: left;
+  margin-bottom: 72px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid ${colors.goldMain};
 `;
 
 // ServiceTitle e ServiceSubtitle removidos, usar Typography
@@ -85,10 +87,8 @@ const ServiceGallery = styled.div`
   height: 100%;
   max-height: 600px;
   position: relative;
-  background: ${colors.iceWhite};
-  border-radius: 20px;
+  background: ${colors.blush};
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 968px) {
     margin-top: 30px;
@@ -393,10 +393,9 @@ const BenefitItem = styled.div`
 `;
 
 const CTASection = styled.div`
-  background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
-  padding: 60px 40px;
-  border-radius: 25px;
-  text-align: center;
+  background: ${colors.cocoa};
+  padding: 80px 40px;
+  text-align: left;
   color: white;
 `;
 
@@ -404,14 +403,14 @@ const BackButton = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: ${colors.goldMain};
+  color: ${colors.blackMain};
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 40px;
   transition: all 0.3s ease;
 
   &:hover {
-    color: ${colors.goldDark};
+    color: ${colors.rose};
     transform: translateX(-5px);
   }
 
@@ -439,17 +438,9 @@ const OptionsGrid = styled.div`
 `;
 
 const OptionCard = styled.div`
-  background: ${colors.iceWhite};
-  border-radius: 15px;
-  padding: 25px;
-  border-left: 4px solid ${colors.goldMain};
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  }
+  background: transparent;
+  padding: 24px 0;
+  border-top: 1px solid ${colors.goldMain};
 `;
 
 const OptionHeader = styled.div`
@@ -584,9 +575,10 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
             as="p"
             style={{
               color: colors.graySecondary,
-              maxWidth: 600,
-              margin: '0 auto',
-              lineHeight: 1.6,
+              maxWidth: 560,
+              margin: 0,
+              fontSize: '1.5rem',
+              lineHeight: 1.4,
             }}
           >
             {service.shortDescription}
@@ -772,11 +764,10 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
             style={{
               fontSize: '2rem',
               marginBottom: 20,
-              fontWeight: 700,
               color: 'white',
             }}
           >
-            Pronta para transformar sua beleza?
+            Vamos cuidar do seu olhar?
           </H3>
           <P as="p" style={{ color: 'white', opacity: 0.9, marginBottom: 30 }}>
             Agende seu horário agora mesmo e descubra o que nosso tratamento pode fazer por você.

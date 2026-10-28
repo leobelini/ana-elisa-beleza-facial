@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled } from 'styled-components';
-import { colors } from '../../styles/theme';
+import { colors, fonts } from '../../styles/theme';
 import { Menu, X } from 'lucide-react';
 
 // Styled Components para Navbar
@@ -9,16 +9,15 @@ const NavbarContainer = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(250, 248, 246, 0.95);
+  background: rgba(251, 247, 244, 0.9);
   backdrop-filter: blur(10px);
   z-index: 1000;
   padding: 15px 0;
-  border-bottom: 1px solid rgba(200, 169, 104, 0.2);
+  border-bottom: 1px solid rgba(181, 142, 75, 0.35);
   transition: all 0.3s ease;
 
   &.scrolled {
-    background: rgba(250, 248, 246, 0.98);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(251, 247, 244, 0.97);
   }
 `;
 
@@ -32,14 +31,15 @@ const NavContainer = styled.div`
 `;
 
 const NavLogo = styled.a`
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: ${colors.goldMain};
+  font-family: ${fonts.display};
+  font-size: 1.9rem;
+  font-style: italic;
+  color: ${colors.blackMain};
   text-decoration: none;
-  letter-spacing: 1px;
+  line-height: 1;
 
   &:hover {
-    color: ${colors.goldDark};
+    color: ${colors.rose};
   }
 `;
 
@@ -63,7 +63,8 @@ const NavLink = styled.button`
   color: ${colors.blackMain};
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
   position: relative;
   background: none;
   border: none;
@@ -81,7 +82,7 @@ const NavLink = styled.button`
     bottom: -5px;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 1px;
     background: ${colors.goldMain};
     transition: width 0.3s ease;
   }
@@ -96,7 +97,7 @@ const MobileMenuButton = styled.button`
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: ${colors.goldMain};
+  color: ${colors.blackMain};
   cursor: pointer;
 
   @media (max-width: 768px) {
@@ -109,9 +110,9 @@ const MobileMenu = styled.div<{ $isOpen: boolean }>`
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(250, 248, 246, 0.98);
+  background: rgba(251, 247, 244, 0.98);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(200, 169, 104, 0.2);
+  border-bottom: 1px solid rgba(181, 142, 75, 0.35);
   transform: translateY(${(props) => (props.$isOpen ? '0' : '-100%')});
   opacity: ${(props) => (props.$isOpen ? '1' : '0')};
   visibility: ${(props) => (props.$isOpen ? 'visible' : 'hidden')};
@@ -167,7 +168,7 @@ const Navbar: React.FC = () => {
     { label: 'Sobre', href: '#sobre' },
     { label: 'Serviços', href: '#servicos' },
     { label: 'Depoimentos', href: '#depoimentos' },
-    { label: 'Contato', href: '#agendamento' },
+    { label: 'Agendar', href: '#agendamento' },
   ];
 
   React.useEffect(() => {

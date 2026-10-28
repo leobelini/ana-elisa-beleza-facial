@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled } from 'styled-components';
-import { colors } from '../styles/theme';
+import { colors, fonts } from '../styles/theme';
 import { MESSAGES, URLS } from '../constants';
 import { Button } from './ui/Button';
 
@@ -11,17 +11,17 @@ const NotFoundContainer = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, ${colors.iceWhite} 0%, #ffffff 100%);
+  background: ${colors.blush};
   padding: 40px 20px;
   text-align: center;
 `;
 
 const ErrorNumber = styled.h1`
+  font-family: ${fonts.display};
   font-size: 8rem;
-  font-weight: 300;
+  font-weight: 400;
   color: ${colors.goldMain};
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     font-size: 6rem;
@@ -75,8 +75,8 @@ const ServicesList = styled.div`
   margin-top: 40px;
   padding: 30px;
   background: white;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  border-top: 1px solid ${colors.goldMain};
   max-width: 500px;
 `;
 

@@ -10,10 +10,10 @@
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.6;
-    color: #1E1E1E;
-    background-color: #FAF8F6;
+    color: #2A1A18;
+    background-color: #FBF7F4;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -40,19 +40,20 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
-    line-height: 1.2;
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: 1.1;
   }
 
   /* Smooth scroll para navegação âncora */
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Compensa a navbar fixa */
+    scroll-padding-top: 72px; /* Compensa a navbar fixa */
   }
 
   /* Estilo para foco acessível */
   :focus {
-    outline: 2px solid #C8A968;
+    outline: 2px solid #B58E4B;
     outline-offset: 2px;
   }
 
@@ -60,3 +61,16 @@
   :focus:not(:focus-visible) {
     outline: none;
   }
+
+::selection {
+  background: #B9776B;
+  color: #FBF7F4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html, body { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
