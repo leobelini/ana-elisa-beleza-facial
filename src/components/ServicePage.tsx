@@ -394,9 +394,23 @@ const BenefitItem = styled.div`
 
 const CTASection = styled.div`
   background: ${colors.cocoa};
-  padding: 80px 40px;
-  text-align: left;
+  padding: 72px 56px;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 48px 24px;
+    gap: 32px;
+  }
+`;
+
+const CTAText = styled.div`
+  max-width: 560px;
 `;
 
 const BackButton = styled.a`
@@ -759,19 +773,21 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
         </ServiceDetails>
 
         <CTASection>
-          <H3
-            as="h3"
-            style={{
-              fontSize: '2rem',
-              marginBottom: 20,
-              color: 'white',
-            }}
-          >
-            Vamos cuidar do seu olhar?
-          </H3>
-          <P as="p" style={{ color: 'white', opacity: 0.9, marginBottom: 30 }}>
-            Agende seu horário agora mesmo e descubra o que nosso tratamento pode fazer por você.
-          </P>
+          <CTAText>
+            <H3
+              as="h3"
+              style={{
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                marginBottom: 16,
+                color: 'white',
+              }}
+            >
+              Vamos cuidar do seu olhar?
+            </H3>
+            <P as="p" style={{ color: 'white', opacity: 0.85, marginBottom: 0 }}>
+              Agende seu horário agora mesmo e descubra o que nosso tratamento pode fazer por você.
+            </P>
+          </CTAText>
           <Button href={whatsappUrl} variant="whatsapp" target="_blank" rel="noopener noreferrer">
             <MessageCircle size={20} />
             {MESSAGES.cta.scheduleWhatsApp}
