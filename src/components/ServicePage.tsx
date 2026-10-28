@@ -586,7 +586,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
       <ServicePageContainer>
         <Navbar />
 
-        <BackButton href="/#servicos">Voltar aos Serviços</BackButton>
+        <BackButton href="/#servicos">Voltar aos tratamentos</BackButton>
 
         <ServiceHeader>
           <H1 as="h1" style={{ marginBottom: 20 }}>
@@ -617,7 +617,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
                 marginBottom: 20,
               }}
             >
-              Sobre o Tratamento
+              Sobre o tratamento
             </H2>
             <P style={{ marginBottom: 30 }}>{service.longDescription}</P>
 
@@ -729,7 +729,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
                 <span role="img" aria-label="variações">
                   🎨
                 </span>{' '}
-                Variações Disponíveis
+                Variações disponíveis
               </H3>
               <OptionsGrid>
                 {service.variations.map((variation) => (
@@ -761,7 +761,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
                 <span role="img" aria-label="complementos">
                   ➕
                 </span>{' '}
-                Serviços similares
+                Tratamentos complementares
               </H3>
               <OptionsGrid>
                 {service.complements.map((complement) => (
@@ -789,10 +789,10 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
                 color: 'white',
               }}
             >
-              Vamos cuidar do seu olhar?
+              Vamos agendar o seu horário?
             </H3>
             <P as="p" style={{ color: 'white', opacity: 0.85, marginBottom: 0 }}>
-              Agende seu horário agora mesmo e descubra o que nosso tratamento pode fazer por você.
+              Me chame no WhatsApp e combinamos o melhor horário para o seu atendimento.
             </P>
           </CTAText>
           <Button href={whatsappUrl} variant="whatsapp" target="_blank" rel="noopener noreferrer">

@@ -87,7 +87,7 @@ const About: React.FC<{ image: SiteImage }> = ({ image }) => {
           <Lead>Mais de {years} anos unindo técnica, delicadeza e resultado natural.</Lead>
           <P>
             Com mais de {years} anos de experiência na área da estética, sou Bacharel em Estética
-            (formanda em {CAREER_START_YEAR}) e apaixonada por cuidar e elevar a autoestima desde
+            (formada em {CAREER_START_YEAR}) e apaixonada por cuidar e elevar a autoestima desde
             muito jovem. Minha missão sempre foi oferecer o que há de melhor e mais atual no
             universo da beleza, unindo técnica, delicadeza e resultados que encantam.
           </P>

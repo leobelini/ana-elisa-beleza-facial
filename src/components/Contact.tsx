@@ -97,7 +97,7 @@ const Contact: React.FC = () => {
     <ContactContainer id="agendamento">
       <ContactContent>
         <div>
-          <Statement>Vamos cuidar do seu olhar?</Statement>
+          <Statement>Vamos cuidar de você?</Statement>
           <Text>
             Escolha o tratamento e me chame no WhatsApp. Respondo com os horários disponíveis e tiro
             qualquer dúvida antes de você marcar.

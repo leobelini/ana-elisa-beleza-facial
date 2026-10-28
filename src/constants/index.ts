@@ -52,7 +52,7 @@ export const MESSAGES = {
     viewServices: 'Ver serviços',
   },
   errors: {
-    pageNotFound: 'Ops! Parece que você se perdeu em nossa jornada de beleza.',
+    pageNotFound: 'Ops! Parece que você se perdeu no caminho.',
     pageNotFoundSubtitle:
       'A página que você está procurando não existe, mas temos muitas outras opções incríveis para você descobrir!',
   },

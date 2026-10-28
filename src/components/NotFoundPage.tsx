@@ -111,8 +111,7 @@ const NotFoundPage: React.FC = () => {
       <ErrorNumber>404</ErrorNumber>
       <ErrorTitle>Página não encontrada</ErrorTitle>
       <ErrorMessage>
-        {MESSAGES.errors.pageNotFound}
-        {MESSAGES.errors.pageNotFoundSubtitle}
+        {MESSAGES.errors.pageNotFound} {MESSAGES.errors.pageNotFoundSubtitle}
       </ErrorMessage>
 
       <ActionContainer>
@@ -125,7 +124,7 @@ const NotFoundPage: React.FC = () => {
       </ActionContainer>
 
       <ServicesList>
-        <ServicesTitle>Nossos Serviços</ServicesTitle>
+        <ServicesTitle>Tratamentos</ServicesTitle>
         <ServiceItem href="/#servicos">Limpeza de Pele</ServiceItem>
         <ServiceItem href="/#servicos">Design de Sobrancelhas</ServiceItem>
         <ServiceItem href="/#servicos">Extensão de Cílios</ServiceItem>
@@ -133,7 +132,7 @@ const NotFoundPage: React.FC = () => {
         <ServiceItem href="/#servicos">Lash Lift</ServiceItem>
         <ServiceItem href="/#servicos">Hidra Gloss</ServiceItem>
         <ServiceItem href="/#servicos">NanoLips</ServiceItem>
-        <ServiceItem href="/#contato">Agendar Consulta</ServiceItem>
+        <ServiceItem href="/#contato">Agendar horário</ServiceItem>
       </ServicesList>
     </NotFoundContainer>
   );
