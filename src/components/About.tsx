@@ -1,6 +1,6 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { StaticImage } from 'gatsby-plugin-image';
+import { styled } from 'styled-components';
+import type { SiteImage } from './Hero';
 import { colors, commonStyles } from '../styles/theme';
 import { H2, H3, P } from './ui/Typography';
 
@@ -35,14 +35,6 @@ const ProfileImage = styled.div`
   align-items: center;
   justify-content: center;
 
-  .gatsby-image-wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   img {
     width: 100%;
     height: 100%;
@@ -53,26 +45,17 @@ const ProfileImage = styled.div`
 
 const AboutText = styled.div``;
 
-const About = () => {
+const About: React.FC<{ image: SiteImage }> = ({ image }) => {
   return (
     <AboutContainer id="sobre">
       <H2 as="h2">Sobre</H2>
       <AboutContent>
         <ProfileImage>
-          <StaticImage
-            src="../images/home/IMG_5396-Enhanced-NR.jpg"
+          <img
+            src={image.src}
             alt="Ana Elisa - Esteticista Profissional"
-            placeholder="blurred"
-            layout="constrained"
-            width={300}
-            height={300}
-            quality={95}
-            formats={['auto', 'webp', 'avif']}
-            objectFit="cover"
-            objectPosition="center"
-            style={{
-              borderRadius: '50%',
-            }}
+            width={image.width}
+            height={image.height}
           />
         </ProfileImage>
         <AboutText>

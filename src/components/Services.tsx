@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { graphql, useStaticQuery, Link } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import styled from 'styled-components';
+import type { SiteImage } from './Hero';
+import { styled } from 'styled-components';
 import { colors, commonStyles } from '../styles/theme';
 import { Button } from './ui/Button';
 import { H2, H3, P } from './ui/Typography';
 
 // Tipo para dados dos serviços
-interface ServiceData {
+export interface ServiceData {
   id: string;
   title: string;
   shortDescription: string;
@@ -16,9 +15,8 @@ interface ServiceData {
   images: string[];
   category: string;
   featured: boolean;
-  fields: {
-    slug: string;
-  };
+  slug: string;
+  image: SiteImage | null;
 }
 
 // Styled Components para Services
@@ -35,7 +33,7 @@ const ServicesGrid = styled.div`
   margin-top: 60px;
 `;
 
-const ServiceCard = styled(Link)`
+const ServiceCard = styled.a`
   background: white;
   border-radius: 20px;
   text-align: center;
@@ -62,7 +60,9 @@ const ServiceImageContainer = styled.div`
   overflow: hidden;
 `;
 
-const ServiceGatsbyImage = styled(GatsbyImage)`
+const ServiceImage = styled.img`
+  display: block;
+  object-fit: cover;
   width: 100%;
   height: 100%;
   transition: transform 0.3s ease;
@@ -133,72 +133,26 @@ export interface Service {
   icon: string;
 }
 
-// Query GraphQL
-const SERVICES_QUERY = graphql`
-  query ServicesQuery {
-    allServicesJson {
-      nodes {
-        id
-        title
-        shortDescription
-        longDescription
-        benefits
-        images
-        category
-        featured
-        fields {
-          slug
-        }
-      }
-    }
-    allFile(
-      filter: {
-        sourceInstanceName: { in: ["images", "static-images"] }
-        extension: { in: ["jpg", "jpeg", "png", "webp"] }
-      }
-    ) {
-      nodes {
-        relativePath
-        childImageSharp {
-          gatsbyImageData(
-            width: 400
-            height: 200
-            placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
-            quality: 95
-          )
-        }
-      }
-    }
-  }
-`;
-
 // Componente Services
-const Services: React.FC = () => {
-  const data = useStaticQuery(SERVICES_QUERY);
-  const services: ServiceData[] = data.allServicesJson.nodes;
-  const images = data.allFile.nodes;
-
-  // Função para encontrar a imagem correspondente
-  const getServiceImage = (imagePath: string) => {
-    const imageNode = images.find((img: any) =>
-      img.relativePath.includes(imagePath.split('/').pop()?.split('.')[0] || ''),
-    );
-    return imageNode?.childImageSharp?.gatsbyImageData ? getImage(imageNode) : null;
-  };
-
+const Services: React.FC<{ services: ServiceData[] }> = ({ services }) => {
   return (
     <ServicesContainer id="servicos">
       <H2 as="h2">Serviços</H2>
       <ServicesGrid>
         {services.map((service) => {
-          const image = getServiceImage(service.images[0]);
+          const image = service.image;
 
           return (
-            <ServiceCard key={service.id} to={`/servicos/${service.fields.slug}`}>
+            <ServiceCard key={service.id} href={`/servicos/${service.slug}`}>
               <ServiceImageContainer>
                 {image ? (
-                  <ServiceGatsbyImage image={image} alt={service.title} />
+                  <ServiceImage
+                    src={image.src}
+                    width={image.width}
+                    height={image.height}
+                    alt={service.title}
+                    loading="lazy"
+                  />
                 ) : (
                   <ServiceImagePlaceholder>{service.title}</ServiceImagePlaceholder>
                 )}

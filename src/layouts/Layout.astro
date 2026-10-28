@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import { COMPANY_INFO } from '../constants';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  url?: string;
+  noindex?: boolean;
+  /** Tags <style> do styled-components coletadas no SSR */
+  styles?: string;
+}
+
+const {
+  title,
+  description,
+  keywords = COMPANY_INFO.keywords,
+  url = '/',
+  noindex = false,
+  styles = '',
+} = Astro.props;
+
+const canonical = new URL(url, COMPANY_INFO.siteUrl).href;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={COMPANY_INFO.author} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Ana Elisa Beleza Facial" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <meta name="theme-color" content="#C8A968" />
+    <meta name="msapplication-TileColor" content="#C8A968" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <slot name="head" />
+    <Fragment set:html={styles} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { graphql, useStaticQuery } from 'gatsby';
+import { styled } from 'styled-components';
+import testimonialsData from '../data/testimonials.json';
 import { colors, commonStyles } from '../styles/theme';
 
 // Styled Components para Testimonials
@@ -111,20 +111,6 @@ interface TestimonialsProps {
 }
 
 // Query GraphQL
-const testimonialsQuery = graphql`
-  query TestimonialsQuery {
-    allTestimonialsJson {
-      nodes {
-        id
-        text
-        author
-        rating
-        service
-        date
-      }
-    }
-  }
-`;
 
 // Dados padrão dos depoimentos (fallback)
 const defaultTestimonials: Testimonial[] = [
@@ -147,12 +133,9 @@ const defaultTestimonials: Testimonial[] = [
 
 // Componente Testimonials
 const Testimonials: React.FC<TestimonialsProps> = ({ autoPlayInterval = 5000 }) => {
-  // Buscar dados via GraphQL
-  const data = useStaticQuery(testimonialsQuery);
-  const graphqlTestimonials = data?.allTestimonialsJson?.nodes || [];
-
-  // Usar dados do GraphQL ou fallback para dados padrão
-  const testimonials = graphqlTestimonials.length > 0 ? graphqlTestimonials : defaultTestimonials;
+  // Usar dados do JSON ou fallback para dados padrão
+  const testimonials: Testimonial[] =
+    testimonialsData.length > 0 ? testimonialsData : defaultTestimonials;
 
   const [currentTestimonial, setCurrentTestimonial] = React.useState(0);
   const [isTransitioning, setIsTransitioning] = React.useState(false);

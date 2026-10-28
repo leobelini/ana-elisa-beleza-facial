@@ -1,16 +1,16 @@
 <p align="center">
-  <img src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" alt="Logo Gatsby" />
+  <img src="https://astro.build/assets/press/astro-icon-dark.svg" width="60" alt="Logo Astro" />
 </p>
 
 <h1 align="center">✨ Ana Elisa Beleza Facial ✨</h1>
 
 <p align="center">
-  Site institucional desenvolvido em <b>Gatsby + TypeScript</b> para apresentar serviços de estética facial, depoimentos de clientes e facilitar o agendamento de horários.
+  Site institucional desenvolvido em <b>Astro + React + TypeScript</b> para apresentar serviços de estética facial, depoimentos de clientes e facilitar o agendamento de horários.
 </p>
 
 <p align="center">
   <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-%3E%3D%2016-green" alt="Node.js"></a>
-  <a href="https://www.gatsbyjs.com/"><img src="https://img.shields.io/badge/Gatsby-5.x-purple" alt="Gatsby"></a>
+  <a href="https://astro.build/"><img src="https://img.shields.io/badge/Astro-7.x-purple" alt="Astro"></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.x-blue" alt="TypeScript"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/Licença-MIT-yellow" alt="Licença MIT"></a>
 </p>
@@ -34,12 +34,15 @@ Fornecer uma presença digital **elegante, moderna e funcional** para a profissi
 ## 🗂️ Estrutura do Projeto
 ```
 ├── src/
-│   ├── components/   # Componentes reutilizáveis (botões, cards, etc.)
-│   ├── pages/        # Páginas principais (Home, Sobre, Serviços, etc.)
-│   └── styles/       # Estilos globais e temas
-├── static/images/    # Imagens estáticas
-├── public/           # Build final (não editar)
-├── gatsby-config.ts  # Configurações do Gatsby
+│   ├── assets/       # Imagens otimizadas em build (astro:assets)
+│   ├── components/   # Componentes React (seções, páginas, UI)
+│   ├── data/         # services.json e testimonials.json
+│   ├── layouts/      # Layout.astro (<head>/SEO)
+│   ├── lib/          # Slug, otimização de imagens e SSR do styled-components
+│   ├── pages/        # Rotas: index, 404 e servicos/[slug]
+│   └── styles/       # Tema e CSS global
+├── public/           # Arquivos servidos como estão (ícone, manifest)
+├── astro.config.mjs  # Configurações do Astro
 ├── package.json      # Dependências e scripts
 └── tsconfig.json     # Configuração TypeScript
 ```
@@ -67,7 +70,7 @@ Fornecer uma presença digital **elegante, moderna e funcional** para a profissi
    yarn dev
    ```
 
-4. Acesse o site em **http://localhost:8000**
+4. Acesse o site em **http://localhost:4321**
 
 ---
 
@@ -78,7 +81,7 @@ npm run build
 # ou
 yarn build
 ```
-Os arquivos finais estarão em `/public`.
+Os arquivos finais estarão em `/dist` (pré-visualize com `npm run preview`).
 
 ---
 

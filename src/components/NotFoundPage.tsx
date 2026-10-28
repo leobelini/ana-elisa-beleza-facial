@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Link, HeadFC, PageProps } from 'gatsby';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { colors } from '../styles/theme';
-import { COMPANY_INFO, MESSAGES, URLS, generatePageTitle } from '../constants';
-import { Button } from '../components/ui/Button';
+import { MESSAGES, URLS } from '../constants';
+import { Button } from './ui/Button';
 
 // Styled Components
 const NotFoundContainer = styled.main`
@@ -87,7 +86,7 @@ const ServicesTitle = styled.h3`
   margin-bottom: 20px;
 `;
 
-const ServiceItem = styled(Link)`
+const ServiceItem = styled.a`
   display: block;
   color: ${colors.graySecondary};
   text-decoration: none;
@@ -105,7 +104,7 @@ const ServiceItem = styled(Link)`
   }
 `;
 
-const NotFoundPage: React.FC<PageProps> = () => {
+const NotFoundPage: React.FC = () => {
   return (
     <NotFoundContainer>
       <BeautyIcon>✨</BeautyIcon>
@@ -127,53 +126,17 @@ const NotFoundPage: React.FC<PageProps> = () => {
 
       <ServicesList>
         <ServicesTitle>Nossos Serviços</ServicesTitle>
-        <ServiceItem to="/#servicos">Limpeza de Pele</ServiceItem>
-        <ServiceItem to="/#servicos">Design de Sobrancelhas</ServiceItem>
-        <ServiceItem to="/#servicos">Extensão de Cílios</ServiceItem>
-        <ServiceItem to="/#servicos">Nanoblading</ServiceItem>
-        <ServiceItem to="/#servicos">Lash Lift</ServiceItem>
-        <ServiceItem to="/#servicos">Hidra Gloss</ServiceItem>
-        <ServiceItem to="/#servicos">NanoLips</ServiceItem>
-        <ServiceItem to="/#contato">Agendar Consulta</ServiceItem>
+        <ServiceItem href="/#servicos">Limpeza de Pele</ServiceItem>
+        <ServiceItem href="/#servicos">Design de Sobrancelhas</ServiceItem>
+        <ServiceItem href="/#servicos">Extensão de Cílios</ServiceItem>
+        <ServiceItem href="/#servicos">Nanoblading</ServiceItem>
+        <ServiceItem href="/#servicos">Lash Lift</ServiceItem>
+        <ServiceItem href="/#servicos">Hidra Gloss</ServiceItem>
+        <ServiceItem href="/#servicos">NanoLips</ServiceItem>
+        <ServiceItem href="/#contato">Agendar Consulta</ServiceItem>
       </ServicesList>
     </NotFoundContainer>
   );
 };
 
 export default NotFoundPage;
-
-export const Head: HeadFC = () => (
-  <>
-    <title>{generatePageTitle('Página não encontrada')}</title>
-    <meta
-      name="description"
-      content="Página não encontrada. Volte ao início para descobrir nossos serviços de estética facial."
-    />
-    <meta
-      name="keywords"
-      content={`erro 404, página não encontrada, ${COMPANY_INFO.name}, estética facial`}
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    {/* Open Graph / Facebook */}
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={generatePageTitle('Página não encontrada')} />
-    <meta
-      property="og:description"
-      content="Página não encontrada. Volte ao início para descobrir nossos serviços de estética facial."
-    />
-    <meta property="og:url" content={`${COMPANY_INFO.siteUrl}/404`} />
-    <meta property="og:site_name" content={COMPANY_INFO.name} />
-
-    {/* Twitter */}
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={generatePageTitle('Página não encontrada')} />
-    <meta
-      name="twitter:description"
-      content="Página não encontrada. Volte ao início para descobrir nossos serviços de estética facial."
-    />
-
-    {/* Robots */}
-    <meta name="robots" content="noindex, nofollow" />
-  </>
-);

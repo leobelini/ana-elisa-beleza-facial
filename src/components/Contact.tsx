@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { colors } from '../styles/theme';
 import { MessageCircle } from 'lucide-react';
 import { Button } from './ui/Button';

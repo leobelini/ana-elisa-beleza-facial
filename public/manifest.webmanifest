@@ -1,0 +1,12 @@
+{
+  "name": "Ana Elisa Cardoso Beleza Facial",
+  "short_name": "Ana Elisa",
+  "description": "Beleza e cuidado que realçam sua essência",
+  "start_url": "/",
+  "background_color": "#FAF8F6",
+  "theme_color": "#C8A968",
+  "display": "standalone",
+  "lang": "pt-BR",
+  "categories": ["beauty", "health", "lifestyle"],
+  "icons": [{ "src": "/icon.png", "sizes": "319x335", "type": "image/png" }]
+}

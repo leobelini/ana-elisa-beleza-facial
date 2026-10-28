@@ -1,7 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { colors } from '../../styles/theme';
-import { Link, GatsbyLinkProps } from 'gatsby';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'whatsapp';
 
@@ -22,7 +21,7 @@ type ButtonAsLink = ButtonBaseProps & {
   asLink: true;
   to: string;
   href?: never;
-} & Omit<GatsbyLinkProps<any>, 'to'>;
+} & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>;
 
 type ButtonAsA = ButtonBaseProps &
   React.AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -102,11 +101,6 @@ const StyledButton = styled.button<{ $variant: ButtonVariant }>`
   ${({ $variant }) => variantStyles[$variant]}
 `;
 
-const StyledLink = styled(Link)<{ $variant: ButtonVariant }>`
-  ${buttonBase}
-  ${({ $variant }) => variantStyles[$variant]}
-`;
-
 const StyledA = styled.a<{ $variant: ButtonVariant }>`
   ${buttonBase}
   ${({ $variant }) => variantStyles[$variant]}
@@ -116,12 +110,12 @@ export const Button: React.FC<ButtonProps> = (props) => {
   const { variant = 'primary', children, ...rest } = props;
 
   if ('asLink' in props && props.asLink && 'to' in props && props.to) {
-    // Gatsby Link: repassar apenas props aceitos
+    // Link interno: repassar apenas props aceitos
     const { to, className } = rest as ButtonAsLink;
     return (
-      <StyledLink to={to} $variant={variant} className={className}>
+      <StyledA href={to} $variant={variant} className={className}>
         {children}
-      </StyledLink>
+      </StyledA>
     );
   }
   if ('href' in props && props.href) {

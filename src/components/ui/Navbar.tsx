@@ -1,6 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { Link, navigate } from 'gatsby';
+import { styled } from 'styled-components';
 import { colors } from '../../styles/theme';
 import { Menu, X } from 'lucide-react';
 
@@ -32,7 +31,7 @@ const NavContainer = styled.div`
   align-items: center;
 `;
 
-const NavLogo = styled(Link)`
+const NavLogo = styled.a`
   font-size: 1.5rem;
   font-weight: 300;
   color: ${colors.goldMain};
@@ -200,7 +199,7 @@ const Navbar: React.FC = () => {
       }
     } else {
       // Se estamos em outra página, navega para a home com a âncora
-      navigate(`/${href}`);
+      window.location.assign(`/${href}`);
     }
     closeMobileMenu();
   };
@@ -208,7 +207,7 @@ const Navbar: React.FC = () => {
   return (
     <NavbarContainer className={`${isScrolled ? 'scrolled' : ''}`}>
       <NavContainer>
-        <NavLogo to="/">Ana Elisa</NavLogo>
+        <NavLogo href="/">Ana Elisa</NavLogo>
         <NavMenu>
           {menuItems.map((item) => (
             <NavItem key={item.href}>

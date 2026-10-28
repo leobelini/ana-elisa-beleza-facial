@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HomePage from '../components/HomePage';
+import heroSrc from '../assets/home/IMG_1455-Aprimorado-NR.jpg';
+import aboutSrc from '../assets/home/IMG_5396-Enhanced-NR.jpg';
+import servicesJson from '../data/services.json';
+import { COMPANY_INFO, CONTACT_INFO } from '../constants';
+import { createSlug } from '../lib/slug';
+import { getServiceImage, optimize } from '../lib/images';
+import { collectStyles } from '../lib/ssr';
+
+const title = 'Ana Elisa Beleza Facial - Estética e Cuidados Faciais';
+const description =
+  'Beleza e cuidado que realçam sua essência. Especializada em limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss, nanolips.';
+
+const services = await Promise.all(
+  servicesJson.map(async (service) => ({
+    ...service,
+    slug: createSlug(service.title),
+    image: await getServiceImage(service.images[0], 400, 200),
+  })),
+);
+
+const props = {
+  heroImage: await optimize(heroSrc, 400, 500),
+  aboutImage: await optimize(aboutSrc, 300, 300),
+  services,
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BeautySalon',
+  name: COMPANY_INFO.name,
+  description: COMPANY_INFO.description,
+  url: COMPANY_INFO.siteUrl,
+  logo: COMPANY_INFO.logoUrl,
+  sameAs: [CONTACT_INFO.instagramUrl, CONTACT_INFO.whatsappUrl],
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'BR',
+    addressLocality: 'São Paulo',
+    addressRegion: 'SP',
+  },
+  telephone: '+55-14-99713-9783',
+  priceRange: '$$',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Serviços de Estética Facial',
+    itemListElement: services.map((service) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: service.title,
+        description: service.shortDescription,
+      },
+    })),
+  },
+};
+---
+
+<Layout title={title} description={description} styles={collectStyles(HomePage, props)}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(structuredData)} />
+  <HomePage client:load {...props} />
+</Layout>

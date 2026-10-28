@@ -1,6 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { StaticImage } from 'gatsby-plugin-image';
+import { styled } from 'styled-components';
 import { motion } from 'framer-motion';
 import { colors, commonStyles } from '../styles/theme';
 import { Button } from './ui/Button';
@@ -47,18 +46,17 @@ const ImageContainer = styled(motion.div)`
   align-items: center;
   min-height: 400px;
 
-  .gatsby-image-wrapper {
+  img {
     border-radius: 20px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     overflow: hidden;
 
+    max-width: 100%;
+    height: auto;
+
     &:hover {
       transform: translateY(-5px);
-    }
-
-    img {
-      border-radius: 20px !important;
     }
   }
 
@@ -121,7 +119,13 @@ const itemVariants = {
 };
 
 // Componente Hero
-const Hero: React.FC = () => {
+export interface SiteImage {
+  src: string;
+  width: number;
+  height: number;
+}
+
+const Hero: React.FC<{ image: SiteImage }> = ({ image }) => {
   return (
     <HeroContainer id="home">
       <HeroContent>
@@ -166,14 +170,11 @@ const Hero: React.FC = () => {
             transition: { duration: 0.3 },
           }}
         >
-          <StaticImage
-            src="../images/home/IMG_1455-Aprimorado-NR.jpg"
+          <img
+            src={image.src}
             alt="Ana Elisa - Profissional de Beleza Facial"
-            placeholder="blurred"
-            width={400}
-            height={500}
-            quality={95}
-            formats={['auto', 'webp', 'avif']}
+            width={image.width}
+            height={image.height}
             loading="eager"
           />
         </ImageContainer>

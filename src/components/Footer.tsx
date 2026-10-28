@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { colors } from '../styles/theme';
 import { Instagram, MapPin, Navigation, PhoneCall } from 'lucide-react';
 import { SEO_DEFAULTS, CONTACT_INFO, PHONE_NUMBER_FORMATTED } from '../constants';

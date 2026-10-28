@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { graphql, PageProps } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { colors } from '../styles/theme';
-import { Helmet } from 'react-helmet';
 import { MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '../components/ui/Button';
-import { Navbar } from '../components';
-import { H1, H2, H3, P } from '../components/ui/Typography';
-import {
-  COMPANY_INFO,
-  MESSAGES,
-  generateServiceWhatsAppUrl,
-  generatePageTitle,
-  generateServiceUrl,
-} from '../constants';
+import { Button } from './ui/Button';
+import Navbar from './ui/Navbar';
+import { H1, H2, H3, P } from './ui/Typography';
+import { MESSAGES, generateServiceWhatsAppUrl } from '../constants';
+import type { SiteImage } from './Hero';
 
 interface ServiceVariation {
   id: string;
@@ -28,27 +20,23 @@ interface ServiceComplement {
   description: string;
 }
 
-interface ServicePageData {
-  servicesJson: {
-    id: string;
-    title: string;
-    shortDescription: string;
-    longDescription: string;
-    benefits: string[];
-    images: string[];
-    category: string;
-    featured: boolean;
-    variations?: ServiceVariation[];
-    complements?: ServiceComplement[];
-  };
-  allFile: {
-    nodes: Array<{
-      relativePath: string;
-      childImageSharp?: {
-        gatsbyImageData: any;
-      };
-    }>;
-  };
+export interface ServicePageService {
+  id: string;
+  title: string;
+  shortDescription: string;
+  longDescription: string;
+  benefits: string[];
+  images: string[];
+  category: string;
+  featured: boolean;
+  variations?: ServiceVariation[];
+  complements?: ServiceComplement[];
+}
+
+interface ServicePageProps {
+  service: ServicePageService;
+  /** Imagens já otimizadas, na mesma ordem de service.images (null = sem arquivo) */
+  images: Array<SiteImage | null>;
 }
 
 // Styled Components
@@ -141,7 +129,7 @@ const GalleryImageWrapper = styled.div`
   }
 `;
 
-const GalleryGatsbyImage = styled(GatsbyImage)`
+const GalleryImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -270,7 +258,7 @@ const ModalContent = styled.div`
   justify-content: center;
 `;
 
-const ModalGatsbyImage = styled(GatsbyImage)`
+const ModalImage = styled.img`
   max-width: 100%;
   max-height: 100%;
   width: auto;
@@ -506,10 +494,7 @@ const OptionDuration = styled.div`
 `;
 
 // Componente principal
-const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
-  const service = data.servicesJson;
-  const images = data.allFile.nodes;
-
+const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
   // Estado para controle do modal de imagem
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -520,13 +505,7 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
   // Gerar URL do WhatsApp
   const whatsappUrl = generateServiceWhatsAppUrl(service.title);
 
-  // Função para encontrar a imagem correspondente
-  const getServiceImage = (imagePath: string) => {
-    const imageNode = images.find((img: any) =>
-      img.relativePath.includes(imagePath.split('/').pop()?.split('.')[0] || ''),
-    );
-    return imageNode?.childImageSharp?.gatsbyImageData ? getImage(imageNode) : null;
-  };
+  const getServiceImage = (index: number) => images[index] ?? null;
 
   // Funções do modal
   const openModal = (index: number) => {
@@ -592,48 +571,6 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
 
   return (
     <>
-      <Helmet>
-        <title>{generatePageTitle(service.title)}</title>
-        <meta name="description" content={service.shortDescription} />
-        <meta
-          name="keywords"
-          content={`${service.title}, ${
-            service.category
-          }, estética facial, beleza, ${service.title.toLowerCase()}`}
-        />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={generatePageTitle(service.title)} />
-        <meta property="og:description" content={service.shortDescription} />
-        <meta property="og:url" content={generateServiceUrl(service.id)} />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={generatePageTitle(service.title)} />
-        <meta name="twitter:description" content={service.shortDescription} />
-
-        {/* Schema.org structured data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Service',
-            name: service.title,
-            description: service.shortDescription,
-            provider: {
-              '@type': 'Organization',
-              name: COMPANY_INFO.name,
-              url: COMPANY_INFO.siteUrl,
-            },
-            category: service.category,
-            offers: {
-              '@type': 'Offer',
-              description: `${service.title} - ${service.shortDescription}`,
-            },
-          })}
-        </script>
-      </Helmet>
-
       <ServicePageContainer>
         <Navbar />
 
@@ -697,8 +634,8 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
           {service.images && service.images.length > 0 && (
             <ServiceGallery>
               <CarouselContainer>
-                {service.images.map((imagePath, index) => {
-                  const image = getServiceImage(imagePath);
+                {service.images.map((_, index) => {
+                  const image = getServiceImage(index);
                   return (
                     <CarouselSlide key={index} $isActive={index === currentSlide}>
                       {image ? (
@@ -707,8 +644,10 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
                             openModal(index);
                           }}
                         >
-                          <GalleryGatsbyImage
-                            image={image}
+                          <GalleryImage
+                            src={image.src}
+                            width={image.width}
+                            height={image.height}
                             alt={`${service.title} - Imagem ${index + 1}`}
                           />
                         </GalleryImageWrapper>
@@ -855,10 +794,12 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
           {service.images && service.images[currentImageIndex] && (
             <>
               {(() => {
-                const image = getServiceImage(service.images[currentImageIndex]);
+                const image = getServiceImage(currentImageIndex);
                 return image ? (
-                  <ModalGatsbyImage
-                    image={image}
+                  <ModalImage
+                    src={image.src}
+                    width={image.width}
+                    height={image.height}
                     alt={`${service.title} - Imagem ${currentImageIndex + 1}`}
                   />
                 ) : (
@@ -896,50 +837,5 @@ const ServicePage: React.FC<PageProps<ServicePageData>> = ({ data }) => {
     </>
   );
 };
-
-// Add details no GraphQL como opcional
-export const query = graphql`
-  query ServicePageQuery($id: String!) {
-    servicesJson(id: { eq: $id }) {
-      id
-      title
-      shortDescription
-      longDescription
-      benefits
-      images
-      category
-      featured
-      variations {
-        id
-        name
-        description
-      }
-      complements {
-        id
-        name
-        description
-      }
-    }
-    allFile(
-      filter: {
-        sourceInstanceName: { in: ["images", "static-images"] }
-        extension: { in: ["jpg", "jpeg", "png", "webp"] }
-      }
-    ) {
-      nodes {
-        relativePath
-        childImageSharp {
-          gatsbyImageData(
-            width: 800
-            height: 600
-            placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
-            quality: 95
-          )
-        }
-      }
-    }
-  }
-`;
 
 export default ServicePage;

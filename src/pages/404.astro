@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NotFoundPage from '../components/NotFoundPage';
+import { COMPANY_INFO, generatePageTitle } from '../constants';
+import { collectStyles } from '../lib/ssr';
+
+const description =
+  'Página não encontrada. Volte ao início para descobrir nossos serviços de estética facial.';
+---
+
+<Layout
+  title={generatePageTitle('Página não encontrada')}
+  description={description}
+  keywords={`erro 404, página não encontrada, ${COMPANY_INFO.name}, estética facial`}
+  url="/404"
+  noindex
+  styles={collectStyles(NotFoundPage, {})}
+>
+  <NotFoundPage client:load />
+</Layout>
