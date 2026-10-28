@@ -8,5 +8,5 @@ export { default as Contact } from './Contact';
 export { default as Footer } from './Footer';
 
 // Re-exportar tipos úteis
-export type { Service } from './Services';
+export type { ServiceData } from './Services';
 export type { Testimonial } from './Testimonials';

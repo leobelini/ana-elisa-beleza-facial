@@ -1,7 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 import { colors } from '../../styles/theme';
-import { Link, GatsbyLinkProps } from 'gatsby';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'whatsapp';
 
@@ -22,7 +21,7 @@ type ButtonAsLink = ButtonBaseProps & {
   asLink: true;
   to: string;
   href?: never;
-} & Omit<GatsbyLinkProps<any>, 'to'>;
+} & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>;
 
 type ButtonAsA = ButtonBaseProps &
   React.AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -38,16 +37,19 @@ const buttonBase = css`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 25px;
-  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  padding: 14px 32px;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
   text-decoration: none;
   outline: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   min-width: 120px;
   min-height: 44px;
   user-select: none;
@@ -60,49 +62,44 @@ const buttonBase = css`
 
 const variantStyles = {
   primary: css`
-    background: ${colors.goldMain};
-    color: white;
-    border: 2px solid ${colors.goldMain};
+    background: ${colors.cocoa};
+    color: ${colors.iceWhite};
+    border: 1px solid ${colors.cocoa};
     &:hover {
-      background: ${colors.goldDark};
-      border-color: ${colors.goldDark};
+      background: ${colors.rose};
+      border-color: ${colors.rose};
     }
   `,
   secondary: css`
     background: transparent;
-    color: ${colors.goldMain};
-    border: 2px solid ${colors.goldMain};
+    color: ${colors.blackMain};
+    border: 1px solid ${colors.blackMain};
     &:hover {
-      background: ${colors.goldMain};
-      color: white;
+      background: ${colors.blackMain};
+      color: ${colors.iceWhite};
     }
   `,
   outline: css`
     background: transparent;
     color: ${colors.blackMain};
-    border: 2px solid ${colors.goldMain};
+    border: 1px solid ${colors.goldMain};
     &:hover {
-      background: ${colors.iceWhite};
-      color: ${colors.goldMain};
+      background: ${colors.goldMain};
+      color: ${colors.iceWhite};
     }
   `,
   whatsapp: css`
-    background: #25d366;
+    background: #17703d;
     color: white;
-    border: 2px solid #25d366;
+    border: 1px solid #17703d;
     &:hover {
-      background: #1ebe5d;
-      border-color: #1ebe5d;
+      background: #115a30;
+      border-color: #115a30;
     }
   `,
 };
 
 const StyledButton = styled.button<{ $variant: ButtonVariant }>`
-  ${buttonBase}
-  ${({ $variant }) => variantStyles[$variant]}
-`;
-
-const StyledLink = styled(Link)<{ $variant: ButtonVariant }>`
   ${buttonBase}
   ${({ $variant }) => variantStyles[$variant]}
 `;
@@ -116,12 +113,12 @@ export const Button: React.FC<ButtonProps> = (props) => {
   const { variant = 'primary', children, ...rest } = props;
 
   if ('asLink' in props && props.asLink && 'to' in props && props.to) {
-    // Gatsby Link: repassar apenas props aceitos
+    // Link interno: repassar apenas props aceitos
     const { to, className } = rest as ButtonAsLink;
     return (
-      <StyledLink to={to} $variant={variant} className={className}>
+      <StyledA href={to} $variant={variant} className={className}>
         {children}
-      </StyledLink>
+      </StyledA>
     );
   }
   if ('href' in props && props.href) {

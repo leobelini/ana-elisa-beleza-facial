@@ -10,13 +10,13 @@ export default [
       "node_modules/",
       "build/",
       "dist/",
-      ".cache/",
+      ".astro/",
       "public/",
       "*.log"
     ]
   },
   {
-    files: ["src/**/*.{js,jsx,ts,tsx}", "gatsby-*.ts"],
+    files: ["src/**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
       parser,
       ecmaVersion: "latest",

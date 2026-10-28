@@ -7,10 +7,15 @@ export const COMPANY_INFO = {
   description:
     'Estética facial especializada em cuidados personalizados e tratamentos de beleza para realçar sua essência natural',
   tagline: 'Beleza e cuidado que realçam sua essência',
-  logoUrl: 'https://anaelisabelezafacial.com.br/logo.png',
+  logoUrl: 'https://anaelisabelezafacial.com.br/icon.png',
   keywords:
     'estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss, nanolips, beleza, cuidados faciais, Ana Elisa',
 } as const;
+
+// Ano de formatura (início da carreira); os anos de experiência são calculados a partir dele
+export const CAREER_START_YEAR = 2018;
+
+export const getYearsOfExperience = (): number => new Date().getFullYear() - CAREER_START_YEAR;
 
 const PHONE_NUMBER = '5514997139783';
 export const PHONE_NUMBER_FORMATTED = '(14) 99713-9783';
@@ -19,8 +24,17 @@ export const PHONE_NUMBER_FORMATTED = '(14) 99713-9783';
 export const CONTACT_INFO = {
   whatsappNumber: PHONE_NUMBER,
   whatsappUrl: `https://wa.me/${PHONE_NUMBER}`,
-  instagram: '@anaelisabelezafacial',
-  instagramUrl: 'https://instagram.com/anaelisabelezafacial',
+  instagram: '@anaelisa.belezafacial',
+  instagramUrl: 'https://instagram.com/anaelisa.belezafacial',
+} as const;
+
+// Endereço do estúdio (usado no rodapé, contato e dados estruturados)
+export const ADDRESS = {
+  street: 'R. Jose Zini, 101',
+  locality: 'Pongaí',
+  region: 'SP',
+  postalCode: '16660-077',
+  country: 'BR',
 } as const;
 
 // Mensagens padrão
@@ -38,7 +52,7 @@ export const MESSAGES = {
     viewServices: 'Ver serviços',
   },
   errors: {
-    pageNotFound: 'Ops! Parece que você se perdeu em nossa jornada de beleza.',
+    pageNotFound: 'Ops! Parece que você se perdeu no caminho.',
     pageNotFoundSubtitle:
       'A página que você está procurando não existe, mas temos muitas outras opções incríveis para você descobrir!',
   },
@@ -49,7 +63,7 @@ export const SEO_DEFAULTS = {
   title: `${COMPANY_INFO.name} - Estética e Cuidados Faciais`,
   description: COMPANY_INFO.description,
   keywords: COMPANY_INFO.keywords,
-  image: `${COMPANY_INFO.siteUrl}/og-image.jpg`,
+  image: `${COMPANY_INFO.siteUrl}/icon.png`,
   type: 'website',
   locale: 'pt_BR',
   copyright: `© 2025 ${COMPANY_INFO.name}. Todos os direitos reservados.`,
@@ -117,5 +131,5 @@ export const generatePageTitle = (pageTitle?: string): string => {
 };
 
 export const generateServiceUrl = (serviceId: string): string => {
-  return `${COMPANY_INFO.siteUrl}/servicos/${serviceId}`;
+  return `${COMPANY_INFO.siteUrl}/servicos/${serviceId}/`;
 };

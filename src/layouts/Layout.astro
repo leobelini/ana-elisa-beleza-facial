@@ -1,0 +1,94 @@
+---
+import '@fontsource/instrument-serif/latin-400.css';
+import '@fontsource/instrument-serif/latin-400-italic.css';
+import '@fontsource-variable/hanken-grotesk/wght.css';
+import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import ogSrc from '../assets/home/IMG_1455-Aprimorado-NR.jpg';
+import { COMPANY_INFO } from '../constants';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  url?: string;
+  noindex?: boolean;
+  /** Tipo Open Graph da página */
+  ogType?: 'website' | 'article';
+  /** Tags <style> do styled-components coletadas no SSR */
+  styles?: string;
+}
+
+const {
+  title,
+  description,
+  keywords = COMPANY_INFO.keywords,
+  url = '/',
+  noindex = false,
+  ogType = 'website',
+  styles = '',
+} = Astro.props;
+
+// Canonical com barra final, igual às URLs geradas no build e no sitemap
+const canonical = new URL(url.endsWith('/') ? url : `${url}/`, COMPANY_INFO.siteUrl).href;
+
+// Imagem de compartilhamento (Open Graph / Twitter), 1.91:1
+const og = await getImage({
+  src: ogSrc,
+  width: 1067,
+  height: 560,
+  format: 'jpg',
+  quality: 80,
+  fit: 'cover',
+  position: 'top',
+});
+const ogImage = new URL(og.src, COMPANY_INFO.siteUrl).href;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={COMPANY_INFO.author} />
+    <meta
+      name="robots"
+      content={noindex
+        ? 'noindex, nofollow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Ana Elisa Beleza Facial" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content={String(og.attributes.width ?? 1067)} />
+    <meta property="og:image:height" content={String(og.attributes.height ?? 560)} />
+    <meta property="og:image:alt" content="Ana Elisa, esteticista especializada em beleza facial" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="theme-color" content="#2A1A18" />
+    <meta name="msapplication-TileColor" content="#2A1A18" />
+
+    <slot name="head" />
+    <Fragment set:html={styles} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

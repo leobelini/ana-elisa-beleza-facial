@@ -1,45 +1,42 @@
-import styled, { css } from 'styled-components';
-import { colors } from '../../styles/theme';
+import { styled, css } from 'styled-components';
+import { colors, fonts } from '../../styles/theme';
 
 // Títulos principais
 export const H1 = styled.h1`
-  font-size: 3rem;
-  font-weight: 700;
-  color: ${colors.goldMain};
-  letter-spacing: 1.5px;
+  font-family: ${fonts.display};
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 400;
+  color: ${colors.blackMain};
+  letter-spacing: -0.01em;
   margin-bottom: 24px;
-  line-height: 1.1;
-  @media (max-width: 768px) {
-    font-size: 2.2rem;
-  }
+  line-height: 0.98;
 `;
 
 export const H2 = styled.h2`
-  font-size: 2rem;
-  font-weight: 600;
+  font-family: ${fonts.display};
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 400;
   color: ${colors.blackMain};
-  letter-spacing: 1px;
   margin-bottom: 20px;
-  line-height: 1.2;
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
+  line-height: 1.05;
 `;
 
 export const H3 = styled.h3`
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: ${colors.goldMain};
+  font-family: ${fonts.display};
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: ${colors.blackMain};
   margin-bottom: 16px;
-  line-height: 1.2;
+  line-height: 1.15;
 `;
 
 // Parágrafos
 export const P = styled.p`
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: ${colors.graySecondary};
-  line-height: 1.8;
+  line-height: 1.75;
   margin-bottom: 18px;
+  max-width: 62ch;
 `;
 
 // Texto pequeno

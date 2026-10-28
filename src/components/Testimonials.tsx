@@ -1,94 +1,78 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { graphql, useStaticQuery } from 'gatsby';
-import { colors, commonStyles } from '../styles/theme';
+import { styled } from 'styled-components';
+import testimonialsData from '../data/testimonials.json';
+import { colors, fonts } from '../styles/theme';
 
 // Styled Components para Testimonials
 const TestimonialsContainer = styled.section`
-  background: white;
-  padding: 80px 20px;
-`;
+  background: ${colors.cocoa};
+  color: ${colors.iceWhite};
+  padding: 120px 24px;
 
-const TestimonialsSection = styled.div`
-  ${commonStyles.section}
-  padding: 0;
-`;
-
-const SectionTitle = styled.h2`
-  ${commonStyles.sectionTitle}
-  color: ${colors.blackMain};
-`;
-
-const TestimonialCard = styled.div<{ $isVisible: boolean }>`
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 40px;
-  background: ${colors.iceWhite};
-  border-radius: 20px;
-  position: relative;
-  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
-  transform: translateY(${(props) => (props.$isVisible ? '0' : '20px')});
-  transition: all 0.6s ease-in-out;
-
-  &::before {
-    content: '"';
-    font-size: 4rem;
-    color: ${colors.goldMain};
-    position: absolute;
-    top: 10px;
-    left: 30px;
-    opacity: ${(props) => (props.$isVisible ? 1 : 0)};
-    transition: opacity 0.8s ease-in-out 0.2s;
+  @media (max-width: 768px) {
+    padding: 72px 20px;
   }
 `;
 
-const TestimonialText = styled.p<{ $isVisible: boolean }>`
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: ${colors.blackMain};
-  margin-bottom: 30px;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-  font-style: italic;
-  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
-  transform: translateY(${(props) => (props.$isVisible ? '0' : '15px')});
-  transition: all 0.5s ease-in-out 0.1s;
+const TestimonialsSection = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
-const TestimonialAuthor = styled.div<{ $isVisible: boolean }>`
-  color: ${colors.goldMain};
-  font-weight: 500;
+const SectionTitle = styled.h2`
+  font-family: ${fonts.display};
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 400;
+  color: ${colors.iceWhite};
+  margin-bottom: 56px;
+`;
+
+const TestimonialCard = styled.figure<{ $isVisible: boolean }>`
+  margin: 0;
+  max-width: 900px;
+  min-height: 260px;
   opacity: ${(props) => (props.$isVisible ? 1 : 0)};
-  transform: translateY(${(props) => (props.$isVisible ? '0' : '10px')});
-  transition: all 0.5s ease-in-out 0.3s;
+  transform: translateY(${(props) => (props.$isVisible ? '0' : '12px')});
+  transition: all 0.45s ease-in-out;
+`;
+
+const TestimonialText = styled.blockquote`
+  font-family: ${fonts.display};
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  line-height: 1.3;
+  color: ${colors.iceWhite};
+  margin: 0 0 32px;
+`;
+
+const TestimonialAuthor = styled.figcaption`
+  color: #d8b574;
+  font-weight: 500;
 `;
 
 const TestimonialsCarousel = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
 `;
 
 const CarouselDots = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 30px;
+  align-items: center;
+  gap: 8px;
 `;
 
 const Dot = styled.button<{ $active: boolean }>`
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+  width: ${(props) => (props.$active ? '40px' : '16px')};
+  height: 31px;
   border: none;
-  background: ${(props) => (props.$active ? colors.goldMain : colors.graySecondary)};
+  padding: 14px 0;
+  background-clip: content-box;
+  background-color: ${(props) => (props.$active ? '#d8b574' : 'rgba(251, 247, 244, 0.35)')};
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    background: ${colors.goldMain};
+    background-color: #d8b574;
   }
 `;
 
@@ -111,20 +95,6 @@ interface TestimonialsProps {
 }
 
 // Query GraphQL
-const testimonialsQuery = graphql`
-  query TestimonialsQuery {
-    allTestimonialsJson {
-      nodes {
-        id
-        text
-        author
-        rating
-        service
-        date
-      }
-    }
-  }
-`;
 
 // Dados padrão dos depoimentos (fallback)
 const defaultTestimonials: Testimonial[] = [
@@ -147,12 +117,9 @@ const defaultTestimonials: Testimonial[] = [
 
 // Componente Testimonials
 const Testimonials: React.FC<TestimonialsProps> = ({ autoPlayInterval = 5000 }) => {
-  // Buscar dados via GraphQL
-  const data = useStaticQuery(testimonialsQuery);
-  const graphqlTestimonials = data?.allTestimonialsJson?.nodes || [];
-
-  // Usar dados do GraphQL ou fallback para dados padrão
-  const testimonials = graphqlTestimonials.length > 0 ? graphqlTestimonials : defaultTestimonials;
+  // Usar dados do JSON ou fallback para dados padrão
+  const testimonials: Testimonial[] =
+    testimonialsData.length > 0 ? testimonialsData : defaultTestimonials;
 
   const [currentTestimonial, setCurrentTestimonial] = React.useState(0);
   const [isTransitioning, setIsTransitioning] = React.useState(false);
@@ -204,15 +171,11 @@ const Testimonials: React.FC<TestimonialsProps> = ({ autoPlayInterval = 5000 }) 
   return (
     <TestimonialsContainer id="depoimentos">
       <TestimonialsSection>
-        <SectionTitle>Depoimentos</SectionTitle>
+        <SectionTitle>O que dizem as clientes</SectionTitle>
         <TestimonialsCarousel>
           <TestimonialCard $isVisible={isVisible}>
-            <TestimonialText $isVisible={isVisible}>
-              {testimonials[currentTestimonial].text}
-            </TestimonialText>
-            <TestimonialAuthor $isVisible={isVisible}>
-              — {testimonials[currentTestimonial].author}
-            </TestimonialAuthor>
+            <TestimonialText>{testimonials[currentTestimonial].text}</TestimonialText>
+            <TestimonialAuthor>{testimonials[currentTestimonial].author}</TestimonialAuthor>
           </TestimonialCard>
 
           {testimonials.length > 1 && (
@@ -221,6 +184,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ autoPlayInterval = 5000 }) 
                 <Dot
                   key={index}
                   $active={index === currentTestimonial}
+                  aria-label={`Depoimento ${index + 1}`}
                   onClick={() => goToTestimonial(index)}
                 />
               ))}

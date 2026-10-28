@@ -1,0 +1,76 @@
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Hanken Grotesk Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #2A1A18;
+    background-color: #FBF7F4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button {
+    border: none;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  ul, ol {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  /* Smooth scroll para navegação âncora */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px; /* Compensa a navbar fixa */
+  }
+
+  /* Estilo para foco acessível */
+  :focus {
+    outline: 2px solid #B58E4B;
+    outline-offset: 2px;
+  }
+
+  /* Remove outline para mouse clicks mas mantém para teclado */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+::selection {
+  background: #B9776B;
+  color: #FBF7F4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html, body { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

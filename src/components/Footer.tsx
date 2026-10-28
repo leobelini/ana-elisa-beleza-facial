@@ -1,229 +1,168 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { colors } from '../styles/theme';
-import { Instagram, MapPin, Navigation, PhoneCall } from 'lucide-react';
-import { SEO_DEFAULTS, CONTACT_INFO, PHONE_NUMBER_FORMATTED } from '../constants';
-import { H3, P } from './ui/Typography';
+import { styled } from 'styled-components';
+import { colors, fonts } from '../styles/theme';
+import { Instagram, Navigation, PhoneCall } from 'lucide-react';
+import { ADDRESS, SEO_DEFAULTS, CONTACT_INFO, PHONE_NUMBER_FORMATTED } from '../constants';
 
-// Styled Components para Footer
+const GOLD_LIGHT = '#d8b574';
+
 const FooterContainer = styled.footer`
-  background: ${colors.blackMain};
-  color: white;
-  padding: 60px 20px 30px;
-  text-align: center;
+  background: ${colors.cocoa};
+  color: ${colors.onDark};
+  padding: 88px 24px 32px;
+
+  @media (max-width: 768px) {
+    padding: 64px 20px 28px;
+  }
 `;
 
 const FooterContent = styled.div`
   max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  margin-bottom: 40px;
-`;
+  margin: 0 auto 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.3fr;
+  gap: 48px;
 
-const FooterSection = styled.div`
-  flex: 1 1 250px;
-  min-width: 300px;
-  text-align: center;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 32px;
+  }
 
-  // h3 removido, usar Title3
-  ul {
-    list-style: none;
-    padding: 0;
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr 1fr;
 
-    li {
-      margin-bottom: 10px;
-
-      a {
-        color: ${colors.graySecondary};
-        text-decoration: none;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: ${colors.goldMain};
-        }
-      }
+    > :last-child {
+      grid-column: 1 / -1;
     }
   }
 
-  // p removido, usar Paragraph
-`;
-
-const Copyright = styled.div`
-  border-top: 1px solid ${colors.graySecondary};
-  padding-top: 30px;
-  color: ${colors.graySecondary};
-  font-size: 0.9rem;
-`;
-
-const AddressSection = styled.div`
-  text-align: center;
-
-  // h4 removido, usar Title3
-  .address-text {
-    // será Paragraph
-    text-align: center;
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+    margin-bottom: 48px;
   }
 `;
 
-const NavigationButtons = styled.div`
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 15px;
+const Column = styled.div`
+  h3 {
+    font-family: ${fonts.display};
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: ${GOLD_LIGHT};
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
 
   a {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    background: ${colors.goldMain};
-    color: white;
+    gap: 10px;
+    padding: 6px 0;
+    color: ${colors.onDark};
     text-decoration: none;
-    border-radius: 25px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    transition: color 0.25s ease;
 
     &:hover {
-      background: ${colors.goldDark};
-      transform: translateY(-2px);
+      color: ${GOLD_LIGHT};
     }
 
     svg {
-      width: 16px;
-      height: 16px;
+      flex-shrink: 0;
     }
   }
 `;
 
-// Interfaces
-interface FooterLink {
-  label: string;
-  href: string;
-  external?: boolean;
-}
+const MapsLink = styled.a`
+  && {
+    padding: 10px 18px;
+    border: 1px solid ${GOLD_LIGHT};
+    border-radius: 999px;
+    color: ${GOLD_LIGHT};
+    font-size: 0.9rem;
+    font-weight: 500;
 
-interface FooterSection {
-  title: string;
-  links?: FooterLink[];
-  content?: React.ReactNode[];
-}
+    &:hover {
+      background: ${GOLD_LIGHT};
+      color: ${colors.cocoa};
+    }
+  }
+`;
 
-// Dados padrão do footer
-const defaultSections: FooterSection[] = [
-  {
-    title: 'Navegação',
-    links: [
-      { label: 'Sobre', href: '#sobre' },
-      { label: 'Serviços', href: '#servicos' },
-      { label: 'Depoimentos', href: '#depoimentos' },
-      { label: 'Contato', href: '#agendamento' },
-    ],
-  },
-  {
-    title: 'Contato',
-    content: [
-      <a href="">
-        <PhoneCall size={24} /> {PHONE_NUMBER_FORMATTED}
-      </a>,
-      <a href={CONTACT_INFO.instagramUrl} target="_blank">
-        <Instagram size={24} /> {CONTACT_INFO.instagram}
-      </a>,
-    ],
-  },
-  {
-    title: 'Horário de Funcionamento',
-    content: ['Terça à Sexta: 9h às 18h'],
-  },
+const Copyright = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(251, 247, 244, 0.2);
+  padding-top: 28px;
+  font-size: 0.9rem;
+`;
+
+const navLinks = [
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Tratamentos', href: '#servicos' },
+  { label: 'Depoimentos', href: '#depoimentos' },
+  { label: 'Agendar', href: '#agendamento' },
 ];
 
-const address = 'R. Jose Zini, 101, Pongaí - SP, 16660-077';
+const address = `${ADDRESS.street}, ${ADDRESS.locality} - ${ADDRESS.region}, ${ADDRESS.postalCode}`;
 
 const Footer: React.FC = () => {
-  // URLs para navegação
   const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address)}`;
 
   return (
     <FooterContainer>
       <FooterContent>
-        {defaultSections.map((section, index) => (
-          <FooterSection key={index}>
-            <H3 as="h3" style={{ marginBottom: 20 }}>
-              {section.title}
-            </H3>
-            {section.links && (
-              <ul>
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <a
-                      href={link.href}
-                      target={link.external ? '_blank' : undefined}
-                      rel={link.external ? 'noopener noreferrer' : undefined}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-            {section.content && (
-              <div>
-                {section.content.map((item, itemIndex) => (
-                  <P as="div" key={itemIndex} style={{ marginBottom: 10 }}>
-                    {item}
-                  </P>
-                ))}
-              </div>
-            )}
-          </FooterSection>
-        ))}
+        <Column>
+          <h3>Navegação</h3>
+          <ul>
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a href={`/${link.href}`}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </Column>
 
-        {/* Seção do Endereço */}
-        <FooterSection>
-          <AddressSection>
-            <H3
-              as="h4"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 8,
-                justifyContent: 'center',
-                marginBottom: 15,
-              }}
-            >
-              <MapPin size={20} />
-              Nosso Endereço
-            </H3>
-            <P
-              as="div"
-              className="address-text"
-              style={{
-                color: colors.graySecondary,
-                marginBottom: 15,
-                fontSize: '0.95rem',
-                lineHeight: 1.5,
-              }}
-            >
-              {address}
-            </P>
-            <NavigationButtons>
-              <a
-                href={googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Abrir no Google Maps"
-              >
-                <Navigation size={16} />
-                Google Maps
+        <Column>
+          <h3>Contato</h3>
+          <ul>
+            <li>
+              <a href={CONTACT_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer">
+                <PhoneCall size={20} />
+                {PHONE_NUMBER_FORMATTED}
               </a>
-            </NavigationButtons>
-          </AddressSection>
-        </FooterSection>
+            </li>
+            <li>
+              <a href={CONTACT_INFO.instagramUrl} target="_blank" rel="noopener noreferrer">
+                <Instagram size={20} />
+                {CONTACT_INFO.instagram}
+              </a>
+            </li>
+          </ul>
+        </Column>
+
+        <Column>
+          <h3>Endereço</h3>
+          <p>{address}</p>
+          <MapsLink
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Abrir no Google Maps"
+          >
+            <Navigation size={16} />
+            Abrir no Google Maps
+          </MapsLink>
+        </Column>
       </FooterContent>
 
       <Copyright>{SEO_DEFAULTS.copyright}</Copyright>

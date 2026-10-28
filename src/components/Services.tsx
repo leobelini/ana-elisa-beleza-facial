@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { graphql, useStaticQuery, Link } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import styled from 'styled-components';
-import { colors, commonStyles } from '../styles/theme';
-import { Button } from './ui/Button';
-import { H2, H3, P } from './ui/Typography';
+import { styled } from 'styled-components';
+import { ArrowUpRight } from 'lucide-react';
+import { colors, commonStyles, fonts } from '../styles/theme';
+import type { SiteImage } from './Hero';
+import { H2, P } from './ui/Typography';
 
-// Tipo para dados dos serviços
-interface ServiceData {
+export interface ServiceData {
   id: string;
   title: string;
   shortDescription: string;
@@ -16,9 +14,8 @@ interface ServiceData {
   images: string[];
   category: string;
   featured: boolean;
-  fields: {
-    slug: string;
-  };
+  slug: string;
+  image: SiteImage | null;
 }
 
 // Styled Components para Services
@@ -26,194 +23,143 @@ const ServicesContainer = styled.section`
   ${commonStyles.section}
 `;
 
-// SectionTitle removido, usar Title2
-
-const ServicesGrid = styled.div`
+const Header = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 60px;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 56px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 `;
 
-const ServiceCard = styled(Link)`
-  background: white;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(200, 169, 104, 0.1);
-  text-decoration: none;
-  color: inherit;
+const Menu = styled.ul`
+  list-style: none;
+  border-top: 1px solid ${colors.blackMain};
+`;
+
+const Thumb = styled.span`
   display: block;
+  width: 0;
+  height: 88px;
   overflow: hidden;
+  opacity: 0;
+  transition:
+    width 0.45s ease,
+    opacity 0.45s ease;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(200, 169, 104, 0.2);
-    text-decoration: none;
-    color: inherit;
+  img {
+    display: block;
+    width: 168px;
+    height: 88px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    width: 72px;
+    height: 72px;
+    opacity: 1;
+
+    img {
+      width: 72px;
+      height: 72px;
+    }
   }
 `;
 
-const ServiceImageContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-`;
-
-const ServiceGatsbyImage = styled(GatsbyImage)`
-  width: 100%;
-  height: 100%;
-  transition: transform 0.3s ease;
-
-  ${ServiceCard}:hover & {
-    transform: scale(1.05);
-  }
-`;
-
-const ServiceImagePlaceholder = styled.div`
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
-  display: flex;
+const Row = styled.a`
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr) auto auto;
   align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 0.9rem;
-  text-align: center;
-  transition: transform 0.3s ease;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(42, 26, 24, 0.2);
+  color: inherit;
+  text-decoration: none;
+  transition: padding-left 0.35s ease;
 
-  ${ServiceCard}:hover & {
-    transform: scale(1.05);
+  &:hover,
+  &:focus-visible {
+    padding-left: 16px;
+  }
+
+  &:hover ${Thumb}, &:focus-visible ${Thumb} {
+    width: 168px;
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 16px;
+    padding: 22px 0;
   }
 `;
 
-const ServiceContent = styled.div`
-  padding: 40px 30px;
+const Name = styled.span`
+  font-family: ${fonts.display};
+  font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+  line-height: 1.05;
+  color: ${colors.blackMain};
 `;
 
-// ServiceTitle e ServiceDescription removidos, usar Title3 e Paragraph
+const Description = styled.span`
+  color: ${colors.graySecondary};
+  line-height: 1.55;
 
-const ServicePrice = styled.div`
-  font-size: 1.1rem;
-  color: ${colors.goldDark};
-  font-weight: 600;
-  margin-bottom: 25px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
-const ServiceButton = styled.div`
+const Arrow = styled.span`
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 12px 24px;
-  margin-top: 15px;
-  background: transparent;
-  color: ${colors.goldMain};
-  border: 2px solid ${colors.goldMain};
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 0.95rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  color: ${colors.goldDark};
+  transition: transform 0.3s ease;
 
-  &:hover {
-    background: ${colors.goldMain};
-    color: white;
-    transform: translateY(-2px);
+  ${Row}:hover & {
+    transform: translate(3px, -3px);
   }
 `;
 
-// Interfaces
-export interface Service {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-// Query GraphQL
-const SERVICES_QUERY = graphql`
-  query ServicesQuery {
-    allServicesJson {
-      nodes {
-        id
-        title
-        shortDescription
-        longDescription
-        benefits
-        images
-        category
-        featured
-        fields {
-          slug
-        }
-      }
-    }
-    allFile(
-      filter: {
-        sourceInstanceName: { in: ["images", "static-images"] }
-        extension: { in: ["jpg", "jpeg", "png", "webp"] }
-      }
-    ) {
-      nodes {
-        relativePath
-        childImageSharp {
-          gatsbyImageData(
-            width: 400
-            height: 200
-            placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
-            quality: 95
-          )
-        }
-      }
-    }
-  }
-`;
-
-// Componente Services
-const Services: React.FC = () => {
-  const data = useStaticQuery(SERVICES_QUERY);
-  const services: ServiceData[] = data.allServicesJson.nodes;
-  const images = data.allFile.nodes;
-
-  // Função para encontrar a imagem correspondente
-  const getServiceImage = (imagePath: string) => {
-    const imageNode = images.find((img: any) =>
-      img.relativePath.includes(imagePath.split('/').pop()?.split('.')[0] || ''),
-    );
-    return imageNode?.childImageSharp?.gatsbyImageData ? getImage(imageNode) : null;
-  };
-
+const Services: React.FC<{ services: ServiceData[] }> = ({ services }) => {
   return (
     <ServicesContainer id="servicos">
-      <H2 as="h2">Serviços</H2>
-      <ServicesGrid>
-        {services.map((service) => {
-          const image = getServiceImage(service.images[0]);
-
-          return (
-            <ServiceCard key={service.id} to={`/servicos/${service.fields.slug}`}>
-              <ServiceImageContainer>
-                {image ? (
-                  <ServiceGatsbyImage image={image} alt={service.title} />
-                ) : (
-                  <ServiceImagePlaceholder>{service.title}</ServiceImagePlaceholder>
+      <Header>
+        <H2 as="h2" style={{ marginBottom: 0 }}>
+          Tratamentos
+        </H2>
+        <P style={{ marginBottom: 0 }}>
+          Cada atendimento começa por entender o seu rosto e termina com um resultado que respeita o
+          que já é seu.
+        </P>
+      </Header>
+      <Menu>
+        {services.map((service) => (
+          <li key={service.id}>
+            <Row href={`/servicos/${service.slug}/`}>
+              <Name>{service.title}</Name>
+              <Description>{service.shortDescription}</Description>
+              <Thumb aria-hidden="true">
+                {service.image && (
+                  <img
+                    src={service.image.src}
+                    width={service.image.width}
+                    height={service.image.height}
+                    alt=""
+                    loading="lazy"
+                  />
                 )}
-              </ServiceImageContainer>
-              <ServiceContent>
-                <H3 as="h3" style={{ color: colors.blackMain, marginBottom: 15 }}>
-                  {service.title}
-                </H3>
-                <P>{service.shortDescription}</P>
-                <ServiceButton>Saiba mais</ServiceButton>
-              </ServiceContent>
-            </ServiceCard>
-          );
-        })}
-      </ServicesGrid>
+              </Thumb>
+              <Arrow>
+                <ArrowUpRight size={26} strokeWidth={1.25} />
+              </Arrow>
+            </Row>
+          </li>
+        ))}
+      </Menu>
     </ServicesContainer>
   );
 };

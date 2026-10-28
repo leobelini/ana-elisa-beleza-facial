@@ -1,26 +1,21 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { StaticImage } from 'gatsby-plugin-image';
-import { motion } from 'framer-motion';
-import { colors, commonStyles } from '../styles/theme';
+import { styled, keyframes } from 'styled-components';
+import { colors, fonts } from '../styles/theme';
 import { Button } from './ui/Button';
-import { H1, H2 } from './ui/Typography';
 
-// Styled Components para Hero
+export interface SiteImage {
+  src: string;
+  width: number;
+  height: number;
+}
+
 const HeroContainer = styled.header`
-  background: linear-gradient(135deg, ${colors.iceWhite} 0%, #ffffff 100%);
-  padding: 140px 20px 80px;
-  position: relative;
+  background: ${colors.blush};
+  padding: 150px 24px 110px;
   overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(200, 169, 104, 0.1) 0%, transparent 70%);
+  @media (max-width: 768px) {
+    padding: 110px 20px 72px;
   }
 `;
 
@@ -28,155 +23,144 @@ const HeroContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  position: relative;
-  z-index: 2;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 72px;
+  align-items: end;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
+    gap: 48px;
   }
 `;
 
-const ImageContainer = styled(motion.div)`
+const Name = styled.p`
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: ${colors.graySecondary};
+  margin-bottom: 28px;
+`;
+
+const rise = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+`;
+
+const Headline = styled.h1`
+  font-family: ${fonts.display};
+  font-size: clamp(3.2rem, 8.4vw, 7rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.015em;
+  color: ${colors.blackMain};
+  margin-bottom: 36px;
+  animation: ${rise} 0.9s ease-out both;
+`;
+
+const Lead = styled.p`
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: ${colors.graySecondary};
+  max-width: 44ch;
+  margin-bottom: 40px;
+  animation: ${rise} 0.9s ease-out 0.15s both;
+`;
+
+const Actions = styled.div`
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
-  min-height: 400px;
+  gap: 16px;
+  animation: ${rise} 0.9s ease-out 0.3s both;
 
-  .gatsby-image-wrapper {
-    border-radius: 20px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    overflow: hidden;
+  @media (max-width: 560px) {
+    flex-direction: column;
+    align-items: stretch;
 
-    &:hover {
-      transform: translateY(-5px);
+    a {
+      width: 100%;
     }
+  }
+`;
+
+const Frame = styled.div`
+  position: relative;
+  justify-self: end;
+  width: min(100%, 400px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 18px -18px -18px 18px;
+    border: 1px solid ${colors.goldMain};
+    border-radius: 999px 999px 0 0;
+  }
+
+  img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 999px 999px 0 0;
+  }
+
+  @media (max-width: 900px) {
+    justify-self: start;
+    width: calc(100% - 18px);
 
     img {
-      border-radius: 20px !important;
+      aspect-ratio: 4 / 3;
+      object-position: center 25%;
     }
   }
 
-  @media (max-width: 768px) {
-    min-height: 300px;
+  @media (max-width: 560px) {
+    max-width: 400px;
+
+    img {
+      aspect-ratio: 4 / 5;
+      object-position: center;
+    }
   }
 `;
 
-const PlaceholderImage = styled.div`
-  width: 400px;
-  height: 500px;
-  background: linear-gradient(135deg, ${colors.goldMain} 0%, ${colors.goldDark} 100%);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-  text-align: center;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-
-  @media (max-width: 768px) {
-    width: 300px;
-    height: 375px;
-  }
-`;
-
-const TextContent = styled(motion.div)`
-  text-align: center;
-`;
-
-// Logo e Tagline agora usam Typography
-
-// Variantes de animação
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
-
-// Componente Hero
-const Hero: React.FC = () => {
+const Hero: React.FC<{ image: SiteImage }> = ({ image }) => {
   return (
     <HeroContainer id="home">
       <HeroContent>
-        <TextContent variants={containerVariants} initial="hidden" animate="visible">
-          <H1
-            as={motion.h1}
-            variants={itemVariants}
-            transition={{ duration: 0.8 }}
-            style={{ marginBottom: 20 }}
-          >
-            Ana Elisa Cardoso Beleza Facial
-          </H1>
-          <H2
-            as={motion.h2}
-            variants={itemVariants}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{
-              fontWeight: 300,
-              marginBottom: 40,
-              maxWidth: 600,
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              lineHeight: 1.6,
-            }}
-          >
-            🦋 Beleza autêntica, a arte de realçar sua essência.
-          </H2>
-          <Button
-            href="#agendamento"
-            variant="primary"
-            style={{ fontSize: '1.1rem', padding: '14px 36px' }}
-          >
-            Agende seu horário
-          </Button>
-        </TextContent>
-        <ImageContainer
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          whileHover={{
-            scale: 1.02,
-            transition: { duration: 0.3 },
-          }}
-        >
-          <StaticImage
-            src="../images/home/IMG_1455-Aprimorado-NR.jpg"
+        <div>
+          <Name>Ana Elisa Cardoso, estética facial</Name>
+          <Headline>Beleza autêntica é a arte de realçar a sua essência.</Headline>
+          <Lead>
+            Cílios, sobrancelhas, lábios e pele tratados com técnica e delicadeza, para um resultado
+            que parece ser seu desde sempre.
+          </Lead>
+          <Actions>
+            <Button href="#agendamento" variant="primary">
+              Agende seu horário
+            </Button>
+            <Button href="#servicos" variant="secondary">
+              Ver tratamentos
+            </Button>
+          </Actions>
+        </div>
+        <Frame>
+          <img
+            src={image.src}
             alt="Ana Elisa - Profissional de Beleza Facial"
-            placeholder="blurred"
-            width={400}
-            height={500}
-            quality={95}
-            formats={['auto', 'webp', 'avif']}
+            width={image.width}
+            height={image.height}
             loading="eager"
+            fetchPriority="high"
           />
-        </ImageContainer>
+        </Frame>
       </HeroContent>
     </HeroContainer>
   );

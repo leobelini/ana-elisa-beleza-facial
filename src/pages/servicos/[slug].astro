@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServicePage from '../../components/ServicePage';
+import servicesJson from '../../data/services.json';
+import { ADDRESS, COMPANY_INFO, generatePageTitle } from '../../constants';
+import { createSlug } from '../../lib/slug';
+import { getServiceImage } from '../../lib/images';
+import { collectStyles } from '../../lib/ssr';
+
+export function getStaticPaths() {
+  return servicesJson.map((service) => ({
+    params: { slug: createSlug(service.title) },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { slug } = Astro.params;
+
+const props = {
+  service,
+  images: await Promise.all(service.images.map((path) => getServiceImage(path, 800, 600))),
+};
+
+const title = generatePageTitle(service.title);
+const pagePath = `/servicos/${slug}/`;
+const pageUrl = `${COMPANY_INFO.siteUrl}${pagePath}`;
+const description = `${service.title} em ${ADDRESS.locality} - ${ADDRESS.region}: ${service.shortDescription.replace(/\.$/, '')}. Agende com a Ana Elisa pelo WhatsApp.`;
+const businessId = `${COMPANY_INFO.siteUrl}/#negocio`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#servico`,
+      name: service.title,
+      description: service.longDescription,
+      url: pageUrl,
+      serviceType: service.title,
+      category: service.category,
+      areaServed: { '@type': 'City', name: ADDRESS.locality },
+      provider: { '@type': 'BeautySalon', '@id': businessId, name: COMPANY_INFO.name },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Início', item: `${COMPANY_INFO.siteUrl}/` },
+        { '@type': 'ListItem', position: 2, name: 'Serviços', item: `${COMPANY_INFO.siteUrl}/#servicos` },
+        { '@type': 'ListItem', position: 3, name: service.title, item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  keywords={`${service.title}, ${service.category}, estética facial, beleza, ${service.title.toLowerCase()}`}
+  url={pagePath}
+  styles={collectStyles(ServicePage, props)}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(structuredData)} />
+  <ServicePage client:load {...props} />
+</Layout>
