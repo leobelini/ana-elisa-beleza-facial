@@ -22,9 +22,9 @@ const NavbarContainer = styled.nav`
 `;
 
 const NavContainer = styled.div`
-  max-width: 1200px;
+  max-width: 1248px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;

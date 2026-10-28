@@ -20,7 +20,7 @@ export const fonts = {
 export const commonStyles = {
   section: `
     padding: 120px 24px;
-    max-width: 1200px;
+    max-width: 1248px;
     margin: 0 auto;
 
     @media (max-width: 768px) {

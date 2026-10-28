@@ -18,7 +18,7 @@ const ContactContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   gap: 88px;
   align-items: end;
 
@@ -33,7 +33,7 @@ const Details = styled.dl`
 
   div {
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 110px minmax(0, 1fr);
     gap: 16px;
     padding: 20px 0;
     border-bottom: 1px solid rgba(42, 26, 24, 0.2);

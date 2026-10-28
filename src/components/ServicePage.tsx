@@ -41,7 +41,7 @@ interface ServicePageProps {
 
 // Styled Components
 const ServicePageContainer = styled.div`
-  max-width: 1200px;
+  max-width: 1248px;
   margin: 0 auto;
   padding: 120px 24px 80px;
   min-height: 100vh;

@@ -68,7 +68,7 @@ const Actions = styled(motion.div)`
 
 const Frame = styled(motion.div)`
   position: relative;
-  justify-self: center;
+  justify-self: end;
   width: min(100%, 400px);
 
   &::before {
