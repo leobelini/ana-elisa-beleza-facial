@@ -206,16 +206,18 @@ const CarouselIndicators = styled.div`
 `;
 
 const Indicator = styled.button<{ $isActive: boolean }>`
-  width: 8px;
-  height: 8px;
+  width: 24px;
+  height: 24px;
+  padding: 8px;
   border-radius: 50%;
   border: none;
-  background: ${(props) => (props.$isActive ? colors.goldMain : colors.graySecondary)};
+  background-clip: content-box;
+  background-color: ${(props) => (props.$isActive ? colors.goldMain : colors.graySecondary)};
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    background: ${colors.goldMain};
+    background-color: ${colors.goldMain};
     transform: scale(1.2);
   }
 `;
@@ -420,6 +422,7 @@ const CTAText = styled.div`
 const BackButton = styled.a`
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   gap: 8px;
   color: ${colors.blackMain};
   text-decoration: none;

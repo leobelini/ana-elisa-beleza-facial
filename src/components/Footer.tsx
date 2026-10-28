@@ -67,6 +67,7 @@ const Column = styled.div`
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    padding: 6px 0;
     color: ${colors.onDark};
     text-decoration: none;
     transition: color 0.25s ease;

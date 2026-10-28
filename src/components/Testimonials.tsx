@@ -63,15 +63,16 @@ const CarouselDots = styled.div`
 
 const Dot = styled.button<{ $active: boolean }>`
   width: ${(props) => (props.$active ? '40px' : '16px')};
-  height: 3px;
+  height: 31px;
   border: none;
-  padding: 0;
-  background: ${(props) => (props.$active ? '#d8b574' : 'rgba(251, 247, 244, 0.35)')};
+  padding: 14px 0;
+  background-clip: content-box;
+  background-color: ${(props) => (props.$active ? '#d8b574' : 'rgba(251, 247, 244, 0.35)')};
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    background: #d8b574;
+    background-color: #d8b574;
   }
 `;
 

@@ -41,6 +41,9 @@ const NavLogo = styled.a`
   color: ${colors.blackMain};
   text-decoration: none;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 
   &:hover {
     color: ${colors.rose};
@@ -103,6 +106,8 @@ const MobileMenuButton = styled.button`
   font-size: 1.5rem;
   color: ${colors.blackMain};
   cursor: pointer;
+  padding: 10px;
+  margin-right: -10px;
 
   @media (max-width: 768px) {
     display: block;

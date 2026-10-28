@@ -49,9 +49,12 @@ const Details = styled.dl`
     font-size: 1.5rem;
     line-height: 1.25;
     color: ${colors.blackMain};
+    overflow-wrap: anywhere;
   }
 
   a {
+    display: inline-block;
+    padding: 8px 0;
     color: inherit;
     text-decoration: none;
     border-bottom: 1px solid ${colors.goldMain};
