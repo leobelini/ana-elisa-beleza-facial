@@ -76,7 +76,7 @@ const About: React.FC<{ image: SiteImage }> = ({ image }) => {
         <Portrait>
           <img
             src={image.src}
-            alt="Ana Elisa - Esteticista Profissional"
+            alt="Ana Elisa Cardoso, esteticista em Pongaí-SP"
             width={image.width}
             height={image.height}
             loading="lazy"

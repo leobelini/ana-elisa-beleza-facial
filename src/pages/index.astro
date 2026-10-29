@@ -4,14 +4,14 @@ import HomePage from '../components/HomePage';
 import heroSrc from '../assets/home/IMG_1455-Aprimorado-NR.jpg';
 import aboutSrc from '../assets/home/IMG_5396-Enhanced-NR.jpg';
 import servicesJson from '../data/services.json';
-import { ADDRESS, COMPANY_INFO, CONTACT_INFO, } from '../constants';
+import { ADDRESS, COMPANY_INFO, CONTACT_INFO, OPENING_HOURS } from '../constants';
 import { createSlug } from '../lib/slug';
 import { getServiceImage, optimize } from '../lib/images';
 import { collectStyles } from '../lib/ssr';
 
-const title = 'Estética Facial em Pongaí - SP | Ana Elisa Beleza Facial';
+const title = 'Extensão de Cílios e Estética Facial em Pongaí-SP | Ana Elisa';
 const description =
-  'Estética facial em Pongaí - SP: limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss e nanolips. Agende pelo WhatsApp.';
+  'Extensão de cílios, design de sobrancelhas, limpeza de pele, lash lift e mais em Pongaí-SP. Agende com a Ana Elisa pelo WhatsApp.';
 
 const services = await Promise.all(
   servicesJson.map(async (service) => ({
@@ -27,6 +27,9 @@ const props = {
   services,
 };
 
+const mapUrl = `https://maps.google.com/?q=${encodeURIComponent(
+  `${ADDRESS.street}, ${ADDRESS.locality} - ${ADDRESS.region}, ${ADDRESS.postalCode}`,
+)}`;
 const businessId = `${COMPANY_INFO.siteUrl}/#negocio`;
 
 const structuredData = {
@@ -48,10 +51,17 @@ const structuredData = {
       url: `${COMPANY_INFO.siteUrl}/`,
       logo: COMPANY_INFO.logoUrl,
       image: COMPANY_INFO.logoUrl,
+      hasMap: mapUrl,
       sameAs: [CONTACT_INFO.instagramUrl],
       founder: { '@type': 'Person', name: COMPANY_INFO.author },
       telephone: `+${CONTACT_INFO.whatsappNumber}`,
       priceRange: '$$',
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: OPENING_HOURS.days,
+        opens: OPENING_HOURS.opens,
+        closes: OPENING_HOURS.closes,
+      },
       paymentAccepted: 'Dinheiro, Cartão de crédito, Cartão de débito, Pix',
       currenciesAccepted: 'BRL',
       address: {

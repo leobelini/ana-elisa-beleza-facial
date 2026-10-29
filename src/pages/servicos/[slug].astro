@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ServicePage from '../../components/ServicePage';
 import servicesJson from '../../data/services.json';
-import { ADDRESS, COMPANY_INFO, generatePageTitle } from '../../constants';
+import { ADDRESS, COMPANY_INFO, generateServiceTitle } from '../../constants';
 import { createSlug } from '../../lib/slug';
 import { getServiceImage } from '../../lib/images';
 import { collectStyles } from '../../lib/ssr';
@@ -19,10 +19,13 @@ const { slug } = Astro.params;
 
 const props = {
   service,
+  relatedServices: servicesJson
+    .filter((s) => s.id !== service.id)
+    .map((s) => ({ title: s.title, slug: createSlug(s.title) })),
   images: await Promise.all(service.images.map((path) => getServiceImage(path, 800, 600))),
 };
 
-const title = generatePageTitle(service.title);
+const title = generateServiceTitle(service.title);
 const pagePath = `/servicos/${slug}/`;
 const pageUrl = `${COMPANY_INFO.siteUrl}${pagePath}`;
 const description = `${service.title} em ${ADDRESS.locality} - ${ADDRESS.region}: ${service.shortDescription.replace(/\.$/, '')}. Agende com a Ana Elisa pelo WhatsApp.`;
