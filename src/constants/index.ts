@@ -44,6 +44,11 @@ export const OPENING_HOURS = {
   closes: '18:00',
 } as const;
 
+// Coordenadas e link do estúdio no Google Maps
+export const GEO = { latitude: -21.7408334, longitude: -49.3552496 } as const;
+export const MAPS_URL =
+  'https://www.google.com/maps/place/R.+Jose+Zini,+101,+Ponga%C3%AD+-+SP,+16660-077/@-21.7408415,-49.3552268,60m/';
+
 // Mensagens padrão
 export const MESSAGES = {
   whatsapp: {

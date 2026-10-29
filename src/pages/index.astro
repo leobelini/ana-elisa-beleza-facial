@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HomePage from '../components/HomePage';
-import heroSrc from '../assets/home/IMG_1455-Aprimorado-NR.jpg';
-import aboutSrc from '../assets/home/IMG_5396-Enhanced-NR.jpg';
+import heroSrc from '../assets/home/ana-elisa-esteticista-pongai.jpg';
+import aboutSrc from '../assets/home/ana-elisa-sobre-pongai.jpg';
 import servicesJson from '../data/services.json';
-import { ADDRESS, COMPANY_INFO, CONTACT_INFO, OPENING_HOURS } from '../constants';
+import { ADDRESS, COMPANY_INFO, CONTACT_INFO, GEO, MAPS_URL, OPENING_HOURS } from '../constants';
 import { createSlug } from '../lib/slug';
 import { getServiceImage, optimize } from '../lib/images';
 import { collectStyles } from '../lib/ssr';
@@ -27,9 +27,6 @@ const props = {
   services,
 };
 
-const mapUrl = `https://maps.google.com/?q=${encodeURIComponent(
-  `${ADDRESS.street}, ${ADDRESS.locality} - ${ADDRESS.region}, ${ADDRESS.postalCode}`,
-)}`;
 const businessId = `${COMPANY_INFO.siteUrl}/#negocio`;
 
 const structuredData = {
@@ -51,8 +48,9 @@ const structuredData = {
       url: `${COMPANY_INFO.siteUrl}/`,
       logo: COMPANY_INFO.logoUrl,
       image: COMPANY_INFO.logoUrl,
-      hasMap: mapUrl,
-      sameAs: [CONTACT_INFO.instagramUrl],
+      hasMap: MAPS_URL,
+      geo: { '@type': 'GeoCoordinates', latitude: GEO.latitude, longitude: GEO.longitude },
+      sameAs: [CONTACT_INFO.instagramUrl, MAPS_URL],
       founder: { '@type': 'Person', name: COMPANY_INFO.author },
       telephone: `+${CONTACT_INFO.whatsappNumber}`,
       priceRange: '$$',

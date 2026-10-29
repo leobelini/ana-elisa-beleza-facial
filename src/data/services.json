@@ -12,7 +12,7 @@
       "Promove renovação celular",
       "Prepara a pele para outros tratamentos"
     ],
-    "images": ["/images/services/limpeza-de-pele-1.jpg"],
+    "images": ["/images/services/limpeza-de-pele-pongai-1.jpg"],
     "category": "facial",
     "featured": true,
     "complements": [
@@ -39,7 +39,7 @@
       "Técnica personalizada",
       "Simetria perfeita"
     ],
-    "images": ["/images/services/design-sobrancelhas-1.jpeg"],
+    "images": ["/images/services/design-sobrancelhas-pongai-1.jpeg"],
     "category": "sobrancelhas",
     "featured": false,
     "complements": [
@@ -65,7 +65,7 @@
       "Dispensa máscara de cílios",
       "Resultado natural ou dramático"
     ],
-    "images": ["/images/services/extensao-de-cilios-1.jpg"],
+    "images": ["/images/services/extensao-de-cilios-pongai-1.jpg"],
     "category": "cilios",
     "featured": true,
     "variations": [
@@ -107,7 +107,7 @@
       "Técnica personalizada para cada cliente",
       "Duração de até 1 ano com retoques"
     ],
-    "images": ["/images/services/nanoblading-2.jpeg", "/images/services/nanoblading-1.jpeg"],
+    "images": ["/images/services/nanoblading-pongai-2.jpeg", "/images/services/nanoblading-pongai-1.jpeg"],
     "category": "sobrancelhas",
     "featured": false
   },
@@ -123,7 +123,7 @@
       "Fortalece e hidrata os cílios",
       "Dispensa o uso de curvex"
     ],
-    "images": ["/images/services/lash-lift-1.jpg"],
+    "images": ["/images/services/lash-lift-pongai-1.jpg"],
     "category": "cilios",
     "featured": false
   },
@@ -139,7 +139,7 @@
       "Restaura a barreira de proteção da pele",
       "Adequado para todos os tipos de lábios"
     ],
-    "images": ["/images/services/hidra-gloss-1.jpeg"],
+    "images": ["/images/services/hidra-gloss-pongai-1.jpeg"],
     "category": "facial",
     "featured": false
   },
@@ -154,7 +154,7 @@
       "Durabilidade de até 12 meses",
       "Resultado natural e duradouro"
     ],
-    "images": ["/images/services/nanolips-1.jpg"],
+    "images": ["/images/services/nanolips-pongai-1.jpg"],
     "category": "facial",
     "featured": false
   }
