@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from 'styled-components';
 import { colors, fonts } from '../styles/theme';
 import { Instagram, Navigation, PhoneCall } from 'lucide-react';
-import { ADDRESS, SEO_DEFAULTS, CONTACT_INFO, PHONE_NUMBER_FORMATTED } from '../constants';
+import { ADDRESS, SEO_DEFAULTS, CONTACT_INFO, MAPS_URL, PHONE_NUMBER_FORMATTED } from '../constants';
 
 const GOLD_LIGHT = '#d8b574';
 
@@ -116,7 +116,7 @@ const navLinks = [
 const address = `${ADDRESS.street}, ${ADDRESS.locality} - ${ADDRESS.region}, ${ADDRESS.postalCode}`;
 
 const Footer: React.FC = () => {
-  const googleMapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address)}`;
+  const googleMapsUrl = MAPS_URL;
 
   return (
     <FooterContainer>

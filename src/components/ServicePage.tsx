@@ -5,7 +5,7 @@ import { MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/Button';
 import Navbar from './ui/Navbar';
 import { H1, H2, H3, P } from './ui/Typography';
-import { MESSAGES, generateServiceWhatsAppUrl } from '../constants';
+import { ADDRESS, MESSAGES, generateServiceWhatsAppUrl } from '../constants';
 import type { SiteImage } from './Hero';
 
 interface ServiceVariation {
@@ -37,6 +37,8 @@ interface ServicePageProps {
   service: ServicePageService;
   /** Imagens já otimizadas, na mesma ordem de service.images (null = sem arquivo) */
   images: Array<SiteImage | null>;
+  /** Demais serviços, para links internos */
+  relatedServices: Array<{ title: string; slug: string }>;
 }
 
 // Styled Components
@@ -419,6 +421,32 @@ const CTAText = styled.div`
   max-width: 560px;
 `;
 
+const Breadcrumb = styled.nav`
+  font-size: 0.9rem;
+  color: ${colors.graySecondary};
+  margin-bottom: 8px;
+
+  a {
+    color: inherit;
+  }
+`;
+
+const RelatedList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: ${colors.blackMain};
+  }
+`;
+
 const BackButton = styled.a`
   display: inline-flex;
   align-items: center;
@@ -506,7 +534,7 @@ const OptionDuration = styled.div`
 `;
 
 // Componente principal
-const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
+const ServicePage: React.FC<ServicePageProps> = ({ service, images, relatedServices }) => {
   // Estado para controle do modal de imagem
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -586,6 +614,9 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
       <ServicePageContainer>
         <Navbar />
 
+        <Breadcrumb aria-label="Você está em">
+          <a href="/">Início</a> / <a href="/#servicos">Serviços</a> / {service.title}
+        </Breadcrumb>
         <BackButton href="/#servicos">Voltar aos tratamentos</BackButton>
 
         <ServiceHeader>
@@ -661,7 +692,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
                             src={image.src}
                             width={image.width}
                             height={image.height}
-                            alt={`${service.title} - Imagem ${index + 1}`}
+                            alt={`${service.title} em ${ADDRESS.locality}-${ADDRESS.region}, foto ${index + 1} de ${images.length}`}
                           />
                         </GalleryImageWrapper>
                       ) : (
@@ -777,6 +808,23 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
               </OptionsGrid>
             </ComplementsSection>
           )}
+
+          <ComplementsSection>
+            <H3 as="h3" style={{ marginBottom: 20 }}>
+              Atendimento em {ADDRESS.locality}-{ADDRESS.region}
+            </H3>
+            <P as="p">
+              {service.title} no estúdio da Ana Elisa em {ADDRESS.locality}-{ADDRESS.region}, com
+              atendimento de terça a sábado, das 9h às 18h, mediante agendamento.
+            </P>
+            <RelatedList>
+              {relatedServices.map((related) => (
+                <li key={related.slug}>
+                  <a href={`/servicos/${related.slug}/`}>{related.title}</a>
+                </li>
+              ))}
+            </RelatedList>
+          </ComplementsSection>
         </ServiceDetails>
 
         <CTASection>
@@ -814,7 +862,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images }) => {
                     src={image.src}
                     width={image.width}
                     height={image.height}
-                    alt={`${service.title} - Imagem ${currentImageIndex + 1}`}
+                    alt={`${service.title} em ${ADDRESS.locality}-${ADDRESS.region}, foto ${currentImageIndex + 1} de ${service.images.length}`}
                   />
                 ) : (
                   <ModalImagePlaceholder>{service.title}</ModalImagePlaceholder>

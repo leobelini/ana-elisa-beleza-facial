@@ -136,11 +136,11 @@ const Hero: React.FC<{ image: SiteImage }> = ({ image }) => {
     <HeroContainer id="home">
       <HeroContent>
         <div>
-          <Name>Ana Elisa Cardoso, estética facial</Name>
-          <Headline>Beleza autêntica é a arte de realçar a sua essência.</Headline>
+          <Name>Ana Elisa Cardoso, esteticista em Pongaí-SP</Name>
+          <Headline>Extensão de Cílios e Estética Facial em Pongaí-SP</Headline>
           <Lead>
-            Cílios, sobrancelhas, lábios e pele tratados com técnica e delicadeza, para um resultado
-            que parece ser seu desde sempre.
+            Beleza autêntica é a arte de realçar a sua essência: cílios, sobrancelhas, lábios e pele
+            tratados com técnica e delicadeza, para um resultado que parece ser seu desde sempre.
           </Lead>
           <Actions>
             <Button href="#agendamento" variant="primary">
@@ -154,7 +154,7 @@ const Hero: React.FC<{ image: SiteImage }> = ({ image }) => {
         <Frame>
           <img
             src={image.src}
-            alt="Ana Elisa - Profissional de Beleza Facial"
+            alt="Ana Elisa, esteticista em Pongaí-SP"
             width={image.width}
             height={image.height}
             loading="eager"

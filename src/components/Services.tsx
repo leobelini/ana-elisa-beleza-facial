@@ -142,13 +142,13 @@ const Services: React.FC<{ services: ServiceData[] }> = ({ services }) => {
             <Row href={`/servicos/${service.slug}/`}>
               <Name>{service.title}</Name>
               <Description>{service.shortDescription}</Description>
-              <Thumb aria-hidden="true">
+              <Thumb>
                 {service.image && (
                   <img
                     src={service.image.src}
                     width={service.image.width}
                     height={service.image.height}
-                    alt=""
+                    alt={`${service.title} em Pongaí-SP`}
                     loading="lazy"
                   />
                 )}

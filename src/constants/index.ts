@@ -1,6 +1,6 @@
 // Informações da empresa
 export const COMPANY_INFO = {
-  name: 'Ana Elisa Cardoso Beleza Facial',
+  name: 'Ana Elisa Beleza Facial',
   shortName: 'Ana Elisa',
   author: 'Ana Elisa Cardoso',
   siteUrl: 'https://anaelisabelezafacial.com.br',
@@ -30,12 +30,24 @@ export const CONTACT_INFO = {
 
 // Endereço do estúdio (usado no rodapé, contato e dados estruturados)
 export const ADDRESS = {
-  street: 'R. Jose Zini, 101',
+  street: 'Rua José Zini, 101',
   locality: 'Pongaí',
   region: 'SP',
   postalCode: '16660-077',
   country: 'BR',
 } as const;
+
+// Horário de atendimento (terça a sábado, 9h às 18h)
+export const OPENING_HOURS = {
+  days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  opens: '09:00',
+  closes: '18:00',
+} as const;
+
+// Coordenadas e link do estúdio no Google Maps
+export const GEO = { latitude: -21.7408334, longitude: -49.3552496 } as const;
+export const MAPS_URL =
+  'https://www.google.com/maps/place/R.+Jose+Zini,+101,+Ponga%C3%AD+-+SP,+16660-077/@-21.7408415,-49.3552268,60m/';
 
 // Mensagens padrão
 export const MESSAGES = {
@@ -66,7 +78,7 @@ export const SEO_DEFAULTS = {
   image: `${COMPANY_INFO.siteUrl}/icon.png`,
   type: 'website',
   locale: 'pt_BR',
-  copyright: `© 2025 ${COMPANY_INFO.name}. Todos os direitos reservados.`,
+  copyright: `© ${new Date().getFullYear()} ${COMPANY_INFO.name}. Todos os direitos reservados.`,
 } as const;
 
 // Dados estruturados JSON-LD
@@ -129,6 +141,10 @@ export const generateServiceWhatsAppUrl = (serviceName: string): string => {
 export const generatePageTitle = (pageTitle?: string): string => {
   return pageTitle ? `${pageTitle} - ${COMPANY_INFO.name}` : SEO_DEFAULTS.title;
 };
+
+/** Title das páginas de serviço: termo de busca + cidade + marca */
+export const generateServiceTitle = (serviceName: string): string =>
+  `${serviceName} em ${ADDRESS.locality}-${ADDRESS.region} | ${COMPANY_INFO.shortName} Beleza Facial`;
 
 export const generateServiceUrl = (serviceId: string): string => {
   return `${COMPANY_INFO.siteUrl}/servicos/${serviceId}/`;
