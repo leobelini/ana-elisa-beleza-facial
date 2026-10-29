@@ -25,6 +25,9 @@ export interface ServicePageService {
   title: string;
   shortDescription: string;
   longDescription: string;
+  duration?: string;
+  details?: Array<{ title: string; paragraphs: string[] }>;
+  faq?: Array<{ question: string; answer: string }>;
   benefits: string[];
   images: string[];
   category: string;
@@ -431,6 +434,28 @@ const Breadcrumb = styled.nav`
   }
 `;
 
+const DetailSection = styled.section`
+  margin-top: 48px;
+`;
+
+const FaqItem = styled.details`
+  border-top: 1px solid ${colors.goldMain};
+  padding: 4px 0;
+
+  summary {
+    cursor: pointer;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: ${colors.blackMain};
+  }
+
+  p {
+    margin: 4px 0 16px;
+  }
+`;
+
 const RelatedList = styled.ul`
   list-style: none;
   padding: 0;
@@ -650,7 +675,12 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images, relatedServi
             >
               Sobre o tratamento
             </H2>
-            <P style={{ marginBottom: 30 }}>{service.longDescription}</P>
+            <P style={{ marginBottom: service.duration ? 12 : 30 }}>{service.longDescription}</P>
+            {service.duration && (
+              <P style={{ marginBottom: 30 }}>
+                <strong>Duração da sessão:</strong> cerca de {service.duration}
+              </P>
+            )}
 
             <BenefitsList>
               <H3
@@ -745,6 +775,15 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images, relatedServi
         </ServiceContent>
 
         <ServiceDetails>
+          {service.details?.map((section) => (
+            <DetailSection key={section.title}>
+              <H3 as="h2">{section.title}</H3>
+              {section.paragraphs.map((paragraph) => (
+                <P key={paragraph}>{paragraph}</P>
+              ))}
+            </DetailSection>
+          ))}
+
           {/* Seção de Variações */}
           {service.variations && service.variations.length > 0 && (
             <VariationsSection>
@@ -809,14 +848,22 @@ const ServicePage: React.FC<ServicePageProps> = ({ service, images, relatedServi
             </ComplementsSection>
           )}
 
+          {service.faq && service.faq.length > 0 && (
+            <DetailSection>
+              <H3 as="h2">Perguntas frequentes</H3>
+              {service.faq.map((item) => (
+                <FaqItem key={item.question}>
+                  <summary>{item.question}</summary>
+                  <P>{item.answer}</P>
+                </FaqItem>
+              ))}
+            </DetailSection>
+          )}
+
           <ComplementsSection>
             <H3 as="h3" style={{ marginBottom: 20 }}>
-              Atendimento em {ADDRESS.locality}-{ADDRESS.region}
+              Conheça outros tratamentos
             </H3>
-            <P as="p">
-              {service.title} no estúdio da Ana Elisa em {ADDRESS.locality}-{ADDRESS.region}, com
-              atendimento de terça a sábado, das 9h às 18h, mediante agendamento.
-            </P>
             <RelatedList>
               {relatedServices.map((related) => (
                 <li key={related.slug}>

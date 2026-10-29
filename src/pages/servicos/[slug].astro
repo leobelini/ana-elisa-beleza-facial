@@ -45,6 +45,18 @@ const structuredData = {
       areaServed: { '@type': 'City', name: ADDRESS.locality },
       provider: { '@type': 'BeautySalon', '@id': businessId, name: COMPANY_INFO.name },
     },
+    ...(service.faq?.length
+      ? [
+          {
+            '@type': 'FAQPage',
+            mainEntity: service.faq.map((item) => ({
+              '@type': 'Question',
+              name: item.question,
+              acceptedAnswer: { '@type': 'Answer', text: item.answer },
+            })),
+          },
+        ]
+      : []),
     {
       '@type': 'BreadcrumbList',
       itemListElement: [

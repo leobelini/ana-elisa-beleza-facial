@@ -98,8 +98,9 @@ const About: React.FC<{ image: SiteImage }> = ({ image }) => {
             cliente.
           </P>
           <P>
-            Será um prazer cuidar de você, proporcionando um atendimento exclusivo e serviços que
-            realçam sua beleza com um toque elegante e natural.
+            Atendo em Pongaí-SP, no bairro São Pedro, com hora marcada. Será um prazer cuidar de
+            você, proporcionando um atendimento exclusivo e serviços que realçam sua beleza com um
+            toque elegante e natural.
           </P>
         </div>
       </AboutContent>
