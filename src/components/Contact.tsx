@@ -131,7 +131,7 @@ const Contact: React.FC = () => {
           <div>
             <dt>Endereço</dt>
             <dd>
-              {ADDRESS.street}, {ADDRESS.locality} - {ADDRESS.region}
+              {ADDRESS.street} - {ADDRESS.neighborhood}, {ADDRESS.locality} - {ADDRESS.region}
             </dd>
           </div>
         </Details>

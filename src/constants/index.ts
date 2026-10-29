@@ -9,7 +9,7 @@ export const COMPANY_INFO = {
   tagline: 'Beleza e cuidado que realçam sua essência',
   logoUrl: 'https://anaelisabelezafacial.com.br/icon.png',
   keywords:
-    'estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, hidra gloss, nanolips, beleza, cuidados faciais, Ana Elisa',
+    'estética facial, limpeza de pele, design de sobrancelhas, extensão de cílios, nanoblading, lash lift, nanolips, beleza, cuidados faciais, Ana Elisa',
 } as const;
 
 // Ano de formatura (início da carreira); os anos de experiência são calculados a partir dele
@@ -31,6 +31,7 @@ export const CONTACT_INFO = {
 // Endereço do estúdio (usado no rodapé, contato e dados estruturados)
 export const ADDRESS = {
   street: 'Rua José Zini, 101',
+  neighborhood: 'São Pedro',
   locality: 'Pongaí',
   region: 'SP',
   postalCode: '16660-077',

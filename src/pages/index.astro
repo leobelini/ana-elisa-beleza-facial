@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import HomePage from '../components/HomePage';
 import heroSrc from '../assets/home/ana-elisa-esteticista-pongai.jpg';
@@ -20,6 +21,9 @@ const services = await Promise.all(
     image: await getServiceImage(service.images[0], 400, 200),
   })),
 );
+
+const photo = await getImage({ src: heroSrc, width: 1200, format: 'jpg', quality: 80 });
+const photoUrl = new URL(photo.src, COMPANY_INFO.siteUrl).href;
 
 const props = {
   heroImage: await optimize(heroSrc, 400, 500),
@@ -47,7 +51,7 @@ const structuredData = {
       description: COMPANY_INFO.description,
       url: `${COMPANY_INFO.siteUrl}/`,
       logo: COMPANY_INFO.logoUrl,
-      image: COMPANY_INFO.logoUrl,
+      image: photoUrl,
       hasMap: MAPS_URL,
       geo: { '@type': 'GeoCoordinates', latitude: GEO.latitude, longitude: GEO.longitude },
       sameAs: [CONTACT_INFO.instagramUrl, MAPS_URL],

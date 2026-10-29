@@ -130,7 +130,6 @@ const NotFoundPage: React.FC = () => {
         <ServiceItem href="/#servicos">Extensão de Cílios</ServiceItem>
         <ServiceItem href="/#servicos">Nanoblading</ServiceItem>
         <ServiceItem href="/#servicos">Lash Lift</ServiceItem>
-        <ServiceItem href="/#servicos">Hidra Gloss</ServiceItem>
         <ServiceItem href="/#servicos">NanoLips</ServiceItem>
         <ServiceItem href="/#contato">Agendar horário</ServiceItem>
       </ServicesList>

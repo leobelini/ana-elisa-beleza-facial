@@ -3,8 +3,8 @@
     "id": "limpeza-de-pele",
     "title": "Limpeza de Pele",
     "shortDescription": "Limpeza profunda para renovar e revitalizar sua pele",
-    "longDescription": "A limpeza de pele é um procedimento essencial para manter a saúde e beleza da sua pele. Realizamos uma análise detalhada do seu tipo de pele e aplicamos técnicas específicas para extrair impurezas, remover células mortas e promover a renovação celular. O tratamento inclui esfoliação, extração de cravos e espinhas, aplicação de máscaras específicas e hidratação profunda.",
-    "duration": "60 minutos",
+    "longDescription": "A limpeza de pele é um procedimento essencial para manter a saúde e a beleza do rosto. Faço uma análise detalhada do seu tipo de pele e aplico técnicas específicas para extrair impurezas, remover células mortas e promover a renovação celular. O tratamento inclui esfoliação, extração de cravos e espinhas, máscaras específicas e hidratação profunda.",
+    "duration": "1h30",
     "benefits": [
       "Remove impurezas e células mortas",
       "Desobstrui os poros",
@@ -26,13 +26,57 @@
         "name": "Peeling Químico",
         "description": "Promove a renovação da pele por meio da descamação, clareando manchas como acne, melasma e outras, além de estimular a produção de colágeno para uma pele mais firme, revitalizada, radiante e com menos rugas e linhas de expressão."
       }
+    ],
+    "details": [
+      {
+        "title": "Etapas do tratamento",
+        "paragraphs": [
+          "A sessão começa com a higienização e a análise da pele, seguida de esfoliação, vapor ou preparo da pele, extração e aplicação de máscara calmante e hidratação. Tudo é adaptado ao seu tipo de pele. A sessão leva cerca de 1h30."
+        ]
+      },
+      {
+        "title": "Indicada para qual tipo de pele",
+        "paragraphs": [
+          "A limpeza de pele é indicada para todos os tipos de pele: oleosa, mista, seca e sensível. As técnicas e os produtos mudam conforme a necessidade, e é por isso que a avaliação é parte do atendimento."
+        ]
+      },
+      {
+        "title": "Frequência recomendada",
+        "paragraphs": [
+          "Em geral, a limpeza de pele é recomendada a cada 30 a 45 dias, conforme a oleosidade e a necessidade da sua pele. Posso combinar a limpeza com peeling para potencializar o resultado."
+        ]
+      },
+      {
+        "title": "Cuidados após a limpeza",
+        "paragraphs": [
+          "Nas primeiras 24 horas, evite maquiagem, sol e produtos com ácidos. Use protetor solar diariamente e mantenha a pele hidratada. Um leve avermelhado é normal e passa em poucas horas."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "A limpeza de pele dói?",
+        "answer": "Pode haver um leve desconforto na extração, mas o procedimento é bem tolerado. Se a sua pele for sensível, é só me avisar."
+      },
+      {
+        "question": "Com que frequência devo fazer limpeza de pele?",
+        "answer": "Normalmente a cada 30 a 45 dias, de acordo com o seu tipo de pele."
+      },
+      {
+        "question": "Posso fazer limpeza de pele com acne?",
+        "answer": "Pode, desde que não haja inflamação intensa. Na avaliação eu verifico o estado da sua pele e indico o melhor tratamento."
+      },
+      {
+        "question": "Posso passar maquiagem depois?",
+        "answer": "O ideal é aguardar 24 horas para a pele respirar e se recuperar."
+      }
     ]
   },
   {
     "id": "design-sobrancelhas",
     "title": "Design de Sobrancelhas",
     "shortDescription": "Modelagem perfeita que realça seu olhar",
-    "longDescription": "O design de sobrancelhas é uma arte que requer técnica e conhecimento das proporções faciais. Analisamos o formato do seu rosto e criamos o design perfeito que realça seus traços naturais.",
+    "longDescription": "O design de sobrancelhas é uma técnica que exige conhecimento das proporções do rosto. Analiso o formato do seu rosto e dos seus olhos e crio um desenho que realça seus traços naturais, respeitando o crescimento dos seus fios.",
     "benefits": [
       "Realça o olhar naturalmente",
       "Harmoniza os traços faciais",
@@ -53,13 +97,48 @@
         "name": "Henna para Sobrancelhas",
         "description": "Tingimento natural que colore tanto os pelos quanto a pele, preenchendo falhas e criando um efeito mais denso."
       }
+    ],
+    "duration": "30 minutos",
+    "details": [
+      {
+        "title": "Como funciona",
+        "paragraphs": [
+          "O design é feito com mapeamento da sobrancelha, que define início, arco e fim ideais para o seu rosto, e depois a retirada dos fios fora do desenho. A sessão leva cerca de 30 minutos."
+        ]
+      },
+      {
+        "title": "Tintura e henna",
+        "paragraphs": [
+          "Para mais definição, você pode incluir a tintura ou a henna. A tintura colore os fios, e a henna também tinge a pele, preenchendo falhas e dando um efeito mais denso."
+        ]
+      },
+      {
+        "title": "Cuidados",
+        "paragraphs": [
+          "Nas primeiras 24 horas, evite maquiagem, calor intenso e exposição solar na região. Se a pele ficar avermelhada, é normal e passa rapidamente."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Quanto tempo dura o design de sobrancelhas?",
+        "answer": "Depende do crescimento dos seus fios. Em geral, recomenda-se refazer a cada 3 a 4 semanas para manter o desenho."
+      },
+      {
+        "question": "Qual a diferença entre design com henna e com tintura?",
+        "answer": "A tintura colore apenas os fios. A henna tinge fios e pele, preenchendo falhas e dando efeito mais denso. Posso indicar a melhor opção para você na avaliação."
+      },
+      {
+        "question": "O design de sobrancelhas dói?",
+        "answer": "É um procedimento rápido e a maioria das clientes sente apenas um leve desconforto."
+      }
     ]
   },
   {
     "id": "extensao-cilios",
     "title": "Extensão de Cílios",
     "shortDescription": "Cílios mais longos e volumosos, com acabamento natural e fio a fio",
-    "longDescription": "A extensão de cílios é um procedimento que proporciona cílios mais longos, volumosos e curvados de forma natural. Aplicamos fio a fio cílios sintéticos de alta qualidade, criando um efeito natural ou mais dramático conforme sua preferência.",
+    "longDescription": "A extensão de cílios fio a fio proporciona cílios mais longos, volumosos e curvados de forma natural. Aplico cada fio sintético de alta qualidade sobre um cílio seu, criando um efeito natural ou mais marcante conforme a sua preferência, no meu estúdio em Pongaí-SP.",
     "benefits": [
       "Olhar mais marcante e expressivo",
       "Dispensa máscara de cílios",
@@ -94,28 +173,129 @@
         "name": "Volume Anime",
         "description": "Técnica que aplica um fio U 2D, alongamento que mistura leveza e ousadia, proporcionando um olhar marcante e expressivo."
       }
+    ],
+    "duration": "1h30",
+    "details": [
+      {
+        "title": "Como funciona a aplicação",
+        "paragraphs": [
+          "Antes de começar, avalio o formato dos seus olhos, a espessura e o comprimento dos seus cílios naturais para indicar o modelo que mais combina com você. Durante a aplicação você fica deitada, de olhos fechados e confortável, e pode até cochilar.",
+          "Cada fio sintético é colado a um único cílio natural com cola própria para cílios, sem encostar na pele. A sessão leva cerca de 1h30."
+        ]
+      },
+      {
+        "title": "Duração e manutenção",
+        "paragraphs": [
+          "Os cílios naturais caem de forma gradual, em um ciclo natural de renovação. Por isso, recomendo a manutenção a cada 15 a 21 dias, para repor os fios que caíram e manter o olhar sempre cheio e alinhado.",
+          "Se a manutenção passar muito desse prazo, o ideal é uma nova aplicação completa."
+        ]
+      },
+      {
+        "title": "Cuidados após a aplicação",
+        "paragraphs": [
+          "Nas primeiras 24 horas, evite molhar os cílios, vapor de sauna e banho muito quente. Depois disso, penteie os fios diariamente com uma escovinha limpa e lave o rosto com produtos sem óleo.",
+          "Não use curvex nem máscara de cílios, e evite dormir de bruços. Esfregar os olhos também reduz a durabilidade."
+        ]
+      },
+      {
+        "title": "Para quem é indicada",
+        "paragraphs": [
+          "A extensão é indicada para quem quer acordar com o olhar pronto e dispensar a máscara de cílios. Quem tem alergia a cola de cílios, infecção ou irritação nos olhos deve avisar antes e aguardar a recuperação para fazer o procedimento."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Quanto tempo dura a extensão de cílios?",
+        "answer": "Com a manutenção a cada 15 a 21 dias, o resultado se mantém cheio e bonito de forma contínua. Sem manutenção, os fios acompanham a queda natural dos seus cílios e vão diminuindo gradualmente."
+      },
+      {
+        "question": "Qual a diferença entre Classic, Volume Brasileiro, Fox, Brown e Anime?",
+        "answer": "O Classic aplica um fio em cada cílio, com efeito natural. O Volume Brasileiro usa fios Y para um efeito mais cheio. O Fox usa fios W, mais dramático, com olhar felino. O Brown usa fios marrons para um visual mais suave e o Anime usa fios U, com efeito leve e marcante ao mesmo tempo. Na avaliação eu indico o melhor para o seu olhar."
+      },
+      {
+        "question": "A extensão de cílios estraga os cílios naturais?",
+        "answer": "Quando é feita por profissional e com os cuidados corretos, não. O que prejudica é aplicar fios pesados demais, não fazer a manutenção e puxar os fios. Eu escolho o peso e o comprimento de acordo com a espessura dos seus cílios."
+      },
+      {
+        "question": "Posso molhar os cílios?",
+        "answer": "Sim, depois das primeiras 24 horas. Lave o rosto normalmente, seque sem esfregar e penteie os fios com a escovinha."
+      },
+      {
+        "question": "Como agendo em Pongaí?",
+        "answer": "O atendimento é de terça a sábado, das 9h às 18h, no meu estúdio na Rua José Zini, 101, bairro São Pedro, em Pongaí-SP. Basta me chamar no WhatsApp."
+      }
     ]
   },
   {
     "id": "nano-blading",
     "title": "Nanoblading",
     "shortDescription": "Sobrancelhas perfeitas com técnica avançada de nanopigmentação",
-    "longDescription": "O Nanoblading é uma técnica avançada de nanopigmentação que utiliza uma ferramenta manual com microagulhas para desenhar fios de sobrancelha de forma extremamente natural. Cada fio é desenhado individualmente, respeitando o formato do rosto e a direção do crescimento dos pelos. O resultado é uma sobrancelha mais cheia, definida e harmoniosa, com aparência natural.",
+    "longDescription": "O Nanoblading é uma técnica de nanopigmentação que utiliza uma ferramenta manual com microagulhas para desenhar fios de sobrancelha de forma extremamente natural. Cada fio é desenhado individualmente, respeitando o formato do rosto e a direção do crescimento dos pelos. O resultado é uma sobrancelha mais cheia, definida e harmoniosa, com aparência natural.",
     "benefits": [
       "Sobrancelhas mais cheias e definidas",
       "Aparência extremamente natural",
       "Técnica personalizada para cada cliente",
       "Duração de até 1 ano com retoques"
     ],
-    "images": ["/images/services/nanoblading-pongai-2.jpeg", "/images/services/nanoblading-pongai-1.jpeg"],
+    "images": [
+      "/images/services/nanoblading-pongai-2.jpeg",
+      "/images/services/nanoblading-pongai-1.jpeg"
+    ],
     "category": "sobrancelhas",
-    "featured": false
+    "featured": false,
+    "duration": "1h30",
+    "details": [
+      {
+        "title": "Como é o procedimento",
+        "paragraphs": [
+          "Começo com o mapeamento e o desenho da sobrancelha, que você aprova antes de qualquer pigmentação. Em seguida, aplico anestésico tópico para o seu conforto e desenho os fios com o pigmento escolhido para o seu tom. A sessão leva cerca de 1h30."
+        ]
+      },
+      {
+        "title": "Cicatrização e retoque",
+        "paragraphs": [
+          "Nos primeiros dias a sobrancelha fica mais escura e depois vai clareando e descamando. A cicatrização completa leva cerca de 30 dias, e é nessa fase que se avalia a necessidade de um retoque para ajustar falhas e uniformizar o resultado.",
+          "O resultado pode durar até 1 ano, com retoques para manter a cor e o desenho."
+        ]
+      },
+      {
+        "title": "Cuidados após o procedimento",
+        "paragraphs": [
+          "Evite molhar a região, sol, piscina, mar e maquiagem nos dias indicados, e nunca arranque as casquinhas. Aplique apenas a pomada cicatrizante recomendada."
+        ]
+      },
+      {
+        "title": "Contraindicações",
+        "paragraphs": [
+          "O procedimento não é indicado para gestantes e lactantes, nem para quem tem infecção ou lesão ativa na região, doenças de pele no local ou problemas de cicatrização. Informe qualquer condição de saúde ou medicamento em uso na avaliação."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "O nanoblading dói?",
+        "answer": "Utilizo anestésico tópico e a maioria das clientes sente apenas um leve desconforto."
+      },
+      {
+        "question": "Quanto tempo dura o nanoblading?",
+        "answer": "Até 1 ano, dependendo do tipo de pele, dos cuidados e dos retoques."
+      },
+      {
+        "question": "Qual a diferença entre nanoblading e design de sobrancelhas?",
+        "answer": "O design define o formato e retira os fios fora do desenho. O nanoblading desenha fios na pele com pigmento, e o resultado dura meses."
+      },
+      {
+        "question": "Preciso fazer retoque?",
+        "answer": "Em geral sim, após a cicatrização completa, para ajustar a cor e preencher possíveis falhas."
+      }
+    ]
   },
   {
     "id": "lash-lift",
     "title": "Lash Lift",
     "shortDescription": "Cílios curvados e realçados sem a necessidade de extensão",
-    "longDescription": "O lash lift é uma técnica que curva e realça os seus próprios cílios, sem a necessidade de extensão. É um procedimento tranquilo e indolor, que valoriza o que você já tem de mais bonito e deixa o olhar mais aberto e expressivo.",
+    "longDescription": "O lash lift curva e realça os seus próprios cílios, sem necessidade de extensão. É um procedimento tranquilo e indolor, que valoriza o que você já tem de mais bonito e deixa o olhar mais aberto e expressivo.",
     "benefits": [
       "Cílios naturalmente curvados e realçados",
       "Duração de 45 a 60 dias",
@@ -125,23 +305,52 @@
     ],
     "images": ["/images/services/lash-lift-pongai-1.jpg"],
     "category": "cilios",
-    "featured": false
-  },
-  {
-    "id": "hidra-gloss",
-    "title": "Hidra Gloss",
-    "shortDescription": "Hidratação profunda com efeito glossy para lábios radiantes",
-    "longDescription": "O Hidra Gloss é um tratamento labial que combina hidratação profunda com um efeito glossy, proporcionando lábios radiantes e revitalizados. Utilizamos produtos ricos em ativos hidratantes e antioxidantes que penetram profundamente, restaurando a barreira de proteção e promovendo um brilho saudável. O tratamento é ideal para todos os tipos de lábios, especialmente os desidratados e opacos.",
-    "benefits": [
-      "Hidratação profunda",
-      "Efeito glossy e radiante",
-      "Revitaliza lábios opacos e desidratados",
-      "Restaura a barreira de proteção da pele",
-      "Adequado para todos os tipos de lábios"
+    "featured": false,
+    "duration": "1h30",
+    "details": [
+      {
+        "title": "Como funciona",
+        "paragraphs": [
+          "Os cílios são levantados e fixados em uma nova curvatura com produtos específicos, o que abre o olhar e faz os cílios parecerem mais longos. Em seguida, aplico a tintura e um tratamento nutritivo para dar cor e proteger os fios. A sessão leva cerca de 1h30."
+        ]
+      },
+      {
+        "title": "Duração do resultado",
+        "paragraphs": [
+          "O efeito dura de 45 a 60 dias, acompanhando o ciclo natural de renovação dos cílios. Depois disso, é só repetir o procedimento."
+        ]
+      },
+      {
+        "title": "Cuidados após o procedimento",
+        "paragraphs": [
+          "Evite molhar os cílios, usar vapor e maquiagem nos olhos nas primeiras 24 horas. Depois, mantenha a rotina normal e penteie os cílios com a escovinha."
+        ]
+      },
+      {
+        "title": "Lash lift ou extensão de cílios?",
+        "paragraphs": [
+          "O lash lift usa os seus cílios naturais, sem fios adicionais, e tem um resultado mais discreto e fácil de manter. A extensão adiciona comprimento e volume e exige manutenção periódica. Se você tem cílios razoavelmente longos e quer só a curvatura, o lash lift costuma ser a melhor escolha. Na avaliação eu te ajudo a decidir."
+        ]
+      }
     ],
-    "images": ["/images/services/hidra-gloss-pongai-1.jpeg"],
-    "category": "facial",
-    "featured": false
+    "faq": [
+      {
+        "question": "Quanto tempo dura o lash lift?",
+        "answer": "Em média de 45 a 60 dias."
+      },
+      {
+        "question": "O lash lift dói?",
+        "answer": "Não. É um procedimento indolor, feito com os olhos fechados e em um ambiente tranquilo."
+      },
+      {
+        "question": "Posso fazer lash lift e depois a extensão de cílios?",
+        "answer": "O ideal é escolher uma técnica por vez. Converse comigo na avaliação para definir o melhor caminho para os seus cílios."
+      },
+      {
+        "question": "Preciso usar curvex depois?",
+        "answer": "Não. A curvatura permanece sem curvex, e você pode usar máscara de cílios se quiser, depois das primeiras 24 horas."
+      }
+    ]
   },
   {
     "id": "nanolips",
@@ -156,6 +365,52 @@
     ],
     "images": ["/images/services/nanolips-pongai-1.jpg"],
     "category": "facial",
-    "featured": false
+    "featured": false,
+    "duration": "2 horas",
+    "details": [
+      {
+        "title": "Como é o procedimento",
+        "paragraphs": [
+          "Escolho o tom com você, analisando a cor natural dos seus lábios, e faço a pigmentação com a técnica de sombreamento, deixando a borda esfumada. Uso anestésico tópico para o seu conforto. A sessão leva cerca de 2 horas."
+        ]
+      },
+      {
+        "title": "Cicatrização e retoque",
+        "paragraphs": [
+          "Nos primeiros dias os lábios ficam mais inchados e com a cor mais intensa, depois descamam e a cor vai se assentando. A cicatrização leva cerca de 30 dias, quando avalio a necessidade de retoque.",
+          "O resultado pode durar até 12 meses."
+        ]
+      },
+      {
+        "title": "Cuidados após o procedimento",
+        "paragraphs": [
+          "Mantenha os lábios hidratados com o produto indicado, evite sol, beijos intensos, alimentos muito quentes e maquiagem nos lábios durante a cicatrização, e não arranque as casquinhas."
+        ]
+      },
+      {
+        "title": "Contraindicações",
+        "paragraphs": [
+          "Quem já teve herpes labial deve avisar antes, pois pode ser necessário um preparo com antiviral. Também não é indicado para gestantes, lactantes e quem tem lesões ou infecções ativas nos lábios."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "O NanoLips dói?",
+        "answer": "Utilizo anestésico tópico e a maioria das clientes sente apenas um leve desconforto."
+      },
+      {
+        "question": "Quanto tempo dura o NanoLips?",
+        "answer": "Até 12 meses, variando conforme o tipo de pele e os cuidados."
+      },
+      {
+        "question": "Quem já teve herpes pode fazer?",
+        "answer": "Pode, mas é preciso avisar na avaliação, pois o procedimento pode ativar o vírus e talvez seja necessário um preparo antes."
+      },
+      {
+        "question": "A cor fica muito forte?",
+        "answer": "Nos primeiros dias a cor é mais intensa, mas ela suaviza durante a cicatrização e o resultado final é natural, no efeito lip tint."
+      }
+    ]
   }
 ]
